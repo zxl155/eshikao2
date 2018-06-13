@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Curriculum;
-use App\Teacher;
 
 class CurriculumController extends Controller
 {
@@ -17,11 +15,7 @@ class CurriculumController extends Controller
      * 添加课程
      */
 	public function addcurr(){
-		$tea = new Teacher;
-		$data = $tea->get();
-		return view('admin/curriculum/addcurr',[
-			'data'=>$data
-		]);
+		return view('admin/curriculum/addcurr');
 	}
 
 	/**
