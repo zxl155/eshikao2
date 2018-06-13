@@ -56,4 +56,22 @@ class MydataController extends Controller
 			echo "修改失败";
 		}
 	}
+	/**
+	 * 上传图片
+	 */
+     public function  insetArticle(Request $request){
+     	
+        $directory = 'public/storage'.date("Y-m-d");
+		$res = Storage::makeDirectory($directory);
+		$path = $request->file('head_pirctur')->store($directory);
+		$user = new User;
+		$data = $user -> images($path);
+		if ($data==true) {
+			return redirect('/home/mydata');
+		} else {
+			return redirect('/home/mydata');
+		}
+	} 
+		
+	
 }

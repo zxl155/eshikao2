@@ -62,6 +62,13 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        //定义文章图片路径
+         'article'=>[
+           'driver'=>'local',
+           'root' =>storage_path('./home/img/head/')
+
+
+       ],
 
     ],
 

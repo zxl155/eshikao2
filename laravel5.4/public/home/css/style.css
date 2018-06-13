@@ -2065,6 +2065,7 @@ textarea {
 .personal-form-upload{
     position: relative;
     height: 30px;
+    margin-left: -50px;
 }
 .personal-form-upload input{
     position: absolute;
@@ -2075,6 +2076,16 @@ textarea {
     margin-left:0;
     opacity: 0;
     cursor: pointer;
+}
+.inpsubmit {
+    opacity: 1 !important;
+left: 130px !important;
+text-align: center;
+border: none !important;
+padding-left: 0 !important;
+line-height: 20px !important;
+color: #ffa80d;
+background: none;
 }
 .personal-form-upload span{
     display: inline-block;
