@@ -1,0 +1,300 @@
+/* style sheet for baoxian */
+
+#site_content {
+	color: #333;
+}
+
+h2 {
+	font-size: 14px;
+	border-bottom: 1px solid #ccc;
+	margin: 20px 0 8px 0;
+}
+
+h3 {
+	margin: 10px 0;
+}
+
+ol {
+	margin: 0 25px !important;
+	padding: 0;
+	line-height: 20px;
+}
+
+.products {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.products li {	
+	margin: 15px 0;
+	padding-bottom: 20px;
+	color: #333;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.products li h3 {
+	font-size: 14px;
+	margin: 5px 0;
+	color: #333;
+}
+
+.products li p {
+	line-height: 150%;
+	margin: 0;
+}
+
+.hl {
+	margin: 10px 0 10px 0;
+	background: #F3F3F3;
+	color: #333;
+	/*background: #E6EBF0;*/
+	padding: 8px;
+}
+
+.hl em {
+	font-size: 14px;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.link {
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+fieldset.form {
+	margin: 10px 0;
+	padding: 0;
+	border: 0;
+	font-size: 14px;
+}
+
+fieldset.form p {	
+	margin-bottom: 16px;
+}
+
+.form .item {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 4px;
+}
+
+/* index */
+
+#policy_notice {
+	padding: 8px;
+	padding-left: 30px;
+	border: 1px dotted #c0c0c0;
+	background: lightyellow url(../images/notice.gif) no-repeat 8px 7px;
+	color: #333;
+	margin: 10px 0;
+}
+
+/* quote */
+
+#quote_info {
+	padding: 3px 10px;
+	border: 1px dotted #c0c0c0;
+	background-color: lightyellow;
+	font-size: 14px;
+	color: #333;
+	display: none;
+}
+
+.price {
+	font-family: verdana;
+	color: #c00;
+	font-weight: bold;
+}
+
+.price .price_dec {
+	font-size: 11px;
+}
+
+.light {
+    background-color: #FFFF66 !important;
+}
+
+/* clients */
+
+.dialog_wrap {
+    margin: auto;
+    padding: 5px;
+    position: absolute;
+    /*position: fixed;*/
+    background-color: #fff;
+    z-index: 1000;
+    border: 1px solid #333;        
+}
+
+.dialog_overlay {
+    position: absolute;
+    background-color: #000;
+    display: none;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    z-index: 999;
+}
+
+.dialog_wrap_inner {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.dialog_body {
+    width: 640px;
+    /*height: 320px;*/
+}
+
+.client_form {
+    text-align: left;
+}
+
+.client_form label {
+    margin: 5px 0;
+    padding-right: 10px;
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    float: left;
+    text-align: right;
+}
+
+.client_form input,
+.client_form textarea {
+}
+
+.tbl_client th {
+    font-weight: normal;
+    text-align: right;
+    width: 80px;
+}
+
+.tbl_client span {
+    background: #D8F7DB;
+    color: #444;
+}
+
+#client_form_wrap {
+    display: none;
+}
+
+#btn_benefit {
+	vertical-align: middle;
+    margin-bottom: 5px;
+	cursor: pointer;
+}
+
+#benefit_form_wrap {
+	width: 500px;
+	display: none;
+}
+
+#benefit_form_wrap label {
+	margin-right: 10px;
+}
+
+#benefit_form_wrap p {
+	margin-top: 10px;
+}
+
+.tbl_client .required {
+	background: #fff;
+	color: red;
+	margin-right: 5px;
+}
+
+.client_error {
+	background: #c00;
+	color: #fff;
+	padding: 3px 5px 2px 5px;
+}
+
+#div_benefit_error {
+	padding: 3px 10px;
+	border: 1px dotted #c0c0c0;
+	background-color: lightyellow;
+	color: #333;
+	display: none;
+}
+
+#lst_benefits {
+
+}
+
+#lst_benefits li {
+	line-height: 20px;
+}
+
+.benefit_hover {
+	background: #fff url(../images/remove.gif) no-repeat 130px center;
+	cursor: pointer;
+}
+
+#tbl_clients caption {
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+#tbl_clients thead tr td {
+	padding-top: 10px;
+	line-height: 18px;
+	color: #FF3300;
+	background: url(../images/dot.gif) repeat-x bottom;
+}
+
+#tbl_clients tbody tr td {
+    font-size: 11px;
+	line-height: 22px;
+	background: url(../images/dot.gif) repeat-x bottom;
+}
+
+#tbl_clients tbody tr td.zh {
+    font-size: 12px;
+}
+
+#tbl_clients tbody tr td.child {
+    background: #fff url(../images/child.gif) no-repeat right;
+}
+
+#tbl_clients tbody tr td.cost {
+    font-size: 14px;
+	font-weight: bold;
+	color: #c00;
+}
+
+#field_agreement {
+	margin: 10px 0;
+	font-weight: bold;
+	color: #c00;
+	font-size: 14px;
+}
+
+#upload_form_wrap {
+	display: none;
+	padding: 8px;
+	padding-left: 30px;
+	border: 1px dotted #c0c0c0;
+	color: #333;
+	margin: 10px 10px;
+}
+
+.bank_list {
+	width:630px;
+	overflow:hidden;
+	margin: 12px auto;
+}
+
+.bank_list li {
+	float: left;
+	padding: 0 20px 4px 0;
+}
+
+.bank_list li input {
+	float: left;
+	margin: 10px 4px 0 0;
+}

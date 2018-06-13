@@ -1,0 +1,105 @@
+body{
+	font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑", Heiti, "黑体", SimSun, "宋体", sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+}
+ol, ul, li { list-style: none; padding: 0;}
+.race-main{
+	width: 996px;
+	margin: 0 auto;
+
+}
+.mf-nav a i{
+	margin-right: 2px;
+}
+.mf-nav .fr{
+	float: right;
+}
+.logobar{
+	background-color: #3a9d9a;
+	color: #fff;
+	padding: 6px 0;
+}
+.logobar .title{
+	font-size: 20px;
+	border-left: 1px solid #fff;
+	padding-left: 6px;
+	margin-left: 6px;
+	letter-spacing: 2px;
+	vertical-align: middle;
+}
+a.rl-apply-btn, span.rl-apply-btn{
+	display: inline-block;
+	padding: 6px 20px;
+	color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #2bbfbd;
+	border-radius: 4px;
+	text-decoration: none;
+}
+a.rl-apply-btn:hover{
+	background-color: rgba(43,191,189,0.85);
+}
+.rl-apply-btn.reversed{
+	background-color: #aeaeae;
+}
+a.race-more-btn{
+	display: inline-block;
+	width: 100%;
+	background-color: #fafafa;
+	border-radius: 4px;
+	text-align: center;
+	padding: 10px 0;
+	color: #666;
+	border: 1px solid #eee;
+	margin-bottom: 60px;
+	text-decoration: none;
+}
+i.rl-icon{
+	display: inline-block;
+	background: url('../images/race_list_icon.png') 0px 0px no-repeat;
+	width: 21px;
+	height: 21px;
+	vertical-align: middle;
+}
+.rl-icon.rl-icon-manage{
+	background-position: 0px -26px;
+}
+.rl-icon.rl-icon-time{
+	background-position: 0px -52px;
+}
+.rl-icon.rl-icon-dest{
+	background-position: 0px -78px;
+}
+.rl-icon.rl-icon-user{
+	background-position: 0px -103px;
+}
+/*footer*/
+#footer { min-width: 996px; width: auto!important; width: 996px; padding: 50px 0 40px; background: #2b2b2b; color: #818181; text-align: center; }
+#footer a { color: #818181; }
+#footer p { line-height: 24px; padding-bottom: 5px; }
+#footer ul { line-height: 24px; display: none; }
+#footer ul li { display: inline; }
+#footer ul li a { margin: 0 10px 0 5px; }
+/*helpCenter*/
+#footer .helpCenter { width: 996px; margin: 0 auto 50px; text-align: left; }
+#footer .helpCenter dl { float: left; width: 145px; height: 140px; padding-left: 15px; border-left: 1px solid #404040; }
+#footer .helpCenter dl.first { margin-left: 45px; }
+#footer .helpCenter dt { line-height: 24px; padding-bottom: 10px; font-size: 14px; font-weight: bold; color: #9c9c9c; }
+#footer .helpCenter dt a { color: #9c9c9c; }
+#footer .helpCenter dd { line-height: 24px; }
+#footer .helpCenter dd a { color: #818181; }
+#footer .helpCenter dd.sina { padding-left: 25px; background: url(../images/bottom_sina.gif) 0 center no-repeat; }
+#footer .helpCenter dd.mfweixin, #footer .helpCenter dd.mflvxing { padding-left: 25px; position: relative; background: url(../images/bottom_weixin.gif) 0 center no-repeat; }
+#footer .helpCenter dd.mfweixin{ position: relative; z-index: 500;}
+#footer .helpCenter dd.mfweixin .weixinqr { border: 3px solid #fff; position: absolute; left: 25px; top: 22px; display: none; z-index: 500; }
+#footer .helpCenter .bottom_lvxing_img { width: 86px; height: 86px; border: none; }
+#footer .helpCenter dd.mfweixin a { text-decoration: none; cursor: default;  padding-bottom: 4px; }
+#footer .helpCenter dd.mfweixin a:hover .weixinqr{ display: block;}
+#footer .helpCenter dd.phone { padding-left: 25px; background: url(../images/bottom_phone.gif) 0 center no-repeat; position: relative; }
+#footer .helpCenter dd.phone.last a { cursor: default; text-decoration: none; padding-bottom: 2px;}
+#footer .helpCenter dd.phone a:hover .bottom_app { display: block; }
+.phone .bottom_app { position: absolute; top: 22px; left: 25px; border: 3px solid #fff; display: none; }
+#footer .helpCenter p {  }
+#footer .helpCenter p img { width: 80px; height: 80px; border: 3px solid #fff; }

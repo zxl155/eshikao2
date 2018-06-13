@@ -1,0 +1,146 @@
+
+.mf-nav{
+	background-color: #dadada;
+	padding: 4px 0;
+}
+.mf-nav a{
+	color: #666;
+	font-size: 12px;
+}
+.race-top-wrap{
+	background-color: #f1f1f1;
+	padding: 40px 0;
+}
+.mte-slider{
+	position: relative;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+}
+.rslides {
+	position: relative;
+	list-style: none;
+	overflow: hidden;
+	width: 705px;
+	height: 332px;
+	padding: 0;
+	margin: 0;
+}
+.rslides li {
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	display: none;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+.rslides li:first-child {
+	position: relative;
+	display: block;
+	float: left;
+}
+.rslides img {
+	display: block;
+	float: left;
+	width: 100%;
+	height: 332px;
+	border: 0;
+}
+.slide-nav{
+	width: 285px;
+	position: absolute;
+	top: 0px;
+	right: 4px;
+	z-index: 100;
+}
+.rslides_tabs{
+	width: 289px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 110;
+}
+.rslides_tabs a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+}
+.rslides_tabs li{
+	height: 111px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.rslides_tabs li:last-child{
+	border-bottom: none;
+}
+.rslides_tabs li.active{
+	border-right: 4px solid #4db6b3; 
+}
+.slide-nav li{
+	height: 111px;
+	color: #404040;
+	font-size: 16px;
+	padding: 0 20px;
+}
+.slide-nav div{
+	display: table-cell;
+	height: 111px;
+	vertical-align: middle;
+	line-height: 1.5;
+}
+.slide-nav li.active{
+	background-color: #f9f9f9;
+	color: #3a9d9a;
+}
+.race-list{
+	font-size: 16px;
+	border: 1px solid #eee;
+	border-bottom: none;
+	margin: 30px 0px 20px;
+}
+.race-list-item{
+	padding: 20px;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+}
+.rl-side{
+	width: 430px;
+	height: 200px;
+	float: left;
+}
+.rl-side img{
+	width: 100%;
+	height: 100%;
+}
+.rl-main{
+	float: left;
+	padding-left: 30px;
+}
+.rl-main .rl-title{
+	font-size: 18px;
+	margin: 20px 0;
+	width: 490px;
+	margin: 0;
+	height: 46px;
+	line-height: 1.5;
+	display: table-cell;
+	vertical-align: middle;
+}
+.rl-main .rl-title a{
+	color: #000;
+	font-weight: bold;
+}
+.rl-main .rl-title a:hover{
+	color: #3a9d9a;
+}
+.rl-main p{
+	color: #666;
+	margin: 10px 0;
+}
+.rl-main p i{margin-right: 4px;}
+.rl-main span{
+	margin: 0 2px;
+	vertical-align: middle;
+}
+.rl-main span.already{
+	color: #3a9d9a;
+}

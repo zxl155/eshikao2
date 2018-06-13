@@ -1,0 +1,251 @@
+body{
+	background-color: #f2f2f2;
+}
+.mte{
+	width: 996px;
+	margin: 0 auto;
+	text-align: left;
+	font-family: '微软雅黑', 'Microsoft YaHei', Helvetica, STHeiTi, Sans-serif;
+}
+.mte-top{
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	padding: 20px;
+	position: relative;
+	*zoom: 1;
+	margin: 20px 0px;
+}
+.mte-top:before,.mte-top:after{
+	content: '';
+	display: table;
+}
+.mte-top:after{
+	clear: both;
+}
+h1.mte-title{
+	font-size: 30px;
+	font-weight: normal;
+	color: #4db6b3;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 10px;
+}
+.title-info{
+	color: #aaa;
+	font-size: 18px;
+	float: left;
+}
+.author-info{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: #333;
+}
+a.mte-btn{
+	display: inline-block;
+	color: #fff;
+	background-color: #4db6b3;
+	font-size: 16px;
+	text-align: center;
+	width: 90px;
+	height: 28px;
+	line-height: 28px;
+	border-radius: 4px;
+	margin-left: 10px;
+	text-decoration: none;
+}
+a.mte-btn.reversed{
+	background-color: #43adff;
+}
+.mte-top a.mte-btn{
+	float: right;
+}
+.author-pic{
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	margin-left: 10px;
+}
+.mte-nav{
+	margin: 20px 0px;
+}
+.mte-nav a{
+	margin: 0 6px;
+	vertical-align: middle;
+	font-size: 16px;
+}
+.mte-nav .home{
+	display: inline-block;
+	width: 18px;
+	height: 16px;
+	background: url('../zhuanti/mfhd/icon.png') center 0px no-repeat;
+	margin-left: 0px;
+}
+.mte-slider{
+	position: relative;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	display: none;
+}
+.rslides {
+	position: relative;
+	list-style: none;
+	overflow: hidden;
+	width: 705px;
+	height: 332px;
+	padding: 0;
+	margin: 0;
+}
+.rslides li {
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	display: none;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+.rslides li:first-child {
+	position: relative;
+	display: block;
+	float: left;
+}
+.rslides img {
+	display: block;
+	float: left;
+	width: 100%;
+	height: 332px;
+	border: 0;
+}
+.slide-nav{
+	width: 285px;
+	position: absolute;
+	top: 0px;
+	right: 4px;
+	z-index: 100;
+}
+.rslides_tabs{
+	width: 289px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 110;
+}
+.rslides_tabs a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+}
+.rslides_tabs li{
+	height: 82px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.rslides_tabs li:last-child{
+	border-bottom: none;
+}
+.rslides_tabs li.active{
+	border-right: 4px solid #4db6b3; 
+}
+.slide-nav li{
+	height: 83px;
+	color: #404040;
+	font-size: 16px;
+	padding: 0 20px;
+}
+.slide-nav div{
+	display: table-cell;
+	height: 83px;
+	vertical-align: middle;
+	line-height: 1.5;
+}
+.slide-nav a{
+	color: #404040;
+	text-decoration: none;
+}
+.slide-nav li.active{
+	background-color: #ececec;
+}
+.mte-ct{
+	padding: 20px;
+	margin: 20px 0;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+}
+h2.mte-title{
+	color: #404040;
+	font-size: 16px;
+	font-weight: normal;
+}
+.mte-box{
+	border-top: 1px solid #e5e5e5;
+	margin: 20px 0;
+	*zoom: 1;
+}
+.mte-box:before, .mte-box:after{
+	content: '';
+	display: table;
+}
+.mte-box:after{
+	clear: both;
+}
+.mte-box h3.title{
+	color: #404040;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 30px 0;
+}
+.mte-box a{
+	text-decoration: none;
+}
+.info{
+	color: #aaa;
+	font-size: 14px;
+	float: left;
+}
+.info span{
+	vertical-align: middle;
+}
+.info .split{
+	margin: 0 5px;
+	font-size: 12px;
+}
+.icon-see,.icon-cmt,.icon-like{
+	display: inline-block;
+	width: 40px;
+	height: 20px;
+	background: url('../images/mfhd/icon.png') 0 0 no-repeat;
+	float: right;
+}
+.icon-see{
+	padding-left: 32px;
+	background-position: -7px -90px;
+}
+.icon-cmt{
+	padding-left: 32px;
+	background-position: -7px -60px;
+}
+.icon-like{
+	padding-left: 32px;
+	background-position: -7px -30px;
+}
+.mte-box img{
+	width: 100%;
+	height: 450px;
+	margin: 20px 0;
+}
+.mte-box .des{
+	color: #404040;
+	font-size: 16px;
+	line-height: 1.5;
+}
+a.mte-more-btn{
+	display: inline-block;
+	height: 58px;
+	line-height: 58px;
+	text-align: center;
+	color: #aaa;
+	font-size: 18px;
+	width: 100%;
+	background-color: #f2f2f2;
+}

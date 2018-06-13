@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+/*酒店预订*/
+.HotelBox { margin-bottom: 10px; border: 1px solid #c4e9f7; text-align: left; }
+.HotelBox .ind_title { position: relative; line-height: 30px; padding: 15px 0 10px; border-bottom: 3px solid #c4e9f7; font-family: 'microsoft yahei'; text-align: center; }
+.HotelBox .ind_title .P1 { color: #003580; font-size: 24px; padding-bottom: 7px; }
+.HotelBox .ind_title .P1 .Span1 { font-weight: bold; }
+.HotelBox .ind_title .P1 .Span2 { color: #23b8f4; font-weight: bold; }
+.HotelBox .ind_title .P1 .Span3 {  }
+.HotelBox .ind_title .P2 { font-size: 17px; color: #00b3f3; font-style: italic; }
+.HotelBox .ind_title i { position: absolute; bottom: -8px; left: 50%; margin-left: -4px; width: 9px; height: 5px; background: url(../images/hotel_ico.gif) no-repeat; }
+.ui_input { background-color: #FFF; border: 1px solid #CCC; font-family: helvetica,arial,宋体,sans-serif; height: 22px; line-height: 22px; padding: 0 5px; }
+.side_booking_con { padding:20px 10px 26px; }
+#searchboxInc label { float:left; margin-right:5px; line-height:22px; }
+#searchboxInc .ui_input { width:193px;padding-right:20px; font-size: 12px; padding-top:1px; padding-bottom: 1px; }
+#searchboxInc .js_poi_input_div .ui_input{ background: url(../images/hotel_location.gif) right center no-repeat; }
+#searchboxInc #inout .ui_input{  }
+#searchboxInc .but { padding-top: 10px; line-height: 26px; text-align: center; }
+#searchboxInc .but .cGreen {  }
+#searchboxInc .but .Button { margin-top:5px; padding: 0 30px; line-height:20px; }
+#inout div.clearfix{ margin-top:12px; }
+.side_booking_placehot{position:absolute;z-index:9;top:24px;width:219px;border:1px solid #ccc;border-top:0;background:#fff;display:none;}
+.side_booking_placehot h4{border-bottom:1px solid #ededed;line-height:32px;font-weight:700;text-indent:10px;color:#636363;}
+.side_booking_placehot ul{padding:5px;overflow:hidden;zoom:1;}
+.side_booking_placehot ul li{ width:50%;float:left;line-height:24px;text-indent:5px; padding: 0; }
+.side_booking_placehot ul li a{display:block;}
+.side_booking_placehot ul li a:hover{background:#e6f4d9;background:#E6EEF2;text-decoration:none;}
+.side_booking_srchdrop {position:absolute;z-index:9; right:0; top:24px; width:201px; border:1px solid #ccc;border-top:0;background-color:#fff; box-shadow:0 0 1px  rgba(0, 0, 0, 0.3);}
+.side_booking_srchdrop .related {font-weight:bold; color:#007345;}
+.side_booking_srchdrop_list { width:100%; overflow:hidden;}
+.side_booking_srchdrop_list li { border-bottom:1px solid #ebebeb;}
+.side_booking_srchdrop_list li a { display:block;padding:6px 5px 6px 10px; color:#323232;}
+.side_booking_srchdrop_list li a:hover { background-color:#e6f4d9; text-decoration:none; color:#323232;}
+.side_booking_srchdrop_list li .title_cn, .side_booking_srchdrop_list li .title_en {display:block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.side_booking_srchdrop_list li .title_en { color:#959595;}
+.side_booking_srchdrop_more { border-top:1px solid #ebebeb; margin-top:-1px;}
+.side_booking_srchdrop_more a { display:block; padding:6px 0; color:#323232; text-align:center; color:#323232;}
+.side_booking_srchdrop_more a:hover { background-color:#e6f4d9; text-decoration:none; color:#323232;}
+.side_booking_srchdrop_null { text-align:center; line-height:32px;}
+
+/*酒店样式1*/
+.HotelBox1 { width: 290px; margin-bottom: 0px; border-width: 0px; }
+.HotelBox1 .ind_title { display: none; }
+.HotelBox1 .side_booking_con { padding: 0px; }
+.HotelBox1 #searchboxInc .but { padding-top: 5px; color: #9c9c9c; }
+.HotelBox1 #searchboxInc .but p { text-align: left; }
+
+/*酒店样式2*/
+.HotelBox2 {  }
+.HotelBox2 .ind_title { padding: 5px 0; }
+.HotelBox2 .ind_title .P1 { display: inline; font-size: 12px; }
+.HotelBox2 .ind_title .P1 .Span1 { color: #003580; }
+.HotelBox2 .ind_title .P2 { display: inline; font-size: 12px; }
+.HotelBox2 #searchboxInc .ui_input { width: 115px; }
+.HotelBox2 .side_booking_placehot { width: 141px; }
+
+/*酒店样式3*/
+.HotelBox3 { float: right; width: 327px; margin-bottom: 0px; border-width: 0px; border-left: 1px solid #e6eef2; }
+.HotelBox3 form { margin-bottom: 0px; }
+.HotelBox3 label { font-size: 12px; }
+.HotelBox3 .ind_title { padding: 0 0 0 10px; text-align: left; }
+.HotelBox3 .ind_title .P1 { display: inline; font-size: 18px; }
+.HotelBox3 .ind_title .P2 { margin-left: 20px; display: inline; font-size: 14px; }
+.HotelBox3 #searchboxInc .js_poi_input_div .ui_input { width: 230px; }
+.HotelBox3 #searchboxInc #inout .ui_input { width: 70px; float: left; }
+.HotelBox3 .side_booking_con { padding-top: 12px; padding-bottom: 0px; }
+.HotelBox3 #inout { padding-top: 6px; }
+.HotelBox3 #hotel_homein { float: left; margin-right: 20px; }
+.HotelBox3 #hotel_homeout { float: left; }
+.HotelBox3 #searchboxInc .but { padding-top: 0px; }
+.HotelBox3 .side_booking_placehot { width: 256px; }
+.HotelBox3 #searchboxInc .but .Button { margin-top: 3px; }
+
+/*酒店样式4*/
+.HotelBox4 { margin-top:10px; }
+.HotelBox4 .side_booking_con { padding-bottom: 10px; }
+.HotelBox4 #searchboxInc .but .cGreen { float: left; }
+.HotelBox4 #searchboxInc .but { padding-top: 20px; }
+.HotelBox4 #searchboxInc .but .Button { float: right; padding: 0 10px; margin-top: 0px; margin-right: 5px; }
+
+/*异域之旅、潜水*/
+.globeBox {  }
+.globeBox .ADBox { padding: 6px 0 5px 6px; }
+.globeBox .ADBox img { width: 417px; height: 74px; }
+.globeBox .leftBox { width: 155px; float: left; line-height: 22px; padding: 7px 0 6px 15px; }
+.globeBox .leftBox a { color: #3e84ab; }
+.globeBox .rightBox { width: auto; border-left: 1px dotted #ccc; }
+.globeBox .Space { margin: 0 5px; font-size: 14px; font-family: 'simsun'; }
+.globeBox .ExtraBox { line-height: 24px; padding-left: 5px; }
+

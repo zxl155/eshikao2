@@ -1,0 +1,99 @@
+/**布局**/
+
+.server { }
+.server .pageLeft { float: left; width: 662px; padding-right: 44px; }
+.server .pageRight { float: left; width: 290px; }
+.server h1,.server h2,.server h3{ font-weight: 100;}
+.server .tips { line-height: 35px; margin-bottom: 23px;}
+
+
+/**box**/
+.server .box { width: 100%;}
+.server .box .title { height: 30px; line-height: 25px; margin-bottom: 15px; position: relative; border-bottom: 1px solid #dae6ec;}
+.server .box .title h1 { font-family: 'microsoft yahei';color: #2b2b2b; font-size: 18px; }
+.server .box .content {  margin-bottom: 30px;}
+
+
+/***预订booking*/
+.booking {}
+.booking li { float: left; width: 331px; padding-bottom: 30px; }
+.booking li a img { width: 275px; height: 98px; }
+.booking li p { line-height: 30px; color: #9c9c9c;}
+
+/**导航链接urls**/
+.urls {}
+.urls li { line-height: 30px; margin-bottom: 10px;}
+.urls li h2 { display: inline-block; width: 105px;font-family: 'microsoft yahei'; font-size: 16px; color: #2b2b2b; }
+.urls li p { display: inline-block; font-size: 14px; }
+.urls li p a { color: #23729e; display: inline-block; margin: 0 5px;}
+
+.server .box.links .title{ border-bottom: none;}
+.links li { line-height: 30px; font-size: 14px; font-family: 'simsun'; }
+.links li a { color: #23729e;}
+
+.server .ads li { margin-bottom: 15px;}
+
+
+/*bazaar*/
+#recnet_topics {width: 450px;background: #FFF8F0;float: left;border: 1px solid #FFDEA9;}
+#recnet_topics a {font-family: verdana;}
+.topic_cata {width: 72px;text-align: right;color: #666;}
+#catas {margin-left: 10px;width: 300px;float: left;}
+.cata_list {margin: 0;padding: 0;list-style: none;}
+.cata_list li {margin-bottom: 10px;border-bottom: 1px solid #FFE4B9;}
+.cata_list li h3 {margin-top: 0;margin-bottom: 5px;color: #FF8B02;}
+.cata_list li h3 a {color: #FF8B02;}
+.sub_catas a {color: #555;font-weight: bold;}
+.sub_catas a:hover {color: #FF9000;text-decoration: underline;}
+.cata_count {font-size: 11px;font-weight: normal;}
+.cata_desc {margin: 10px 0;}
+.item_deleted {text-decoration: line-through;color: #999;}
+/* cat list */
+#sub_cats {border: 1px solid #ddd;border-width: 1px 0;background: #f1f1f1;padding: 5px;margin: 8px 0;width: 98.2%;}
+/* item show */
+.item_prev_next {float: right;font-size: 12px;font-weight: normal;}
+.item_prev_next a {padding: 3px;}
+.item_title {margin: 0;color: #f00;}
+.item_info {border: 1px solid #E4E9F1;border-width: 1px 0;background: #f7f7f7;padding: 8px;margin: 10px 0;line-height: 17px;}
+.item_desc {margin: 10px 0;background: #f7f7f7;padding: 8px;overflow: hidden;}
+.item_price {font-size: 18px;color: #FF5500;font-family: verdana;}
+.user_face {float: left;margin-right: 5px;display: block;width: 52px;height: 52px;}
+.user_face img {border: 1px solid #000;width: 50px;height: 50px;}
+.item_pics {margin: 10px 0;line-height: 22px;}
+.item_pics .item_pic {text-align: center;float: left;padding: 4px;background: #eee;margin-right: 8px;}
+.item_upload {border: 1px solid #ffc30d;border-width: 1px 0;background-color: #fffbb8;padding: 5px;}
+.item_feedbacks {margin: 0;padding: 0;list-style: none;}
+.item_feedbacks li {padding: 5px;margin-bottom: 10px;}
+.item_feedbacks .alt1 {background-color: #f0f0f0;}
+.item_feedbacks .alt2 {background-color: #fff;}
+.item_feedbacks_meta {margin-bottom: 8px;}
+.item_feedbacks_body {}
+.item_feedback_form {border: 1px solid #ffc30d;border-width: 1px 0;background-color: #fffbb8;padding: 8px 5px;margin: 10px 0;}
+.item_nav_bar {margin: 10px 0;}
+.item_notice {width: 200px;border: 1px solid #FFCC00;background: #FFFFCC;float: right;padding: 8px;padding-bottom: 5px;}
+
+.oldStreetRules { margin-bottom: 20px; padding: 15px 20px 15px 15px; border: 1px solid #dae6ec; background: #f2f8fb; }
+.oldStreetRules dl { line-height: 24px; }
+.oldStreetRules dl dt {  }
+.oldStreetRules dl dt a {  }
+.oldStreetRules dl dd { padding-left: 15px; background: url(../images/icon_list_bg.gif) 5px center no-repeat; }
+.oldStreetRules dl dd a { float: right; color: #23729e; }
+
+
+/* doyouhike.net doc style */
+.doc h2 {font-size: 16px;font-weight: bold;}
+.doc h3 {font-size: 14px;font-weight: bold;color: #c00;}
+.doc p {margin: 10px 10px 20px;}
+
+.update {font-size: 12px;color: #999;float: right;margin: 40px 0 0;padding: 0 20px 0;}
+
+.doc { background: url(../images/sidebar_line.gif) 166px 0 repeat-y; }
+.doc .SideBar {  }
+.doc .SideBar ul { margin: 0; margin: 0 !important; padding: 38px 0; text-align: right; line-height: 32px; }
+.doc .SideBar ul li a { display: block; padding-right: 28px; color: #23729e; }
+.doc .SideBar ul li.Curr a { background: #ebf2f6; font-weight: bold; }
+.doc .SideBar ul li a:hover { background: #ebf2f6; text-decoration: none; }
+.doc .MainContent { padding-top: 38px; font-size: 14px; }
+.doc .MainContent h2, .doc .MainContent h3 { margin-bottom: 10px; padding-bottom: 8px; font-size: 18px; font-family: 'microsoft yahei'; font-weight: normal; border-bottom: 1px solid #dae6ec; }
+.doc .MainContent h3 { margin-top: 55px; }
+.doc .MainContent p { line-height: 32px; margin-bottom: 20px; padding-right: 25px; }
