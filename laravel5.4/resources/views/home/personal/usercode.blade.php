@@ -29,7 +29,7 @@
                     <span>确认密码：</span><input type="password" class="twopwd" value="" placeholder="确认密码"><br>
                     <div class="personal-list-form-an">
                         <a href="#" class="button">确认</a>
-                        <button type="reset"><a href="#" >取消</a></button>
+                        <a href="updatepwd">取消</a>
                     </div>
                 </form>
             </div>
@@ -58,6 +58,9 @@
                             if (data == '修改成功') {
                                 var txt = "修改成功";
                                 window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                                setTimeout(function(){
+                                    window.location.reload();//刷新当前页面.
+                                },2000)
                             } else {
                                 var txt = "修改失败请输入正确信息";
                                 window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

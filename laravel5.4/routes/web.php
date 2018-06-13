@@ -74,12 +74,16 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/myclass','MyclassController@index');
   //个人中心修改个人资料
   Route::get('home/mydata','MydataController@index');
+  //个人中心头部
+  Route::get('home/head','HeadController@index');
   //个人中心进行修改个人资料
   Route::get('home/updatemydata','MydataController@updatemydata');
   //个人中心进行修改密码
   Route::get('home/updatepwd','MydataController@updatepwd');
   //个人中心进行修改密码s
   Route::get('home/updatepwds','MydataController@updatepwds');
+  //个人中心进行头像
+  Route::post('home/headupdate','MydataController@insetArticle');
   //教师资格
   Route::get('home/qualifications','QualificationsController@qualifications');
   //教师资格详情页

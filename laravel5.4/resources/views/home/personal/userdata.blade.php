@@ -22,19 +22,20 @@
                 <span class="personal-content-grzl">个人资料</span>
             </div>
             <div class="personal-list">
-                <form class="personal-list-form" method="post" action="">
+                <form class="personal-list-form" action="headupdate" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="personal-form-img">
                         <div class="personal-form-tx">
                             <img src="{{URL::asset('/')}}home/img/mrtx.png" alt="">
                         </div>
                         <div class="personal-form-upload">
-                            <span>点击修改</span>
-                            <input type="file">
+                            <span>选择图片</span>
+                            <input type="file" name="head_pirctur">
+                    <input type="submit" name="" class="inpsubmit" value="确认提交">
                         </div>
-
                     </div>
                     <br>
-
+                    
                     <input type="hidden" class="user_id" value="{{$data[0] -> user_id}}" >
                     <span>用户名：</span><input type="text" placeholder="请设置用户名2-5位汉字" class="username" value="{{$data[0] -> user_name}}"><br>
                     <span>账号信息：</span><span class="active"><?php echo session('user_tel') ?></span><br>
@@ -62,7 +63,9 @@
                         if (data == "修改成功") {
                              var txt=  "修改成功";
                              window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                              window.location.reload();
+                             setTimeout(function(){
+                                window.location.reload();//刷新当前页面.
+                             },2000)
                         } else {
                              var txt=  "用户名不能重复修改";
                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

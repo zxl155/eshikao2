@@ -96,4 +96,18 @@ class User extends Model
           return false;
       }
    }
+   /**
+    * 头像
+    */
+   public function images($path)
+   {
+    $user_id = session('user_id');
+      $affected = DB::update("update user set head_images=? where user_id = ?", [$path,$user_id]);
+      if ($affected) {
+        return true;
+      } else {
+        return false;
+      }
+   }
+
 }
