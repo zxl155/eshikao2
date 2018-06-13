@@ -46,16 +46,14 @@ Route::group(['namespace' => 'Admin'], function(){
   Route::get('admin/updcurr','CurriculumController@updcurr');
   //课程删除
   Route::get('admin/delcurr','CurriculumController@delcurr');
-  //教师添加
-  Route::get('admin/addtea','TeacherController@addtea');
+  //管理员添加
+  Route::get('admin/addadmin','AdminController@addadmin');
   //执行添加
-  Route::post('admin/dotea','TeacherController@dotea');
-  //教师列表
-  Route::get('admin/listtea','TeacherController@listtea');
-  //教师修改
-  Route::get('admin/updtea','TeacherController@updtea');
-  //教师删除
-  Route::get('admin/deltea','TeacherController@deltea');
+  Route::post('admin/doadmin','AdminController@doadmin');
+  //管理员列表
+  Route::get('admin/listadmin','AdminController@listadmin');
+  //管理员删除
+  Route::get('admin/del','AdminController@del');
 });
 //前台
 Route::group(['namespace' => 'Home'], function(){
