@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class SubjectType extends Model
 {
-    protected $table = 'role';  //表名
+    protected $table = 'subject_type';  //表名
     public $timestamps = false;  //过滤默认的字段
 }

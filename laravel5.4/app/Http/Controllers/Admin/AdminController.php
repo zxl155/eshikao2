@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Models\Admin;
+use App\Admin\Models\Admin;
 
 class AdminController extends Controller
 {

@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Models\Admin;
-use App\Models\Role;
-use App\Models\AdminRole;
-use App\Models\CatType;
-use App\Models\GradeType;
-use App\Models\SubjectType;
-use App\Models\Region;
-use App\Models\Curriculum;
-use App\Models\AdminCurriculum;
+use App\Admin\Models\Admin;
+use App\Admin\Models\Role;
+use App\Admin\Models\AdminRole;
+use App\Admin\Models\CatType;
+use App\Admin\Models\GradeType;
+use App\Admin\Models\SubjectType;
+use App\Admin\Models\Region;
+use App\Admin\Models\Curriculum;
+use App\Admin\Models\AdminCurriculum;
 use DB;
 
 class CurriculumController extends Controller
