@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Models\home\Curriculum;
-use App\Models\home\Pplive;
+use App\Home\Models\Curriculum;
+use App\Home\Models\Pplive;
 
 class CoursedetailsController extends Controller
 {

@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Home\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
 
-class Role extends Model
+class AdminRole extends Model
 {
-    protected $table = 'role';  //表名
+    protected $table = 'admin_role';  //表名
     public $timestamps = false;  //过滤默认的字段
-    
 }

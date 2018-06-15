@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Models\home\Admin;
-use App\Models\home\Curriculum;
+use App\Home\Models\Admin;
+use App\Home\Models\Curriculum;
 
 class IndexController extends Controller
 {
