@@ -56,7 +56,7 @@ class Curriculum extends Model
     /**
      * 查询课程对应教师的信息
      */
-    public function admin($admin,$teacher)
+    public function admina($admin,$teacher)
     {
     	foreach ($teacher as $key => $value) {
     		foreach ($admin as $keys => $values) {

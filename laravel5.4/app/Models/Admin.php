@@ -30,7 +30,7 @@ class Admin extends Model
      * @DateTime  2018-06-14
      * 查询教师id
      */
-    public function searchTeacher(){
+    public function searchTeachers(){
         $role = DB::select("select * from role where role_name = '教师'");
         $role = DB::select('select * from admin_role where role_id = :phone', [':phone'=>$role[0]->role_id]);
         foreach ($role as $key => $value) {

@@ -19,12 +19,12 @@ class IndexController extends Controller
 	public function index()
 	{
 		$user = new Admin;
-		$admin = $user->searchTeacher(); //admin教师的数据
+		$admin = $user->searchTeachers(); //admin教师的数据
 		//查询教师资格数据
 		$curriculum = new Curriculum;
 		$qualifications = $curriculum->qualifications();
 		$teacher = $curriculum->teachera(); //获取教师与课程的管理数据
-		$admin = $curriculum->admin($admin,$teacher);
+		$admin = $curriculum->admina($admin,$teacher);
 		//
 		$qualification = $curriculum->qualification();
 		$teachers = $curriculum->teachers(); //获取教师与课程的管理数据

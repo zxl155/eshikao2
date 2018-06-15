@@ -25,7 +25,7 @@ class QualificationsController extends Controller
 		$curriculum = $qualifications->curriculum();
 		
 		$user = new Admin;
-		$admin = $user->searchTeacher(); //admin教师的数据
+		$admin = $user->searchTeachers(); //admin教师的数据
 		$qualification = $qualifications->qualifications();
 		$teacher = $qualifications->teacher(); //获取教师与课程的管理数据
 		$admin = $qualifications->admin($admin,$teacher);
