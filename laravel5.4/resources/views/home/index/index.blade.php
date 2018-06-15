@@ -37,158 +37,70 @@
                 <img src="" alt=""></div>
         </div>
     </div>
-    <div class="Qualified"><h2 class="Qualified-title"><span>教师资格 <a aria-current="false" href="#/certificate"> 更多»</a></span>
+    <div class="Qualified"><h2 class="Qualified-title"><span>教师资格 <a aria-current="false" href="qualifications"> 更多»</a></span>
     </h2>
         <div class="Qualified-content clearfix">
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-            <div class="Qualified-period">
-                <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                <span>100课时 · 按字讲义</span>
-            </div>
-            <ul class="Qualified-teacher">
-                <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-            </ul>
-            <div class="Qualified-price">
-                <span>2000人购买</span>
-                <h2>￥<span>1000</span></h2>
-            </div>
-        </a>
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
+            @foreach($qualifications as $value)
+           
+            <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
+                <b>教师资格  </b>
+                <h5>{{$value->curriculum_name}}</h5>
+                <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">
                     <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
+                    <span>{{$value->notice}}</span>
+                 </div>
                 <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
+                     @foreach($admin as $values)
+                    <li>
+                        <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
+                        <span>
+                            @if($value->curriculum_id==$values->curriculum_id)
+                                {{$values->admin_name}}
+                            @endif
+                        </span>
+                    </li>
+                     @endforeach
                 </ul>
                 <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
+                    <span>{{$value->bought_number}}人购买</span>
+                    <h2>￥<span>{{$value->money}}</span></h2>
                 </div>
             </a>
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
+             
+            @endforeach
         </div>
         <h2 class="Qualified-title">
-            <span>教师招聘 <a aria-current="false" href="#/recruit"> 更多»</a></span>
+            <span>教师招聘 <a aria-current="false" href="recruit"> 更多»</a></span>
         </h2>
-        <div class="Qualified-content clearfix">
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
+         <div class="Qualified-content clearfix">
+            @foreach($qualification as $value)
+           
+            <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
+                <b>教师资格  </b>
+                <h5>{{$value->curriculum_name}}</h5>
+                <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">
                     <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
+                    <span>{{$value->notice}}</span>
+                 </div>
                 <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
+                     @foreach($admins as $values)
+                    <li>
+                        <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
+                        <span>
+                            @if($value->curriculum_id==$values->curriculum_id)
+                                {{$values->admin_name}}
+                            @endif
+                        </span>
+                    </li>
+                     @endforeach
                 </ul>
                 <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
+                    <span>{{$value->bought_number}}人购买</span>
+                    <h2>￥<span>{{$value->money}}</span></h2>
                 </div>
             </a>
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
-            <a href="#">
-                <b>教师资格</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
+             
+            @endforeach
         </div>
     </div>
     <div class="home-advert">

@@ -9,10 +9,10 @@
             <a class="header-logo">
                 <img src="{{URL::asset('/')}}home/img/logo.png" alt="">
             </a>
-            <ul>
-                <li><a href="index">首页</a></li>
-                <li><a href="qualifications"  class="active">教师资格证</a></li>
-                <li><a href="#">教师招聘</a></li>
+            <ul class="header-ul">
+                <li><a href="index" class="active">首页</a></li>
+                <li><a href="qualifications">教师资格证</a></li>
+                <li><a href="recruit">教师招聘</a></li>
                 <li><a href="#">招考公告</a></li>
                 <li><a href="#">APP下载</a></li>
             </ul>
@@ -39,8 +39,7 @@
     </div>
     <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script>
-        
-        if({{ session('user_id') }}){
+        if({{ session('user_id')}}){
             $('.header-login').css('display','none');
             $('.header-login1').css('display','inline-block');
         }

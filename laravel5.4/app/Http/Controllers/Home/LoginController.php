@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Gregwar\Captcha\SmsDemo;
 use Illuminate\Support\Facades\Input;
 use Session;
-use App\Models\User;
+use App\Home\Models\User;
 
 
 class LoginController extends Controller

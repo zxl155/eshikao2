@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Gregwar\Captcha\SmsDemo;
 use Illuminate\Support\Facades\Input;
-use App\Models\User;
+use App\Home\Models\User;
 
 class RegisterController extends Controller
 {
