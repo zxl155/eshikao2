@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-use App\Models\Qualifications;
-use App\Models\Admin;
+use App\Models\home\Qualifications;
+use App\Models\home\Admin;
 
 class QualificationsController extends Controller
 {

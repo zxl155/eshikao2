@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Gregwar\Captcha\SmsDemo;
 use Illuminate\Support\Facades\Input;
-use App\Models\Qualifications;
-use App\Models\Admin;
+use App\Models\home\Qualifications;
+use App\Models\home\Admin;
 
 
 class RecruitController extends Controller
