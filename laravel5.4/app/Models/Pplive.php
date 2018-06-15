@@ -7,7 +7,7 @@ use DB;
 
 class Pplive extends Model
 {
-   public function show($curriculum_id)
+   public function shows($curriculum_id)
    {
    		$pplive = DB::select("select * from pplive where curriculum_id = $curriculum_id");
    		$admin_pplive = DB::select("select * from admin_pplive");

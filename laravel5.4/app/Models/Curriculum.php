@@ -28,7 +28,7 @@ class Curriculum extends Model
     /**
      * 查询课程对应的教师
      */
-    public function teacher()
+    public function teachera()
     {
     	$arr = $this->qualifications();
     	foreach ($arr as $key => $value) {

@@ -23,7 +23,7 @@ class CoursedetailsController extends Controller
 		$data = $curriculum->coursedetails($curriculum_id);
 		$teacher = $curriculum->oneTeacher($data[0]->curriculum_id);
 		$pplive = new Pplive;
-		$pplive = $pplive->show($curriculum_id);
+		$pplive = $pplive->shows($curriculum_id);
 		return view('home/coursedetails/viewdetails',['data' => $data,'pplive'=>$pplive,'teacher'=>$teacher]);
 	}
 }

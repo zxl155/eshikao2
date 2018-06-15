@@ -39,8 +39,7 @@
     </div>
     <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script>
-        
-        if({{ session('user_id') }}){
+        if({{ session('user_id')}}){
             $('.header-login').css('display','none');
             $('.header-login1').css('display','inline-block');
         }
