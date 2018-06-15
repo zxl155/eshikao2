@@ -45,7 +45,7 @@ class AdminController extends Controller
      */
 	public function listadmin(){
 		$admin = new Admin;
-		$data = $admin->get();
+		$data = $admin->select()->paginate(3);
 		foreach ($data as $key => $val) {
 			$val['admin_desc'] = substr_replace($val['admin_desc'],'....', 40);
 		}

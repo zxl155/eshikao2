@@ -22,6 +22,85 @@
     <link rel="stylesheet" href="{{URL::asset('/')}}assets/css/admin.css">
     <link rel="stylesheet" href="{{URL::asset('/')}}assets/css/app.css">
     <script src="{{URL::asset('/')}}assets/js/echarts.min.js"></script>
+    <script type="text/javascript" src="{{URL::asset('/')}}js/laydate.js"></script>
+<!-- 分页样式 -->
+<style type="text/css">
+        #pull_right{
+            text-align:center;
+        }
+        .pull-right {
+            /*float: left!important;*/
+        }
+        .pagination {
+            display: inline-block;
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .pagination > li {
+            display: inline;
+        }
+        .pagination > li > a,
+        .pagination > li > span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .pagination > li:first-child > a,
+        .pagination > li:first-child > span {
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        .pagination > li:last-child > a,
+        .pagination > li:last-child > span {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > span:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:focus {
+            color: #2a6496;
+            background-color: #eee;
+            border-color: #ddd;
+        }
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            color: #fff;
+            cursor: default;
+            background-color: #428bca;
+            border-color: #428bca;
+        }
+        .pagination > .disabled > span,
+        .pagination > .disabled > span:hover,
+        .pagination > .disabled > span:focus,
+        .pagination > .disabled > a,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color: #777;
+            cursor: not-allowed;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+<style type="text/css">
+
+</style>
 </head>
 
 <body data-type="index">
@@ -116,44 +195,14 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="outdoorsRoute">
+                                <a href="pplive">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>助教课程</span>
+                                    <span>直播课程</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                <a href="curriculum">
+                                <a href="listcurr">
                                     <i class="am-icon-angle-right"></i>
                                     <span>课程管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>面试课批量管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>批量导入课程</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>导学视频上传</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>课程排序管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>课程查重</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>1V1面试课</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
                             </li>
@@ -172,21 +221,6 @@
                                     <span>录入管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                <a href="outdoorsGuide">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>预录入</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>组卷管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>真题管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
                                 <a href="outdoorsDest">
                                     <i class="am-icon-angle-right"></i>
                                     <span>模拟卷管理</span>
@@ -195,26 +229,6 @@
                                 <a href="outdoorsDest">
                                     <i class="am-icon-angle-right"></i>
                                     <span>作业卷管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>存疑与不可见管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>老题校对报表</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>题库统计</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>题库日志</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
                             </li>

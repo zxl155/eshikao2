@@ -82,10 +82,11 @@
                                 <div class="am-cf">
 
                                     <div class="am-fr">
-                                        <ul class="am-pagination tpl-pagination">
-                                            
-                                           
-                                        </ul>
+                                        <div id="pull_right">
+                                            <div class="pull-right">
+                                               {!! $data->render() !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
