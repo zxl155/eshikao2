@@ -49,8 +49,16 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/listadmin','AdminController@listadmin');
     //管理员删除
     Route::get('admin/del','AdminController@del');
-    //搜索
-    Route::get('admin/search','AdminController@search');
+    //直播课程
+    Route::get('admin/listpplive','PpliveController@listpplive');
+    //添加直播
+    Route::get('admin/addpplive','PpliveController@addpplive');
+    //执行添加直播
+    Route::post('admin/dopplive','PpliveController@dopplive');
+    //所属教师
+    Route::get('admin/select','PpliveController@select');
+    //删除直播
+    Route::get('admin/delpplive','PpliveController@delpplive');
   });
   //登录
   Route::get('admin/login','LoginController@login');
