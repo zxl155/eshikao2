@@ -24,4 +24,33 @@ class Admin extends Model
         	return false;
         }
     }
+    /**
+     * @李一明
+     * @DateTime  2018-06-14
+     * 查询教师名称
+     */
+    public function show($admin_id){
+        $admin_id = implode($admin_id,',');
+        $sql = "select * from admin where admin_id in($admin_id)"; 
+        return $teacher = DB::select($sql);
+    }
+
+    /**
+     * @李一明
+     * @DateTime  2018-06-14
+     * 获取admin表谁是教师
+     */
+    public function searchTeacher()
+    {
+        $role = DB::select("select * from role where role_name = '教师'");
+        $role = DB::select('select * from admin_role where role_id = :phone', [':phone'=>$role[0]->role_id]);
+        foreach ($role as $key => $value) {
+            $arr[$key] = $value->admin_id;
+        }
+        $arr = implode($arr, ',');
+        $sql = "select admin_id,admin_name,admin_head from admin where admin_id in($arr)";
+        $admin = DB::select($sql);
+        return $admin;
+
+    }
 }

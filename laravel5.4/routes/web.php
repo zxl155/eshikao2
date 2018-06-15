@@ -16,18 +16,42 @@ Route::get('/', function () {
 });
 //后台
 Route::group(['namespace' => 'Admin'], function(){
-	//后台首页
-  Route::get('admin/index','IndexController@index');
-  //个人中心
-  Route::get('admin/personal','IndexController@personal');
-  //修改资料
-  Route::get('admin/upd','IndexController@upd');
-  //执行修改资料
-  Route::post('admin/upds','IndexController@upds');
-  //修改密码
-  Route::get('admin/pwd','IndexController@pwd');
-  //执行修改密码
-  Route::get('admin/pwds','IndexController@pwds');
+  Route::group(['middleware' => 'check.login'], function() {
+    //后台首页
+    Route::get('admin/index','IndexController@index');
+    //个人中心
+    Route::get('admin/personal','IndexController@personal');
+    //修改资料
+    Route::get('admin/upd','IndexController@upd');
+    //执行修改资料
+    Route::post('admin/upds','IndexController@upds');
+    //修改密码
+    Route::get('admin/pwd','IndexController@pwd');
+    //执行修改密码
+    Route::get('admin/pwds','IndexController@pwds');
+    //课程添加
+    Route::get('admin/addcurr','CurriculumController@addcurr');
+    //执行添加
+    Route::post('admin/docurr','CurriculumController@docurr');
+    //课程列表
+    Route::get('admin/listcurr','CurriculumController@listcurr');
+    //课程修改
+    Route::get('admin/updcurr','CurriculumController@updcurr');
+    //执行修改
+    Route::post('admin/doupd','CurriculumController@doupd');
+    //课程删除
+    Route::get('admin/delcurr','CurriculumController@delcurr');
+    //管理员添加
+    Route::get('admin/addadmin','AdminController@addadmin');
+    //执行添加
+    Route::post('admin/doadmin','AdminController@doadmin');
+    //管理员列表
+    Route::get('admin/listadmin','AdminController@listadmin');
+    //管理员删除
+    Route::get('admin/del','AdminController@del');
+    //搜索
+    Route::get('admin/search','AdminController@search');
+  });
   //登录
   Route::get('admin/login','LoginController@login');
   //验证码
@@ -36,24 +60,6 @@ Route::group(['namespace' => 'Admin'], function(){
   Route::get('admin/proving','LoginController@proving');
   //管理员退出
   Route::get('admin/out','LoginController@out');
-  //课程添加
-  Route::get('admin/addcurr','CurriculumController@addcurr');
-  //执行添加
-  Route::post('admin/docurr','CurriculumController@docurr');
-  //课程列表
-  Route::get('admin/listcurr','CurriculumController@listcurr');
-  //课程修改
-  Route::get('admin/updcurr','CurriculumController@updcurr');
-  //课程删除
-  Route::get('admin/delcurr','CurriculumController@delcurr');
-  //管理员添加
-  Route::get('admin/addadmin','AdminController@addadmin');
-  //执行添加
-  Route::post('admin/doadmin','AdminController@doadmin');
-  //管理员列表
-  Route::get('admin/listadmin','AdminController@listadmin');
-  //管理员删除
-  Route::get('admin/del','AdminController@del');
 });
 //前台
 Route::group(['namespace' => 'Home'], function(){

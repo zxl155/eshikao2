@@ -22,54 +22,102 @@
                         </div>
 
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">课程标题 <span class="tpl-form-line-small-title"></span></label>
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">类别 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="curriculum_title" placeholder="请输入标题" required>
+                                <select name="type_id"  required>
+                                  <option>--请选择--</option>
+                                  @foreach($cat as $key => $val)
+                                  <option value="{{ $val['type_id'] }}">{{ $val['type_name'] }}</option>
+                                  @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">课程时间介绍 <span class="tpl-form-line-small-title"></span></label>
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">类型 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="curriculum_desc" placeholder="请输入介绍" required>
+                                <select name="teacher_type"  required>
+                                  <option>--请选择--</option>
+                                  <option value="1">教师资格</option>
+                                  <option value="2">教师招聘</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">课程时间 <span class="tpl-form-line-small-title"></span></label>
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">学段 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="curriculum_time" placeholder="请输入时间" required>
+                                <select name="grade_id" required>
+                                  <option>--请选择--</option>
+                                  @foreach($grade as $key => $val)
+                                  <option value="{{ $val['grade_id'] }}">{{ $val['grade_name'] }}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="am-form-group">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">学科 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <select name="subject_id"  required>
+                                  <option>--请选择--</option>
+                                  @foreach($subject as $key => $val)
+                                  <option value="{{ $val['subject_id'] }}">{{ $val['subject_name'] }}</option>
+                                  @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="am-form-group">
-                            
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">地区 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                
+                                <select name="region_id"  required>
+                                  <option>--请选择--</option>
+                                  @foreach($region as $key => $val)
+                                    <option value="{{ $val['region_id'] }}">{{ $val['region_name'] }}</option>
+                                  @endforeach
+                                </select>
+                                
+                            </div>
+                        </div>        
+
+                        <div class="am-form-group">
+                            <label for="user-email" class="am-u-sm-3 am-form-label">开始时间 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <input placeholder="请输入日期" name="start_time" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">课程公告 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <input type="text" class="tpl-form-input" name="notice" placeholder="请输入公告" required>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">课程价格 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <input type="text" class="tpl-form-input" name="money" placeholder="请输入价格" required>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">授课教师 <span class="tpl-form-line-small-title"></span></label>
-                            @foreach($data as $key =>$val)
                             <div class="am-u-sm-9">
-                                <input type="checkbox" class="tpl-form-input" name="tea_id" placeholder="请选择教师" value="{{ $val['tea_id'] }}" >{{ $val['tea_name'] }}
-                            </div>
-                            @endforeach
-                        </div>
-
-                        <div class="am-form-group">
-                            <label for="user-phone" class="am-u-sm-3 am-form-label">课程公告 <span class="tpl-form-line-small-title"></span></label>
-                            <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="curriculum_notice" placeholder="请输入公告" required>
+                                @foreach($teacher as $key => $val)
+                                    <input type="checkbox" name="admin_id[]" value="{{ $val->admin_id }}">{{ $val->admin_name }}
+                                @endforeach
                             </div>
                         </div>
 
-                        <div class="am-form-group">
-                            <label for="user-phone" class="am-u-sm-3 am-form-label">课程价格 <span class="tpl-form-line-small-title"></span></label>
-                            <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="curriculum_price" placeholder="请输入价格" required>
-                            </div>
-                        </div>
+                        
 
                         <div class="am-form-group">
-                            <label for="user-phone" class="am-u-sm-3 am-form-label">课程库存 <span class="tpl-form-line-small-title"></span></label>
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">总数量 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="curriculum_stock" placeholder="请输入库存" required>
+                                <input type="text" class="tpl-form-input" name="stock_number" placeholder="请输入数量" required>
                             </div>
                         </div>
 
@@ -91,4 +139,12 @@
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
 </body>
+<script type="text/javascript">
+!function(){
+    laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+    laydate({elem: '#demo'});//绑定元素
+}();
+
+
+</script>
 </html>
