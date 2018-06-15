@@ -547,7 +547,7 @@ textarea {
 .Login{
     height: 770px;
     padding-top: 80px;
-    background: url("img/login-gj.png")no-repeat;
+    background: url("../img/login-gj.png")no-repeat;
 }
 .Login-box{
     width: 1200px;
@@ -636,7 +636,6 @@ textarea {
 .Register{
     position: relative;
     width: 440px;
-    height: 400px;
     padding: 60px 70px 0;
     text-align: right;
     background: #ffffff;

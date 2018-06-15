@@ -86,6 +86,12 @@ Route::group(['namespace' => 'Home'], function(){
   Route::post('home/headupdate','MydataController@insetArticle');
   //教师资格
   Route::get('home/qualifications','QualificationsController@qualifications');
-  //教师资格详情页
-  Route::get('home/viewdetails','QualificationsController@viewdetails');
+  //教师资格搜索
+  Route::get('home/quasearch','QualificationsController@quaSearch');
+  //教师招聘
+  Route::get('home/recruit','RecruitController@index');
+   //教师招聘
+  Route::get('home/recruitsearch','RecruitController@recruitSearch');
+  //课程详情
+  Route::get('home/coursedetails','CoursedetailsController@index');
 });

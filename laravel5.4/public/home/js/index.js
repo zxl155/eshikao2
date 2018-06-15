@@ -82,13 +82,17 @@ var renderZhao=(function () {
         showArea();
     });
 //选择收货地址
-    function goods(err,err2){
-        err.click(function () {
+   function goods(err,err2){
+        var art=arguments[1];
+        err.bind('click',function () {
+            console.log('1111');
             var _this=$(this).index();
             $(this).addClass('active').siblings().removeClass('active');
-            err2.eq(_this).addClass('active').siblings().removeClass('active');
+            art?art.eq(_this).addClass('active').siblings().removeClass('active'):null;
         })
+
     }
+
     function focusBanner(){
         var $focusBanner=$("#focus-banner"),
             $bannerList=$("#focus-banner-list li"),

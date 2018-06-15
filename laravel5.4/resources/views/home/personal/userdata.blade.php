@@ -27,6 +27,7 @@
                     <div class="personal-form-img">
                         <div class="personal-form-tx">
                             <img src="{{URL::asset('/')}}home/img/mrtx.png" alt="">
+                            <img src="{{URL::asset('/')}}storage/app/public/storage2018-06-12/AxENI6TY8HZZOeBSzmQE6a7QBkdol0ZwoycsUrgC.jpeg" alt="">
                         </div>
                         <div class="personal-form-upload">
                             <span>选择图片</span>
@@ -65,7 +66,7 @@
                              window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                              setTimeout(function(){
                                 window.location.reload();//刷新当前页面.
-                             },2000)
+                             },1000)
                         } else {
                              var txt=  "用户名不能重复修改";
                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

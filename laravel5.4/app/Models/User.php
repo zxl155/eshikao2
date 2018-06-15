@@ -67,7 +67,9 @@ class User extends Model
    public function updatemydata($data)
    {
       $affected = DB::update("update user set user_name=? where user_id = ?", [$data['user_name'],$data['user_id']]);
+
       if ($affected) {
+        session(['user_name' => $data['user_name']]);
         return true;
       } else {
         return false;
