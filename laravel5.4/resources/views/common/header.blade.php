@@ -195,7 +195,7 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="pplive">
+                                <a href="listpplive">
                                     <i class="am-icon-angle-right"></i>
                                     <span>直播课程</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
