@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use App\Models\Admin;
-use App\Models\AdminRole;
-use App\Models\Role;
+use App\Admin\Models\Admin;
+use App\Admin\Models\AdminRole;
+use App\Admin\Models\Role;
 
 
 class IndexController extends Controller

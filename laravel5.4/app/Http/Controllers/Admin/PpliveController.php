@@ -7,11 +7,11 @@ use App\Http\Controllers\Controller;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Models\Curriculum;
-use App\Models\Pplive;
-use App\Models\Admin;
-use App\Models\AdminCurriculum;
-use App\Models\AdminPplive;
+use App\Admin\Models\Curriculum;
+use App\Admin\Models\Pplive;
+use App\Admin\Models\Admin;
+use App\Admin\Models\AdminCurriculum;
+use App\Admin\Models\AdminPplive;
 use DB;
 
 class PpliveController extends Controller

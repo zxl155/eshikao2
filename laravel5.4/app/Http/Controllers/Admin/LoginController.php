@@ -8,7 +8,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use Session;
-use App\Models\Admin;
+use App\Admin\Models\Admin;
 
 
 class LoginController extends Controller

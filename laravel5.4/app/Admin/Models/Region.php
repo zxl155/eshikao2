@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GradeType extends Model
+class Region extends Model
 {
-    protected $table = 'grade_type';  //表名
+    protected $table = 'region';  //表名
     public $timestamps = false;  //过滤默认的字段
 }
