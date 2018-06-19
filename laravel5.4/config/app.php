@@ -176,6 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,//百度编辑器
 
     ],
 
