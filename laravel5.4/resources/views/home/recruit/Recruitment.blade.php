@@ -57,9 +57,9 @@
     </div>
     <div class="Qualified-content clearfix" id="html">
         @foreach($curriculum as $value)
-        <a href="#">
+        <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
             <b>教师资格</b>
-            <h5>{{$value->curriculum_name}}</h5>
+            <h5>{{$value->curriculum_name}}(单科)</h5>
             <div class="Qualified-period">
                 <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
                 <span>{{$value->notice}}</span>
@@ -127,9 +127,9 @@
                             var html = ""; 
                             jQuery.each(data.data,function(key,value){
                                 
-                                        html+='<a href="#">'
+                                        html+='<a href="coursedetails?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
+                                        html+='<h5>"'+value.curriculum_name+'"(单科)</h5>'
                                         html+='<div class="Qualified-period">'
                                         html+='<i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>'
                                         html+='<span>'+value.notice+'</span>'

@@ -31,7 +31,7 @@
                         <i class="mmtb">
                         <img src="{{URL::asset('/')}}home/img/mmtb.png" alt=""></i><input type="password" placeholder="请输入密码" id="user_pwd" value="">
                         <span class="forgetmm">
-                            <a href="">忘记密码?</a>
+                            <a href="retrieve">忘记密码?</a>
                         </span>
                         
                         <a href="javascript:;" id="btn">立即登录</a>

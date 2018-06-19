@@ -47,7 +47,8 @@ class RegisterController extends Controller
      * @DateTime  2018-06-12
      * 注册验证
      */
-	public function doregister(){
+	public function doregister()
+	{
 		$code = Input::get('code');
 		if(session('code') != $code) {
 			echo 1;
@@ -58,7 +59,8 @@ class RegisterController extends Controller
      * @DateTime  2018-06-12
      * 注册入库
      */
-	public function addregister(){
+	public function addregister()
+	{
 		$data = Input::all();
 		$phone = session('phone');
 		$user = new User;
@@ -78,8 +80,14 @@ class RegisterController extends Controller
 		} else {
 			echo 3;
 		}
-		
-		
-		
+	}
+	/**
+     * @张小龙
+     * @DateTime  2018-06-19
+     * 忘记密码
+     */
+	public function retrieve()
+	{
+		return view('home/register/retrieve');
 	}
 }

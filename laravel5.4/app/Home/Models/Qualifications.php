@@ -103,6 +103,9 @@ class Qualifications extends Model
        } elseif ($data['cattype_id']==0 & $data['grade_id']!=0 & $data['subject_id']!=0) {
           $arr = DB::select('select * from curriculum where teacher_type = 1 and grade_id = :grade_id and subject_id = :subject_id', [':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id']]);
          return $arr;
+       } elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']!=0) {
+          $arr = DB::select('select * from curriculum where teacher_type = 1 and grade_id = :grade_id and subject_id = :subject_id and type_id = :type_id', [':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id'],':type_id'=>$data['cattype_id']]);
+         return $arr;
        }
     }
 
@@ -166,7 +169,32 @@ class Qualifications extends Model
           $arr = DB::select('select * from curriculum where teacher_type = 2 and subject_id = :subject_id and region_id = :region_id', [':subject_id'=>$data['subject_id'],':region_id'=>$data['region_id']]);
          return $arr;
 
-       }
+       }  elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] == 0) {
+
+         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and grade_id = :grade_id and subject_id = :subject_id', [':cattype_id'=>$data['cattype_id'],':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id']]);
+         return $arr;
+
+       } elseif ($data['cattype_id']==0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
+
+         $arr = DB::select('select * from curriculum where teacher_type = 2 and region_id = :region_id and grade_id = :grade_id and subject_id = :subject_id', [':region_id'=>$data['region_id'],':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id']]);
+         return $arr;
+         
+       }  elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']==0 & $data['region_id'] != 0) {
+
+         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and grade_id = :grade_id and region_id = :region_id', [':cattype_id'=>$data['cattype_id'],':grade_id'=>$data['grade_id'],':region_id'=>$data['region_id']]);
+         return $arr;
+         
+       } elseif ($data['cattype_id']!=0 & $data['grade_id']==0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
+
+         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and subject_id = :subject_id and region_id = :region_id', [':cattype_id'=>$data['cattype_id'],':subject_id'=>$data['subject_id'],':region_id'=>$data['region_id']]);
+         return $arr;
+         
+       } elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
+
+         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and subject_id = :subject_id and region_id = :region_id and grade_id = :grade_id', [':cattype_id'=>$data['cattype_id'],':subject_id'=>$data['subject_id'],':region_id'=>$data['region_id'],':grade_id'=>$data['grade_id']]);
+         return $arr;
+         
+       } 
     }
 }
 

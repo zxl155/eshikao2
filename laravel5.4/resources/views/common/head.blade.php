@@ -13,7 +13,7 @@
                 <li><a href="index" class="active">首页</a></li>
                 <li><a href="qualifications">教师资格证</a></li>
                 <li><a href="recruit">教师招聘</a></li>
-                <li><a href="#">招考公告</a></li>
+                <li><a href="noticelist">招考公告</a></li>
                 <li><a href="#">APP下载</a></li>
             </ul>
             <div class="header-login">
@@ -26,7 +26,6 @@
                         <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
                     <?php else: ?>
                         <img src="{{URL::asset('/')}}home/img/head/<?php echo session('head') ?>" alt="">
-
                     <?php endif ?>
                 </a>
                 <a href="myclass">
