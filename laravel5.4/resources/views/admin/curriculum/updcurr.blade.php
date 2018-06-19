@@ -12,7 +12,7 @@
 
             <div class="am-g">
                 <div class="tpl-form-body tpl-form-line">
-                    <form class="am-form tpl-form-line-form" action="doupd" method="post">
+                    <form class="am-form tpl-form-line-form" action="updsrecr" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="curriculum_id" value="{{ $data->curriculum_id }}">
                         <div class="am-form-group">

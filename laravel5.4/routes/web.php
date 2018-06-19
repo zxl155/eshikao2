@@ -59,6 +59,18 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/select','PpliveController@select');
     //删除直播
     Route::get('admin/delpplive','PpliveController@delpplive');
+    //招聘公告
+    Route::get('admin/addrecr','RecruitmentController@addrecr');
+    //执行添加
+    Route::post('admin/dorecr','RecruitmentController@dorecr');
+    //公告列表
+    Route::get('admin/listrecr','RecruitmentController@listrecr');
+    //修改
+    Route::get('admin/updrecr','RecruitmentController@updrecr');
+    //执行修改
+    Route::post('admin/updsrecr','RecruitmentController@updsrecr');
+    //删除公告
+    Route::get('admin/delrecr','RecruitmentController@delrecr');
   });
   //登录
   Route::get('admin/login','LoginController@login');
