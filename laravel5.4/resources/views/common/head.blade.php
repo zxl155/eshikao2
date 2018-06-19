@@ -21,7 +21,14 @@
                 <a href="register">注册</a></div>
                 
                 <div class="header-login1">
-                <a href="myclass"><img src="{{URL::asset('/')}}home/img/touxiang.png" alt=""></a>
+                <a href="myclass">
+                    <?php if (empty(session('head'))): ?>
+                        <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
+                    <?php else: ?>
+                        <img src="{{URL::asset('/')}}home/img/head/<?php echo session('head') ?>" alt="">
+
+                    <?php endif ?>
+                </a>
                 <a href="myclass">
                     <?php if (!empty(session('user_id'))): ?>
                         <?php if (!empty(session('user_name'))): ?>

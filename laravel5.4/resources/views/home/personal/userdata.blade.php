@@ -24,10 +24,17 @@
             <div class="personal-list">
                 <form class="personal-list-form" action="headupdate" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    @foreach($data as $value)
                     <div class="personal-form-img">
                         <div class="personal-form-tx">
-                            <img src="{{URL::asset('/')}}home/img/mrtx.png" alt="">
-                            <img src="{{URL::asset('/')}}storage/app/public/storage2018-06-12/AxENI6TY8HZZOeBSzmQE6a7QBkdol0ZwoycsUrgC.jpeg" alt="">
+                            <?php if (empty(session('head'))): ?>
+                                <img src="{{URL::asset('/')}}home/img/mrtx.png" alt="" width="150" height="150">
+                            <?php else: ?>
+                                <img src="{{URL::asset('/')}}home/img/head/{{$value->head_images}}" alt="" width="150" height="150">
+                            <?php endif ?>
+                            
+                            
+                            
                         </div>
                         <div class="personal-form-upload">
                             <span>选择图片</span>
@@ -35,6 +42,7 @@
                     <input type="submit" name="" class="inpsubmit" value="确认提交">
                         </div>
                     </div>
+                    @endforeach
                     <br>
                     
                     <input type="hidden" class="user_id" value="{{$data[0] -> user_id}}" >
