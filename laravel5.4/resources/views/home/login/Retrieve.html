@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_706885_oj0ko6hl9i.css">
+    <script src="js/jquery-1.8.3.js"></script>
+</head>
+<body>
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=750){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+<!--移动-->
+<div class="m-header">
+    <div class="m-header-content">
+        <div><a href="javascript:history.go(-1);"><img src="./img/88_03.png" alt=""></a></div>
+        <div>易师考</div>
+        <div></div>
+    </div>
+</div>
+<div class="header">
+    <div class="header-content">
+        <a class="header-logo">
+            <img src="img/logo.png" alt="">
+        </a>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">教师资格证</a></li>
+            <li><a href="#">教师招聘</a></li>
+            <li><a href="#">招考公告</a></li>
+            <li><a href="#">APP下载</a></li>
+        </ul>
+        <div class="header-login">
+            <a href="#" class="active">登录</a>
+            <a href="#">注册</a></div>
+        <div class="header-login1">
+            <a href=""><img src="./img/touxiang.png" alt=""></a>
+            <a href="#">老天爷</a>
+        </div>
+    </div>
+</div>
+<div class="retrieve">
+    <div class="retrieve-content">
+        <div class="retrieve-title">
+            找回密码
+        </div>
+        <div class="retrieve-text">
+            <div class="Register">
+                <input class="phone" placeholder="请输入手机号码">
+                <span class="zh-prompt"></span>
+                <div class="Register-zym">
+                    <input type="string" placeholder="请短信验证码" value="">
+                    <span class="getveri2">(60)秒后重新获取</span>
+                    <span class="getveri">获取验证码</span>
+                </div>
+                <span class="zh-prompt2"></span>
+                <input type="password" placeholder="请设置密码6-12位数字或字母" value="">
+                <span class="zh-prompt2"></span>
+                <input type="password" placeholder="请确认密码" value="">
+                <a href="javascript:;" class="btnlogin">重置</a>
+                <a href="javascript:history.go(-1);void(0);" class="btnlogin">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="Bottom">
+    <div class="service">
+        <div class="about"><p class="service-title">关于我们</p><a href="#">了解易师考
+        </a><a href="#">加入易师考</a></div>
+        <div class="contact"><p class="service-title">联系方式</p><a>客服热线：4001234567（
+            周一至周五9:00-18:00）</a><a>客服邮箱：kefu@eshikao.com</a><a
+                href="#" class="consult">在线咨询</a></div>
+        <div class="follow"><p class="service-title">关注我们</p>
+            <div class="follow-gz">
+                <div class="follow-gz-img"><img src="" alt=""></div>
+                <span>微博关注</span></div>
+            <div class="follow-gz">
+                <div class="follow-gz-img"><img src="" alt=""></div>
+                <span>微信关注</span></div>
+        </div>
+    </div>
+    <div class="copyright">© 2011-2017 eshikao.com , All Rights Reserved.京ICP备17004480
+        号-1 | 京公网安备110108008330友情链接
+    </div>
+</div>
+<!--移动-->
+<div class="m-Bottom">
+    <nav class="m-Nav">
+        <a href="" class="active">
+            <i class="iconfont icon-shouye"></i>
+            <span>首页</span>
+        </a>
+        <a href="">
+            <i class="iconfont icon-zhengshu-copy"></i>
+            <span>教师资格证</span>
+        </a>
+        <a href="">
+            <i class="iconfont icon-zhaopin"></i>
+            <span>教师招聘</span>
+        </a>
+        <a href="">
+            <i class="iconfont icon-wode"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>

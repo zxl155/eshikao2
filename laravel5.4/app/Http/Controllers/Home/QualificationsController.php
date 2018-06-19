@@ -45,6 +45,7 @@ class QualificationsController extends Controller
 		$data = Input::all();
 		$qualifications = new Qualifications;
 		$quasearch = $qualifications ->quaSearch($data);
+
 		if (empty($quasearch)) {
 			$data['empty'] = 'empty';
 		}else {

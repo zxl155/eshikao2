@@ -44,21 +44,23 @@
            
             <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
                 <b>教师资格  </b>
-                <h5>{{$value->curriculum_name}}</h5>
+                <h5>{{$value->curriculum_name}}(单科)</h5>
                 <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">
                     <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
                     <span>{{$value->notice}}</span>
                  </div>
                 <ul class="Qualified-teacher">
                      @foreach($admin as $values)
+                      @if($value->curriculum_id==$values->curriculum_id)
                     <li>
                         <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
                         <span>
-                            @if($value->curriculum_id==$values->curriculum_id)
+                           
                                 {{$values->admin_name}}
-                            @endif
+                            
                         </span>
                     </li>
+                    @endif
                      @endforeach
                 </ul>
                 <div class="Qualified-price">
@@ -77,21 +79,23 @@
            
             <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
                 <b>教师资格  </b>
-                <h5>{{$value->curriculum_name}}</h5>
+                <h5>{{$value->curriculum_name}}(单科)</h5>
                 <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">
                     <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
                     <span>{{$value->notice}}</span>
                  </div>
                 <ul class="Qualified-teacher">
                      @foreach($admins as $values)
+                       @if($value->curriculum_id==$values->curriculum_id)
                     <li>
                         <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
                         <span>
-                            @if($value->curriculum_id==$values->curriculum_id)
+                          
                                 {{$values->admin_name}}
-                            @endif
+                            
                         </span>
                     </li>
+                    @endif
                      @endforeach
                 </ul>
                 <div class="Qualified-price">

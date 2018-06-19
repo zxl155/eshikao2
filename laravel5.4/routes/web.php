@@ -88,6 +88,8 @@ Route::group(['namespace' => 'Home'], function(){
   //前台登录
   Route::get('home/login','LoginController@login');
   Route::post('home/dologin','LoginController@dologin');
+  //忘记密码
+  Route::get('home/retrieve','RegisterController@retrieve');
   //注册
   Route::get('home/register','RegisterController@index');
   //短信发送
@@ -120,4 +122,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/recruitsearch','RecruitController@recruitSearch');
   //课程详情
   Route::get('home/coursedetails','CoursedetailsController@index');
+  //招聘公告列表
+  Route::get('home/noticelist','NoticeController@index');
+  //招聘公告详情
+  Route::get('home/notice','NoticeController@notice');
+  //招聘公告搜索
+  Route::get('home/noticeSearch','NoticeController@noticeSearch');
 });
