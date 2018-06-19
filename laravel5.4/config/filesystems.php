@@ -65,7 +65,7 @@ return [
         //定义文章图片路径
          'article'=>[
            'driver'=>'local',
-           'root' =>storage_path('./home/img/head/')
+           'root' =>public_path('home/img/head/')
 
 
        ],

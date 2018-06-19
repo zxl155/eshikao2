@@ -46,6 +46,7 @@ class User extends Model
         session(['user_id' => $user[0]->user_id]);
         session(['user_name' => $user[0]->user_name]);
         session(['user_tel' => $user[0]->user_tel]);
+        session(['head' => $user[0]->head_images]);
         return true;
       }
    }

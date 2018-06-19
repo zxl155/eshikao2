@@ -62,15 +62,21 @@ class MydataController extends Controller
      public function  insetArticle(Request $request){
      	
         $directory = 'public/storage'.date("Y-m-d");
-		$res = Storage::makeDirectory($directory);
-		$path = $request->file('head_pirctur')->store($directory);
+            $head_pirctur=$request->file('head_pirctur');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  $bool=Storage::disk('article')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+		  var_dump($bool);
 		$user = new User;
-		$data = $user -> images($path);
+		$data = $user -> images($fileName);
 		if ($data==true) {
-			return redirect('/home/mydata');
-		} else {
-			return redirect('/home/mydata');
-		}
+			session(['head'=>$fileName]);
+		 	return redirect('/home/mydata');
+		 } else {
+		 	return redirect('/home/mydata');
+		 }
 	} 
 		
 	
