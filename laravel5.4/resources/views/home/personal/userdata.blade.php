@@ -5,18 +5,15 @@
     <title>Title</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+     Uindex=1;
+</script>
 </head>
 <body>
 @include('common.head')
 <div class="personal">
     <div class="personal-main">
-        <ul class="personal-nav">
-            <li class="active"><a href="myclass">我的课程</a></li>
-            <li><a href="mydata">个人资料</a></li>
-            <li><a href="">我的优惠券</a></li>
-            <li><a href="">我的订单</a></li>
-            <li><a href="">收货地址</a></li>
-        </ul>
+        @include('common.left')
         <div class="personal-content">
             <div class="personal-content-seat">
                 <span class="personal-content-grzl">个人资料</span>

@@ -174,6 +174,15 @@ var renderZhao=(function () {
             };
         }
     };
+    //导航默认样式
+    $(function(){
+        if(typeof Hindex==='number'){
+            $('.header-ul a').eq(Hindex).addClass('active')
+        }
+    })
+    $(function(){
+        typeof Uindex==='number'?$('.personal-nav li').eq(Uindex).addClass('active'):null;
+    })
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换

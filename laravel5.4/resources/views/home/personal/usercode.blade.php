@@ -10,13 +10,7 @@
 @include('common.head')
 <div class="personal">
     <div class="personal-main">
-        <ul class="personal-nav">
-            <li class="active"><a href="myclass">我的课程</a></li>
-            <li><a href="mydata">个人资料</a></li>
-            <li><a href="">我的优惠券</a></li>
-            <li><a href="">我的订单</a></li>
-            <li><a href="">收货地址</a></li>
-        </ul>
+         @include('common.left')
         <div class="personal-content">
             <div class="personal-content-seat">
                 <span>个人资料</span>|<span class="xgmm">修改密码</span>

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css"><script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
+     Hindex=1;
+</script>
 </head>
 <body>
 @include('common/head')
@@ -18,7 +20,7 @@
             </ul>
             <div class="v-top-buy">
                 <span>￥{{$value->money}}</span>
-                <a href="">立即购买</a>
+                <a href="{{URL::asset('home/CommodityGoods')}}">立即购买</a>
             </div>
         </div>
     </div>
@@ -27,7 +29,7 @@
             <img src="./img/kctitle.png" alt="">
         </div>
         <div class="details-brief">
-            <h2>{{$value->curriculum_name}}</h2>
+            <h2>{{$value->curriculum_name}}(单科)</h2>
             <p class="Course-time">课程时间：{{$value->start_time}} 有效期{{$value->effective}}天
                 <i><img src="./img/sm.png" alt=""></i>
                 <span>自购买之日起课观看课程旗帜</span>
@@ -42,7 +44,7 @@
 
 ">价格：<span>￥<b>{{$value->money}}</b></span></p>
             <div class="price-purchase">
-                <a href="" class="active">立即购买</a>
+                <a href="{{URL::asset('home/CommodityGoods')}}?curriculum_id={{$value->curriculum_id}}" class="active">立即购买</a>
                 <a href="">咨询</a>
                 <span>已购{{$value->bought_number}}人</span>
             </div>
