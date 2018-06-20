@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>招聘公告</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
-    <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
+    <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
+     Hindex=3;
+</script>
 </head>
 <body>
 @include('common.head')

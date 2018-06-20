@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>易师考</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <script type="text/javascript">
+    Hindex=0;
+</script>
 </head>
 @include('common.head')
 <body>

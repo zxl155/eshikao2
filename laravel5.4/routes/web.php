@@ -128,4 +128,22 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/notice','NoticeController@notice');
   //招聘公告搜索
   Route::get('home/noticeSearch','NoticeController@noticeSearch');
+  //优惠券
+  Route::get('home/coupon','CouponController@index');
+  //展示收货地址
+  Route::get('home/address','AddressController@index');
+  //添加收货地址
+  Route::get('home/addressAdd','AddressController@addressAdd');
+   //删除收货地址
+  Route::get('home/addressDelete','AddressController@addressDelete');
+  //修改收货地址
+  Route::get('home/addressUpdate','AddressController@addressUpdate');
+  //修改收货地址
+  Route::get('home/addressUpdates','AddressController@addressUpdates');
+   //订单首页
+  Route::get('home/order','OrderController@index');
+  //支付首页
+  Route::get('home/CommodityGoods','CommodityController@CommodityGoods');
+   //支付提交
+  Route::get('home/CommodityPay','CommodityController@CommodityPay');
 });

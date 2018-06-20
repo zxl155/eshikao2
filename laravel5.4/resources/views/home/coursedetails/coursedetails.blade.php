@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css"><script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
+     Hindex=1;
+</script>
 </head>
 <body>
-@include('common/head');
+@include('common.head');
 @foreach($data as $value);
 <div class="viewdetails">
     <div class="coursedetails">

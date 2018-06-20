@@ -1,3 +1,5 @@
+
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
 <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css"/>
     <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{URL::asset('/')}}js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
@@ -10,7 +12,7 @@
                 <img src="{{URL::asset('/')}}home/img/logo.png" alt="">
             </a>
             <ul class="header-ul">
-                <li><a href="index" class="active">首页</a></li>
+                <li><a href="index">首页</a></li>
                 <li><a href="qualifications">教师资格证</a></li>
                 <li><a href="recruit">教师招聘</a></li>
                 <li><a href="noticelist">招考公告</a></li>
@@ -43,7 +45,6 @@
             </div>
             
     </div>
-    <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script>
         if({{ session('user_id')}}){
             $('.header-login').css('display','none');
