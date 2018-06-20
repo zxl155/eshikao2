@@ -83,7 +83,7 @@
     $("#select").change(function(){
         var id = $("#select").val()
         $.ajax({
-            url:'select',
+            url:'selects',
             data:{id:id},
             type:'get',
             dataType:'json',

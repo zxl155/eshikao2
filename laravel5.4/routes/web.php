@@ -56,7 +56,7 @@ Route::group(['namespace' => 'Admin'], function(){
     //执行添加直播
     Route::post('admin/dopplive','PpliveController@dopplive');
     //所属教师
-    Route::get('admin/select','PpliveController@select');
+    Route::get('admin/selects','PpliveController@selects');
     //删除直播
     Route::get('admin/delpplive','PpliveController@delpplive');
     //招聘公告

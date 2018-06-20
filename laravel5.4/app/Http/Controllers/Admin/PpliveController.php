@@ -27,7 +27,14 @@ class PpliveController extends Controller
 		$curr = new Curriculum;
 		$user = new Admin;
 		$ap = new AdminPplive;
-		$data = $pplive->select()->paginate(3);
+		$data = $pplive->select()->paginate(10);
+		foreach ($data as $key => $val) {
+			if(strtotime($val->stop_time)<time()){
+				$arr[] = $val->pplive_id;
+			}
+		}
+		$arr = implode($arr,',');
+		DB::update("update pplive set state = 0 where pplive_id in ($arr)");
 		$teacher = $ap->teacher($data);
 		$admin = $user->searchTeacher();
 		$admin = $curr->admin($admin,$teacher);
@@ -50,7 +57,6 @@ class PpliveController extends Controller
 		$user = new Admin;
 		$admin = $user->searchTeacher();
 		$admin = $curr->admin($admin,$teacher);
-		// dd($admin);die;
 		return view('admin/pplive/addpplive',[
 			'data'=>$data,
 		]);
@@ -80,7 +86,7 @@ class PpliveController extends Controller
      * @DateTime  2018-06-15
      * 所属教师
      */
-	public function select(){
+	public function selects(){
 		$id = Input::get('id');
 		$user = new Admin;
 		$ac = new AdminCurriculum;

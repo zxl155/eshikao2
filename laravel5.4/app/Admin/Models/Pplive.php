@@ -45,7 +45,7 @@ class Pplive extends Model
      * 添加入库
      */
 	public function insert($data){
-		$pplive_id = DB::table('pplive')->insertGetId(['pplive_name'=>$data['pplive_name'],'times'=>$data['start_time'],'curriculum_id'=>$data['curriculum_id']]);
+		$pplive_id = DB::table('pplive')->insertGetId(['pplive_name'=>$data['pplive_name'],'times'=>$data['start_time'],'stop_time'=>$data['stop_time'],'curriculum_id'=>$data['curriculum_id']]);
         if($pplive_id){
         	return $pplive_id;
         }else {

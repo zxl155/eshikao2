@@ -208,32 +208,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="tpl-left-nav-item">
-                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
-                            <i class="am-icon-table"></i>
-                            <span>题库管理</span>
-                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-                        </a>
-                        <ul class="tpl-left-nav-sub-menu">
-                            <li>
-                                <a href="outdoorsRoute">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>录入管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>模拟卷管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="outdoorsDest">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>作业卷管理</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
 
                     <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
