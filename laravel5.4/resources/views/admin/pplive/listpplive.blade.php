@@ -7,7 +7,7 @@
     <ol class="am-breadcrumb">
         <li><a href="index" class="am-icon-home">首页</a></li>
         <li><a href="#">课程管理</a></li>
-        <li class="am-active">课程列表</li>
+        <li class="am-active">直播列表</li>
     </ol>
     <div class="tpl-portlet-components">
         <div class="portlet-title">
@@ -58,7 +58,7 @@
                                             {{$values->admin_name}}</br>
                                         @endif
                                     @endforeach</td>
-                                    <td>{{ $val->state ==1?'未开始':'已结束' }}</td>
+                                    <td>{{ $val->state ==1?'已开启':'已结束' }}</td>
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
