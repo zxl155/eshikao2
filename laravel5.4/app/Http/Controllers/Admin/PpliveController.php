@@ -71,8 +71,8 @@ class PpliveController extends Controller
 		$data = Input::all();
 		$pplive = new Pplive;
 		$str = $pplive->get_week($data['start_time']);
-		$data['stop_time'] = date('H:i',strtotime($data['stop_time']));
-		$data['start_time'] = date('Y年m月d日',strtotime($data['start_time'])).'('.$str.')'.' '.date('H:i',strtotime($data['start_time'])).'-'.$data['stop_time'];
+		$stop_time = date('H:i',strtotime($data['stop_time']));
+		$data['start_time'] = date('Y年m月d日',strtotime($data['start_time'])).'('.$str.')'.' '.date('H:i',strtotime($data['start_time'])).'-'.$stop_time;
 		$pplive_id = $pplive->insert($data);
 		$admin_id = $data['admin_id'];
 		$sql = "insert into admin_pplive(admin_id,pplive_id) values('$admin_id','$pplive_id')";

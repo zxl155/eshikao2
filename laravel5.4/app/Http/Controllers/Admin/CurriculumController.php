@@ -105,7 +105,7 @@ class CurriculumController extends Controller
 		$id = Input::get('id');
 		$curr = new Curriculum;
 		$admincurr = new AdminCurriculum;
-		$aid = $admincurr->where(['curriculum_id'=>$id])->pluck('id')->toArray();
+		$aid = $admincurr->where(['curriculum_id'=>7])->pluck('id')->toArray();
 		$aid = implode($aid,',');
 		$res = $curr->where(['curriculum_id'=>$id])->delete();
 		if($res){
