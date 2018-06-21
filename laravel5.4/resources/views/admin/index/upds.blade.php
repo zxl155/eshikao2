@@ -3,16 +3,12 @@
             <div class="tpl-content-page-title">
                 易师考
             </div>
-            <ol class="am-breadcrumb">
-                <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">添加教师</a></li>
-            </ol>
             <div class="tpl-portlet-components">
                 <div class="tpl-block">
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form" action="upds" method="post" enctype="multipart/form-data">
+                            <form class="am-form tpl-form-line-form" action="{{ url('admin/upds') }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $data['admin_id'] }}" name="admin_id">
                                 <div class="am-form-group">

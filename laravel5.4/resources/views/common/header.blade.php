@@ -134,8 +134,8 @@
                         </span>
                     </a>
                     <ul class="am-dropdown-content">
-                        <li><a href="personal"><span class="am-icon-bell-o"></span> 个人资料</a></li>
-                        <li><a href="out"><span class="am-icon-power-off"></span> 退出</a></li>
+                        <li><a href="{{ url('admin/personal') }}"><span class="am-icon-bell-o"></span> 个人资料</a></li>
+                        <li><a href="{{ url('admin/out') }}"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
                 <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
@@ -173,12 +173,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="addadmin">
+                                <a href="{{ url('admin/addadmin') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加管理员</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                <a href="listadmin">
+                                <a href="{{ url('admin/listadmin') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>管理员列表</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -195,12 +195,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="listpplive">
+                                <a href="{{ url('admin/listpplive') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>直播课程</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                <a href="listcurr">
+                                <a href="{{ url('admin/listcurr') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>课程管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -217,12 +217,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="addrecr">
+                                <a href="{{ url('admin/addrecr') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>添加公告</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                <a href="listrecr">
+                                <a href="{{ url('admin/listrecr') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>公告列表</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>

@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Admin\Models\Admin;
+use App\Admin\Models\AdminRole;
+use App\Admin\Models\AdminCurriculum;
+use App\Admin\Models\AdminPplive;
+use DB;
 
 class AdminController extends Controller
 {
@@ -62,12 +66,19 @@ class AdminController extends Controller
 	public function del(){
 		$id = Input::get('id');
 		$admin = new Admin;
+		$adminrole = new AdminRole;
+		$admincurr = new AdminCurriculum;
+		$adminpplive = new AdminPplive;
+		$aid = $admincurr->where(['admin_id'=>6])->pluck('id')->toArray();
+		$aid = implode($aid,',');
 		if($id == 1){
 			return 3;
 		}else{
 			$res = $admin->where(['admin_id'=>$id])->delete();
 			if($res){
-				return 1;
+				$adminrole->where(['admin_id'=>$id])->delete();
+				$adminpplive->where(['admin_id'=>$id])->delete();
+				DB::delete("delete from admin_curriculum where id in ($aid)");
 			}else {
 				return 2;
 			}

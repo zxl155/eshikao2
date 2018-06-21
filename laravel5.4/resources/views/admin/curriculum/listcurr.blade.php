@@ -5,7 +5,7 @@
         课程管理
     </div>
     <ol class="am-breadcrumb">
-        <li><a href="index" class="am-icon-home">首页</a></li>
+        <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
         <li><a href="#">课程管理</a></li>
         <li class="am-active">课程列表</li>
     </ol>
@@ -23,7 +23,7 @@
                 <div class="am-u-sm-12 am-u-md-3">
                     
                     <div class="am-form-group">
-                        <a href="addcurr" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加课程</a>
+                        <a href="{{ url('admin/addcurr') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加课程</a>
                     </div>
                     
                 </div>
@@ -81,8 +81,8 @@
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <a href="updcurr?id={{ $val->curriculum_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改</a>
-                                                <a href="delcurr?id={{ $val->curriculum_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
+                                                <a href="{{ url('admin/updcurr') }}?id={{ $val->curriculum_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改</a>
+                                                <a href="{{ url('admin/delcurr') }}?id={{ $val->curriculum_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
                                             </div>
                                         </div>
                                     </td>

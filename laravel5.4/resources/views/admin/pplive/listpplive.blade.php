@@ -5,7 +5,7 @@
         课程管理
     </div>
     <ol class="am-breadcrumb">
-        <li><a href="index" class="am-icon-home">首页</a></li>
+        <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
         <li><a href="#">课程管理</a></li>
         <li class="am-active">直播列表</li>
     </ol>
@@ -23,7 +23,7 @@
                 <div class="am-u-sm-12 am-u-md-3">
                     
                     <div class="am-form-group">
-                        <a href="addpplive" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加直播</a>
+                        <a href="{{ url('admin/addpplive') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加直播</a>
                     </div>
                     
                 </div>
@@ -55,7 +55,7 @@
                                     <td>{{ $val->curriculum_name }}</td>
                                     <td>@foreach($admin as $values)
                                         @if($val->pplive_id == $values->pplive_id)
-                                            {{$values->admin_name}}</br>
+                                            {{$values->admin_name}}
                                         @endif
                                     @endforeach</td>
                                     <td>{{ $val->state ==1?'已开启':'已结束' }}</td>
@@ -63,7 +63,7 @@
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
                                                 
-                                                <a href="delpplive?id={{ $val->pplive_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
+                                                <a href="{{ url('admin/delpplive') }}?id={{ $val->pplive_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
                                             </div>
                                         </div>
                                     </td>

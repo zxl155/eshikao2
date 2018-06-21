@@ -3,10 +3,7 @@
             <div class="tpl-content-page-title">
                 易师考
             </div>
-            <ol class="am-breadcrumb">
-                <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">添加教师</a></li>
-            </ol>
+            
             <div class="tpl-portlet-components">
                 <div class="tpl-block">
 
@@ -69,7 +66,7 @@
             return false;
         }
         $.ajax({
-            url:'pwds',
+            url:"{{ url('admin/pwds') }}",
             data:{id:id,admin_pwd:admin_pwd,pwd:pwd,qpwd:qpwd,_token:"{{ csrf_token() }}"},
             type:'get',
             success:function(data){

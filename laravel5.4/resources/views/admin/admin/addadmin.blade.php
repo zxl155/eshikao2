@@ -12,7 +12,7 @@
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form" action="dotea" method="post" enctype="multipart/form-data">
+                            <form class="am-form tpl-form-line-form" action="{{ url('admin/dotea') }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">姓名 <span class="tpl-form-line-small-title"></span></label>
