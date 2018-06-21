@@ -12,15 +12,15 @@
                 <img src="{{URL::asset('/')}}home/img/logo.png" alt="">
             </a>
             <ul class="header-ul">
-                <li><a href="index">首页</a></li>
-                <li><a href="qualifications">教师资格证</a></li>
-                <li><a href="recruit">教师招聘</a></li>
-                <li><a href="noticelist">招考公告</a></li>
+                <li><a href="{{URL::asset('home/index')}}">首页</a></li>
+                <li><a href="{{URL::asset('home/qualifications')}}">教师资格证</a></li>
+                <li><a href="{{URL::asset('home/recruit')}}">教师招聘</a></li>
+                <li><a href="{{URL::asset('home/noticelist')}}">招考公告</a></li>
                 <li><a href="#">APP下载</a></li>
             </ul>
             <div class="header-login">
-                <a href="login" class="active">登录</a>
-                <a href="register">注册</a></div>
+                <a href="{{URL::asset('home/login')}}" class="active">登录</a>
+                <a href="{{URL::asset('home/register')}}">注册</a></div>
                 
                 <div class="header-login1">
                 <a href="myclass">

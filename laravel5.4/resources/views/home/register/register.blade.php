@@ -18,9 +18,9 @@
         <div class="logins">
             <div class="logins-title clearfix">
                 <span>
-            <a href="login">登录</a></span>
+            <a href="{{URL::asset('home/login')}}">登录</a></span>
                 <span class="clearfix">
-            <a href="register" class="active">注册</a></span>
+            <a href="{{URL::asset('home/register')}}" class="active">注册</a></span>
             </div>
             <div>
                 <div class="Register">
@@ -86,7 +86,7 @@
             return false;
         }
         $.ajax({
-            url:'doregister',
+            url:"{{URL::asset('home/doregister')}}",
             data:{code:code,_token:"{{ csrf_token() }}"},
             type:'get', 
             success:function(data){
@@ -140,7 +140,7 @@
            var pattern = /^1[34578]\d{9}$/; 
            if(pattern.test(phone)) {
                  $.ajax({
-                    url:'emails',
+                    url:"{{URL::asset('home/emails')}}",
                     data:{phone:phone,_token:"{{ csrf_token() }}"},
                     type:'get',
                     success:function(data){
@@ -180,7 +180,7 @@ var phone = $('#user_tel').val();
            var pattern = /^1[34578]\d{9}$/; 
            if(pattern.test(phone)) {
                  $.ajax({
-                    url:'emails',
+                    url:"{{URL::asset('home/emails')}}",
                     data:{phone:phone,_token:"{{ csrf_token() }}"},
                     type:'get',
                     success:function(data){

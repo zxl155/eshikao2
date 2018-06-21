@@ -99,7 +99,7 @@
             return false;
          }
          $.ajax({
-            url:'addressAdd',
+            url:"{{URL::asset('home/addressAdd')}}",
             data:{
                 address_name:address,
                 address_tel:phone,

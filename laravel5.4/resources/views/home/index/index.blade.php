@@ -80,7 +80,7 @@
          <div class="Qualified-content clearfix">
             @foreach($qualification as $value)
            
-            <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
+            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">
                 <b>教师资格  </b>
                 <h5>{{$value->curriculum_name}}(单科)</h5>
                 <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">

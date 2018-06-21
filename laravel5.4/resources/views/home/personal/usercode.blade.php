@@ -45,7 +45,7 @@
         } else {
             if (password.test(onepwd) || password.test(twopwd) || password.test(clean)) {
                 $.ajax({
-                        url:'updatepwds',
+                        url:"{{URL::asset('home/updatepwds')}}",
                         data:{clean:clean,onepwd:onepwd,twopwd:twopwd,user_id:user_id},
                         type:'get',
                         success:function(data){

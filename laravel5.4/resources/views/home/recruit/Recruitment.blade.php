@@ -59,7 +59,7 @@
     </div>
     <div class="Qualified-content clearfix" id="html">
         @foreach($curriculum as $value)
-        <a href="coursedetails?curriculum_id={{$value->curriculum_id}}">
+        <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">
             <b>教师资格</b>
             <h5>{{$value->curriculum_name}}(单科)</h5>
             <div class="Qualified-period">
@@ -117,8 +117,8 @@
         var grade_id = $("#grade .active").attr('grade_id');
         var subject_id = $("#subject .active").attr('subject_id');
         $.ajax({
-                    url:'recruitsearch',
-                    data:{cattype_id:cattype_id,grade_id:grade_id,subject_id:subject_id,region_id:region_id},
+                    url:"{{URL::asset('home/recruitsearch')}}",
+                    data:{cattype_id:cattype_id,grade_id:grade_id,subject_id:subject_id,region_id:region_id,_token:"{{ csrf_token() }}"},
                     type:'get',
                     dataType:'json',
                     success:function(data){
