@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
+use App\Admin\Models\Admin;
+use App\Admin\Models\AdminRole;
+use App\Admin\Models\AdminCurriculum;
+use App\Admin\Models\AdminPplive;
+use DB;
+
+class AdminController extends Controller
+{
+	/**
+     * @李一明
+     * @DateTime  2018-06-13
+     * 管理员添加
+     */
+	public function addadmin(){
+		return view('admin/admin/addadmin');
+	}
+
+	/**
+     * @李一明
+     * @DateTime  2018-06-13
+     * 执行添加
+     */
+	public function doadmin(Request $request){
+		$directory = 'public/uploads/'.date("Y-m-d");
+		$res = Storage::makeDirectory($directory);
+		$path = $request->file('admin_head')->store($directory);
+		$path = str_replace('public','storage', $path);
+		$data = Input::get();
+		$data['admin_head'] = $path;
+		$data['register_time'] = date("Y-m-d H:i:s");
+		$admin = new Admin;
+		$res = $admin->insert($data);
+		if($res){
+			return redirect('admin/listadmin');
+		}
+	}
+	/**
+     * @李一明
+     * @DateTime  2018-06-13
+     * 教师列表
+     */
+	public function listadmin(){
+		$admin = new Admin;
+		$data = $admin->select()->paginate(3);
+		foreach ($data as $key => $val) {
+			$val['admin_desc'] = substr_replace($val['admin_desc'],'....', 40);
+		}
+		return view('admin/admin/listadmin',[
+			'data' => $data
+		]);
+	}
+
+	/**
+     * @李一明
+     * @DateTime  2018-06-13
+     * 删除
+     */
+	public function del(){
+		$id = Input::get('id');
+		$admin = new Admin;
+		$adminrole = new AdminRole;
+		$admincurr = new AdminCurriculum;
+		$adminpplive = new AdminPplive;
+		$aid = $admincurr->where(['admin_id'=>6])->pluck('id')->toArray();
+		$aid = implode($aid,',');
+		if($id == 1){
+			return 3;
+		}else{
+			$res = $admin->where(['admin_id'=>$id])->delete();
+			if($res){
+				$adminrole->where(['admin_id'=>$id])->delete();
+				$adminpplive->where(['admin_id'=>$id])->delete();
+				DB::delete("delete from admin_curriculum where id in ($aid)");
+			}else {
+				return 2;
+			}
+		}
+		
+	}
+}

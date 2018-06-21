@@ -1,0 +1,236 @@
+/* over write width set */
+.container { width: auto; margin: 0 auto; overflow: hidden;}
+.guide_content {font-family: "microsoft yahei","simsun";}
+.guide_hearder{height:270px;margin: 0 auto;width: 996px;overflow: hidden;}
+.guide_menu ,.guide_banner{float: left;}
+.guide_menu{ width:204px;overflow: hidden;display:block;margin-right:6px; background-color:#fff;padding-bottom:16px;}
+.guide_menu li{
+	float: left;
+	text-align: center;
+	width:84px;
+	line-height: 100px;
+	margin: 11px 0 0 11px;
+	background: #fff;
+	overflow: hidden;
+	border: 1px solid #eee;
+	opacity:1;
+}
+.guide_menu li:hover{
+	background-color: #eee; border-color: #ccc; transition:all 0.5s;
+}
+.guide_slider{width: 780px;height: 270px;}
+.guide_view{width: 780px !important;height: 270px !important;}
+.control {position: absolute;z-index: 10;right: 0;bottom: 15px;width: 301px;text-align: center;}
+.guide_search{margin-top:15px;float:left;width:100%}
+.guide_search_text{width: 176px;}
+.guide_banner .images{width: 770px;height: 330px;}
+
+.divecolor{ color:#187be0;}
+.footcolor{ color:#ee490b;}
+.ridecolor{ color:#36b601;}
+.safecolor{ color:#f78900;}
+.feedcolor{ color:#737373;}
+
+.divebar{border-left: solid 5px #187be0;}
+.footbar{border-left: solid 5px #ee490b;}
+.ridebar{border-left: solid 5px #36b601;}
+.safebar{border-left: solid 5px #f78900;}
+.feedbar{border-left: solid 5px #737373;}
+
+.dive{ background: url(../images/guide/guide_dive1.png) no-repeat center; height:60px;}
+.foot{ background: url(../images/guide/guide_foot1.png) no-repeat center; height:60px;}
+.ride{ background: url(../images/guide/guide_ride1.png) no-repeat center; height:60px;}
+.safe{ background: url(../images/guide/guide_safe1.png) no-repeat center; height:60px;}
+
+.theme_con {margin-bottom: 70px !important;}
+.guide_menu li p{line-height:36px; font-size: 16px;}
+
+.guide_list h2{height:32px;font-weight: normal;}
+.guide_list .more ,.guide_list .ul_close {font-size: 14px;color: #666666;text-decoration: none;padding:14px 10px 0 0; float:right;cursor:pointer;}
+.guide_list .list_title{ font-size: 20px;line-height:32px;padding: 0 60px 0 12px;}
+.guide_list ul {overflow:hidden;width:996px;}
+.guide_list .close_ul {width:996px;float: left;}
+.guide_list .ul_close {padding-top: 0;}
+.guide_detail {float:left; width:196px;height:315px;margin-right:70px;margin-top: 18px;position: relative;}
+.guide_detail .guide_detail_name {color:#333333; text-decoration: none; display:block; background:url(../images/guide/guide_download.png) no-repeat; font-size:14px;font-weight:bold;overflow: hidden; padding-left:20px;margin:10px 0;
+white-space: nowrap;text-overflow: ellipsis;-o-text-overflow: ellipsis}
+.guide_detail a{text-decoration: none;}
+.guide_detail a:hover{text-decoration: none;}
+.last {margin-right:0 !important;}
+
+.guide_detail .guide_download{padding:4px; height: 266px; width: 188px;}
+.guide_detail .guide_download img{height: 266px; width: 188px;}
+.guide_detail .guide_download:hover .guide_detail_cover{opacity:0.8;display:block\20;-webkit-transition:all 300ms ease-out 0ms;-moz-transition:all 300ms ease-out 0ms;-ms-transition:all 300ms ease-out 0ms;transition:all 300ms ease-out 0ms}
+.guide_detail .guide_download:hover .guide_detail_cover_name{
+	opacity: 1;
+	visibility:visible;
+	-webkit-transform:translateY(0px);
+	-moz-transform:translateY(0px);
+	-ms-transform:translateY(0px);
+	transform:translateY(0px);
+	-webkit-transition:all 350ms ease 300ms;
+	-moz-transition:all 350ms ease 300ms;
+	-ms-transition:all 350ms ease 300ms;
+	transition:all 350ms ease 300ms;
+}
+.guide_detail .guide_download:hover .guide_detail_cover_icon{
+	visibility: visible;
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+	-webkit-transition: all 425ms ease 325ms;
+	-moz-transition: all 425ms ease 325ms;
+	-ms-transition: all 425ms ease 325ms;
+	transition: all 425ms ease 325ms;
+}
+.guide_detail .guide_download:hover .guide_detail_cover_btn{
+	visibility: visible;
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	transform: translateY(0px);
+	-webkit-transition: all 500ms ease 400ms; /*-webkit-transform 500ms ease 400ms,opacity 500ms ease 400ms;*/
+	-moz-transition: all 500ms ease 400ms;/*  -moz-transform 500ms ease 400ms,opacity 500ms ease 400ms;*/
+	-ms-transition: all 500ms ease 400ms; /*-ms-transform 500ms ease 400ms,opacity 500ms ease 400ms;*/
+	transition: all 500ms ease 400ms;  /*transform 500ms ease 400ms,opacity 500ms ease 400ms;*/
+}
+
+.guide_detail .guide_download .guide_detail_cover{position: absolute;top: 0;left: 0;width: 196px;height: 277px;opacity: 0;z-index: 3;background-color: #F3F3F3;border-radius: 4px;
+box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);-webkit-transition: all 450ms ease 295ms;-moz-transition: all 450ms ease 295ms;-ms-transition: all 450ms ease 295ms;transition: all 450ms ease 295ms;display: none\20;/*overflow: hidden;*/}
+.guide_detail  .guide_download .guide_detail_cover_wrap{}
+.guide_detail  .guide_download .guide_detail_cover_name{
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color:#333;
+	margin: 50px 10px 20px 10px;
+	display: block;
+	visibility: hidden;
+	opacity: 0;
+	height: 36px;
+	overflow: hidden;
+	text-decoration: none;
+	-webkit-transform: translateY(175px);
+	-moz-transform: translateY(175px);
+	-ms-transform: translateY(175px);
+	transform: translateY(175px);
+	-webkit-transition: all 325ms ease 225ms;
+	-moz-transition: all 325ms ease 225ms;
+	-ms-transition: all 325ms ease 225ms;
+	transition: all 325ms ease 225ms;
+}
+.guide_detail .guide_download .guide_detail_cover_icon{
+	background:url(../images/guide/guide_view.png) no-repeat;
+	width: 56px;
+	opacity: 0;
+	visibility: hidden;
+	display:block;
+	height: 60px;
+	text-align: center;
+	margin: 0 auto;
+	-webkit-transform: translateY(94px);
+	-moz-transform: translateY(94px);
+	-ms-transform: translateY(94px);
+	transform: translateY(94px);
+	-webkit-transition: all 200ms ease 100ms;
+	-moz-transition: all 200ms ease 100ms;
+	-ms-transition: all 200ms ease 100ms;
+	transition: all 200ms ease 100ms;
+}
+.guide_detail .guide_download .guide_detail_cover_btn{
+	text-align: center;
+	margin: 30px 10px;
+	display: block;
+	visibility: hidden;
+	font-size: 16px;
+	opacity: 0;
+	overflow: hidden;
+	text-decoration: none;
+	-webkit-transform: translateY(60px);
+	-moz-transform: translateY(60px);
+	-ms-transform: translateY(60px);
+	transform: translateY(60px);
+	-webkit-transition: all 325ms ease 225ms;
+	-moz-transition: all 325ms ease 225ms;
+	-ms-transition: all 325ms ease 225ms;
+	transition: all 325ms ease 225ms;
+}
+
+
+/**ฯ๊ว้าณ**/
+.guidecontainer {margin:38px auto;font-family: arial,"simsun",sans-serif;overflow: hidden;}
+.guideview {font-size: 12px;color:#3e84ab;margin-bottom: 10px;}
+.guideview_header {font-size:14px;}
+.guideview_header .headLine{overflow:hidden;}
+.guideview_header a{color:#3e84ab}
+.guideview_header h3{color:#2b2b2b;font-size:24px;font-family:"microsoft yahei",arial,sans-serif;font-weight: normal;margin:30px 0;}
+
+.guideview_left {width:690px;float:left;margin-right:36px;}
+.guideview_right {width:270px;float:right;}
+
+.guideview_left .guide_info {overflow:hidden;max-width:690px;margin-bottom:30px;}
+.guideview_left .guide_info img {width:690px;height: 360px}
+
+.bdsharebuttonbox {padding-top:8px;}
+.bdsharebuttonbox span {float: left; line-height:24px;margin-right:10px;color: #9c9c9c}
+.bdsharebuttonbox a {margin:0 !important;padding-right: 9px!important;}
+
+.guideview_left .name{color:#333 ; font-size:14px; font-weight:bold; margin-bottom:10px;}
+.guideview_left .tab{border-bottom: 1px solid #3a9d9a;margin-bottom: 16px;}
+.guideview_left .tab ul {height:30px;}
+.guideview_left .tab ul li{width: 150px;float: left;text-align:center;background-color:#3a9d9a;line-height:30px;margin-right:6px;color: #fff;border:1px solid #3a9d9a;border-bottom: none;font-size: 16px;
+font-family: "microsoft yahei",sans-serif;cursor:pointer;}
+.guideview_left .tab ul .current {background-color:#fff;color:#3a9d9a;}
+.guideview_left .change_tab {overflow:hidden;height:30px;}
+.guideview_left .change_tab a {font-size: 14px;font-weight: bold;float: left;display:block;margin-right:10px;text-decoration: none;}
+.guideview_left .change_tab a:hover{text-decoration: none;}
+.guideview_left .change_tab span {color: #000;float: left;display:block;margin-right:10px;}
+.guideview_left .change_tab .current {color: #333;cursor:default;}
+
+.guideview_left .guide_post {margin-bottom:20px;}
+.guideview_left .guide_post textarea {width:676px;max-width:676px;height:80px;min-height:80px;margin-top:5px;margin-bottom:8px;resize: none;}
+.guideview_left .guide_post .reply {overflow:hidden; margin-bottom:5px;position: relative;}
+.guideview_left .guide_post .post_warning ,.guideview_left .guide_feed .feed_warning{position: absolute;z-index: 10;top: 0;left: 0;width: 690px;height: 100px;text-align: center;line-height: 100px;font-size: 14px;color: #333;}
+.guide_post_list{overflow:hidden;padding-bottom:5px;}
+.guide_post_list .comment_reply {overflow:hidden;padding-bottom:10px;}
+.guide_post_list .comment_reply .userheader{float:left;width:48px;height:48px;}
+.guide_post_list .comment_reply .user_comment {float:left;margin-left:10px;width: 632px;}
+.guide_post_list .comment_reply .user_comment .user_name{margin-bottom:3px;}
+.guide_post_list .comment_reply .user_comment .comment_words{word-wrap: break-word;}
+
+.guideview_detail ,.guide_directory {margin-bottom:30px;}
+.guideview_detail .content{}
+.guide_directory .div_click {line-height:18px;height:18px;font-weight: bold;color:#3e84ab;font-size:14px; padding-left:30px;background:url(../images/guide/guide_icon.png) 8px 5px no-repeat;overflow: hidden;cursor:pointer;margin:7px 0;}
+.guide_directory .current {color:#333;background:url(../images/guide/guide_icon.png) 8px -15px no-repeat;}
+.guide_directory .chapter{margin: 0 5px; padding:8px;background-color:#fafafa;font:14px/200% arial,sans-serif;overflow: hidden;}
+.guide_directory .chapter img {max-width:664px!important;}
+
+.guideview_left .guide_feed {font-size: 12px;width:690px;padding:5px 0; display:none;position: relative;}
+.guideview_left .guide_feed textarea {width:676px;max-width:676px;height:165px;min-height:165px;margin-bottom:10px;}
+.guideview_left .guide_feed .feed_warning{height: 180px;line-height: 180px;}
+
+.guideview_right .guideview_title {font-size: 12px;color:#333;line-height:13px;}
+.guideview_right .guideview_title p {line-height:12px;padding-bottom:10px;white-space: nowrap;}
+.guideview_right .guide_download a {font:18px "microsoft yahei",arial,sans-serif;line-height:50px;width:270px;text-align:center;color:#fff;display:block;background-color:#fa7b00;margin:1px 0 30px 0;}
+.guideview_right .guide_download a:hover {text-decoration: none;}
+.guideview_right .guideview_list {width:270px; margin-bottom:30px;overflow:hidden;}
+.guideview_right .guideview_list h4 {font-size: 14px;color: #333;padding: 0 0 10px 1px;}
+
+.guide_recommend img {height:186px;width:130px;}
+.guide_recommend li {float:left;margin-right:10px;}
+.dest_event {}
+.guideview_list .event_more{float: right;font-size: 12px;font-weight: normal;color: #868686;}
+.dest_event li{margin-bottom:20px; font-size:14px;overflow:hidden;width:270px;}
+.dest_event .userheader{float:left;}
+.dest_event .userheader img{height:50px;width:50px;}
+.dest_event .event_content {float:left;padding-left:12px;}
+.dest_event h3 {height:30px;width: 207px; white-space:nowrap;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;font-weight:normal;}
+.dest_event h3 .event_name {color:#666;}
+.dest_event .content{font-size:12px;line-height:20px;color:#9c9c9c;width: 207px;}
+.dest_event .last{margin-bottom:0px;}
+
+.guideview_list .dest_img{width:270px;max-height:185px;}
+.guideview_list .guide_ad{width:270px;}

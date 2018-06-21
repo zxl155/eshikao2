@@ -1,0 +1,71 @@
+/* 城市选择 */
+
+.select_city {margin-bottom: 10px; position: relative;}
+.select_city .cont {position: absolute; left: 42px; top: 22px; width: 436px; padding:0 18px 15px; background: #fff; border: 1px solid #f1f1f1; box-shadow: 0 1px 1px rgba(0,0,0,.2); border-radius: 3px;}
+.select_city .hd {height: 42px; border-bottom: 2px solid #ccc; position: relative;}
+.select_city .hd #catehover {position: absolute; left: 0; bottom: -2px; width: 38px; height: 2px; overflow: hidden; background: #369;}
+.select_city .hd ul {position: absolute; left: 0; top: 0; height: 44px;}
+.select_city .hd ul li {float: left; line-height: 42px; border-bottom: 2px solid #ccc; padding: 0 7px; margin-right: 14px; cursor: pointer; transition: color .2s linear;}
+.select_city .hd ul li.on {color: #369;}
+.select_city .bd {padding-top: 10px;}
+.select_city .bd dt {width: 52px; padding-left: 4px; float: left; line-height: 26px; color: #369; font-weight: bold;}
+.select_city .bd dd {width: 380px; float: left;}
+.select_city .bd li {width: 76px; float: left; line-height: 26px; cursor: pointer;}
+.select_city .bd li a {color: #333;}
+.select_city .bd li a:hover {color: #369;}
+.select_city .bd .hot_city li {width: 72px; text-indent: 6px;}
+
+/* 线路 */
+.route_index { text-align: left; }
+.xlzn_filter { padding: 20px 10px; border-bottom: 1px solid #e2e2e2; }
+.xlzn_filter .s_row { overflow: hidden; margin-bottom: 10px; }
+.xlzn_filter .label { float: left; line-height: 22px; }
+.xlzn_filter .list { float: left; width: 464px; padding-left: 15px; }
+.xlzn_filter .list>span { padding: 2px 3px; margin-right: 15px; float: left; }
+#xlznSelectCity { float: left; }
+#xlznCityDiv { display: none; }
+.xlzn_filter .list a { display: inline-block; padding: 2px 5px; margin-right: 15px; margin-bottom: 5px; color: #000; }
+.xlzn_filter .list a.active, .xlzn_filter .list a:hover { background-color: #336699; color: #fff; border-radius: 3px; text-decoration: none; }
+
+.xlzn_filter .list a i {display: inline-block; width: 8px; height: 4px; vertical-align: middle; margin-left: 3px; overflow: hidden; background: url('../images/route/arrow_city.png'); transition: background .2s linear;}
+.xlzn_filter .select a i {background-position: 0 -4px;}
+
+.xlzn_list_top { margin: 20px 0; overflow: hidden; }
+.xlzn_list_top a { color: #336699; }
+.xlzn_list_top .info { float: left; }
+.xlzn_list_top .info span { color: #336699; font-weight: bold; }
+.xlzn_list_top .info a { background-color: #efefef; border-radius: 2px; padding: 3px 6px; text-decoration: none; margin-left: 6px; font-size: 14px; }
+.xlzn_list_top .info a span { margin-right: 2px; font-size: 12px; }
+.xlzn_list_top .sorting { width: 205px; text-align: right; float: right; }
+.xlzn_list_top .sorting a { padding: 3px 5px; margin: 0 5px; border-radius: 2px; }
+.xlzn_list_top .sorting a.active, .xlzn_list_top .sorting a:hover { background-color: #336699; color: #fff; text-decoration: none; }
+.xlzn_list { }
+.xlzn_list>li { overflow: hidden; padding: 20px 0; border-bottom: 1px solid #e2e2e2; }
+a.xlzn_list_view { float: left; width: 160px; height: 112px; }
+a.xlzn_list_view img { width: 100%; height: 100%; }
+.xlzn_list_info { padding-left: 210px; }
+.xlzn_type { float: left; background: url('../images/route/route_mapicon_black.png') 0 0 no-repeat; width: 24px; height: 24px; margin-left: 18px; }
+.xlzn_type_1 { background-position: 0 -147px; }
+.xlzn_type_2 { background-position: 0 -184px; }
+.xlzn_type_3 { background-position: 0 -224px; }
+.xlzn_type_4 { background-position: 0 -258px; }
+.xlzn_type_5 { background-position: 0 -295px; }
+.xlzn_type_6 { background-position: 0 -332px; }
+.xlzn_type_7 { background-position: 0 -368px; }
+.xlzn_type_8 { background-position: 0 -406px; }
+.xlzn_type_9 { background-position: 0 -444px; }
+.xlzn_type_10 { background-position: 0 -482px; }
+.xlzn_type_11 { background-position: 0 -519px; }
+.xlzn_list_info a { font-size: 16px; color: #28898d; line-height: 1.8; font-weight: bold; }
+.xlzn_list_info .label a { font-size: inherit; font-weight: normal; }
+.xlzn_list_info a .highlight { color: #fa7b00; }
+.xlzn_list_info h3 { font-weight: normal; }
+.xlzn_list_info>div { overflow: hidden; margin-top: 15px; }
+.xlzn_list_info a:hover { }
+.xlzn_list_info .score { width: 110px; float: left; display: none;}
+.xlzn_list_info .score .item li.active { background-position: 0 -46px; }
+.xlzn_list_info .score .item li { display: inline-block; float: left; width: 13px; height: 13px; background: url('../images/route/xlzn_indexicon.png') 0 -61px no-repeat; margin-right: 3px; margin-top: 3px; }
+.xlzn_list_info .score .num { color: #3a9d9a; }
+.xlzn_list_info .label { float: right; max-width: 206px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.xlzn_list_info .label span { margin-left: 4px; }
+.xlzn_list_info .label .active { background-color: #fff000; padding: 1px 2px; }

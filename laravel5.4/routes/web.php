@@ -1,0 +1,149 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+//后台
+Route::group(['namespace' => 'Admin'], function(){
+  Route::group(['middleware' => 'check.login'], function() {
+    //后台首页
+    Route::get('admin/index','IndexController@index');
+    //个人中心
+    Route::get('admin/personal','IndexController@personal');
+    //修改资料
+    Route::get('admin/upd','IndexController@upd');
+    //执行修改资料
+    Route::post('admin/upds','IndexController@upds');
+    //修改密码
+    Route::get('admin/pwd','IndexController@pwd');
+    //执行修改密码
+    Route::get('admin/pwds','IndexController@pwds');
+    //课程添加
+    Route::get('admin/addcurr','CurriculumController@addcurr');
+    //执行添加
+    Route::post('admin/docurr','CurriculumController@docurr');
+    //课程列表
+    Route::get('admin/listcurr','CurriculumController@listcurr');
+    //课程修改
+    Route::get('admin/updcurr','CurriculumController@updcurr');
+    //执行修改
+    Route::post('admin/doupd','CurriculumController@doupd');
+    //课程删除
+    Route::get('admin/delcurr','CurriculumController@delcurr');
+    //管理员添加
+    Route::get('admin/addadmin','AdminController@addadmin');
+    //执行添加
+    Route::post('admin/doadmin','AdminController@doadmin');
+    //管理员列表
+    Route::get('admin/listadmin','AdminController@listadmin');
+    //管理员删除
+    Route::get('admin/del','AdminController@del');
+    //直播课程
+    Route::get('admin/listpplive','PpliveController@listpplive');
+    //添加直播
+    Route::get('admin/addpplive','PpliveController@addpplive');
+    //执行添加直播
+    Route::post('admin/dopplive','PpliveController@dopplive');
+    //所属教师
+    Route::get('admin/selects','PpliveController@selects');
+    //删除直播
+    Route::get('admin/delpplive','PpliveController@delpplive');
+    //招聘公告
+    Route::get('admin/addrecr','RecruitmentController@addrecr');
+    //执行添加
+    Route::post('admin/dorecr','RecruitmentController@dorecr');
+    //公告列表
+    Route::get('admin/listrecr','RecruitmentController@listrecr');
+    //修改
+    Route::get('admin/updrecr','RecruitmentController@updrecr');
+    //执行修改
+    Route::post('admin/updsrecr','RecruitmentController@updsrecr');
+    //删除公告
+    Route::get('admin/delrecr','RecruitmentController@delrecr');
+  });
+  //登录
+  Route::get('admin/login','LoginController@login');
+  //验证码
+  Route::get('admin/captcha','LoginController@captcha');
+  //表单验证
+  Route::get('admin/proving','LoginController@proving');
+  //管理员退出
+  Route::get('admin/out','LoginController@out');
+});
+//前台
+Route::group(['namespace' => 'Home'], function(){
+  //前台首页
+  Route::get('home/index','IndexController@index');
+  //前台登录
+  Route::get('home/login','LoginController@login');
+  Route::post('home/dologin','LoginController@dologin');
+  //忘记密码
+  Route::get('home/retrieve','RegisterController@retrieve');
+  //注册
+  Route::get('home/register','RegisterController@index');
+  //短信发送
+  Route::get('home/emails','RegisterController@emails');
+  //注册验证
+  Route::get('home/doregister','RegisterController@doregister');
+  //注册添加入库
+  Route::get('home/addregister','RegisterController@addregister');
+  //个人中心我的课程
+  Route::get('home/myclass','MyclassController@index');
+  //个人中心修改个人资料
+  Route::get('home/mydata','MydataController@index');
+  //个人中心头部
+  Route::get('home/head','HeadController@index');
+  //个人中心进行修改个人资料
+  Route::get('home/updatemydata','MydataController@updatemydata');
+  //个人中心进行修改密码
+  Route::get('home/updatepwd','MydataController@updatepwd');
+  //个人中心进行修改密码s
+  Route::get('home/updatepwds','MydataController@updatepwds');
+  //个人中心进行头像
+  Route::post('home/headupdate','MydataController@insetArticle');
+  //教师资格
+  Route::get('home/qualifications','QualificationsController@qualifications');
+  //教师资格搜索
+  Route::get('home/quasearch','QualificationsController@quaSearch');
+  //教师招聘
+  Route::get('home/recruit','RecruitController@index');
+   //教师招聘
+  Route::get('home/recruitsearch','RecruitController@recruitSearch');
+  //课程详情
+  Route::get('home/coursedetails','CoursedetailsController@index');
+  //招聘公告列表
+  Route::get('home/noticelist','NoticeController@index');
+  //招聘公告详情
+  Route::get('home/notice','NoticeController@notice');
+  //招聘公告搜索
+  Route::get('home/noticeSearch','NoticeController@noticeSearch');
+  //优惠券
+  Route::get('home/coupon','CouponController@index');
+  //展示收货地址
+  Route::get('home/address','AddressController@index');
+  //添加收货地址
+  Route::get('home/addressAdd','AddressController@addressAdd');
+   //删除收货地址
+  Route::get('home/addressDelete','AddressController@addressDelete');
+  //修改收货地址
+  Route::get('home/addressUpdate','AddressController@addressUpdate');
+  //修改收货地址
+  Route::get('home/addressUpdates','AddressController@addressUpdates');
+   //订单首页
+  Route::get('home/order','OrderController@index');
+  //支付首页
+  Route::get('home/CommodityGoods','CommodityController@CommodityGoods');
+   //支付提交
+  Route::get('home/CommodityPay','CommodityController@CommodityPay');
+});

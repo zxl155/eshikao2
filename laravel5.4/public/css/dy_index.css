@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+.index a { color: #666; }
+
+/**布局**/
+.index { text-align: left;}
+.index .container { margin: 25px auto;}
+.index .pageLeft { float: left; width: 662px; padding-right: 44px; }
+.index .pageRight { float: left; width: 290px; }
+.index h1,.index h2,.index h3{ font-weight: 100;}
+
+/**banner**/
+.index .bannerWrap { width: 100%; background: #f0f0f0; padding: 20px 0;}
+.index .banner { width: 996px;  margin: 0 auto; background: #2d2d2d; position: relative;}
+.index .banner .view { width: 996px; height: 330px; position: relative;}
+.index .banner .view li{ position: absolute; top:0; left: 0; z-index: 1;}
+.index .banner .view li .image {float: left; width: 996px; height: 330px; z-index: 2;}
+.index .banner .view li .text { position: absolute; top:0; right: 0; width: 271px; height: 330px; z-index: 5; padding: 30px 15px;font-family: 'microsoft yahei';}
+.index .banner .view li .text h2{ color: #f0f0f0; font-size: 18px;  font-weight: 100; line-height: 30px;}
+.index .banner .view li .text h2 a,.index .banner .view li .text h2 a:hover { color: #f0f0f0;}
+.index .banner .view li .text h4{ color: #f0f0f0; font-size: 12px;  font-weight: 100; line-height: 20px;}
+.index .banner .view li .text p { color: #b1b1b1; line-height: 22px; padding-top: 15px;}
+.index .banner .view li .text p a{color: #b1b1b1;}
+.index .banner .view li .text p a:hover { color: #f0f0f0; text-decoration: none;}
+.index .banner .control { position: absolute; z-index: 10; right: 0; bottom:15px; width: 301px; text-align: center;}
+.index .banner .control li { width: 20px; height: 20px; display: inline;}
+.index .banner .control li a {  width: 20px; height: 20px; display: inline-block; overflow: hidden; background: url(../images/index/index_icon.png) no-repeat 0 0; font-size: 0.2px; line-height: 10000;}
+.index .banner .control li a:hover { text-decoration: none;}
+.index .banner .control li.current a,.index .banner .control li a:hover { background: url(../images/index/index_icon.png) no-repeat 0 -20px;}
+
+
+/**box**/
+.index .box { width: 100%;}
+.index .box .title { height: 38px; position: relative;}
+.index .box .title h1 { font-family: 'microsoft yahei';color: #2b2b2b; font-size: 18px; }
+.index .box .title .more { position: absolute; right: 0; top:0; z-index: 100;}
+.index .box .title .more a{color:#0e6596}
+.index .box .content {  margin-bottom: 30px;}
+
+/**广告 ads**/
+.index .ads { width: 100%; margin-bottom: 30px;}
+.index .pageLeft .ads a{ float: left; display: inline;}
+
+/**活动 event**/
+
+.index .event {}
+.index .event li { float: left; padding-bottom: 16px;}
+.index .event li .image { width:50px; height: 50px; float: left; margin-right: 12px;}
+.index .event li .image img { width: 50px; height: 50px;}
+.index .event li .text { float: left;  width:228px;}
+.index .event li .text h3 { width:228px; height: 30px; font-size: 14px; font-weight: 100; color: #2b2b2b; word-break:keep-all;white-space:nowrap;text-overflow:ellipsis; overflow:hidden;}
+.index .event li .text p {font-size: 12px; color: #9c9c9c;line-height: 20px;}
+.index .event li .text p span { padding-right: 15px;}
+
+
+
+/**磨房每天在努力 news**/
+.index .news .title { height: 30px;}
+.index .news .content li { background: url(../images/icon_list_bg.gif) no-repeat 0 10px; padding-left: 20px; width: 270px; line-height: 24px;}
+.index .news .content li a { color: #666;}
+.index .news .content a:hover { color: #23729e;}
+
+
+/**新鲜出炉 fresh**/
+.index .fresh {}
+.index .fresh li {  float: left; padding-right: 37px; width: 196px; padding-bottom: 40px;font-family: 'microsoft yahei';}
+.index .fresh li .image { display: inline-block; margin-bottom: 5px; width: 196px; height: 196px;}
+.index .fresh li .image img { width: 196px; height: 196px;}
+.index .fresh li h2 { color: #555; font-size: 14px; font-weight: 100; height: 25px; line-height: 25px; overflow: hidden; }
+.index .fresh li p { font-size: 12px; color: #666;line-height: 25px; padding-bottom: 5px;}
+.index .fresh li p span.name { width: 96px; height: 25px; margin-right: 10px; float: left;word-break:keep-all;white-space:nowrap;overflow: hidden;}
+.index .fresh li p span.from { width: 90px; float: left; text-align: right;}
+.index .fresh li a.like { font-size: 14px; line-height: 20px; min-width: 35px; display: inline-block; height: 20px; padding: 2px 10px 2px 40px; background: #94cf72 url(../images/index/index_icon.png) no-repeat 8px -38px; color: #fff; cursor: default; }
+.index .fresh li a:hover.like {/*background-color: #ff6c00; color: #fff;*/ text-decoration: none;}
+
+/**热门话题 recommend**/
+.index .recommend {}
+.index .recommend .image { float: left; width: 312px; margin-right: 25px; display: inline;}
+.index .recommend .image img { width: 312px; height: 176px;}
+.index .recommend .desc {  float: left; width: 325px; line-height: 18px;}
+.index .recommend .desc h2{ font-size: 16px; color: #2b2b2b; font-family: 'microsoft yahei'; font-weight: 100;}
+.index .recommend .desc h2 a {color: #2b2b2b;}
+.index .recommend .desc .info { color: #9c9c9c; padding: 5px 0;}
+.index .recommend .desc li { background: url(../images/icon_list_bg.gif) no-repeat 0 10px; padding-left: 15px; width: 310px; line-height: 23px;}
+.index .recommend .desc li a { color: #666;}
+.index .recommend .desc a:hover { color: #23729e;}
+.index .recommend .more { color:#2b2b2b; padding-top: 20px; float: left; width: 662px; }
+.index .recommend .more a { display: inline-block;}
+
+/**目的地 destination**/
+.index .destination {}
+.index .destination li { float: left; width: 312px; padding-right: 38px;}
+.index .destination li .image { width: 312px; height: 176px; margin-bottom: 20px;}
+.index .destination li .image .recommend_image{height:176px;overflow:hidden;margin-bottom:20px;}
+.index .destination li .image .recommend_author{color:#ffffff;font-size:11px;font-weight:normal;font-family:'microsoft yahei',sans-serif;display:none;position:relative;padding:6px;background:url(../images/scene/scene_alpha_3.png) repeat-x;}
+.index .destination li .image .recommend_author a{color:#ffffff;}
+.index .destination li .image img { width: 312px; height: 176px;}
+.index .destination li .name { position: relative; height: 30px; }
+.index .destination li .name h2{ color: #2b2b2b; font-weight: bold; font-size: 16px; height: 18px; line-height: 18px; overflow: hidden; }
+.index .destination li .name .weather { position: absolute; right: 0; top:0; font-size: 12px;}
+.index .destination li .intro { color: #9c9c9c; line-height: 20px;}
+.index .destination li .intro a {color: #9c9c9c;}
+
+
+/**发布活动**/
+.index .publish {margin-bottom: 30px;border-radius: 0;}
+.index .publish a { display: block;}
+
+
+.index li.last { padding-right: 0;}
+
+/* Banner右侧APP下载广告 */
+.app-in { position: fixed; top: 0px; left: 0px; width: 100%; z-index: 1000; }
+.app-in-m { width: 996px; margin: 0 auto; position: relative; }
+.app-in-g { width: 100px; height: 140px; position: absolute; right: -110px; top: 308px; background: url('../images/index/app_bg_new.png') 0 0 no-repeat;}
+a.app-in-close { position: absolute; width: 6px; height: 6px; background: url('../images/index/app_close_icon.png') 0 0 no-repeat; top: 8px; right: 6px; margin: 2px; cursor: pointer; }
