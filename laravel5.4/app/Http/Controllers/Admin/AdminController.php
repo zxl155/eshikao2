@@ -51,8 +51,9 @@ class AdminController extends Controller
 		$admin = new Admin;
 		$data = $admin->select()->paginate(3);
 		foreach ($data as $key => $val) {
-			$val['admin_desc'] = substr_replace($val['admin_desc'],'....', 40);
+			$val['admin_desc'] = substr_replace($val['admin_desc'],'....', 30);
 		}
+		
 		return view('admin/admin/listadmin',[
 			'data' => $data
 		]);
@@ -69,7 +70,7 @@ class AdminController extends Controller
 		$adminrole = new AdminRole;
 		$admincurr = new AdminCurriculum;
 		$adminpplive = new AdminPplive;
-		$aid = $admincurr->where(['admin_id'=>6])->pluck('id')->toArray();
+		$aid = $admincurr->where(['admin_id'=>$id])->pluck('id')->toArray();
 		$aid = implode($aid,',');
 		if($id == 1){
 			return 3;

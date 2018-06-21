@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{URL::asset('/')}}assets/css/admin.css">
     <link rel="stylesheet" href="{{URL::asset('/')}}assets/css/app.css">
     <script src="{{URL::asset('/')}}assets/js/echarts.min.js"></script>
+    <script src="{{URL::asset('/')}}assets/js/iscroll.js"></script>
     <script type="text/javascript" src="{{URL::asset('/')}}js/laydate.js"></script>
 <!-- 分页样式 -->
 <style type="text/css">
