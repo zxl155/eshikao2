@@ -5,15 +5,15 @@
         易师考
     </div>
     <ol class="am-breadcrumb">
-        <li><a href="index" class="am-icon-home">首页</a></li>
-        <li><a href="personal">个人资料</a></li>
+        <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
+        <li><a href="{{ url('admin/personal') }}">个人资料</a></li>
     </ol>
     <div class="tpl-portlet-components">
         <div class="portlet-title">  
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <a href="upd?id={{ $data['admin_id'] }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改资料</a>
-                    <a href="pwd?id={{ $data['admin_id'] }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改密码</a>
+                    <a href="{{ url('admin/upd') }}?id={{ $data['admin_id'] }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改资料</a>
+                    <a href="{{ url('admin/pwd') }}?id={{ $data['admin_id'] }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改密码</a>
                     <!-- <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 修改密码</button> -->
                 </div>
             </div>

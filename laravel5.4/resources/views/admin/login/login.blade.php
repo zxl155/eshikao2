@@ -93,7 +93,7 @@
     } 
 
     $.ajax({
-      url:'proving',
+      url:"{{ url('admin/proving') }}",
       data:{admin_name:admin_name,password:password,code:code,_token:"{{csrf_token()}}"},
       type:'get',
       success:function(m){
@@ -116,7 +116,7 @@
         }else{
           var txt=  "登录成功";
           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-          location.href = 'index';
+          location.href = "{{ url('admin/index') }}";
         }
       }
     })

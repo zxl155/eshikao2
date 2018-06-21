@@ -4,16 +4,12 @@
             <div class="tpl-content-page-title">
                 易师考
             </div>
-            <ol class="am-breadcrumb">
-                <li><a href="#" class="am-icon-home">首页</a></li>
-                <li><a href="#">修改公告</a></li>
-            </ol>
             <div class="tpl-portlet-components">
                 <div class="tpl-block">
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form" action="updsrecr" method="post">
+                            <form class="am-form tpl-form-line-form" action="{{ url('admin/updsrecr') }}" method="post">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="{{ $data->recruitment_id }}" name="recruitment_id">
                                 <div class="am-form-group">

@@ -4,15 +4,15 @@
         易师考
         </div>
         <ol class="am-breadcrumb">
-        <li><a href="index" class="am-icon-home">首页</a></li>
-        <li><a href="addcurr">添加课程</a></li>
+        <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
+        <li><a href="{{ url('admin/addcurr') }}">添加课程</a></li>
         </ol>
         <div class="tpl-portlet-components">
         <div class="tpl-block">
 
             <div class="am-g">
                 <div class="tpl-form-body tpl-form-line">
-                    <form class="am-form tpl-form-line-form" action="dopplive" method="post">
+                    <form class="am-form tpl-form-line-form" action="{{ url('admin/dopplive') }}" method="post">
                         {{ csrf_field() }}
 
                         <div class="am-form-group">
@@ -83,7 +83,7 @@
     $("#select").change(function(){
         var id = $("#select").val()
         $.ajax({
-            url:'selects',
+            url:"{{ url('admin/selects') }}",
             data:{id:id},
             type:'get',
             dataType:'json',

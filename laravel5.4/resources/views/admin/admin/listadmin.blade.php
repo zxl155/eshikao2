@@ -121,22 +121,22 @@
         $(".am-btn").click(function(){
             var id = $(this).attr('data-id');
             $.ajax({
-                url:'del',
+                url:"{{ url('admin/del') }}",
                 data:{id:id},
                 type:'get',
                 success:function(data){
-                    if(data == 1){
-                        var txt=  "删除成功";
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                        location.href = 'listadmin';
+                    if(data == 2){
+                        var txt=  "删除失败";
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                        return false;
                     }else if(data ==3){
                         var txt=  "不能删除自己";
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                         return false;
                     }else {
-                        var txt=  "删除失败";
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                        return false;
+                        var txt=  "删除成功";
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                        location.href = "{{ url('admin/listadmin') }}";
                     }
                 }
             })

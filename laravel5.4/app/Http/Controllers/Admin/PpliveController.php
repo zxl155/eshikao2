@@ -27,14 +27,15 @@ class PpliveController extends Controller
 		$curr = new Curriculum;
 		$user = new Admin;
 		$ap = new AdminPplive;
-		$data = $pplive->select()->paginate(10);
-		foreach ($data as $key => $val) {
+		$arr = $pplive->get();
+		foreach ($arr as $key => $val) {
 			if(strtotime($val->stop_time)<time()){
-				$arr[] = $val->pplive_id;
+				$sid[] = $val->pplive_id;
 			}
 		}
-		$arr = implode($arr,',');
-		DB::update("update pplive set state = 0 where pplive_id in ($arr)");
+		$sid = implode($sid,',');
+		DB::update("update pplive set state = 0 where pplive_id in ($sid)");
+		$data = $pplive->select()->paginate(10);
 		$teacher = $ap->teacher($data);
 		$admin = $user->searchTeacher();
 		$admin = $curr->admin($admin,$teacher);
@@ -104,10 +105,10 @@ class PpliveController extends Controller
 		$id = Input::get('id');
 		$pplive = new Pplive;
 		$ap = new AdminPplive;
-		$aid = $ap->where(['pplive_id'=>$id])->value('id');
+		$aid = $ap->where(['pplive_id'=>6])->value('id');
 		$res = $pplive->where(['pplive_id'=>$id])->delete();
 		if($res){
-			DB::delete("delete from admin_pplive where id = $aid");
+			$ap->where(['id'=>$aid])->delete();
 			return redirect('admin/listpplive');
 		}
 	}

@@ -4,15 +4,15 @@
         易师考
         </div>
         <ol class="am-breadcrumb">
-        <li><a href="index" class="am-icon-home">首页</a></li>
-        <li><a href="addcurr">添加课程</a></li>
+        <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
+        <li><a href="{{ url('admin/addcurr') }}">添加课程</a></li>
         </ol>
         <div class="tpl-portlet-components">
         <div class="tpl-block">
 
             <div class="am-g">
                 <div class="tpl-form-body tpl-form-line">
-                    <form class="am-form tpl-form-line-form" action="docurr" method="post">
+                    <form class="am-form tpl-form-line-form" action="{{ url('admin/docurr') }}" method="post">
                         {{ csrf_field() }}
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">课程名称 <span class="tpl-form-line-small-title"></span></label>

@@ -6,7 +6,7 @@
                 易师考首页
             </div>
             <ol class="am-breadcrumb">
-                <li><a href="index" class="am-icon-home">首页</a></li>
+                <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
             </ol>
             </br>
             </br>
