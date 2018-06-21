@@ -19,7 +19,7 @@
                 <span class="personal-content-grzl">个人资料</span>
             </div>
             <div class="personal-list">
-                <form class="personal-list-form" action="headupdate" method="post" enctype="multipart/form-data">
+                <form class="personal-list-form" action="{{URL::asset('home/headupdate')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @foreach($data as $value)
                     <div class="personal-form-img">
@@ -62,8 +62,8 @@
         if(confirm("确认修改用户名?")){
            if (pattern.test(user_name)) {
      　　         $.ajax({
-                    url:'updatemydata',
-                    data:{user_name:user_name,user_id:user_id},
+                    url:"{{URL::asset('home/updatemydata')}}",
+                    data:{user_name:user_name,user_id:user_id,_token:"{{ csrf_token() }}"},
                     type:'get',
                     success:function(data){
                         if (data == "修改成功") {

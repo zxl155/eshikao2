@@ -74,7 +74,7 @@
             return false;
          }
          $.ajax({
-            url:'addressUpdates',
+            url:"{{URL::asset('home/addressUpdates')}}",
             data:{
                 address_name:address,
                 address_tel:phone,

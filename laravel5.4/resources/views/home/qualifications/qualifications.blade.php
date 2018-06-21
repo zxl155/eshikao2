@@ -87,8 +87,8 @@
             var grade_id = $("#grade .active").attr('grade_id');
             var subject_id = $("#subject .active").attr('subject_id');
             $.ajax({
-                    url:'quasearch',
-                    data:{cattype_id:cattype_id,grade_id:grade_id,subject_id:subject_id},
+                    url:"{{URL::asset('home/quasearch')}}",
+                    data:{cattype_id:cattype_id,grade_id:grade_id,subject_id:subject_id,_token:"{{ csrf_token() }}"},
                     type:'get',
                     dataType:'json',
                     success:function(data){

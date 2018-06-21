@@ -56,7 +56,7 @@
         var password = /^[a-zA-Z1-9\d_]{8,16}$/;
         if( phone.test(user_tel) ) {
               $.ajax({
-                url:'dologin',
+                url:"{{URL::asset('home/dologin')}}",
                 data:{user_tel:user_tel,user_pwd:user_pwd,_token:"{{csrf_token()}}"},
                 type:'post',
                 success:function(m){

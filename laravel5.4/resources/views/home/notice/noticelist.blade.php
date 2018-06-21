@@ -42,7 +42,7 @@
             <ul class="notice-datelist-ul">
               
                 <li>
-                    <a href="notice?recruitment_id={{$values->recruitment_id}}">{{$values->region_name}}|{{$values -> recruitment_name}}</a>
+                    <a href="{{URL::asset('home/notice')}}?recruitment_id={{$values->recruitment_id}}">{{$values->region_name}}|{{$values -> recruitment_name}}</a>
                     <span><img src="./img/xiazai.png" alt="">
                     {{$values->region_name}}教师招聘考试</span>
                 </li>
@@ -94,8 +94,8 @@
          var region_name = $("#region .active").html();
          $('#selected').html(region_name);
          $.ajax({
-            url:'noticeSearch',
-            data:{region_id:region_id},
+            url:"{{URL::asset('home/noticeSearch')}}",
+            data:{region_id:region_id,_token:"{{ csrf_token() }}"},
             type:'get',
             dataType:'json',
             success:function(data){
