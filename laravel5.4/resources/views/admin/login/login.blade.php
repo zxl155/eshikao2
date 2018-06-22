@@ -55,7 +55,7 @@
           <div class="am-form-group"> 
             <input type="text" id="code" placeholder="请输入验证码"><img src="{{ url('admin/captcha') }}" id="captcha">
           </div>
-					<p><button type="submit" id="btn" class="am-btn am-btn-default">登录</button></p>
+					<p><button type="button" id="btn" class="am-btn am-btn-default">登录</button></p>
 				</fieldset>
         
 			</form>
