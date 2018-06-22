@@ -25,10 +25,6 @@
   <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css"/>
   <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{URL::asset('/')}}js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
-  <!-- <script src="{{URL::asset('/')}}sweetalert-master/docs/assets/sweetalert/sweetalert.min.js">
-    
-  </script> 
-  <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}sweetalert-master/src/sweetalert.css"> -->
 </head>
 
 <body data-type="login">
@@ -116,7 +112,7 @@
         }else{
           var txt=  "登录成功";
           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-          location.href = "{{ url('admin/index') }}";
+          window.location.href = "{{ url('admin/index') }}";
         }
       }
     })
