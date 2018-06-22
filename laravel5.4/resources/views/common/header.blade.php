@@ -184,6 +184,16 @@
                                     <span>管理员列表</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
+                                <a href="{{ url('admin/addbro') }}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>添加轮播图</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                                <a href="{{ url('admin/listbro') }}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>轮播图列表</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
                             </li>
                         </ul>
                     </li>

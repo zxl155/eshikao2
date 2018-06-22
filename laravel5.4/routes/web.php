@@ -71,6 +71,16 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::post('admin/updsrecr','RecruitmentController@updsrecr');
     //删除公告
     Route::get('admin/delrecr','RecruitmentController@delrecr');
+    //添加轮播图
+    Route::get('admin/addbro','BroadcastController@addbro');
+    //执行添加
+    Route::post('admin/dobro','BroadcastController@dobro');
+    //轮播图列表
+    Route::get('admin/listbro','BroadcastController@listbro');
+    //修改状态
+    Route::get('admin/updbro','BroadcastController@updbro');
+    //执行
+    Route::post('admin/updsbro','BroadcastController@updsbro');
   });
   //登录
   Route::get('admin/login','LoginController@login');
