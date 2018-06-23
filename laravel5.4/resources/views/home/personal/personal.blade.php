@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>我的课程</title>
 </head>
 <body>
 <script type="text/javascript">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>Title</title>
+    <title>忘记密码</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_706885_oj0ko6hl9i.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
@@ -55,7 +55,7 @@
                 <input type="password" placeholder="请设置密码6-12位数字或字母" value="">
                 <span class="zh-prompt2"></span>
                 <input type="password" placeholder="请确认密码" value="">
-                <a href="javascript:;" class="btnlogin">重置</a>
+                <a href="javascript:;" class="btnlogin">确定</a>
                 <a href="javascript:history.go(-1);void(0);" class="btnlogin">取消</a>
             </div>
         </div>

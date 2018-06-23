@@ -32,7 +32,7 @@ class RecruitController extends Controller
 		$qualification = $qualifications->qualifications();
 		$teacher = $qualifications->teacher(); //获取教师与课程的管理数据
 		$admin = $qualifications->admin($admin,$teacher);
-		return view('home/recruit/recruitment',[
+		return view('home/recruit/Recruitment',[
 			'cattype' => $cattype,
 			'gradetype' => $gradetype,
 			'subjecttype' => $subjecttype,

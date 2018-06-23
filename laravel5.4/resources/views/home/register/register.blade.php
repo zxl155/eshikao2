@@ -33,7 +33,7 @@
                     <input type="password" placeholder="请设置密码8-16位数字或字母" id="user_pwd" value="">
                     <span class="zh-prompt"></span>
                     <input type="password" placeholder="请确认密码" id="user_pqrwd" value="">
-                    <a href="javascript:;" id="btn">立即注册</a>
+                    <a href="javascript:;" id="btn" class="btnlogin">立即注册</a>
                     <span class="forgetmm">
                         <a href="login">已有账号，马上登录</a>
                     </span>
@@ -104,6 +104,7 @@
                                 if (msg == 2) {
                                     var txt =  "注册成功";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                                    window.location.href = "{{URL::asset('home/login')}}";  
                                 } else {
                                     var txt =  "请确认您的手机号是否注册过";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

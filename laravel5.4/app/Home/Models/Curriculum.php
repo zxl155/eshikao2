@@ -12,7 +12,7 @@ class Curriculum extends Model
     */
     public function qualifications()
     {
-    	$sql = "select * from curriculum where teacher_type = 1 order by bought_number desc  LIMIT 8";
+    	$sql = "select * from curriculum where teacher_type = 1 and state = 1 order by bought_number desc  LIMIT 8";
     	$qualifications = DB::select($sql);
     	return $qualifications;
     }
@@ -21,7 +21,7 @@ class Curriculum extends Model
     */
     public function qualification()
     {
-    	$sql = "select * from curriculum where teacher_type = 2 order by bought_number desc  LIMIT 8";
+    	$sql = "select * from curriculum where teacher_type = 2 and state = 1 order by bought_number desc  LIMIT 8";
     	$qualification = DB::select($sql);
     	return $qualification;
     }
