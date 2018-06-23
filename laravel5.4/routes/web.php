@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
 //后台
 Route::group(['namespace' => 'Admin'], function(){
   Route::group(['middleware' => 'check.login'], function() {
@@ -94,7 +93,7 @@ Route::group(['namespace' => 'Admin'], function(){
 //前台
 Route::group(['namespace' => 'Home'], function(){
   //前台首页
-  Route::get('home/index','IndexController@index');
+  Route::get('/','IndexController@index');
   //前台登录
   Route::get('home/login','LoginController@login');
   Route::post('home/dologin','LoginController@dologin');
@@ -154,6 +153,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/order','OrderController@index');
   //支付首页
   Route::get('home/CommodityGoods','CommodityController@CommodityGoods');
+  //支付删除地址
+  Route::get('home/CommodityAddress','CommodityController@addressDelete');
+  //订单入库
+  Route::get('home/orderAdd','CommodityController@orderAdd');
    //支付提交
   Route::get('home/CommodityPay','CommodityController@CommodityPay');
 });

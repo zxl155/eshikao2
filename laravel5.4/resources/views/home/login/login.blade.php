@@ -34,7 +34,10 @@
                             <a href="retrieve">忘记密码?</a>
                         </span>
                         
-                        <a href="javascript:;" id="btn">立即登录</a>
+                        <a href="javascript:;" id="btn" class="btnlogin">立即登录</a>
+                        <div class="m-qt-btn">
+                            <a href="">忘记密码</a>|<a href="Register.html">快速注册</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +66,7 @@
                     if(m == "登录成功"){
                         var txt=  "登录成功";
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                        location.href = 'index';
+                        location.href = "{{URL::asset('/')}}";
                     }else{
                         var txt=  "登录失败";
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

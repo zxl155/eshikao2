@@ -15,4 +15,26 @@
         <div class="copyright">© 2011-2017 eshikao.com , All Rights Reserved.京ICP备17004480号-1 | 京公网安备110108008330友情链接
         </div>
     </footer>
+<!--移动-->
+<div class="m-Bottom">
+    <nav class="m-Nav">
+        <a href="" class="active">
+            <i class="iconfont icon-shouye"></i>
+            <span>首页</span>
+        </a>
+        <a href="">
+            <i class="iconfont icon-zhengshu-copy"></i>
+            <span>教师资格证</span>
+        </a>
+        <a href="">
+            <i class="iconfont icon-noun__cc"></i>
+            <span>教师招聘</span>
+        </a>
+        <a href="">
+            <i class="iconfont icon-wode"></i>
+            <span>我的</span>
+        </a>
+    </nav>
+</div>
         <script src="{{URL::asset('/')}}home/js/index.js"></script>
+        

@@ -1,28 +1,36 @@
 
 var renderZhao=(function () {
-    var jt=$('.sort-text-ul').focus('.jt');
-    var sortRqJt=1;//人气排序
+    var i =3;
+    var time;
+    //var jt=$('.sort-text-ul').focus('.jt');
+    var sortRqJt=1;//PC价格排序
     function flSwitch(_this) {
         _this.bind('click',function () {
             $(this).addClass('active').siblings().removeClass('active');
         });
         _this.bind('click',function () {
             sortRqJt?$(this).children('.jt').html('&uarr;'):$(this).children('.jt').html('&darr;');
-            sortRqJt?sortRqJt=0:sortRqJt=1;
+            sortRqJt=sortRqJt?0:1;
         })
     }
+    //价格排序
+    $('.m-sort-ul li').eq(2).click(function () {
+        sortRqJt=sortRqJt?0:1;
+        sortRqJt?$('.m-sort-ul li span i').eq(0).addClass('active').siblings().removeClass('active'):$('.m-sort-ul li span i').eq(1).addClass('active').siblings().removeClass('active');
+    })
     //吸顶盒
     $(function(){
         var TIMER;//定义全局变量
         $(window).scroll( function() {
             clearTimeout(TIMER);//必须要有这句
+            console.log($(document).scrollTop());
             if( $(document).scrollTop() > 418 ){
                 TIMER = setTimeout(function(){
                     $(".v-top-box").slideDown();
                 },100);
-            }else if($(document).scrollTop()==0){
+            }else if($(document).scrollTop()===0){
                 TIMER = setTimeout(function(){
-                    $(".v-top-box").slideUp();
+                    $(".v-top-box").css('display','none');
                 },100);
             }else{
                 TIMER = setTimeout(function(){
@@ -82,17 +90,32 @@ var renderZhao=(function () {
         showArea();
     });
 //选择收货地址
-   function goods(err,err2){
+    function goods(err,err2){
         var art=arguments[1];
         err.bind('click',function () {
-            console.log('1111');
             var _this=$(this).index();
             $(this).addClass('active').siblings().removeClass('active');
             art?art.eq(_this).addClass('active').siblings().removeClass('active'):null;
         })
 
     }
-
+    //筛选
+    function screenbtn(err,eve){
+        err.eq(3).siblings().click(function () {
+            eve.slideUp(200);
+        })
+            err.eq(3).click(function () {
+                eve.slideToggle(200);
+            })
+    }
+    function screens(err){
+        err.children('dt').bind('click',function () {
+            var _this=$(this).index();
+            $(this).siblings('dd').slideToggle(200);
+            $(this).parent('dl').siblings().children('dd').slideUp(200);
+        })
+    }
+    //banner
     function focusBanner(){
         var $focusBanner=$("#focus-banner"),
             $bannerList=$("#focus-banner-list li"),
@@ -105,7 +128,7 @@ var renderZhao=(function () {
             _index=0,
             _timer="";
 
-        var _height=$(".focus-banner-img").height();
+        var _height=$bannerImg.height();
         $focusBanner.height(_height);
         $bannerImg.height(_height);
 
@@ -174,6 +197,28 @@ var renderZhao=(function () {
             };
         }
     };
+    //定时器
+    function codeTime(){
+        $('.getveri2').html('('+i+')秒后重新获取');
+        console.log(i-=1);
+        $('.zh-prompt').html('')
+        if(i<0){
+            i=3;
+            clearTimeout(time);
+            $('.getveri').css('display','block');
+            $('.getveri2').html('(60)秒后重新获取');
+        }
+    }
+    //定时器
+    $('.getveri').click(function () {
+        var ret=/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+        $('.getveri').css('display','none');
+        ret.test($('.phone').val())?time=setInterval(codeTime,1000):null;
+    })
+    //物流信息显示
+    $('.logins-text-an').click(function () {
+        $(this).next().fadeToggle(200);
+    })
     //导航默认样式
     $(function(){
         if(typeof Hindex==='number'){
@@ -187,9 +232,13 @@ var renderZhao=(function () {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换
             flSwitch($('.sort-text-ul li'));//排序切换
-            courseTime($('.Course-time i'),$('.Course-time span'));//登录状态显示头像
+            courseTime($('.Course-time i'),$('.Course-time q'));//登录状态显示头像
             goods($('.address-list'));
             goods($('.cfmode span'));
+            goods($('.m-sort-ul li'));//筛选
+            screenbtn($('.m-sort-ul li'),$('.m-screenbox'));//筛选
+            screens($('.m-screenbox dl'));//筛选
+            goods($('.m-screenbox dd button'));//筛选
             goods($('.abouts-list li'),$('.abouts-content li'));
             focusBanner();
         }

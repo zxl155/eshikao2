@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>教师招聘</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
      Hindex=2;
@@ -61,7 +61,7 @@
         @foreach($curriculum as $value)
         <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">
             <b>教师资格</b>
-            <h5>{{$value->curriculum_name}}(单科)</h5>
+            <h5>{{$value->curriculum_name}}</h5>
             <div class="Qualified-period">
                 <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
                 <span>{{$value->notice}}</span>
@@ -131,7 +131,7 @@
                                 
                                         html+='<a href="coursedetails?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"(单科)</h5>'
+                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
                                         html+='<div class="Qualified-period">'
                                         html+='<i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>'
                                         html+='<span>'+value.notice+'</span>'

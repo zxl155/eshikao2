@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>课程详情</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css"><script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
      Hindex=1;
 </script>
@@ -29,7 +29,7 @@
             <img src="./img/kctitle.png" alt="">
         </div>
         <div class="details-brief">
-            <h2>{{$value->curriculum_name}}(单科)</h2>
+            <h2>{{$value->curriculum_name}}</h2>
             <p class="Course-time">课程时间：{{$value->start_time}} 有效期{{$value->effective}}天
                 <i><img src="./img/sm.png" alt=""></i>
                 <span>自购买之日起课观看课程旗帜</span>
