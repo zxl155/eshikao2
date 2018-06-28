@@ -31,7 +31,7 @@
                 <div class="am-u-sm-12 am-u-md-3">
                     <form action="listcurr" method="get">
                     <div class="am-input-group am-input-group-sm">
-                        <input type="text" name="search" value="{{$search == null ? '' : $search}}" class="am-form-field">
+                        <input type="text" name="search" value="" class="am-form-field">
                         <span class="am-input-group-btn">
                             <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
                         </span>
@@ -42,69 +42,68 @@
             </div>
             <div class="am-g">
                 <div class="am-u-sm-12">
-                    <form class="am-form">
+                   
                         <table class="am-table am-table-striped am-table-hover table-main">
                             <thead>
                                 
                                 <tr>
                                     <th class="table-id">编号</th>
-                                    <th class="table-title">名称</th>
-                                    <th class="table-type">时间</th>
-                                    <th class="table-title">有效期</th>
-                                    <th class="table-title">公吿</th>
-                                    <th class="table-title">价格</th>
+                                    <th class="table-title">课程图片</th>
+                                    <th class="table-type">课程名称</th>
+                                    <th class="table-title">考试类型</th>
+                                    <th class="table-title">展示类型</th>
                                     <th class="table-title">状态</th>
-                                    <th class="table-title">数量</th>
-                                    <th class="table-title">已购</th>
-                                    <th class="table-title">所属教师</th>
                                     <th class="table-set">操作</th>
                                 </tr>
 
                             </thead>
                             <tbody> 
-                                @foreach($data as $key=>$val)
+                                @foreach($curriculum_content as $value)
                                 <tr>
-                                    <td>{{ $val->curriculum_id }}</td>
-                                    <td>{{ $val->curriculum_name }}</td>
-                                    <td>{{ $val->start_time }}</td>
-                                    <td>{{ $val->effective }}</td>
-                                    <td>{{ $val->notice }}</td>
-                                    <td>{{ $val->money }}</td>
-                                    <td>{{ $val->state ==1?'已开启':'已下线' }}</td>
-                                    <td>{{ $val->stock_number }}</td>
-                                    <td>{{ $val->bought_number }}</td>
-                                    <td>@foreach($admin as $values)
-                                        @if($val->curriculum_id == $values->curriculum_id)
-                                            {{$values->admin_name}}</br>
+                                    <th>{{$value->curriculum_id}}</th>
+                                    <th> 
+                                        <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" width="100px" height="100px" alt="">
+                                    </th>
+                                    <th>{{$value->curriculum_name}}</th>
+                                    <th>
+                                        @if($value->teacher_type == 1)
+                                            <span>教师资格证</span>
+                                        @else
+                                            <span>教师招聘</span>
                                         @endif
-                                    @endforeach</td>
-                                    <td>
-                                        <div class="am-btn-toolbar">
-                                            <div class="am-btn-group am-btn-group-xs">
-                                                <a href="{{ url('admin/updcurr') }}?id={{ $val->curriculum_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改</a>
-                                                <a href="{{ url('admin/delcurr') }}?id={{ $val->curriculum_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    </th>
+                                    <th>课程</th>
+                                    <th>
+                                        @if($value->state == 1)
+                                        <button style="background: green" class="shelf" value="1" curriculum_id = "{{$value->curriculum_id}}">已上架</button>
+                                        @else
+                                        <button style="background: red" class="shelf" value="0" curriculum_id = "{{$value->curriculum_id}}">未上架</button>
+                                        @endif
+                                    </th>
+                                    <th><a href="">课程预览</a>
+                                        <a href="{{URL::asset('admin/listpplive')}}?curriculum_id={{$value->curriculum_id}}">直播课程列表</a>
+                                        <a href="{{URL::asset('admin/updcurr')}}?curriculum_id={{$value->curriculum_id}}">编辑</a>
+                                        <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/delcurr')}}?curriculum_id={{$value->curriculum_id}}" >删除</a>
+                                    </th>
+
                                 </tr>
-                                  @endforeach
-                                
+                                @endforeach
                             </tbody>
                         </table>
                         <div class="am-cf">
                             
                             <div class="am-fr">
                                 <div id="pull_right">
-                                    <span>当前总课程{{ $num == null ? 1 : $num }}条</span>
+                                    <span>当前总课程<span style="color: red">{{$count}}</span>条</span>
                                     <div class="pull-right">
-                                       {!! $data->render() !!}
+                                       {!! $curriculum_content->render() !!}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <hr>
 
-                    </form>
+                   
                 </div>
 
             </div>
@@ -115,8 +114,35 @@
     </div>
 
     </div>
+    
     <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
+    <script>
+        $(".shelf").click(function(){
+            var state = $(this).attr('value');
+            var curriculum_id = $(this).attr('curriculum_id');
+            if(confirm("请确认是否上下架课程！")){
+                $.ajax({
+                    url:"{{URL::asset('admin/shelf')}}",
+                    data:{state:state,curriculum_id:curriculum_id,_token:"{{csrf_token()}}"},
+                    type:'get',
+                    dataType:"json",
+                    success:function(data){
+                        if (data.state == "修改成功") {
+                            var txt=  "课程状态修改成功";
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                            window.location.reload();
+                        } else {
+                            var txt=  "课程状态修改失败";
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+            
+        })
+    </script>
 </body>
 </html>

@@ -14,46 +14,46 @@
                 <div class="tpl-form-body tpl-form-line">
                     <form class="am-form tpl-form-line-form" action="{{ url('admin/dopplive') }}" method="post">
                         {{ csrf_field() }}
-
+                        <input type="hidden" name="curriculum_id" value="{{$curriculum_id}}">
                         <div class="am-form-group">
-                            <label for="user-phone" class="am-u-sm-3 am-form-label">课程 <span class="tpl-form-line-small-title"></span></label>
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">直播课程名称 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <select name="curriculum_id" id="select"  required>
-                                  <option>--请选择--</option>
-                                  @foreach($data as $key => $val)
-                                  <option value="{{ $val['curriculum_id'] }}">{{ $val['curriculum_name'] }}</option>
-                                  @endforeach
+                               <input type="text" name="pplive_name" placeholder="请输入直播课程名称" required>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="recovery_original" class="am-u-sm-3 am-form-label">直播开始时间 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <input placeholder="请输入日期" id='demo'   name="start_time" class="laydate-icon" onClick="laydate({elem: '#demo',istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" required>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="purchase_state_time" class="am-u-sm-3 am-form-label">直播结束时间 <span class="tpl-form-line-small-title"></span></label>
+                             <div class="am-u-sm-9">
+                                <input placeholder="请输入日期" id="purchase_state_time"  name="end_time" class="laydate-icon" onClick="laydate({elem: '#purchase_state_time',istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" required>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">任课教师 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9" id="div">
+                                <select name="admin_id">
+                                    @foreach($admin_teacher as $value)
+                                    <option value="{{$value->admin_id}}">{{$value->admin_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="am-form-group">
-                            <label for="user-phone" class="am-u-sm-3 am-form-label">所属教师 <span class="tpl-form-line-small-title"></span></label>
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">助教教师 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">
-                                
+                                <select name="assistant_admin_id">
+                                    @foreach($admin_teacher as $value)
+                                    <option value="{{$value->admin_id}}">{{$value->admin_name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">名称 <span class="tpl-form-line-small-title"></span></label>
-                            <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="pplive_name" placeholder="请输入公告" required>
-                            </div>
-                        </div>        
-
-                        <div class="am-form-group">
-                            <label for="user-email" class="am-u-sm-3 am-form-label">开始时间 <span class="tpl-form-line-small-title"></span></label>
-                            <div class="am-u-sm-9">
-                                <input placeholder="请输入日期" name="start_time" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label for="user-email" class="am-u-sm-3 am-form-label">结束时间 <span class="tpl-form-line-small-title"></span></label>
-                            <div class="am-u-sm-9">
-                                <input placeholder="请输入日期" name="stop_time" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
-                            </div>
-                        </div>
+                        </div>      
                       
                         <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">

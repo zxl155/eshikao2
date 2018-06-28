@@ -42,6 +42,7 @@
                                 <tr>
                                     <th class="table-id">编号</th>
                                     <th class="table-title">轮播图</th>
+                                    <th class="table-title">对应课程</th>
                                     <th class="table-title">状态</th>
                                     <th class="table-set">操作</th>
                                 </tr>
@@ -51,12 +52,13 @@
                                 @foreach($data as $key=>$val)
                                 <tr>
                                     <td>{{ $val->broadcast_id }}</td>
-                                    <td>{{ $val->broadcast_url }}</td>
+                                    <td><img src="{{URL::asset('/')}}home/img/sowing_msp/{{ $val->broadcast_url }}" width="100px" height="100px"></td>
+                                    <th>{{$val->curriculum_name}}</th>
                                     <td>{{ $val->state ==1?'已使用':'未使用' }}</td>
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <a href="{{ url('admin/updbro') }}?id={{ $val->broadcast_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改</a>
+                                                <a href="{{ url('admin/delbro') }}?broadcast_id={{ $val->broadcast_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="if(confirm('确实要删除数据吗？')) return true;else return false;"><span class="am-icon-pencil-square-o" ></span>删除</a>
                                             </div>
                                         </div>
                                     </td>

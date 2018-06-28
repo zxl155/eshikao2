@@ -44,11 +44,17 @@
                                     <thead>
                                         <tr>
                                             <th class="table-id">ID</th>
-                                            <th class="table-title">姓名</th>
+                                            <th class="table-title">用户名</th>
                                             <th class="table-type">头像</th>
                                             <th class="table-type">昵称</th>
+                                            <th class="table-type">真实名称</th>
                                             <th class="table-type">性别</th>
                                             <th class="table-type">手机号</th>
+                                            <th class="table-type">身份证</th>
+                                            <th class="table-type">银行名称</th>
+                                            <th class="table-type">银行账号</th>
+                                            <th class="table-type">课时费/小时</th>
+                                            <th class="table-type">所属角色</th>
                                             <th class="table-type">注册时间</th>
                                             <th class="table-type">简介</th>
                                             <th class="table-type">是否冻结</th>
@@ -60,18 +66,33 @@
                                         <tr>
                                             <td>{{ $val->admin_id }}</td>
                                             <td>{{ $val->admin_name }}</td>
-                                            <td><img src="{{URL::asset('/')}}/{{ $val->admin_head }}" height="30px"></td>
+                                            <td><img src="{{URL::asset('/')}}home/img/admin_head/{{ $val->admin_head }}" height="30px"></td>
                                             <td>{{ $val->nickname }}</td>
+                                            <td>{{ $val->realname }}</td>
                                             <td>{{ $val->admin_sex ==1?'男':'女'}}</td>
-                                            <td>{{ $val->admin_phone }}</td>
+                                            <td>{{ $val->admin_phone }}</td>c
+                                            <td>{{ $val->identity }}</td>
+                                            <td>{{ $val->bank_name }}</td>
+                                            <td>{{ $val->bank_number }}</td>
+                                            <td>{{ $val->general_edition }}</td>
+                                            <td>{{ $val->role_name}}</td>
                                             <td>{{ $val->register_time }}</td>
-
                                             <td>{{ $val->admin_desc }}</td>
                                             <td>{{ $val->start ==1?'使用中':'已冻结'}}</td>
                                             <td>
+                                                 <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="{{URL::asset('admin/adminUpdate')}}?admin_id={{ $val->admin_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>编辑</a>
+                                                    </div>
+                                                </div>
                                                 <div class="am-btn-toolbar">
                                                     <div class="am-btn-group am-btn-group-xs">
-                                                        <button data-id="{{ $val->admin_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                                                        <a href="{{URL::asset('admin/del')}}?admin_id={{ $val->admin_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="if(confirm('确实要删除数据吗？')) return true;else return false;"><span class="am-icon-trash-o"></span>删除</a>
+                                                    </div>
+                                                </div>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="{{URL::asset('admin/updates')}}?admin_id={{ $val->admin_id }}&start={{ $val->start }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="if(confirm('确实要修改状态吗？')) return true;else return false;">修改状态</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -117,29 +138,4 @@
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
 </body>
-    <script type="text/javascript">
-        $(".am-btn").click(function(){
-            var id = $(this).attr('data-id');
-            $.ajax({
-                url:"{{ url('admin/del') }}",
-                data:{id:id},
-                type:'get',
-                success:function(data){
-                    if(data == 2){
-                        var txt=  "删除失败";
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                        return false;
-                    }else if(data ==3){
-                        var txt=  "不能删除自己";
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                        return false;
-                    }else {
-                        var txt=  "删除成功";
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                        location.href = "{{ url('admin/listadmin') }}";
-                    }
-                }
-            })
-        })
-    </script>
 </html>

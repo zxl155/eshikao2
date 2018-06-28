@@ -17,12 +17,16 @@ class Curriculum extends Model
      * 课程添加
      */
      public function insert($data){
-     	$curriculum_id = DB::table('curriculum')->insertGetId(['curriculum_name'=>$data['curriculum_name'],'type_id'=>$data['type_id'],'teacher_type'=>$data['teacher_type'],'grade_id'=>$data['grade_id'],'subject_id'=>$data['subject_id'],'region_id'=>$data['region_id'],'start_time'=>$data['start_time'],'notice'=>$data['notice'],'money'=>$data['money'],'stock_number'=>$data['stock_number']]);
-        if($curriculum_id){
-        	return $curriculum_id;
-        }else {
-        	return false;
-        }
+        $data['subject_id'] = implode($data['subject_id'],',');
+        $data['grade_id'] = implode($data['grade_id'],',');
+        $data['region_id'] = implode($data['region_id'], ',');
+        $arr = DB::insert('insert into curriculum (curriculum_pricture,curriculum_name,purchase_number,original_price,recovery_original,present_price,purchase_state_time,purchase_end_time,teacher_type,type_id,subject_id,grade_id,admin_id,notice,qq_group_key,publish,region_id,curriculum_content) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$data['curriculum_pricture'],$data['curriculum_name'],$data['purchase_number'],$data['original_price'],$data['recovery_original'],$data['present_price'],$data['purchase_state_time'],$data['purchase_end_time'],$data['teacher_type'],$data['type_id'],$data['subject_id'],$data['grade_id'],$data['admin_id'],$data['notice'],$data['qq_group_key'],$data['publish'],$data['region_id'],$data['curriculum_content']]);
+       if ($arr) {
+           return true;
+       } else {
+          return false;
+       }
+
      }
     /**
      * @李一明
@@ -64,7 +68,10 @@ class Curriculum extends Model
      * 课程修改
      */
     public function upd($data){
-        $arr = DB::table('curriculum')->where('curriculum_id','=',$data['curriculum_id'])->update(['curriculum_name'=>$data['curriculum_name'],'start_time'=>$data['start_time'],'notice'=>$data['notice'],'money'=>$data['money'],'stock_number'=>$data['stock_number']]);
+        $data['subject_id'] = implode($data['subject_id'],',');
+        $data['grade_id'] = implode($data['grade_id'],',');
+        $data['region_id'] = implode($data['region_id'], ',');
+        $arr = DB::table('curriculum')->where('curriculum_id','=',$data['curriculum_id'])->update(['curriculum_name'=>$data['curriculum_name'],'purchase_number'=>$data['purchase_number'],'original_price'=>$data['original_price'],'recovery_original'=>$data['recovery_original'],'present_price'=>$data['present_price'],'purchase_state_time'=>$data['purchase_state_time'],'purchase_end_time'=>$data['purchase_end_time'],'teacher_type'=>$data['teacher_type'],'type_id'=>$data['type_id'],'subject_id'=>$data['subject_id'],'grade_id'=>$data['grade_id'],'region_id'=>$data['region_id'],'admin_id'=>$data['admin_id'],'notice'=>$data['notice'],'qq_group_key'=>$data['qq_group_key'],'publish'=>$data['publish'],'curriculum_content'=>$data['curriculum_content'],'curriculum_pricture'=>$data['curriculum_pricture']]);
         if($arr){
             return true;
         }else{
@@ -72,5 +79,51 @@ class Curriculum extends Model
         }
     }
     
-
+    //查询所有课程进修展示
+    public function select()
+    {
+       $arr = DB::table('curriculum')->orderBy('curriculum_id', 'desc')->paginate(5);
+        return $arr;
+    }
+    //删除课程
+    public function deletes($curriculum_id)
+    {
+        $arr = DB::delete("delete from curriculum where curriculum_id = ?",[$curriculum_id]);
+        return $arr;
+    }
+    //课程上架未上架
+    public function shelf($data)
+    {   $curriculum_id = $data['curriculum_id'];
+        if ($data['state'] == 1) {
+           $arr = DB::update("update curriculum set state = '0' where curriculum_id = $curriculum_id");
+           return $arr;
+        } else {
+           $arr = DB::update("update curriculum set state = '1' where curriculum_id = $curriculum_id");
+           return $arr;
+        }
+    }
+    //查询单条数据通过课程id
+    public function oneSelect($curriculum_id)
+    {
+      $arr = DB::select("select * from curriculum where curriculum_id = $curriculum_id");
+      //学科
+      $subject_id = $arr[0]->subject_id;
+      $subject_id = explode(',',$subject_id);
+      $arr[0]->subject_id = $subject_id;
+      //学段
+      $grade_id = $arr[0]->grade_id;
+      $grade_id = explode(',',$grade_id);
+      $arr[0]->grade_id = $grade_id;
+      //地区
+       $region_id = $arr[0]->region_id;
+      $region_id = explode(',',$region_id);
+      $arr[0]->region_id = $region_id;
+      return $arr;
+    }
+    //查询输有数据
+    public function selects()
+    {
+      $arr = DB::table('curriculum')->get()->toarray(); 
+      return $arr;
+    }
 }

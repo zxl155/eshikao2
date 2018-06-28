@@ -15,15 +15,12 @@
 <div class="Home">
     <div id="focus-banner">
         <ul id="focus-banner-list">
-            <li> <a href="#" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/banner.png')no-repeat;background-position: center;background-size: 1920px 377px">
+            @foreach($broadcast as $va)
+            <li> <a href="#" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}')no-repeat;background-position: center;background-size: 1920px 377px">
             </a>
             </li>
-            <li> <a href="#" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/banner.png')no-repeat;background-position: center;background-size: 1920px 377px">
-            </a>
-            </li>
-            <li><a href="#" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/banner.png')no-repeat;background-position: center;background-size: 1920px 377px">
-            </a>
-            </li>
+            @endforeach
+           
         </ul>
         <a href="javascript:;" id="next-img" class="focus-handle"></a> <a href="javascript:;" id="prev-img" class="focus-handle"></a>
         <ul id="focus-bubble">
@@ -32,9 +29,9 @@
     <!--移动-->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="{{URL::asset('/')}}home/img/banner.png" alt=""></div>
-            <div class="swiper-slide"><img src="{{URL::asset('/')}}home/img/banner.png" alt=""></div>
-            <div class="swiper-slide"><img src="{{URL::asset('/')}}home/img/banner.png" alt=""></div>
+            @foreach($broadcast as $va)
+            <div class="swiper-slide"><img src="{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}" alt=""></div>
+            @endforeach
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -90,12 +87,13 @@
         <h2 class="Qualified-title">
             <span>教师招聘 <a aria-current="false" href="{{URL::asset('home/recruit')}}"> 更多»</a></span>
         </h2>
+       
          <div class="Qualified-content clearfix">
             @foreach($qualification as $value)
            
             <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">
                 <div class="m-Qualified-title">
-                  <b>教师资格  </b>
+                  <b>教师招聘  </b>
                 <h5>{{$value->curriculum_name}}</h5>  
                 </div>
                 

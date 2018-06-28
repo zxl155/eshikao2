@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-
 use App\Admin\Models\Region;
 use App\Admin\Models\Recruitment;
 
@@ -30,15 +29,41 @@ class RecruitmentController extends Controller
      * @DateTime  2018-06-19
      * 执行添加
      */
-	public function dorecr(){
-		$data['recruitment_name'] = Input::get('recruitment_name');
-		$data['region_id'] = Input::get('region_id');
-		$data['content'] = $_POST['content'];
-		$data['add_time'] = date('Y-m-d');
-		$recr = new Recruitment;
-		$res = $recr->insert($data);
-		if($res){
-			return redirect('admin/listrecr');
+	public function dorecr(Request $request){
+		$data = Input::all();
+		
+		     if($request->isMethod('POST')){
+//            var_dump($_FILES);
+            $file = $request->file('recruitment_file');
+ 
+            //判断文件是否上传成功
+            
+                //获取原文件名
+                $originalName = $file->getClientOriginalName();
+                //扩展名
+                $ext = $file->getClientOriginalExtension();
+                //文件类型
+                $type = $file->getClientMimeType();
+                //临时绝对路径
+                $realPath = $file->getRealPath();
+ 
+                $filename = date('Y-m-d-H-i-S').'-'.uniqid().'-'.$ext;
+ 
+                $bool = Storage::disk('recruitment')->put($originalName, file_get_contents($realPath));
+ 
+           
+			$data['recruitment_name'] = Input::get('recruitment_name');
+			$data['region_id'] = Input::get('region_id');
+			$data['content'] = $_POST['content'];
+			$data['add_time'] = date('Y-m-d');
+			$data['recruitment_file'] = "$originalName";
+			$recr = new Recruitment;
+			$res = $recr->insert($data);
+			if($res){
+				return redirect('admin/listrecr');
+			} else {
+				 echo "添加失败";
+			}
 		}
 	}
 

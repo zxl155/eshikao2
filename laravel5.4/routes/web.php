@@ -16,72 +16,80 @@
 //后台
 Route::group(['namespace' => 'Admin'], function(){
   Route::group(['middleware' => 'check.login'], function() {
-    Route::group(['middleware' => 'rbac'], function() {
-      //后台首页
-      Route::get('admin/index','IndexController@index');
-      //个人中心
-      Route::get('admin/personal','IndexController@personal');
-      //修改资料
-      Route::get('admin/upd','IndexController@upd');
-      //执行修改资料
-      Route::post('admin/upds','IndexController@upds');
-      //修改密码
-      Route::get('admin/pwd','IndexController@pwd');
-      //执行修改密码
-      Route::get('admin/pwds','IndexController@pwds');
-      //课程添加
-      Route::get('admin/addcurr','CurriculumController@addcurr');
-      //执行添加
-      Route::post('admin/docurr','CurriculumController@docurr');
-      //课程列表
-      Route::get('admin/listcurr','CurriculumController@listcurr');
-      //课程修改
-      Route::get('admin/updcurr','CurriculumController@updcurr');
-      //执行修改
-      Route::post('admin/doupd','CurriculumController@doupd');
-      //课程删除
-      Route::get('admin/delcurr','CurriculumController@delcurr');
-      //管理员添加
-      Route::get('admin/addadmin','AdminController@addadmin');
-      //执行添加
-      Route::post('admin/doadmin','AdminController@doadmin');
-      //管理员列表
-      Route::get('admin/listadmin','AdminController@listadmin');
-      //管理员删除
-      Route::get('admin/del','AdminController@del');
-      //直播课程
-      Route::get('admin/listpplive','PpliveController@listpplive');
-      //添加直播
-      Route::get('admin/addpplive','PpliveController@addpplive');
-      //执行添加直播
-      Route::post('admin/dopplive','PpliveController@dopplive');
-      //所属教师
-      Route::get('admin/selects','PpliveController@selects');
-      //删除直播
-      Route::get('admin/delpplive','PpliveController@delpplive');
-      //招聘公告
-      Route::get('admin/addrecr','RecruitmentController@addrecr');
-      //执行添加
-      Route::post('admin/dorecr','RecruitmentController@dorecr');
-      //公告列表
-      Route::get('admin/listrecr','RecruitmentController@listrecr');
-      //修改
-      Route::get('admin/updrecr','RecruitmentController@updrecr');
-      //执行修改
-      Route::post('admin/updsrecr','RecruitmentController@updsrecr');
-      //删除公告
-      Route::get('admin/delrecr','RecruitmentController@delrecr');
-      //添加轮播图
-      Route::get('admin/addbro','BroadcastController@addbro');
-      //执行添加
-      Route::post('admin/dobro','BroadcastController@dobro');
-      //轮播图列表
-      Route::get('admin/listbro','BroadcastController@listbro');
-      //修改状态
-      Route::get('admin/updbro','BroadcastController@updbro');
-      //执行
-      Route::post('admin/updsbro','BroadcastController@updsbro');
-    });
+    //后台首页
+    Route::get('admin/index','IndexController@index');
+    //个人中心
+    Route::get('admin/personal','IndexController@personal');
+    //修改资料
+    Route::get('admin/upd','IndexController@upd');
+    //执行修改资料
+    Route::post('admin/upds','IndexController@upds');
+    //修改密码
+    Route::get('admin/pwd','IndexController@pwd');
+    //执行修改密码
+    Route::get('admin/pwds','IndexController@pwds');
+    //课程添加
+    Route::get('admin/addcurr','CurriculumController@addcurr');
+    //执行添加
+    Route::post('admin/docurr','CurriculumController@docurr');
+    //课程列表
+    Route::get('admin/listcurr','CurriculumController@listcurr');
+    //课程修改
+    Route::get('admin/updcurr','CurriculumController@updcurr');
+    //执行修改
+    Route::post('admin/doupd','CurriculumController@doupd');
+    //课程上架未上架
+    Route::get('admin/shelf','CurriculumController@shelf');
+    //课程删除
+    Route::get('admin/delcurr','CurriculumController@delcurr');
+    //管理员添加
+    Route::get('admin/addadmin','AdminController@addadmin');
+    //执行添加
+    Route::post('admin/doadmin','AdminController@doadmin');
+    //管理员列表
+    Route::get('admin/listadmin','AdminController@listadmin');
+    //管理员删除
+    Route::get('admin/del','AdminController@del');
+    //管理员修改状态
+    Route::get('admin/updates','AdminController@updates');
+    //修改管理员资料
+    Route::get('admin/adminUpdate','AdminController@adminUpdate');
+    //执行修改管理员资料
+    Route::post('admin/adminUpdates','AdminController@adminUpdates');
+    //直播课程
+    Route::get('admin/listpplive','PpliveController@listpplive');
+    //添加直播
+    Route::get('admin/addpplive','PpliveController@addpplive');
+    //执行添加直播
+    Route::post('admin/dopplive','PpliveController@dopplive');
+    //删除直播
+    Route::get('admin/delpplive','PpliveController@delpplive');
+    //修改直播课程
+    Route::get('admin/updpplive','PpliveController@updpplive');
+    //执行修改直播课程
+    Route::post('admin/updspplive','PpliveController@updspplive');
+    //招聘公告
+    Route::get('admin/addrecr','RecruitmentController@addrecr');
+    //执行添加
+    Route::post('admin/dorecr','RecruitmentController@dorecr');
+    //公告列表
+    Route::get('admin/listrecr','RecruitmentController@listrecr');
+    //修改
+    Route::get('admin/updrecr','RecruitmentController@updrecr');
+    //执行修改
+    Route::post('admin/updsrecr','RecruitmentController@updsrecr');
+    //删除公告
+    Route::get('admin/delrecr','RecruitmentController@delrecr');
+    //添加轮播图
+    Route::get('admin/addbro','BroadcastController@addbro');
+    //执行添加
+    Route::post('admin/dobro','BroadcastController@dobro');
+    //轮播图列表
+    Route::get('admin/listbro','BroadcastController@listbro');
+    //轮播图删除
+    Route::get('admin/delbro','BroadcastController@delbro');
+    //执行
+    Route::post('admin/updsbro','BroadcastController@updsbro');
   });
   //登录
   Route::get('admin/login','LoginController@login');
@@ -161,4 +169,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/orderAdd','CommodityController@orderAdd');
    //支付提交
   Route::get('home/CommodityPay','CommodityController@CommodityPay');
+   //支付 支付宝生成二维码
+  Route::post('home/alipayapi','PayController@index');
+  //支付 异步
+  Route::post('home/asynchronous','PayController@asynchronous');
+   //支付成功回调页面
+  Route::post('home/apiSuccess','PayController@apiSuccess');
 });
