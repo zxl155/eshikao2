@@ -19,7 +19,8 @@ class IndexController extends Controller
      * @DateTime  2018-06-12
      * 后台首页
      */
-	public function index(){
+	public function index(Request $request){
+        
 		return view('admin/index/index');
 	}
 
