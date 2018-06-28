@@ -10,34 +10,6 @@ class Pplive extends Model
     protected $table = 'pplive';  //表名
     public $timestamps = false;  //过滤默认的字段
 
-    /**
-     * @李一明
-     * @DateTime  2018-06-15
-     * 获取星期方法
-     */
-    function get_week($date){
-	    //强制转换日期格式
-	    $date_str=date('Y-m-d',strtotime($date));
-	    //封装成数组
-	    $arr=explode("-", $date_str);
-	    //参数赋值
-	    //年
-	    $year=$arr[0];
-	    //月，输出2位整型，不够2位右对齐
-	    $month=sprintf('%02d',$arr[1]);
-	    //日，输出2位整型，不够2位右对齐
-	    $day=sprintf('%02d',$arr[2]);
-	    //时分秒默认赋值为0；
-	    $hour = $minute = $second = 0;
-	    //转换成时间戳
-	    $strap = mktime($hour,$minute,$second,$month,$day,$year);
-	    //获取数字型星期几
-	    $number_wk=date("w",$strap);
-	    //自定义星期数组
-	    $weekArr=array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
-	    //获取数字对应的星期
-	    return $weekArr[$number_wk];
-	}
 
 	/**
      * @李一明
@@ -45,9 +17,9 @@ class Pplive extends Model
      * 添加入库
      */
 	public function insert($data){
-		$pplive_id = DB::table('pplive')->insertGetId(['pplive_name'=>$data['pplive_name'],'times'=>$data['start_time'],'stop_time'=>$data['stop_time'],'curriculum_id'=>$data['curriculum_id']]);
-        if($pplive_id){
-        	return $pplive_id;
+		$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id']]);
+        if($res){
+        	return true;
         }else {
         	return false;
         }
@@ -58,15 +30,41 @@ class Pplive extends Model
      * @DateTime  2018-06-15
      * 查询所属课程
      */
-	public function show($data){
-		$curriculum =  DB::select('select * from curriculum');
-		foreach ($data as $key => $value) {
-			foreach ($curriculum as $keys => $values) {
-				if ($value->curriculum_id == $values->curriculum_id) {
-					$value->curriculum_name = $values->curriculum_name;
+	public function select($curriculum_id){
+		$arr = DB::table('pplive')->where('curriculum_id',$curriculum_id)->get()->toarray();
+		$data = DB::table('admin')->get()->toarray();
+		foreach ($arr as $key => $value) {
+			foreach ($data as $keys => $values) {
+				if ($value->admin_id == $values->admin_id) {
+					$value->admin_name = $values->admin_name;
 				}
 			}
 		}
-		return $data;
+		foreach ($arr as $key => $value) {
+			foreach ($data as $keys => $values) {
+				if ($value->assistant_admin_id == $values->admin_id) {
+					$value->assistant_admin_name = $values->admin_name;
+				}
+			}
+		}
+		return $arr;
+	}
+	//删除直播课程
+	public function deletes($pplive_id)
+	{
+		$arr = DB::table('pplive')->where('pplive_id', '=', $pplive_id)->delete();
+		return $arr;
+	}
+	//查询单条直播课程
+	public function oneSelect($pplive_id)
+	{
+		$arr = DB::table('pplive')->where('pplive_id',$pplive_id)->get()->toarray();
+		return $arr;
+	}
+	//修改
+	public function updspplive($data)
+	{
+		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id']]);
+		return $res;
 	}
 }

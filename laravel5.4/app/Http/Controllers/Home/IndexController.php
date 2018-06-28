@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Admin;
 use App\Home\Models\Curriculum;
+use App\Home\Models\Broadcast;
 
 class IndexController extends Controller
 {
@@ -25,11 +26,14 @@ class IndexController extends Controller
 		$qualifications = $curriculum->qualifications();
 		$teacher = $curriculum->teachera(); //获取教师与课程的管理数据
 		$admin = $curriculum->admina($admin,$teacher);
-		//
+
 		$qualification = $curriculum->qualification();
 		$teachers = $curriculum->teachers(); //获取教师与课程的管理数据
 		$admins = $curriculum->admins($admin,$teachers);
-		return view('home/index/index',['qualifications' => $qualifications,'admin' => $admin,'qualification' => $qualification,'admins' => $admins]);
+		//轮播图
+		$broadcast = new Broadcast;
+		$bro_data = $broadcast->index();
+		return view('home/index/index',['qualifications' => $qualifications,'admin' => $admin,'qualification' => $qualification,'admins' => $admins,'broadcast'=>$bro_data]);
 
 	}
 }

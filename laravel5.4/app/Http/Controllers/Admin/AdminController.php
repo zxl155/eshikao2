@@ -10,6 +10,7 @@ use App\Admin\Models\Admin;
 use App\Admin\Models\AdminRole;
 use App\Admin\Models\AdminCurriculum;
 use App\Admin\Models\AdminPplive;
+use App\Admin\Models\Role;
 use DB;
 
 class AdminController extends Controller
@@ -20,7 +21,12 @@ class AdminController extends Controller
      * 管理员添加
      */
 	public function addadmin(){
-		return view('admin/admin/addadmin');
+		//查询角色
+		$role = new Role;
+		$role_content = $role->select();
+		return view('admin/admin/addadmin',[
+			'role_content'=>$role_content,
+		]);
 	}
 
 	/**
@@ -29,17 +35,21 @@ class AdminController extends Controller
      * 执行添加
      */
 	public function doadmin(Request $request){
-		$directory = 'public/uploads/'.date("Y-m-d");
-		$res = Storage::makeDirectory($directory);
-		$path = $request->file('admin_head')->store($directory);
-		$path = str_replace('public','storage', $path);
-		$data = Input::get();
-		$data['admin_head'] = $path;
-		$data['register_time'] = date("Y-m-d H:i:s");
+		$data = Input::all();
+		$head_pirctur=$request->file('admin_head');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  $bool=Storage::disk('articles')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+		$data['admin_head'] = $fileName;
 		$admin = new Admin;
-		$res = $admin->insert($data);
-		if($res){
+		$arr = $admin->insert($data);
+
+		if ($arr) {
 			return redirect('admin/listadmin');
+		} else {
+			echo "添加管理员失败";
 		}
 	}
 	/**
@@ -49,11 +59,19 @@ class AdminController extends Controller
      */
 	public function listadmin(){
 		$admin = new Admin;
-		$data = $admin->select()->paginate(3);
+		$data = $admin->select()->orderBy('admin_id', 'desc')->paginate(5);
 		foreach ($data as $key => $val) {
 			$val['admin_desc'] = substr_replace($val['admin_desc'],'....', 30);
 		}
-		
+		$adminrole = new AdminRole;
+		$role = $adminrole->select();
+		foreach ($data as $key => $value) {
+			foreach ($role as $k => $val) {
+				if ($value->admin_id==$val->admin_id) {
+					$value->role_name = $val->role_name;
+				}
+			}
+		}
 		return view('admin/admin/listadmin',[
 			'data' => $data
 		]);
@@ -65,25 +83,69 @@ class AdminController extends Controller
      * 删除
      */
 	public function del(){
-		$id = Input::get('id');
+		$admin_id = Input::get('admin_id');
 		$admin = new Admin;
+		$res = $admin->del($admin_id);
+		if ($res) {
+			return redirect('admin/listadmin');
+		} else {
+			echo "删除失败";
+		}
+	}
+	//修改admin状态
+	public function updates()
+	{
+		$admin_id = Input::get('admin_id');
+		$start = Input::get('start');
+		$admin = new Admin;
+		$res = $admin -> updates($admin_id,$start);
+		if($res) {
+			return redirect('admin/listadmin');
+		} else {
+			echo "修改管理员状态失败";
+		}
+	}
+
+	//管理员修改用户资料
+	public function adminUpdate()
+	{
+		$admin_id = Input::get('admin_id');
+		$admin = new Admin;
+		$data = $admin->adminUpdate($admin_id);
 		$adminrole = new AdminRole;
-		$admincurr = new AdminCurriculum;
-		$adminpplive = new AdminPplive;
-		$aid = $admincurr->where(['admin_id'=>$id])->pluck('id')->toArray();
-		$aid = implode($aid,',');
-		if($id == 1){
-			return 3;
-		}else{
-			$res = $admin->where(['admin_id'=>$id])->delete();
-			if($res){
-				$adminrole->where(['admin_id'=>$id])->delete();
-				$adminpplive->where(['admin_id'=>$id])->delete();
-				DB::delete("delete from admin_curriculum where id in ($aid)");
-			}else {
-				return 2;
+		$role = $adminrole->select();
+		foreach ($data as $key => $value) {
+			foreach ($role as $k => $val) {
+				if ($value->admin_id==$val->admin_id) {
+					$value->role_name = $val->role_name;
+				}
 			}
 		}
-		
+		//查询角色
+		$role = new Role;
+		$role_content = $role->select();
+		return view('admin/admin/adminUpdate',[
+			'data'=>$data,
+			'role_content'=>$role_content,
+		]);
+	}
+	//执行修改管理员资料
+	public function adminUpdates(Request $request)
+	{
+		$data = Input::all();
+		$head_pirctur=$request->file('admin_head');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  $bool=Storage::disk('articles')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+		$data['admin_head'] = $fileName;
+		$admin = new Admin;
+		$arr = $admin->adminUpdates($data);
+		if ($arr) {
+			return redirect('admin/listadmin');
+		} else {
+			echo "修改失败";
+		}
 	}
 }

@@ -18,7 +18,7 @@
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">状态 <span class="tpl-form-line-small-title"></span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="text" class="tpl-form-input" name="state" value="{{ $data->state }}" required>
+                                        <input type="text" class="tpl-form-input" name="state"  value="{{ $data->state }}" required>(1代表使用0代表未使用)
                                     </div>
                                 </div>
 

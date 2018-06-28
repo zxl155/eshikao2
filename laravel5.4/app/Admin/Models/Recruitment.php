@@ -16,8 +16,8 @@ class Recruitment extends Model
      * 公告添加
      */
     public function insert($data){
-    	$arr = DB::insert('insert into recruitment (recruitment_name,add_time,region_id,content) values (?, ?, ? ,?)',
-        [$data['recruitment_name'],$data['add_time'],$data['region_id'],$data['content']]);
+    	$arr = DB::insert('insert into recruitment (recruitment_name,add_time,region_id,content,recruitment_file) values (?, ?, ? ,?,?)',
+        [$data['recruitment_name'],$data['add_time'],$data['region_id'],$data['content'],$data['recruitment_file']]);
         if($arr){
         	return true;
         }else {

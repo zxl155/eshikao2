@@ -38,6 +38,8 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/updcurr','CurriculumController@updcurr');
     //执行修改
     Route::post('admin/doupd','CurriculumController@doupd');
+    //课程上架未上架
+    Route::get('admin/shelf','CurriculumController@shelf');
     //课程删除
     Route::get('admin/delcurr','CurriculumController@delcurr');
     //管理员添加
@@ -48,16 +50,24 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/listadmin','AdminController@listadmin');
     //管理员删除
     Route::get('admin/del','AdminController@del');
+    //管理员修改状态
+    Route::get('admin/updates','AdminController@updates');
+    //修改管理员资料
+    Route::get('admin/adminUpdate','AdminController@adminUpdate');
+    //执行修改管理员资料
+    Route::post('admin/adminUpdates','AdminController@adminUpdates');
     //直播课程
     Route::get('admin/listpplive','PpliveController@listpplive');
     //添加直播
     Route::get('admin/addpplive','PpliveController@addpplive');
     //执行添加直播
     Route::post('admin/dopplive','PpliveController@dopplive');
-    //所属教师
-    Route::get('admin/selects','PpliveController@selects');
     //删除直播
     Route::get('admin/delpplive','PpliveController@delpplive');
+    //修改直播课程
+    Route::get('admin/updpplive','PpliveController@updpplive');
+    //执行修改直播课程
+    Route::post('admin/updspplive','PpliveController@updspplive');
     //招聘公告
     Route::get('admin/addrecr','RecruitmentController@addrecr');
     //执行添加
@@ -76,8 +86,8 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::post('admin/dobro','BroadcastController@dobro');
     //轮播图列表
     Route::get('admin/listbro','BroadcastController@listbro');
-    //修改状态
-    Route::get('admin/updbro','BroadcastController@updbro');
+    //轮播图删除
+    Route::get('admin/delbro','BroadcastController@delbro');
     //执行
     Route::post('admin/updsbro','BroadcastController@updsbro');
   });
@@ -159,4 +169,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/orderAdd','CommodityController@orderAdd');
    //支付提交
   Route::get('home/CommodityPay','CommodityController@CommodityPay');
+   //支付 支付宝生成二维码
+  Route::post('home/alipayapi','PayController@index');
+  //支付 异步
+  Route::post('home/asynchronous','PayController@asynchronous');
+   //支付成功回调页面
+  Route::post('home/apiSuccess','PayController@apiSuccess');
 });

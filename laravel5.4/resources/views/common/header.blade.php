@@ -128,7 +128,8 @@
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
                         <span class="tpl-header-list-user-nick">Hello! {{ Session('data')['nickname'] }}</span><span class="tpl-header-list-user-ico">
                             @if(Session('data')['admin_head'])
-                            <img src="{{URL::asset('/')}}/{{ Session('data')['admin_head'] }}"> 
+                           <!--  <img src="{{URL::asset('/')}}/{{ Session('data')['admin_head'] }}">  -->
+                             <img src="{{URL::asset('/')}}home/img/admin_head/{{ Session('data')['admin_head'] }}" alt="">
                             @else
                             <img src="{{URL::asset('/')}}home/img/touxiang.png"> 
                             @endif
@@ -201,16 +202,16 @@
                     <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-table"></i>
-                            <span>直播课程</span>
+                            <span>课程管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="{{ url('admin/listpplive') }}">
+                               <!--  <a href="{{ url('admin/listpplive') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>直播课程</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
+                                </a> -->
                                 <a href="{{ url('admin/listcurr') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>课程管理</span>
