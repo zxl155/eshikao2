@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Admin\Models\Region;
 use App\Admin\Models\Recruitment;
 
-class RecruitmentController extends Controller
+class RecruitmentController extends CommonController
 {
 	/**
      * @李一明
@@ -35,7 +35,7 @@ class RecruitmentController extends Controller
 		     if($request->isMethod('POST')){
 //            var_dump($_FILES);
             $file = $request->file('recruitment_file');
- 
+ 	
             //判断文件是否上传成功
             
                 //获取原文件名
@@ -92,12 +92,14 @@ class RecruitmentController extends Controller
      * 公告修改
      */
 	public function updrecr(){
-		$recr = new Recruitment;
+		$recruitment_id = Input::get('id');
 		$region = new Region;
-		$id = Input::get('id');
-		$data = $recr->where(['recruitment_id'=>$id])->first();
+		$region = $region->where(['parent_id'=>0])->get();
+		$recruitment = new Recruitment;
+		$recruitment_content = $recruitment->selects($recruitment_id);
 		return view('admin/recruitment/updrecr',[
-			'data' =>$data
+			'region' =>$region,
+			'recruitment_content'=>$recruitment_content,
 		]);
 	}
 
@@ -106,14 +108,37 @@ class RecruitmentController extends Controller
      * @DateTime  2018-06-19
      * 执行修改
      */
-	public function updsrecr(){
-		$data['recruitment_name'] = Input::get('recruitment_name');
-		$data['recruitment_id'] = Input::get('recruitment_id');
-		$data['content'] = $_POST['content'];
-		$recr = new Recruitment;
-		$data = $recr->upd($data);
-		if($data){
-			return redirect('admin/listrecr');
+	public function updsrecr(Request $request){
+		if($request->isMethod('POST')){
+//            var_dump($_FILES);
+            $file = $request->file('recruitment_file');
+ 	
+            //判断文件是否上传成功
+            
+                //获取原文件名
+                $originalName = $file->getClientOriginalName();
+                //扩展名
+                $ext = $file->getClientOriginalExtension();
+                //文件类型
+                $type = $file->getClientMimeType();
+                //临时绝对路径
+                $realPath = $file->getRealPath();
+ 
+                $filename = date('Y-m-d-H-i-S').'-'.uniqid().'-'.$ext;
+ 
+                $bool = Storage::disk('recruitment')->put($originalName, file_get_contents($realPath));
+			$data['recruitment_name'] = Input::get('recruitment_name');
+			$data['recruitment_id'] = Input::get('recruitment_id');
+			$data['content'] = $_POST['content'];
+			$data['region_id'] = Input::get('region_id');
+			$data['recruitment_file'] = $originalName;
+			$recr = new Recruitment;
+			$data = $recr->upd($data);
+			if($data){
+				return redirect('admin/listrecr');
+			} else {
+				echo "修改失败";
+			}
 		}
 	}
 

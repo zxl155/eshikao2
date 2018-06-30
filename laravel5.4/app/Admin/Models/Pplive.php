@@ -67,4 +67,35 @@ class Pplive extends Model
 		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id']]);
 		return $res;
 	}
+	//查询admin_id 对应的直播
+	public function admin_pplive($admin_id)
+	{
+		//$users = DB::table('pplive')->whereBetween(DA, array(1, 100))->get();
+		$pplive = DB::table('pplive')->orderBy('start_time', 'asc')->where('admin_id',$admin_id)->get()->toarray();
+		$pplives = DB::table('pplive')->where('assistant_admin_id',$admin_id)->get()->toarray();
+		$pplive = array_merge($pplives,$pplive);
+		//print_r($pplive);die;
+		$curriculum = DB::table('curriculum')->get()->toarray();
+		$admin = DB::table('admin')->get()->toarray();
+		foreach ($pplive as $key => $val) {
+			foreach ($admin as $keys => $value) {
+				if($val->admin_id == $value->admin_id){
+					$val->admin_name = $value->admin_name;
+				}
+				if($val->assistant_admin_id == $value->admin_id){
+					$val->assistant_admin_name = $value->admin_name;
+				} 
+				$val->admins_id = $admin_id;
+				$val->date_time = date('Y-m-d H:i:s');
+			}
+		}
+		foreach ($pplive as $key => $val) {
+			foreach ($curriculum as $keys => $value) {
+				if ($val->curriculum_id==$value->curriculum_id) {
+					$val->curriculum_name = $value->curriculum_name;
+				}
+			}
+		}
+		return $pplive;
+	}
 }

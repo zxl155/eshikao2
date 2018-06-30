@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Admin\Models\Broadcast;
 use App\Admin\Models\Curriculum;
 
-class BroadcastController extends Controller
+class BroadcastController extends CommonController
 {	
 
 	/**

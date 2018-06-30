@@ -17,7 +17,7 @@ use App\Admin\Models\Curriculum;
 use App\Admin\Models\AdminCurriculum;
 use DB;
 
-class CurriculumController extends Controller
+class CurriculumController extends CommonController
 {
 	/**
      * @李一明

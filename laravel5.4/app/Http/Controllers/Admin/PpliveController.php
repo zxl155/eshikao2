@@ -15,7 +15,7 @@ use App\Admin\Models\AdminCurriculum;
 use App\Admin\Models\AdminPplive;
 use DB;
 
-class PpliveController extends Controller
+class PpliveController extends CommonController
 {
 	/**
      * @李一明
