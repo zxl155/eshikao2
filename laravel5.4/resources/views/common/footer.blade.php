@@ -18,11 +18,11 @@
 <!--移动-->
 <div class="m-Bottom">
     <nav class="m-Nav">
-        <a href="" class="active">
+        <a href="{{URL::asset('/')}}" class="active">
             <i class="iconfont icon-shouye"></i>
             <span>首页</span>
         </a>
-        <a href="">
+        <a href="{{URL::asset('home/qualifications')}}">
             <i class="iconfont icon-zhengshu-copy"></i>
             <span>教师资格证</span>
         </a>

@@ -15,7 +15,7 @@
 <div class="Home">
     <div id="focus-banner">
         <ul id="focus-banner-list">
-            @foreach($broadcast as $va)
+            @foreach($broadcast_content as $va)
             <li> <a href="#" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}')no-repeat;background-position: center;background-size: 1920px 377px">
             </a>
             </li>
@@ -29,7 +29,7 @@
     <!--移动-->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            @foreach($broadcast as $va)
+            @foreach($broadcast_content as $va)
             <div class="swiper-slide"><img src="{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}" alt=""></div>
             @endforeach
         </div>
@@ -51,77 +51,76 @@
     <div class="Qualified"><h2 class="Qualified-title"><span>教师资格 <a aria-current="false" href="{{URL::asset('home/qualifications')}}"> 更多»</a></span>
     </h2>
         <div class="Qualified-content clearfix">
-            @foreach($qualifications as $value)
-           
-            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">
+            
+           @foreach($qualifications as $val)
+            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="m-Qualified-title">
                    <b>教师资格  </b>
-                <h5>{{$value->curriculum_name}}</h5> 
+                <h5>{{$val->curriculum_name}}</h5> 
                 </div>
-                <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">
+                <div class="Qualified-period" curriculum_id = "{{$val->curriculum_id}}">
                     <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>{{$value->notice}}</span>
+                    <span>{{$val->notice}}</span>
                  </div>
                 <ul class="Qualified-teacher">
-                     @foreach($admin as $values)
-                      @if($value->curriculum_id==$values->curriculum_id)
+                    
                     <li>
-                        <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
-                        <span>
-                           
-                                {{$values->admin_name}}
-                            
-                        </span>
+                        <img src="{{URL::asset('/')}}home/img/admin_head/{{$val->admin_head}}" alt="">
+                        <span>{{$val->admin_name}}</span>
                     </li>
-                    @endif
-                     @endforeach
+                   
                 </ul>
                 <div class="Qualified-price">
-                    <span>{{$value->bought_number}}人购买</span>
-                    <h2>￥<span>{{$value->money}}</span></h2>
+                    <span>{{$val->bought_number}}人购买</span>
+                    <h2>￥<span>
+                         @if($val->recovery_original_is == 1)
+                          {{$val->original_price}}
+                        @else
+                        {{$val->present_price}}
+                        @endif
+                    </span></h2>
                 </div>
             </a>
              
-            @endforeach
+          @endforeach  
         </div>
         <h2 class="Qualified-title">
             <span>教师招聘 <a aria-current="false" href="{{URL::asset('home/recruit')}}"> 更多»</a></span>
         </h2>
        
          <div class="Qualified-content clearfix">
-            @foreach($qualification as $value)
-           
-            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">
+            
+           @foreach($recruit as $val)
+            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="m-Qualified-title">
-                  <b>教师招聘  </b>
-                <h5>{{$value->curriculum_name}}</h5>  
+                   <b>教师招聘  </b>
+                <h5>{{$val->curriculum_name}}</h5> 
                 </div>
-                
-                <div class="Qualified-period" curriculum_id = "{{$value->curriculum_id}}">
+                <div class="Qualified-period" curriculum_id = "{{$val->curriculum_id}}">
                     <i><img src="{{URL::asset('/')}}home/img/jifen.png" alt=""></i>
-                    <span>{{$value->notice}}</span>
+                    <span>{{$val->notice}}</span>
                  </div>
                 <ul class="Qualified-teacher">
-                     @foreach($admins as $values)
-                       @if($value->curriculum_id==$values->curriculum_id)
+                    
                     <li>
-                        <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
-                        <span>
-                          
-                                {{$values->admin_name}}
-                            
-                        </span>
+                        <img src="{{URL::asset('/')}}home/img/admin_head/{{$val->admin_head}}" alt="">
+                        <span>{{$val->admin_name}}</span>
                     </li>
-                    @endif
-                     @endforeach
+                   
                 </ul>
                 <div class="Qualified-price">
-                    <span>{{$value->bought_number}}人购买</span>
-                    <h2>￥<span>{{$value->money}}</span></h2>
+                    <span>{{$val->bought_number}}人购买</span>
+                    <h2>￥<span>
+                         @if($val->recovery_original_is == 1)
+                          {{$val->original_price}}
+                        @else
+                        {{$val->present_price}}
+                        @endif
+                    </span></h2>
                 </div>
             </a>
              
-            @endforeach
+          @endforeach  
         </div>
     </div>
     <div class="home-advert">
