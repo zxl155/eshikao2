@@ -8,22 +8,81 @@ use DB;
 class Curriculum extends Model
 {
    /**
-    * 查询教师资格课程
+    * 首页查询教师资格课程
     */
     public function qualifications()
     {
-    	$sql = "select * from curriculum where teacher_type = 1 and state = 1 order by bought_number desc  LIMIT 8";
+        $times = date('Y-m-d H:i:s');
+    	$sql = "select * from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by bought_number desc  LIMIT 8";
     	$qualifications = DB::select($sql);
+        $admin = DB::table('admin')->get();
+        foreach ($qualifications as $key => $value) {
+            foreach ($admin as $key => $val) {
+                if($value->admin_id == $val->admin_id){
+                    $value->admin_name = $val->admin_name;
+                    $value->admin_head = $val->admin_head;
+                }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+            }
+        }
+        //print_r($qualifications);die;
     	return $qualifications;
     }
     /**
-    * 查询教师招聘课程
+    * 首页查询教师招聘课程
     */
-    public function qualification()
+    public function recruit()
     {
-    	$sql = "select * from curriculum where teacher_type = 2 and state = 1 order by bought_number desc  LIMIT 8";
-    	$qualification = DB::select($sql);
-    	return $qualification;
+    	$times = date('Y-m-d H:i:s');
+        $sql = "select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by bought_number desc  LIMIT 8";
+        $recruit = DB::select($sql);
+        $admin = DB::table('admin')->get();
+        foreach ($recruit as $key => $value) {
+            foreach ($admin as $key => $val) {
+                if($value->admin_id == $val->admin_id){
+                    $value->admin_name = $val->admin_name;
+                    $value->admin_head = $val->admin_head;
+                }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+            }
+        }
+    	return $recruit;
+    }
+    /**
+     * 查询教师资格课程
+     */
+    public function qualificationss()
+    {
+        $times = date('Y-m-d H:i:s');
+       $curriculum = DB::table('curriculum');
+       $curriculum->where('teacher_type','=',1);
+       $curriculum->where('state','=',1);
+       $curriculum->where('purchase_state_time','<=',$times);
+       $curriculum->where('purchase_end_time','>=',$times);
+       $qualificationss = $curriculum->paginate(5);
+        $admin = DB::table('admin')->get();
+        foreach ($qualificationss as $key => $value) {
+            foreach ($admin as $key => $val) {
+                if($value->admin_id == $val->admin_id){
+                    $value->admin_name = $val->admin_name;
+                    $value->admin_head = $val->admin_head;
+                }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+            }
+        }
+        return $qualificationss;
     }
     /**
      * 查询课程对应的教师
