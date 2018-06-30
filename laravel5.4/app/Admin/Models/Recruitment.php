@@ -31,11 +31,17 @@ class Recruitment extends Model
      * 公告修改
      */
     public function upd($data){
-        $arr = DB::table('recruitment')->where('recruitment_id','=',$data['recruitment_id'])->update(['recruitment_name'=>$data['recruitment_name'],'content'=>$data['content']]);
+        $arr = DB::table('recruitment')->where('recruitment_id','=',$data['recruitment_id'])->update(['recruitment_name'=>$data['recruitment_name'],'content'=>$data['content'],'recruitment_file'=>$data['recruitment_file'],'region_id'=>$data['region_id']]);
         if($arr){
             return true;
         }else{
             return false;
         }
+    }
+
+    public function selects($recruitment_id)
+    {   
+        $res = DB::table('recruitment')->where('recruitment_id',$recruitment_id)->get()->toarray();
+        return $res;
     }
 }

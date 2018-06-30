@@ -13,7 +13,7 @@ use App\Admin\Models\AdminPplive;
 use App\Admin\Models\Role;
 use DB;
 
-class AdminController extends Controller
+class AdminController extends CommonController
 {
 	/**
      * @李一明

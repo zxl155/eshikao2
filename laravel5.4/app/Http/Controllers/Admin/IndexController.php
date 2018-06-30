@@ -10,17 +10,15 @@ use Illuminate\Support\Facades\DB;
 use App\Admin\Models\Admin;
 use App\Admin\Models\AdminRole;
 use App\Admin\Models\Role;
-
-
-class IndexController extends Controller
+use Session;
+class IndexController extends CommonController
 {
 	/**
      * @李一明
      * @DateTime  2018-06-12
      * 后台首页
      */
-	public function index(Request $request){
-        
+	public function index(){
 		return view('admin/index/index');
 	}
 

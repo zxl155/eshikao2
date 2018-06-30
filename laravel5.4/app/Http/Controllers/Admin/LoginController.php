@@ -42,7 +42,7 @@ class LoginController extends Controller
      * @DateTime  2018-06-12
      * 表单验证
      */
-	public function proving(){
+	public function proving(Request $request){
 		$admin_name = Input::get('admin_name');
 		$password = Input::get('password');
 		$captcha = Input::get('code');
@@ -57,7 +57,8 @@ class LoginController extends Controller
 		} else if($data['start'] == 0){
 			return 4;
 		} else{
-			session(['data'=>$data]);
+			$request->session()->put('data', $data);
+			//session(['data'=>$data]);
 		}
 	}
 

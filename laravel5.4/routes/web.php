@@ -14,7 +14,7 @@
 
 
 //后台
-Route::group(['namespace' => 'Admin'], function(){
+Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
   Route::group(['middleware' => 'check.login'], function() {
     //后台首页
     Route::get('admin/index','IndexController@index');
@@ -90,6 +90,8 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/delbro','BroadcastController@delbro');
     //执行
     Route::post('admin/updsbro','BroadcastController@updsbro');
+    //教师对应直播课程
+    Route::get('admin/teacherLive','TeacherController@teacherLive');
   });
   //登录
   Route::get('admin/login','LoginController@login');

@@ -34,21 +34,9 @@
                                     </div>
                                 </div>
                                 <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件1 <span class="tpl-form-line-small-title"></span></label>
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件<span class="tpl-form-line-small-title"></span></label>
                                     <div class="am-u-sm-9">
-                                        <input type="file" class="tpl-form-input" name="recruitment_file">
-                                    </div>
-                                </div>
-                                <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件2 <span class="tpl-form-line-small-title"></span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="file" class="tpl-form-input" name="recruitment_files">
-                                    </div>
-                                </div>
-                                <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件3 <span class="tpl-form-line-small-title"></span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="file" class="tpl-form-input" name="recruitment_filess">
+                                        <input type="file" class="tpl-form-input" name="recruitment_file" required>
                                     </div>
                                 </div>
                                <div class="am-form-group">
