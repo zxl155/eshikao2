@@ -40,6 +40,11 @@ class LoginController extends Controller
 		
 		
 	}
-	
+	//前台用户退出
+	public function out(Request $request)
+	{
+		$request->session()->forget('user_id'); //删除指定数据项数据
+		return redirect('/');
+	}
 	
 }

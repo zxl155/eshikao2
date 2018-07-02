@@ -44,7 +44,7 @@
                 <li><a href="{{URL::asset('home/qualifications')}}">教师资格证</a></li>
                 <li><a href="{{URL::asset('home/recruit')}}">教师招聘</a></li>
                 <li><a href="{{URL::asset('home/noticelist')}}">招考公告</a></li>
-                <li><a href="#">APP下载</a></li>
+               <!--  <li><a href="#">APP下载</a></li> -->
             </ul>
             <div class="header-login">
                 <a href="{{URL::asset('home/login')}}" class="active">登录</a>
@@ -65,7 +65,7 @@
                       <?php else: ?>
                          <?php echo session('user_tel') ?>
                         <?php endif ?>
-                            
+                            <a href="{{URL::asset('home/out')}}">退出</a>
                     <?php endif ?>
                 </a>
                 </div>

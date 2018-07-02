@@ -9,7 +9,7 @@ use Gregwar\Captcha\SmsDemo;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Qualifications;
 use App\Home\Models\Admin;
-
+use App\Home\Models\Curriculum;
 
 class RecruitController extends Controller
 {	
@@ -25,20 +25,14 @@ class RecruitController extends Controller
 		$gradetype = $qualifications->gradeType();//年级
 		$subjecttype = $qualifications->subjectType();//学科
 		$region = $qualifications->region();//地区
-
-		$curriculum = $qualifications->curriculums();
-		$user = new Admin;
-		$admin = $user->searchTeachers(); //admin教师的数据
-		$qualification = $qualifications->qualifications();
-		$teacher = $qualifications->teacher(); //获取教师与课程的管理数据
-		$admin = $qualifications->admin($admin,$teacher);
+	    $curriculum = new Curriculum;
+		$recruits = $curriculum ->recruits(); //教师招聘
 		return view('home/recruit/Recruitment',[
 			'cattype' => $cattype,
 			'gradetype' => $gradetype,
 			'subjecttype' => $subjecttype,
 			'region' => $region,
-			'curriculum' => $curriculum,
-			'admin' => $admin,
+			'recruits' => $recruits,
 		]);
 	}
 	/**
@@ -47,6 +41,7 @@ class RecruitController extends Controller
 	public function recruitSearch()
 	{
 		$data = Input::all();
+		//print_r($data);die;
 		$qualifications = new Qualifications;
 		$recruitsearch = $qualifications ->recruitSearch($data);
 		if (empty($recruitsearch)) {

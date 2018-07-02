@@ -177,4 +177,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::post('home/asynchronous','PayController@asynchronous');
    //支付成功回调页面
   Route::post('home/apiSuccess','PayController@apiSuccess');
+   //前台用户退出
+  Route::get('home/out','LoginController@out');
+   //前台用户协议
+  Route::get('home/agreement','IndexController@agreement');
+   //前台用户协议
+  Route::get('home/about','IndexController@about');
 });

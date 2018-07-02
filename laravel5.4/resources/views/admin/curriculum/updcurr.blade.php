@@ -176,7 +176,20 @@
                                 <input type="text" class="tpl-form-input" name="publish" placeholder="请输入课程公告" value="{{$data[0]->publish}}" required>
                             </div>
                         </div>
-
+                         <div class="am-form-group">
+                            <label for="notice" class="am-u-sm-3 am-form-label">是否需要发货 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <select name="is_goods">
+                                    @if($data[0]->is_goods == 1)
+                                    <option value="1" selected>不需要</option>
+                                    <option value="2">需要</option>
+                                    @else
+                                    <option value="1" >不需要</option>
+                                    <option value="2" selected>需要</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
                        
                         <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">内容</label>

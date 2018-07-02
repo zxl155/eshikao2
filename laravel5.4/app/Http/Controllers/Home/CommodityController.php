@@ -22,13 +22,10 @@ class CommodityController extends Controller
 	{
 		$curriculum_id = Input::get('curriculum_id');
 		$curriculum = new Curriculum;
-		$data = $curriculum->coursedetails($curriculum_id);
-		$teacher = $curriculum->oneTeacher($data[0]->curriculum_id);
-		$pplive = new Pplive;
-		$pplive = $pplive->shows($curriculum_id);
-		$address = new GoodsAddress;
-		$goodsaddress = $address ->select();
-		return view('home/commodity/commoditygoods',['data' => $data,'pplive'=>$pplive,'teacher'=>$teacher,'goodsaddress'=>$goodsaddress]);
+		$curriculum_content = $curriculum -> coursedetails($curriculum_id);
+		return view('home/commodity/commoditygoods',[
+			'curriculum_content'=>$curriculum_content,
+		]);
 	}
 	/**
      * @

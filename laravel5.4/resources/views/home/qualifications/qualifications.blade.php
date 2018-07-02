@@ -49,9 +49,58 @@
             </ul>
         </div>
     </div>
-    <div class="Qualified-content clearfix" id="html">
+    <!--移动-->
+    <div class="m-sort-content">
+        <ul class="m-sort-ul">
+            <li class="active">综合</li>
+            <li>人气</li>
+            <li>
+                价格
+                <span>
+                    <i class="iconfont icon-paixujiantoushang active"></i>
+                <i class="iconfont icon-paixujiantouxia"></i>
+                </span>
+            </li>
+            <li>筛选
+            <i class="iconfont icon-shaixuan active"></i></li>
+        </ul>
+        <div class="m-screenbox">
+            <dl class="active">
+                <dt>选择类型</dt>
+                <dd class="btn-type">
+                    <button class="active" type="button" value="1">全部</button>
+                    <button type="button" value="2">笔试</button>
+                    <button type="button" value="3">面试</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>选择学段</dt>
+                <dd class="btn-period">
+                    <button class="active" type="button" value="1">全部</button>
+                    <button type="button" value="2">高中</button>
+                    <button type="button" value="3">初中</button>
+                    <button type="button" value="4">小学</button>
+                    <button type="button" value="5">幼儿园</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>选择学科</dt>
+                <dd class="btn-subject">
+                    <button class="active" type="button" value="1">全部</button>
+                    <button type="button" value="2">1</button>
+                    <button type="button" value="3">2</button>
+                    <button type="button" value="4">3</button>
+                    <button type="button" value="5">4</button>
+                </dd>
+            </dl>
+            <a href="javascript:void(0);" onclick="resetScreen()">重置</a>
+            <a href="">提交</a>
+        </div>
+    </div>
+    <div  id="html">
+    <div class="Qualified-content clearfix">
        @foreach($qualifications as $val)
-        <a href="{{URL::asset('home/coursedetails')}}curriculum_id={{$val->curriculum_id}}">
+        <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$val->curriculum_id}}">
             <b>教师资格</b>
             <h5>{{$val->curriculum_name}}</h5>
             <div class="Qualified-period">
@@ -79,9 +128,8 @@
         </a>
         @endforeach
     </div>
-     <div id="page" class="page_div">{{ $qualifications->links('common.pagination') }} </div>
-   
-   
+    
+   </div>
 </div>
 @include('common/footer')
 <script type="text/javascript"></script>
@@ -101,8 +149,8 @@
                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                         } else {
                             var html = ""; 
+                            html+='<div class="Qualified-content clearfix">'
                             jQuery.each(data.data,function(key,value){
-                                
                                         html+='<a href="coursedetails?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
                                         html+='<h5>"'+value.curriculum_name+'"</h5>'
@@ -126,8 +174,9 @@
                                             
                                         html+='</div>'
                                         html+='</a>'
-                                 
                             }) 
+                            html+='</div>'
+                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
                             $('#html').html(html);
                         }
                     }

@@ -20,10 +20,16 @@ class CoursedetailsController extends Controller
 	{
 		$curriculum_id = Input::get('curriculum_id');
 		$curriculum = new Curriculum;
-		$data = $curriculum->coursedetails($curriculum_id);
-		$teacher = $curriculum->oneTeacher($data[0]->curriculum_id);
+		$curriculum_content = $curriculum->coursedetails($curriculum_id);
+		$regihtcontent = $curriculum->regihtContent($curriculum_id);
+
 		$pplive = new Pplive;
-		$pplive = $pplive->shows($curriculum_id);
-		return view('home/coursedetails/viewdetails',['data' => $data,'pplive'=>$pplive,'teacher'=>$teacher]);
+		$pplive_content = $pplive ->shows($curriculum_id);
+		//print_r($arr);die;
+		return view('home/coursedetails/viewdetails',[
+			'curriculum_content' => $curriculum_content,
+			'pplive_content' => $pplive_content,
+			'regihtcontent' => $regihtcontent,
+		]);
 	}
 }

@@ -67,7 +67,8 @@ class Curriculum extends Model
        $curriculum->where('state','=',1);
        $curriculum->where('purchase_state_time','<=',$times);
        $curriculum->where('purchase_end_time','>=',$times);
-       $qualificationss = $curriculum->paginate(5);
+       //$qualificationss = $curriculum->paginate(5);
+       $qualificationss = $curriculum->get();
         $admin = DB::table('admin')->get();
         foreach ($qualificationss as $key => $value) {
             foreach ($admin as $key => $val) {
@@ -83,6 +84,36 @@ class Curriculum extends Model
             }
         }
         return $qualificationss;
+    }
+    /**
+     * 查询教师招聘
+     */
+    public function recruits()
+    {
+        $times = date('Y-m-d H:i:s');
+       $curriculum = DB::table('curriculum');
+       $curriculum->where('teacher_type','=',2);
+       $curriculum->where('state','=',1);
+       $curriculum->where('purchase_state_time','<=',$times);
+       $curriculum->where('purchase_end_time','>=',$times);
+       //$recruits = $curriculum->paginate(5);
+        $recruits = $curriculum->get();
+
+        $admin = DB::table('admin')->get();
+        foreach ($recruits as $key => $value) {
+            foreach ($admin as $key => $val) {
+                if($value->admin_id == $val->admin_id){
+                    $value->admin_name = $val->admin_name;
+                    $value->admin_head = $val->admin_head;
+                }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+            }
+        }
+        return $recruits;
     }
     /**
      * 查询课程对应的教师
@@ -128,46 +159,58 @@ class Curriculum extends Model
     	}
     	return $teacher;
     }
-    /**
-     * 查询课程对应教师的信息
-     */
-    public function admins($admin,$teachers)
-    {
-    	foreach ($teachers as $key => $value) {
-    		foreach ($admin as $keys => $values) {
-    			if($value->admin_id==$values->admin_id){
-    				$value->admin_id = $values->admin_id;
-    				$value->admin_name = $values->admin_name;
-    				$value->admin_head = $values->admin_head;
-    			}
-    		}
-    	}
-    	return $teachers;
-    }
+   
     /**
      * 课程的详情
      */
     public function coursedetails($curriculum_id)
     {
-        $arr = DB::select('select * from curriculum where curriculum_id = :phone', [':phone'=>$curriculum_id]);
+        $times = date('Y-m-d H:i:s');
+        $arr = DB::select('select * from curriculum where curriculum_id = :curriculum_id', [':curriculum_id'=>$curriculum_id]);
+        $admin = DB::table('admin')->get();
+        foreach ($arr as $key => $value) {
+            foreach ($admin as $keys => $val) {
+                if ($value->admin_id == $val->admin_id) {
+                    $value->admin_name = $val->admin_name;
+                    $value->admin_head = $val->admin_head;
+                    $value->admin_desc = $val->admin_desc;
+                }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+            }
+        }
         if ($arr) {
             return $arr;
         } else {
             return false;
         }
     }
-    /**
-     * 单课程对应的教师
-     */
-    public function oneTeacher($curriculum_id)
+   //详情页右侧栏
+    public function regihtContent($curriculum_id)
     {
-        $arr = DB::select('select * from admin_curriculum where curriculum_id = :phone', [':phone'=>$curriculum_id]);
-        foreach ($arr as $key => $value) {
-            $data[] = $value->admin_id;
-        }
-        $admin_id = implode($data,',');
-        $sql = "select * from admin where admin_id in($admin_id)";
-        $teacher = DB::select($sql);
-        return $teacher;
+        $times = date('Y-m-d H:i:s');
+       $curriculum = DB::table('curriculum')->where('curriculum_id',$curriculum_id)->get();
+       $region_id = $curriculum[0]->region_id;
+       $region_id = substr($region_id,0,1);
+       //echo $region_id;die;
+       $curriculum_region = DB::select("select * from curriculum where find_in_set(".$region_id.",region_id) limit 3");
+       $admin = DB::table('admin')->get();
+       foreach ($curriculum_region as $key => $value) {
+           foreach ($admin as $k => $val) {
+               if($value->admin_id == $val->admin_id){
+                $value->admin_name = $val->admin_name;
+                $value->admin_head = $val->admin_head;
+               }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+           }
+       }
+       return $curriculum_region;
     }
 }
