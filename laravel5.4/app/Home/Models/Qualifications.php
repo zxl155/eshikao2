@@ -204,89 +204,337 @@ class Qualifications extends Model
     /**
      * 搜索教师招聘数据
      */
-    /*public function recruitSearch($data)
+    public function recruitSearch($data)
     {
        if ($data['cattype_id'] == 0 & $data['grade_id'] == 0 & $data['subject_id'] == 0 & $data['region_id'] == 0) {
-
-          $arr = DB::select('select * from curriculum where teacher_type = 2');
-          return $arr;
-
+           $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',2);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+           $recruitSearch = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
        } elseif ($data['cattype_id']!=0 & $data['grade_id']==0 & $data['subject_id']==0 & $data['region_id'] == 0) {
-
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :type_id', [':type_id'=>$data['cattype_id']]);
-         return $arr;
-
+           $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',2);
+           $curriculum->where('state','=',1);
+           $curriculum->where('type_id','=',$data['cattype_id']);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+           $recruitSearch = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+         return $recruitSearch;
        } elseif ($data['cattype_id']==0 & $data['grade_id']!=0 & $data['subject_id']==0 & $data['region_id'] == 0) {
 
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and grade_id = :grade_id', [':grade_id'=>$data['grade_id']]);
-         return $arr;
+         $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['grade_id'].",grade_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']==0 & $data['grade_id']==0 & $data['subject_id']!=0 & $data['region_id'] == 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and subject_id = :subject_id', [':subject_id'=>$data['subject_id']]);
-         return $arr;
+          $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['subject_id'].",subject_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']==0 & $data['grade_id']==0 & $data['subject_id']==0 & $data['region_id'] != 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and region_id = :region_id', [':region_id'=>$data['region_id']]);
-         return $arr;
+         $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['region_id'].",region_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']==0 & $data['region_id'] == 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and grade_id = :grade_id', [':cattype_id'=>$data['cattype_id'],':grade_id'=>$data['grade_id']]);
-         return $arr;
+          $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['cattype_id'].",type_id) and find_in_set(".$data['grade_id'].",grade_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']!=0 & $data['grade_id']==0 & $data['subject_id']!=0 & $data['region_id'] == 0) {
 
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and subject_id = :subject_id', [':cattype_id'=>$data['cattype_id'],':subject_id'=>$data['subject_id']]);
-         return $arr;
+           $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['cattype_id'].",type_id) and find_in_set(".$data['subject_id'].",subject_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']!=0 & $data['grade_id']==0 & $data['subject_id']==0 & $data['region_id'] != 0) {
          
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and region_id = :region_id', [':cattype_id'=>$data['cattype_id'],':region_id'=>$data['region_id']]);
-         return $arr;
+          $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['cattype_id'].",type_id) and find_in_set(".$data['region_id'].",region_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']==0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] == 0) {
 
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and grade_id = :grade_id and subject_id = :subject_id', [':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id']]);
-         return $arr;
+           $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['grade_id'].",grade_id) and find_in_set(".$data['subject_id'].",subject_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']==0 & $data['grade_id']!=0 & $data['subject_id']==0 & $data['region_id'] != 0) {
 
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and grade_id = :grade_id and region_id = :region_id', [':grade_id'=>$data['grade_id'],':region_id'=>$data['region_id']]);
-         return $arr;
+          $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['grade_id'].",grade_id) and find_in_set(".$data['region_id'].",region_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']==0 & $data['grade_id']==0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
 
-          $arr = DB::select('select * from curriculum where teacher_type = 2 and subject_id = :subject_id and region_id = :region_id', [':subject_id'=>$data['subject_id'],':region_id'=>$data['region_id']]);
-         return $arr;
+         $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['subject_id'].",subject_id) and find_in_set(".$data['region_id'].",region_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        }  elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] == 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and grade_id = :grade_id and subject_id = :subject_id', [':cattype_id'=>$data['cattype_id'],':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id']]);
-         return $arr;
+        $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['cattype_id'].",type_id) and find_in_set(".$data['grade_id'].",grade_id) and find_in_set(".$data['subject_id'].",subject_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
 
        } elseif ($data['cattype_id']==0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and region_id = :region_id and grade_id = :grade_id and subject_id = :subject_id', [':region_id'=>$data['region_id'],':grade_id'=>$data['grade_id'],':subject_id'=>$data['subject_id']]);
-         return $arr;
-         
+        $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['region_id'].",region_id) and find_in_set(".$data['grade_id'].",grade_id) and find_in_set(".$data['subject_id'].",subject_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
+
        }  elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']==0 & $data['region_id'] != 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and grade_id = :grade_id and region_id = :region_id', [':cattype_id'=>$data['cattype_id'],':grade_id'=>$data['grade_id'],':region_id'=>$data['region_id']]);
-         return $arr;
+          $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['region_id'].",region_id) and find_in_set(".$data['grade_id'].",grade_id) and find_in_set(".$data['cattype_id'].",type_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
+
          
        } elseif ($data['cattype_id']!=0 & $data['grade_id']==0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and subject_id = :subject_id and region_id = :region_id', [':cattype_id'=>$data['cattype_id'],':subject_id'=>$data['subject_id'],':region_id'=>$data['region_id']]);
-         return $arr;
+         $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['region_id'].",region_id) and find_in_set(".$data['subject_id'].",subject_id) and find_in_set(".$data['cattype_id'].",type_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
          
        } elseif ($data['cattype_id']!=0 & $data['grade_id']!=0 & $data['subject_id']!=0 & $data['region_id'] != 0) {
 
-         $arr = DB::select('select * from curriculum where teacher_type = 2 and type_id = :cattype_id and subject_id = :subject_id and region_id = :region_id and grade_id = :grade_id', [':cattype_id'=>$data['cattype_id'],':subject_id'=>$data['subject_id'],':region_id'=>$data['region_id'],':grade_id'=>$data['grade_id']]);
-         return $arr;
+         $times = date('Y-m-d H:i:s');
+           $recruitSearch = DB::select("select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >='".$times."' and find_in_set(".$data['region_id'].",region_id) and find_in_set(".$data['subject_id'].",subject_id) and find_in_set(".$data['cattype_id'].",type_id)  and find_in_set(".$data['grade_id'].",grade_id)");
+           $admin = DB::table('admin')->get();
+            foreach ($recruitSearch as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $recruitSearch;
          
        } 
-    }*/
+    }
 }
 

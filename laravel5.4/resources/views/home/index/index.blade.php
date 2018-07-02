@@ -16,7 +16,7 @@
     <div id="focus-banner">
         <ul id="focus-banner-list">
             @foreach($broadcast_content as $va)
-            <li> <a href="#" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}')no-repeat;background-position: center;background-size: 1920px 377px">
+            <li> <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$va->curriculum_id}}" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}')no-repeat;background-position: center;background-size: 1920px 377px">
             </a>
             </li>
             @endforeach

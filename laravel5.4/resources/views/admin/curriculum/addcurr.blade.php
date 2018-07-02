@@ -137,6 +137,15 @@
                             </div>
                         </div>
                         <div class="am-form-group">
+                            <label for="notice" class="am-u-sm-3 am-form-label">是否需要发货 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <select name="is_goods">
+                                    <option value="1">不需要</option>
+                                    <option value="2">需要</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">内容</label>
                             <div class="am-u-sm-9">
                                 <!-- 加载编辑器的容器 -->

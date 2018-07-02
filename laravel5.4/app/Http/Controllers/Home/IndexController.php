@@ -34,4 +34,14 @@ class IndexController extends Controller
 		]);
 
 	}
+	//用户协议
+	public function agreement()
+	{
+		return view('home/index/agreement');
+	}
+	//前天关于我们
+	public function about()
+	{
+		return view('home/index/about');
+	}
 }

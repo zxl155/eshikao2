@@ -40,16 +40,17 @@ class RecruitmentController extends CommonController
             
                 //获取原文件名
                 $originalName = $file->getClientOriginalName();
+
                 //扩展名
                 $ext = $file->getClientOriginalExtension();
                 //文件类型
                 $type = $file->getClientMimeType();
                 //临时绝对路径
                 $realPath = $file->getRealPath();
- 
+ 	
                 $filename = date('Y-m-d-H-i-S').'-'.uniqid().'-'.$ext;
- 
-                $bool = Storage::disk('recruitment')->put($originalName, file_get_contents($realPath));
+
+                $bool = Storage::disk('recruitment')->put($filename, file_get_contents($realPath));
  
            
 			$data['recruitment_name'] = Input::get('recruitment_name');
@@ -57,6 +58,7 @@ class RecruitmentController extends CommonController
 			$data['content'] = $_POST['content'];
 			$data['add_time'] = date('Y-m-d');
 			$data['recruitment_file'] = "$originalName";
+			$data['recruitment_files'] = "$filename";
 			$recr = new Recruitment;
 			$res = $recr->insert($data);
 			if($res){

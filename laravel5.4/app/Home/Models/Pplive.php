@@ -9,24 +9,19 @@ class Pplive extends Model
 {
    public function shows($curriculum_id)
    {
-   		$pplive = DB::select("select * from pplive where curriculum_id = $curriculum_id");
-   		$admin_pplive = DB::select("select * from admin_pplive");
-   		foreach ($pplive as $key => $value) {
-   			foreach ($admin_pplive as $keys => $values) {
-   				if ($value->pplive_id == $values->pplive_id) {
-   					$value->admin_id = $values->admin_id;
-   				}
-   			}
-   		}
-   		$admin = DB::select("select * from admin");
-   		foreach ($pplive as $key => $value) {
-   			foreach ($admin as $keys => $values) {
-   				if ($value->admin_id == $values->admin_id) {
-   					$value->admin_name = $values->admin_name;
-   				}
-   			}
-   		}
-   		return $pplive;
+   		$pplive_content = DB::table('pplive')->where('curriculum_id',$curriculum_id)->orderBy('start_time', 'asc')->get();
+         $admin_content = DB::table('admin')->get();
+         foreach ($pplive_content as $key => $value) {
+            foreach ($admin_content as $k => $val) {
+                  if ($value->admin_id == $val->admin_id) {
+                        $value->admin_name = $val->admin_name;
+                        $value->admin_head = $val->admin_head;
+                        $value->admin_desc = $val->admin_desc;
+
+                  }
+            }
+         }
+        return $pplive_content;
    }
     
 }

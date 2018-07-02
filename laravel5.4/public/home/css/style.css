@@ -331,8 +331,7 @@ textarea {
     .Qualified-title {
         font-size: 24px;
         line-height: 44px;
-        margin-top: 80px;
-        margin-bottom: 60px;
+        margin: 30px;
         text-align: center;
         font-weight: normal;
     }
@@ -359,9 +358,9 @@ textarea {
         position: relative;
         display: inline-block;
         float: left;
-        margin-right: 53px;
+        margin-right:15px;
         padding: 20px 24px;
-        width: 260px;
+        width: 288px;
         top: 0;
         /*height: 280px;*/
         -webkit-box-shadow: 1px 1px 22px 0 #ccc;
@@ -602,9 +601,14 @@ textarea {
         height: 110px;
         background: #ffffff;
     }
-
+    .follow-gz:nth-child(2) .follow-gz-img img {
+        width: 100px;
+        height: 100px;
+    }
     .follow-gz .follow-gz-img img {
         position: absolute;
+        width: 100%;
+        height: 100%;
         top: 0;
         bottom: 0;
         left: 0;
@@ -612,9 +616,8 @@ textarea {
         margin: auto;
     }
 
-    .follow-gz span {
-        line-height: 38px;
-        color: #dba256;
+    .follow-gz a {
+        color: #dba256 !important;
     }
 
     .copyright {
@@ -623,6 +626,28 @@ textarea {
         background: #323232;
     }
 
+    .float-top {
+        position: fixed;
+        right: 20px;
+        bottom: 30%;
+        z-index: 99
+    }
+
+    .float-top a {
+        display: block;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        margin-bottom: 25px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .float-top .rt-top{
+        background: url("./../img/top_03.png");
+    }
+    .float-top .rt-top:active{
+        background: url("./../img/top_05.png");
+    }
     /*底部and*/
     /*登录*/
     .Login {
@@ -1191,6 +1216,7 @@ textarea {
         display: inline-block;
         width: 90px;
         height: 90px;
+        overflow: hidden;
         margin: 0 30px 0 45px;
         border: 3px solid #ffa80d;
         -webkit-border-radius: 50%;
@@ -1304,6 +1330,7 @@ textarea {
         display: inline-block;
         position: relative;
         padding: 35px 30px;
+        width: 330px;
         margin-top: 20px;
         background: #fff;
         top: 0;
@@ -2606,7 +2633,12 @@ textarea {
         height: 100px;
         background: #f7f7f7;
     }
-
+    .abouts-list p {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 96px;
+    }
     .abouts-list ul {
         width: 1200px;
         margin: 0 auto;
@@ -2630,13 +2662,26 @@ textarea {
     .abouts-content {
         width: 1200px;
         margin: 0 auto;
-    }
-
-    .abouts-content li {
-        display: none;
         padding: 50px 0;
     }
-
+    .abouts-content > p {
+        font-size: 14px;
+        font-family: 宋体;
+        line-height: 30px;
+    }
+    .abouts-content > h3 {
+        margin-top: 10px;
+        line-height: 30px;
+    }
+    .abouts-content li {
+        display: none;
+    }
+    .abouts-content li .us-p {
+        font-size: 14px;
+        font-family: 宋体;
+        text-indent: 50px;
+        line-height: 30px;
+    }
     .abouts-content .active {
         display: block;
     }
@@ -2651,6 +2696,8 @@ textarea {
 
     .abouts-recruit-text {
         margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 0 20px;
         line-height: 32px;
         font-size: 16px;
         font-weight: bold;
@@ -3816,7 +3863,8 @@ textarea {
 
 
         /*PC样式*/
-    .header, .home-advert, .Bottom, .Certificate-box, .sort-content, .page_div, .focus-banner, .v-top-box, .v-content-right, .details-img, .Course-time i, .Course-time q, .price-brief, .price-purchase, .Course-gk,.logins-title,.Sign i,.Sign span,.Register .forgetmm,.personal-nav,.personal-content-title,.personal-detail-img,.personal-prompt-img,.personal-prompt-title a,.personal-content-seat,.retrieve-title,.commodity{
+    .header, .home-advert, .Bottom, .Certificate-box, .sort-content, .page_div, .focus-banner, .v-top-box,.float-top
+,.v-content-right, .details-img, .Course-time i, .Course-time q, .price-brief, .price-purchase, .Course-gk,.logins-title,.Sign i,.Sign span,.Register .forgetmm,.personal-nav,.personal-content-title,.personal-detail-img,.personal-prompt-img,.personal-prompt-title a,.personal-content-seat,.retrieve-title,.commodity{
         display: none;
         z-index: -1;
     }

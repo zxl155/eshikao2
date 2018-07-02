@@ -93,6 +93,7 @@ var renderZhao=(function () {
     function goods(err,err2){
         var art=arguments[1];
         err.bind('click',function () {
+            clearCookie('userindex');
             var _this=$(this).index();
             $(this).addClass('active').siblings().removeClass('active');
             art?art.eq(_this).addClass('active').siblings().removeClass('active'):null;
@@ -228,6 +229,66 @@ var renderZhao=(function () {
     $(function(){
         typeof Uindex==='number'?$('.personal-nav li').eq(Uindex).addClass('active'):null;
     })
+    //返回顶部
+    $(function () {
+        $('.rt-top').click(function () {
+            $('html , body').animate({scrollTop: 0}, 'slow');
+        });
+        getCookie('userindex')?ulIndex():null;
+    });
+//加入易师考
+    function getCookie(c_name)
+    {
+        if (document.cookie.length>0)
+        {
+            c_start=document.cookie.indexOf(c_name + "=")
+            if (c_start!=-1)
+            {
+                c_start=c_start + c_name.length+1
+                c_end=document.cookie.indexOf(";",c_start)
+                if (c_end==-1) c_end=document.cookie.length
+                return unescape(document.cookie.substring(c_start,c_end))
+            }
+        }
+        return ""
+    }
+
+    function setCookie(c_name,value,expiredays)
+    {
+        var exdate=new Date()
+        exdate.setDate(exdate.getDate()+expiredays)
+        document.cookie=c_name+ "=" +escape(value)+
+            ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    }
+    function clearCookie(name) {
+        setCookie(name, "", -1);
+    }
+    function checkCookie()
+    {
+        userindex=getCookie('userindex')
+        if (userindex!=null && userindex!="")
+        {
+            console.log(123);}
+        else
+        {
+            userindex='1';
+            if (userindex!=null && userindex!="")
+            {
+                setCookie('userindex',userindex,10000)
+            }
+        }
+    }
+    $('.addcy').click(function () {
+        checkCookie();
+    });
+    $('.knowesk').click(function (){
+        clearCookie('userindex')
+    })
+    function ulIndex() {
+        var _index=getCookie('userindex');
+        $('.abouts-list li').eq(_index).addClass('active').siblings().removeClass('active');
+        $('.abouts-content li').eq(_index).addClass('active').siblings().removeClass('active');
+    }
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换

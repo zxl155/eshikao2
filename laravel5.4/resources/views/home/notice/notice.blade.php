@@ -24,7 +24,7 @@
         <div class="notice-text-main">
             <p class="notice-main-title">
                 易师考资讯频道提供全国教师招聘最新<b>招聘公告</b>、<b>考试报名入口</b>、<b>考试成绩查询入口</b>等。<b>易师考</b>为考生提供便利的教师招聘考试信息查询通道。</p>
-            <p class="notice-main"><!-- <img src="http://www.eshikao.com/home/img/head/uhsauhduah.jpg" alt="" width="1010" height="600"> -->{{$value->content}}</p>
+            <p class="notice-main"><?php echo htmlspecialchars_decode($value->content); ?></p>
 
             
         </div>
@@ -33,19 +33,20 @@
                 点击下载附件
             </div>
             <div class="enclosure-list">
-                <a href="">1.各认定机构网站及联系方式.xls</a>
+               <!--  <a href="">1.各认定机构网站及联系方式.xls</a>
                 <a href="">2.{{$value->region_name}}省教师资格人员健康体检表.doc</a>
-                <a href="">3.申请人思想品德鉴定表.doc</a>
+                <a href="">3.申请人思想品德鉴定表.doc</a> -->
+                <a href="{{URL::asset('/')}}home/img/recruitment/{{$value->recruitment_files}}"  >{{$value->recruitment_file}}</a>
             </div>
             <div class="enclosure-addr">
                 <p>{{$value->region_name}}省教育厅</p>
                 <p>{{$value->year}}年{{$value->month}}月{{$value->day}}日</p>
             </div>
-            <p class="enclosure-Share">分享至：
+           <!--  <p class="enclosure-Share">分享至：
                 <a href=""><img src="./img/weixin.png" alt=""></a>
                 <a href=""><img src="./img/sina.png" alt=""></a>
                 <a href=""><img src="./img/qq.png" alt=""></a>
-            </p>
+            </p> -->
         </div>
     </div>
     @endforeach

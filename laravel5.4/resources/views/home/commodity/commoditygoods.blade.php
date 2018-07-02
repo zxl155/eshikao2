@@ -7,7 +7,7 @@
 </head>
 <body>
 @include('common.head')
-@foreach($data as $value)
+
 <div class="commodity">
     
     <div class="commodity-header">
@@ -16,20 +16,20 @@
             <img src="./img/kctitle.png" alt="">
         </div>
         <div class="commodity-brief">
-            <h2>{{$value->curriculum_name}}</h2>
-            <input type="hidden" class="curriculum_id" value="{{$value->curriculum_id}}">
-            <p class="Course-time">课程时间：{{$value->start_time}} &nbsp;&nbsp; 有效期365天
+            <h2></h2>
+            <input type="hidden" class="curriculum_id" value="">
+            <p class="Course-time">课程时间： &nbsp;&nbsp; 有效期365天
                 <i><img src="./img/sm.png" alt=""></i>
                 <span>自购买之日起课观看课程旗帜</span>
             </p>
-            <p>授课教师: @foreach($teacher as $val)
-                        <span>{{$val->admin_name}}</span>
-                        @endforeach
+            <p>授课教师: 
+                        <span></span>
+                        
             </p>
             <p>解读公告 高效备考</p>
             <p class="commodity-brief-number
 
-">已购{{$value->bought_number}}人</p>
+">已购人</p>
         </div>
     </div>
     
@@ -50,26 +50,25 @@
                     </div>
         </div>
         
-      <?php if (empty($goodsaddress)): ?>
+     
         <span id="html">
-        <center><span style="color: red"> <h4>无收货地址</h4>   </span></center>
-         </span>
-      <?php else: ?>
-        <span id="html">
-        @foreach($goodsaddress as $values)
+        <center><span style="color: red"> <h4>无收货地址</h4></span></center>
+        </span>
+      
+       
         <div class="address-list" >
-            <span address_id="{{$values->address_id}}"></span>
+            <span address_id=""></span>
             <img src="./img/confirm.png" alt="">
             <div class="address-list-text">
-                <span>收件人：{{$values->address_name}}</span>
-                <span>手机号：{{$values->address_tel}}</span><br>
-                <span>收件地址：{{$values->address_detailed}}</span>
+                <span>收件人：</span>
+                <span>手机号：</span><br>
+                <span>收件地址：</span>
             </div>
-            <a href="{{URL::asset('home/CommodityAddress')}}?address_id={{$values->address_id}}&curriculum_id={{$value->curriculum_id}}">删除</a>
+            <a href="{{URL::asset('home/CommodityAddress')}}?address_id=&curriculum_id=">删除</a>
         </div>
-        @endforeach
+      
         </span>
-      <?php endif ?>
+    
     
        
     </div>
@@ -81,11 +80,11 @@
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥20</b></h4></li>
         </ul>  -->
         <div class="commodity-text">
-            <span>共1个商品，商品总金额：￥{{$value->money}}</span><br>
+            <span>共1个商品，商品总金额：￥</span><br>
             <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br> 
-            <span class="commodity-text-cope" money="{{$value->money}}">应付金额：<b>￥{{$value->money}}</b></span><br>
+            <span class="commodity-text-cope" money="">应付金额：<b>￥</b></span><br>
             <div class="commodity-button">
-                <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">返回</a>   
+                <a href="{{URL::asset('home/coursedetails')}}?curriculum_id=">返回</a>   
                 <input type="button" name="" class="active" value="提交订单">
             </div>
             <p id="yyd">
@@ -95,7 +94,7 @@
         </div>
     </div>
 </div>
-@endforeach
+
 @include('common.footer')>
 <script class="resources library" src="js/area.js"></script>
 <script src="js/jquery-1.8.3.js"></script>
