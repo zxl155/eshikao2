@@ -91,7 +91,7 @@
 
    </div>
 </div>
-@include('common/footer');
+@include('common/footer')
 <script>
     var renderZhao=(function () {
         //var jt=$('.sort-text-ul').focus('.jt');

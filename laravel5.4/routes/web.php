@@ -141,8 +141,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/recruit','RecruitController@index');
    //教师招聘
   Route::get('home/recruitsearch','RecruitController@recruitSearch');
-  //课程详情
+  //未购买课程详情
   Route::get('home/coursedetails','CoursedetailsController@index');
+  //购买之后课程详情
+  Route::get('home/coursedetail','CoursedetailsController@coursedetail');
   //招聘公告列表
   Route::get('home/noticelist','NoticeController@index');
   //招聘公告详情

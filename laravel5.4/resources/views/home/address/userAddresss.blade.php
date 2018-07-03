@@ -91,7 +91,7 @@
                 if (data.is=='正确') {
                     var txt=  "修改地址成功";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                     window.location.replace("http://www.eshikao.com/home/address");
+                     window.location.replace("address");
                 } else {
                     var txt=  "修改地址失败";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

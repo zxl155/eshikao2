@@ -56,7 +56,7 @@
 </b></span></p>
             <div class="price-purchase">
                 <a href="{{URL::asset('home/CommodityGoods')}}?curriculum_id={{$value->curriculum_id}}" class="active">立即购买</a>
-                <a href="">咨询</a>
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=1291245447&site=qq&menu=yes">咨询</a>
                 <span>已购{{$value->bought_number}}人 / 限购 {{$value->purchase_number}}人</span>
             </div>
         </div>
@@ -76,12 +76,12 @@
                 <ul class="v-content-left-list-ul">
                     
                     @foreach($pplive_content as $val)
-                    <li><a href="">
-                        <img src="./img/zbtb.png" alt="">
-                        <span class="lint-title">【直播】{{$val->pplive_name}}</span>
+                    <li>
+                        <!-- <img src="./img/zbtb.png" alt=""> -->
+                        <span class="lint-title">{{$val->pplive_name}}</span>
                         <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
                         <span class="list-name">{{$val->admin_name}}</span>
-                    </a></li>
+                    </li>
                     @endforeach
                     
                 </ul>

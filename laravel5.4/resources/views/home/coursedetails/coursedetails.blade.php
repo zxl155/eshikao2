@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>课程详情</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css"><script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
      Hindex=1;
 </script>
 </head>
 <body>
 @include('common.head');
-@foreach($data as $value);
+@foreach($curriculum_content as $value);
 <div class="viewdetails">
     <div class="coursedetails">
         <div class="details-brief">
             <h2>{{$value->curriculum_name}}</h2>
-            <p class="Course-time">开课时间：{{$value->start_time}}
+            <p class="Course-time">开课时间：{{$value->recovery_original}}
         </div>
     </div>
     <div class="viewdetails-content clearfix">
@@ -27,18 +27,20 @@
             <div class="v-content-left-list">
                 <h3>备考指导</h3>
                 <ul class="v-content-left-list-ul">
-                    @foreach($pplive as $values)
-                    <li><a href="">
-                        <img src="./img/zbtb.png" alt="">
-                        <span class="lint-title">【直播】{{$values->pplive_name}}</span>
-                        <span class="list-time">{{$values->times}}</span>
-                        <span class="list-name">{{$values->admin_name}}</span>
+    
+                     @foreach($pplive_content as $val)
+                    <li><a href="">  
+                         <img src="./img/zbtb.png" alt=""> 
+                        <span class="lint-title">{{$val->pplive_name}}</span>
+                        <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
+                        <span class="list-name">{{$val->admin_name}}</span>
                     </a></li>
                     @endforeach
+                   
                 </ul>
             </div>
-            <div class="v-content-left-list off">
-                <img src="./img/detailsdt.png" alt="">
+           <div class="v-content-left-list off">
+                <?php echo htmlspecialchars_decode($value->curriculum_content); ?>
             </div>
             <div class="v-content-left-list">
                 <div class="v-problem">
@@ -164,60 +166,31 @@
                     <li>6.如何退课<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
                 </ul>
             </div>
-            <a href="#" class="v-right-a">
+            @foreach($regihtcontent as $v)
+            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$v->curriculum_id}}" class="v-right-a">
                 <b>推荐</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
+                <h5>{{$v->curriculum_name}}</h5>
                 <div class="Qualified-period">
                     <i><img src="img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
+                    <span>{{$v->notice}}</span>
                 </div>
                 <ul class="Qualified-teacher">
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
+                    <li><img src="{{URL::asset('/')}}home/img/admin_head/{{$v->admin_head}}" alt=""><span>{{$v->admin_name}}</span></li>
+                   
                 </ul>
                 <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
+                    <span>{{$v->bought_number}}人购买</span>
+                    <h2>￥<span>
+                        @if($v->recovery_original_is == '1')
+                        {{$v->original_price}}
+                        @else
+                        {{$v->present_price}}
+                        @endif
+                    </span></h2>
                 </div>
             </a>
-            <a href="#" class="v-right-a">
-                <b>推荐</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
-            <a href="#" class="v-right-a">
-                <b>推荐</b>
-                <h5>2018下教师资格证一站拿证（单科）</h5>
-                <div class="Qualified-period">
-                    <i><img src="img/jifen.png" alt=""></i>
-                    <span>100课时 · 按字讲义</span>
-                </div>
-                <ul class="Qualified-teacher">
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                    <li><img src="img/touxiang.png" alt=""><span>杨老师</span></li>
-                </ul>
-                <div class="Qualified-price">
-                    <span>2000人购买</span>
-                    <h2>￥<span>1000</span></h2>
-                </div>
-            </a>
+          @endforeach
+           
         </div>
     </div>
 </div>

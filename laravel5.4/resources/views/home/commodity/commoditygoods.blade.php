@@ -7,35 +7,35 @@
 </head>
 <body>
 @include('common.head')
-
+@foreach($curriculum_content as $value)
 <div class="commodity">
     
     <div class="commodity-header">
         <h2>商品详情</h2>
         <div class="commodity-img">
-            <img src="./img/kctitle.png" alt="">
+            <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" alt="">
         </div>
         <div class="commodity-brief">
-            <h2></h2>
-            <input type="hidden" class="curriculum_id" value="">
-            <p class="Course-time">课程时间： &nbsp;&nbsp; 有效期365天
+            <h2>{{$value->curriculum_name}}</h2>
+            <input type="hidden" class="curriculum_id" value="{{$value->curriculum_id}}">
+           <p class="Course-time">课程时间：{{$value->purchase_state_time}}
                 <i><img src="./img/sm.png" alt=""></i>
-                <span>自购买之日起课观看课程旗帜</span>
+                 <q style="display: none;">自购买之日起课观看课程旗帜</q>
             </p>
             <p>授课教师: 
-                        <span></span>
+                        <span>{{$value->admin_name}}</span>
                         
             </p>
-            <p>解读公告 高效备考</p>
+            <p>解读公告: {{$value->publish}}</p>
             <p class="commodity-brief-number
 
-">已购人</p>
+"> 已购{{$value->bought_number}}人 / 限购 {{$value->purchase_number}}人</p>
         </div>
     </div>
     
     <div class="commodity-content clearfix">
-        <h3>请选择优惠券 <span><b>+</b>添加收货地址</span></h3>
-        <div class="newaddress">
+         <h3> <span id="commodity-add"><b>+</b>添加收货地址</span></h3>
+        <div class="newaddress" style="display: none;">
                     <form>
                         <span>收件人:</span> <input type="text" class="Addressee" />
                         <span>手机号:</span> <input type="text" class="phone" /><br>
@@ -46,31 +46,30 @@
                     </form>
                     <div class="newaddress-button">
                         <a href="#" class="but">确认</a>
-                        <a href="">取消</a>
+                        <a href="#">取消</a>
                     </div>
         </div>
-        
-     
-        <span id="html">
+      <div id='html'>
+    @foreach($good_content as $val)
+       @if($val->address_id == '')
+        <span>
         <center><span style="color: red"> <h4>无收货地址</h4></span></center>
         </span>
-      
-       
-        <div class="address-list" >
-            <span address_id=""></span>
+      @else
+          <div class="address-list">
+            <span address_id="{{$val->address_id}}"></span>
             <img src="./img/confirm.png" alt="">
             <div class="address-list-text">
-                <span>收件人：</span>
-                <span>手机号：</span><br>
-                <span>收件地址：</span>
+                <span>收件人：{{$val->address_name}}</span>
+                <span>手机号：{{$val->address_tel}}</span><br>
+                <span>收件地址：{{$val->address_detailed}}</span>
             </div>
-            <a href="{{URL::asset('home/CommodityAddress')}}?address_id=&curriculum_id=">删除</a>
+            <a href="{{URL::asset('home/CommodityAddress')}}?address_id={{$val->address_id}}&curriculum_id={{$value->curriculum_id}}">删除</a>
         </div>
-      
-        </span>
-    
-    
-       
+        
+    @endif
+    @endforeach
+      </div>
     </div>
     <div class="commodity-content clearfix">
          <h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
@@ -80,11 +79,23 @@
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥20</b></h4></li>
         </ul>  -->
         <div class="commodity-text">
-            <span>共1个商品，商品总金额：￥</span><br>
+            <span>共1个商品，商品总金额：￥ @if($value->recovery_original_is == '1')
+    {{$value->original_price}}
+    @else
+    {{$value->present_price}}
+    @endif</span><br>
             <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br> 
-            <span class="commodity-text-cope" money="">应付金额：<b>￥</b></span><br>
+            <span class="commodity-text-cope" money="@if($value->recovery_original_is == '1')
+    {{$value->original_price}}
+    @else
+    {{$value->present_price}}
+    @endif">应付金额：<b>￥ @if($value->recovery_original_is == '1')
+    {{$value->original_price}}
+    @else
+    {{$value->present_price}}
+    @endif</b></span><br>
             <div class="commodity-button">
-                <a href="{{URL::asset('home/coursedetails')}}?curriculum_id=">返回</a>   
+                <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">返回</a>   
                 <input type="button" name="" class="active" value="提交订单">
             </div>
             <p id="yyd">
@@ -94,20 +105,19 @@
         </div>
     </div>
 </div>
-
+@endforeach
 @include('common.footer')>
 <script class="resources library" src="js/area.js"></script>
 <script src="js/jquery-1.8.3.js"></script>
-<script src="js/index.js"></script>
 <script>
     $('.but').click(function(){
-        var curriculum_id = $('.curriculum_id').val();
-         var address = $('.Addressee').val();
-         var phone = $('.phone').val();
-         var s_province = $('.s_province').val();
+        var curriculum_id = $('.curriculum_id').val(); //课程id
+         var address = $('.Addressee').val();          //收件人
+         var phone = $('.phone').val();                //手机号
+         var s_province = $('.s_province').val();      //寄送地址
          var s_city = $('.s_city').val();
          var s_county = $('.s_county').val();
-         var details = $('.details').val();
+         var details = $('.details').val();            //详情地址
          var nickname = /^[\u4E00-\u9FA5]{2,5}$/; //名称正则
          var tel = /^1[34578]\d{9}$/; //手机号正则
         if (nickname.test(address) == false) {
@@ -145,11 +155,11 @@
             dataType:'json',
             success:function(data){
                 if (data.data=='正确') {
-                    var txt=  "添加收货地址成功";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                    //var txt=  "添加收货地址成功";
+                   // window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                     var html = ""; 
                             jQuery.each(data.content,function(key,value){
-                                       html+='<div class="address-list">'
+                                html+='<div class="address-list">'
                                        html+='<span address_id="'+value.address_id+'"></span>'
                                         html+='<img src="./img/confirm.png" alt="">'
                                        html+='<div class="address-list-text">'
@@ -158,10 +168,10 @@
                                             html+='<span>收件地址：'+value.address_detailed+'</span>'
                                         html+='</div>'
                                         html+='<a href="{{URL::asset("home/CommodityAddress")}}?address_id='+value.address_id+'&curriculum_id='+curriculum_id+'">删除</a>'
-                                    html+='</div>'
+                                  html+='</div>'
                             }) 
                             $('#html').html(html);
-                    
+                            location.reload();
                 } else if (data.data == '错误') {
                     var txt=  "收货地址添加失败！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
@@ -191,8 +201,11 @@
                      var txt=  "提交订单成功！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                     window.location.href = "{{URL::asset('home/CommodityPay')}}";
-                } else {
+                } else if(data.error=='失败') {
                     var txt=  "提交订单失败！";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                } else {
+                    var txt=  "已有订单请到个人中心查看！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                 }
             }

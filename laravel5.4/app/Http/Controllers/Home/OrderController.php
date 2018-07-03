@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Admin;
+use App\Home\Models\Order;
 use App\Home\Models\Curriculum;
 
 class OrderController extends Controller
@@ -18,7 +19,10 @@ class OrderController extends Controller
      */
 	public function index()
 	{
-		
-		return view('home/order/userOrder');
+		$order = new Order;
+		$order_content = $order->oneOrder();
+		return view('home/order/userOrder',[
+			'order_content'=>$order_content,
+		]);
 	}
 }
