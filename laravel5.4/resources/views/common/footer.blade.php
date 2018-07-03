@@ -14,7 +14,7 @@
                 <a>微信关注</a></div>
         </div>
     </div>
-    <div class="copyright">© 2018-2019 eshikao.com
+    <div class="copyright"> eshikao.com
      京ICP备18030997号 | 京公网安备 11010802026649号
     </div>
     <div class="float-top">

@@ -10,17 +10,6 @@
 <div class="commodity">
     @foreach($data as $value)
     <div class="commodity-header">
-        @foreach($address as $val)
-        <h2>订单号：{{$val->order_number}} </h2>
-        <div class="address-list">
-            <div class="address-list-text">
-                <span>收件人：{{$val->address_name}}</span>
-                <span>手机号：{{$val->address_tel}}</span><br>
-                <span>收件地址：{{$val->address_detailed}}</span>
-            </div>
-        </div>
-        @endforeach
-       
         <div class="commodity-img">
             <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" alt="">
         </div>

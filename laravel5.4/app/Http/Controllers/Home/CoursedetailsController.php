@@ -32,4 +32,20 @@ class CoursedetailsController extends Controller
 			'regihtcontent' => $regihtcontent,
 		]);
 	}
+
+	//购买之后的课程详情
+	public function coursedetail()
+	{
+		$curriculum_id = Input::get('curriculum_id');
+		$curriculum = new Curriculum;
+		$curriculum_content = $curriculum->coursedetails($curriculum_id);
+		$regihtcontent = $curriculum->regihtContent($curriculum_id);
+		$pplive = new Pplive;
+		$pplive_content = $pplive ->shows($curriculum_id);
+		return view('home/coursedetails/coursedetails',[
+			'curriculum_content' => $curriculum_content,
+			'pplive_content' => $pplive_content,
+			'regihtcontent' => $regihtcontent,
+		]);
+	}
 }

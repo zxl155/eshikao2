@@ -23,7 +23,7 @@ var renderZhao=(function () {
         var TIMER;//定义全局变量
         $(window).scroll( function() {
             clearTimeout(TIMER);//必须要有这句
-            console.log($(document).scrollTop());
+            //console.log($(document).scrollTop());
             if( $(document).scrollTop() > 418 ){
                 TIMER = setTimeout(function(){
                     $(".v-top-box").slideDown();
@@ -92,7 +92,8 @@ var renderZhao=(function () {
 //选择收货地址
     function goods(err,err2){
         var art=arguments[1];
-        err.bind('click',function () {
+        err.on('click',function () {
+            console.log(123);
             clearCookie('userindex');
             var _this=$(this).index();
             $(this).addClass('active').siblings().removeClass('active');
@@ -105,9 +106,9 @@ var renderZhao=(function () {
         err.eq(3).siblings().click(function () {
             eve.slideUp(200);
         })
-            err.eq(3).click(function () {
-                eve.slideToggle(200);
-            })
+        err.eq(3).click(function () {
+            eve.slideToggle(200);
+        })
     }
     function screens(err){
         err.children('dt').bind('click',function () {
@@ -229,6 +230,10 @@ var renderZhao=(function () {
     $(function(){
         typeof Uindex==='number'?$('.personal-nav li').eq(Uindex).addClass('active'):null;
     })
+   // 新增收货地址
+    $('#commodity-add').on('click',function(){
+        $('.newaddress').toggle();
+    })
     //返回顶部
     $(function () {
         $('.rt-top').click(function () {
@@ -294,7 +299,7 @@ var renderZhao=(function () {
             flSwitch($('.Certificate-ul li'));//分类切换
             flSwitch($('.sort-text-ul li'));//排序切换
             courseTime($('.Course-time i'),$('.Course-time q'));//登录状态显示头像
-            goods($('.address-list'));
+            goods($('.address-list'));//收货地址
             goods($('.cfmode span'));
             goods($('.m-sort-ul li'));//筛选
             screenbtn($('.m-sort-ul li'),$('.m-screenbox'));//筛选
