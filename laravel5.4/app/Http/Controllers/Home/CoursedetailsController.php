@@ -48,4 +48,11 @@ class CoursedetailsController extends Controller
 			'regihtcontent' => $regihtcontent,
 		]);
 	}
+	//查看直播
+	public function coursedetailShow()
+	{
+		$pplive_id = Input::get('pplive_id');
+		$pplive = new Pplive;
+		$pplive->coursedetailShow($pplive_id);
+	}
 }

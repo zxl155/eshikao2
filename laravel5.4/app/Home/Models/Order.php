@@ -61,6 +61,7 @@ class Order extends Model
                   $value->curriculum_name = $val->curriculum_name;
                   $value->qq_group_key = $val->qq_group_key;
                   $value->curriculum_id = $val->curriculum_id;
+                  $value->is_goods = $val->is_goods;
               }
           }
       }

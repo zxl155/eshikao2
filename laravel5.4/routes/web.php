@@ -92,6 +92,10 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::post('admin/updsbro','BroadcastController@updsbro');
     //教师对应直播课程
     Route::get('admin/teacherLive','TeacherController@teacherLive');
+    //教师开始直播
+    Route::get('admin/teacherLives','TeacherController@teacherLives');
+    //直播回放
+    Route::get('admin/playback','TeacherController@playback');
   });
   //登录
   Route::get('admin/login','LoginController@login');
@@ -145,6 +149,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/coursedetails','CoursedetailsController@index');
   //购买之后课程详情
   Route::get('home/coursedetail','CoursedetailsController@coursedetail');
+   //购买之后课程查看直播
+  Route::get('home/coursedetailShow','CoursedetailsController@coursedetailShow');
   //招聘公告列表
   Route::get('home/noticelist','NoticeController@index');
   //招聘公告详情

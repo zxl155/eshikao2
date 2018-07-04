@@ -77,13 +77,22 @@
                                     @endif
                                   </th>
                                   <th>
-                                    
-                                      @if($val->admin_id == $val->admins_id)
-                                      <a href="">开始直播</a>
+                                    @if($val->date_time < $val->start_time)
+                                    <span>未开始</span>
+                                    @elseif($val->date_time > $val->end_time)
+                                    <a href="{{url('admin/playback')}}?pplive_id={{$val->pplive_id}}">直播回放</a>
+                                    @else
+                                    @if($val->admin_id == $val->admins_id)
+                                      <a href="{{url('admin/teacherLives')}}?pplive_id={{$val->pplive_id}}">开始直播</a>
                                        
                                       @else 
                                         <a href="">助教入口</a>
                                       @endif
+                                    @endif
+
+
+
+                                     
                                     
                                   </th>
                                 </tr>

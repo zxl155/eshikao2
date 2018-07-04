@@ -41,8 +41,12 @@
                         <td>￥{{$value->order_money}}</td>
                         <td>
                             @if($value->order_state == 1)
+                            @if($value->is_goods == 2)
                             <div class="td-details"><a href="{{URL::asset('home/coursedetail')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
                             <a href="">物流信息</a>
+                            @else
+                            <div class="td-details"><a href="{{URL::asset('home/coursedetail')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                            @endif
                             @else
                              <div class="td-details"><a href="#">去支付</a></div>
                             

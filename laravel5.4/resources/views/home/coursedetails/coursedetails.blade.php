@@ -29,12 +29,19 @@
                 <ul class="v-content-left-list-ul">
     
                      @foreach($pplive_content as $val)
-                    <li><a href="">  
+                    <li>  
                          <img src="./img/zbtb.png" alt=""> 
                         <span class="lint-title">{{$val->pplive_name}}</span>
                         <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
                         <span class="list-name">{{$val->admin_name}}</span>
-                    </a></li>
+                        @if($val->is_time == 0)
+                            <a href="#">未开始</a>
+                        @elseif($val->is_time == 1)
+                           <a href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">进入教师</a> 
+                        @else 
+                            <a href="#">查看回放</a>
+                        @endif
+                    </li>
                     @endforeach
                    
                 </ul>
