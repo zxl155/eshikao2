@@ -48,16 +48,15 @@ class CommonController extends Controller
                 return $next($request);
             }
              $jurisdiction_id=DB::table('role_jurisdiction')->where('role_id',$role_id)->get();
-             //print_r($jurisdidiction_id[0]->jurisdiction_id);die;
-             $jurisdiction_id = $jurisdiction_id[0]->jurisdiction_id;
-             $data = DB::table('jurisdiction')->where('jurisdiction_id',$jurisdiction_id)->get();
-            //print_r($data);die;
+             foreach ($jurisdiction_id as $key => $value) {
+                 $arr[] = $value->jurisdiction_id;
+             }
+             $jurisdiction_id = implode(',',$arr);
+             $data = DB::select("select * from jurisdiction where jurisdiction_id in($jurisdiction_id)");
                 $data=json_decode(json_encode($data),true);
-            
                 foreach($data as $k=>$v){
                     $arr[]=$v['jurisdiction_name']."/".$v['jurisdiction_url'];
                 }
-               //print_r($arr);die;
                 if(!in_array($controller."/".$action,$arr)){
                      $url = "{{URL::asset('admin/index')}}";  
                     echo "<script>alert('没有访问权限！！！！');location.href='http://www.eshikaojiaoyu.com/admin/index';</script>";

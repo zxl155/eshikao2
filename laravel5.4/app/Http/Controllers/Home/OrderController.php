@@ -21,6 +21,7 @@ class OrderController extends Controller
 	{
 		$order = new Order;
 		$order_content = $order->oneOrder();
+		//print_r($order_content);die;
 		return view('home/order/userOrder',[
 			'order_content'=>$order_content,
 		]);

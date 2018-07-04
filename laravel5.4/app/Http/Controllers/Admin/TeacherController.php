@@ -20,5 +20,18 @@ class TeacherController extends CommonController
 			'data'=>$data,
 		]);
 	}
-	
+	//老师直播
+	public function teacherLives()
+	{
+		$pplive_id = Input::get('pplive_id');
+		$pplive = new Pplive;
+		$arr = $pplive->teacherShow($pplive_id);
+	}
+	//直播回放
+	public function playback()
+	{
+		$pplive_id = Input::get('pplive_id');
+		$pplive = new Pplive;
+		$pplive->playback($pplive_id);
+	}
 }
