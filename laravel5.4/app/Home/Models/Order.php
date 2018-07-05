@@ -30,6 +30,19 @@ class Order extends Model
       $order = DB::select("select * from `order` where order_number = $order_number");
       return $order;
     }
+    //查询用户名称
+    public function curriuclumName($curriculum_id,$data)
+    {
+      $curriculum = DB::select("select * from `curriculum` where curriculum_id = $curriculum_id ");
+      foreach ($data as $key => $value) {
+        foreach ($curriculum as $k => $val) {
+          if($data[0]->curriculum_id == $val->curriculum_id){
+            $value->curriculum_name = $val->curriculum_name;
+          }
+        }
+      }
+      return $data;
+    }
     //查询是否有当前订单
     public function selects($user_id,$curriculum_id)
     {
@@ -42,7 +55,11 @@ class Order extends Model
        $order = DB::table('order')->where('order_id',$order_id)->get();
         $arr =  DB::table('order')->where('order_id',$order_id)->update(['order_state'=>1,'order_time'=>date('Y-m-d H:i:s')]);
        $order_is = DB::table('user_curriculum')->insert( ['user_id' => $order[0]->user_id, 'curriculum_id' => $order[0]->curriculum_id]);
-       if($arr&$order_is){
+
+        $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();
+        $bought_number =  intval($curriculum[0]->bought_number+1);
+        $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->update(['bought_number'=>$bought_number]);
+       if($arr&$order_is&$curriculum){
           return true;
        } else {
           return false;

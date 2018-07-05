@@ -48,7 +48,7 @@
                             <div class="td-details"><a href="{{URL::asset('home/coursedetail')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
                             @endif
                             @else
-                             <div class="td-details"><a href="#">去支付</a></div>
+                             <div class="td-details"><a href="{{URL::asset('home/CommodityPay')}}?order_number={{$value->order_number}}">去支付</a></div>
                             
                             @endif
                         </td>

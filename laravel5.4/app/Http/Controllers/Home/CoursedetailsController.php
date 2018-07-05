@@ -55,4 +55,12 @@ class CoursedetailsController extends Controller
 		$pplive = new Pplive;
 		$pplive->coursedetailShow($pplive_id);
 	}
+	//查看回放
+	public function playback()
+	{
+		$pplive_id = Input::get('pplive_id');
+		$pplive = new Pplive;
+		$pplive ->playback($pplive_id);
+	}
+
 }

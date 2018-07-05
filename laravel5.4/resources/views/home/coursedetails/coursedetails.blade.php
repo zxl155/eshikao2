@@ -39,7 +39,7 @@
                         @elseif($val->is_time == 1)
                            <a href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">进入教师</a> 
                         @else 
-                            <a href="#">查看回放</a>
+                            <a href="{{URL::asset('home/playback')}}?pplive_id={{$val->pplive_id}}">查看回放</a>
                         @endif
                     </li>
                     @endforeach

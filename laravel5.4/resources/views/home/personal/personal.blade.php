@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="personal-list">
-                <div class="personal-detail-content">
+                <!-- <div class="personal-detail-content">
                     <div class="personal-detail-img">
                         <img src="{{URL::asset('/')}}home/img/kcimg.png" alt="">
                     </div>
@@ -62,20 +62,24 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                @foreach($curriculum as $val)
                 <div class="personal-detail-content">
                     <div class="personal-detail-img">
-                        <img src="{{URL::asset('/')}}home/img/kcimg.png" alt="">
+                        <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$val->curriculum_pricture}}" alt="11111" width="200px" height=150px">
                     </div>
                     <div class="personal-detail-text">
                         <h3>
-                            2018上教师资格证一站拿证（单科）
-                            <span class="active">直播预告</span>
-                            <i>6天后14:00</i>
+                            {{$val->curriculum_name}}
+                           <!--  <span class="active">直播预告</span>
+                            <i>请确认时间</i> -->
                         </h3>
-                        <p class="personal-detail-date">上次观看时间：2018-06-07 10:34:45</p>
+                        <p class="personal-detail-date">开课时间：{{$val->recovery_original}}</p>
+                        <a href="{{URL::asset('home/coursedetail')}}?curriculum_id={{$val->curriculum_id}}" style="color: blue">点击查看</a>
                     </div>
+
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

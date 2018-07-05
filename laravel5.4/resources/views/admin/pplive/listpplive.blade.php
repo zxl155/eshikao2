@@ -42,6 +42,7 @@
                                     <th class="table-type">开始时间-结束时间</th>
                                     <th class="table-title">任课老师</th>
                                     <th class="table-title">助教</th>
+                                    <th class="table-title">直播间</th>
                                     <th class="table-set">操作</th>
                                 </tr>
 
@@ -51,10 +52,19 @@
                                <tr>
                                     <th>{{$val->pplive_id}}</th>
                                     <th>{{$val->pplive_name}}</th>
-                                    <th></th>
+                                    <th>{{$val->entrance}}</th>
                                     <th>{{$val->start_time}}--{{$val->end_time}}</th>
                                     <th>{{$val->admin_name}}</th>
                                     <th>{{$val->assistant_admin_name}}</th>
+                                    <th>
+                                        @if($val->date_time < $val->start_time)
+                                        <span>未开始</span>
+                                        @elseif($val->date_time > $val->end_time)
+                                        <a href="{{url('admin/playback')}}?pplive_id={{$val->pplive_id}}">直播回放</a>
+                                        @else
+                                            <a href="{{url('admin/Assistant')}}?pplive_id={{$val->pplive_id}}">进入直播间</a>
+                                        @endif
+                                    </th>
                                     <th> 
                                         <a href="{{URL::asset('admin/updpplive')}}?pplive_id={{$val->pplive_id}}">编辑</a> 
                                         <a href="{{URL::asset('admin/delpplive')}}?pplive_id={{$val->pplive_id}}" onclick="if(confirm('确实要删除数据吗？')) return true;else return false;">删除</a></th>

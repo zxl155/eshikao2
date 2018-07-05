@@ -53,7 +53,10 @@ class CommodityController extends Controller
      */
 	public function CommodityPay()
 	{
-		$order_number = session('order_number');
+		$order_number = Input::get('order_number');
+		if ($order_number == '') {
+			$order_number = session('order_number');
+		}
 		$order = new Order;
 		$address = $order->address($order_number);
 		if(!empty($address)){

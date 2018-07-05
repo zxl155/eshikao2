@@ -47,8 +47,8 @@
     <div class="commodity-content clearfix">
         <h3>请选择支付方式</h3>
         <div class="cfmode">
-            <span class="active"><img src="./img/zfb.png" alt=""><img class="confirm" src="./img/confirm.png" alt=""></span>
-           <!--  <span class="active"><img src="./img/wxzf.png" alt=""><img class="confirm" src="./img/confirm.png" alt=""></span> -->
+            <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
+            <span ><img src="{{URL::asset('/')}}home/img/wxzf.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span> 
         </div>
 
         <div class="commodity-text">
@@ -57,7 +57,6 @@
            
             <div class="commodity-button">
 
-               
         <form action="{{URL::asset('home/alipayapi')}}" class="alipayform" method="post" target="_blank">
                 {{csrf_field()}}
                 
