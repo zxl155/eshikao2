@@ -90,6 +90,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/delbro','BroadcastController@delbro');
     //执行
     Route::post('admin/updsbro','BroadcastController@updsbro');
+    //助教入口
+    Route::get('admin/Assistant','TeacherController@Assistant');
     //教师对应直播课程
     Route::get('admin/teacherLive','TeacherController@teacherLive');
     //教师开始直播
@@ -151,6 +153,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/coursedetail','CoursedetailsController@coursedetail');
    //购买之后课程查看直播
   Route::get('home/coursedetailShow','CoursedetailsController@coursedetailShow');
+  //查看回放
+  Route::get('home/playback','CoursedetailsController@playback');
   //招聘公告列表
   Route::get('home/noticelist','NoticeController@index');
   //招聘公告详情
@@ -182,9 +186,11 @@ Route::group(['namespace' => 'Home'], function(){
    //支付 支付宝生成二维码
   Route::post('home/alipayapi','PayController@index');
   //支付 异步
-  Route::post('home/asynchronous','PayController@asynchronous');
+  Route::get('home/asynchronous','PayController@asynchronous');
    //支付成功回调页面
-  Route::post('home/apiSuccess','PayController@apiSuccess');
+  Route::get('home/apiSuccess','PayController@apiSuccess');
+   //自己家的成功页面
+  Route::get('home/Success','PayController@Success');
    //前台用户退出
   Route::get('home/out','LoginController@out');
    //前台用户协议

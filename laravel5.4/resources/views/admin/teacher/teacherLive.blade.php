@@ -86,14 +86,9 @@
                                       <a href="{{url('admin/teacherLives')}}?pplive_id={{$val->pplive_id}}">开始直播</a>
                                        
                                       @else 
-                                        <a href="">助教入口</a>
+                                        <a href="{{url('admin/Assistant')}}?pplive_id={{$val->pplive_id}}">助教入口</a>
                                       @endif
                                     @endif
-
-
-
-                                     
-                                    
                                   </th>
                                 </tr>
                                 @endforeach

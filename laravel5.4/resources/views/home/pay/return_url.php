@@ -33,26 +33,27 @@ if($verify_result) {//验证成功
 
 	//商户订单号
 
-	$out_trade_no = $_GET['out_trade_no'];
+	$out_trade_no = $data['out_trade_no'];
 
 	//支付宝交易号
 
-	$trade_no = $_GET['trade_no'];
+	$trade_no = $data['trade_no'];
 
 	//交易状态
-	$trade_status = $_GET['trade_status'];
+	$trade_status = $data['trade_status'];
 
 
-    if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
+    if($data['trade_status'] == 'TRADE_FINISHED' || $data['trade_status'] == 'TRADE_SUCCESS') {
 		//判断该笔订单是否在商户网站中已经做过处理
 			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
 			//如果有做过处理，不执行商户的业务程序
     }
     else {
-      echo "trade_status=".$_GET['trade_status'];
+      echo "trade_status=".$data['trade_status'];
     }
-		
-	echo "验证成功<br />";
+	
+	header("Location: http://www.eshikaojiaoyu.com/home/Success");//跳转到自己成功页面
+	 
 
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 	

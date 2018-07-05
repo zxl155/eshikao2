@@ -64,4 +64,44 @@ class Pplive extends Model
        $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
        header("Location: ".$url.""); 
    }
+
+   //查看回放
+   public function playback($pplive_id)
+   {
+     $pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
+      $params =  [
+          "partner_id" => 70707480, //百家云 合作方id
+          "room_id" => $pplive[0]->entrance,
+          "timestamp" => time(),
+          "expires_in" => 0,
+      ];
+      $partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
+      ksort($params);//将参数按key进行排序
+        $str = '';
+        $ginseng= '';
+        foreach ($params as $k => $val) {
+            $str .= "{$k}={$val}&"; //拼接成 key1=value1&key2=value2&...&keyN=valueN& 的形式
+        }
+
+        $ginseng = $str; //赋值
+        $str .= "partner_key=" . $partner_key; //结尾再拼上 partner_key=$partner_key
+        $sign = md5($str); //计算md5值
+        $ginseng .="sign=" . $sign; 
+         $ch = curl_init();//初始化curl
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+         // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);  // 从证书中检查SSL加密算法是否存在
+          curl_setopt($ch, CURLOPT_URL,"https://api.baijiayun.com/openapi/playback/getPlayerToken");//抓取指定网页
+          curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
+          curl_setopt($ch, CURLOPT_POST, 1);//post提交方式
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $ginseng);
+          $arr = curl_exec($ch);//运行curl
+          $arr = json_decode($arr);
+          if($arr->code == 0){
+            $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+            header("Location: ".$url.""); 
+          } else {
+            echo "查询回放token失败";die;
+          }
+   }
 }

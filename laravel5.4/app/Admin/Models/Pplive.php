@@ -70,6 +70,42 @@ class Pplive extends Model
 
 		
 	}
+	//助教入口
+	public function Assistant($pplive_id)
+	{
+		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
+		$admin = DB::table('admin')->get();
+		//print_r($admin);die;
+		foreach ($pplive as $key => $value) {
+			foreach ($admin as $k => $val) {
+				if($value->assistant_admin_id == $val->admin_id){
+					$value->assistant_admin_name = $val->admin_name;
+					$value->admin_head = $val->admin_head;
+
+				}
+			}
+		}
+		$params =  [
+		    "room_id" => $pplive[0]->entrance, //房间号码
+		   	"user_number" => $pplive[0]->admin_id, //admin——id
+		   	"user_name" =>$pplive[0]->assistant_admin_name,
+		   	"user_role" =>2,
+		   	"user_avatar" => $pplive[0]->admin_head,
+		];
+		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
+		ksort($params);//将参数按key进行排序
+	    $str = '';
+	    $ginseng= '';
+	    foreach ($params as $k => $val) {
+	        $str .= "{$k}={$val}&"; //拼接成 key1=value1&key2=value2&...&keyN=valueN& 的形式
+	    }
+	    $ginseng = $str; //赋值
+	    $str .= "partner_key=" . $partner_key; //结尾再拼上 partner_key=$partner_key
+	    $sign = md5($str); //计算md5值
+	    $ginseng .="sign=" . $sign; 
+	    $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+	    header("Location: ".$url.""); 
+	}
 	public function teacherShow($pplive_id)
 	{
 		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
@@ -88,7 +124,6 @@ class Pplive extends Model
 		    "room_id" => $pplive[0]->entrance, //房间号码
 		   	"user_number" => $pplive[0]->admin_id, //admin——id
 		   	"user_name" =>$pplive[0]->admin_name,
-		   	"user_role" =>1,
 		   	"user_role" =>1,
 		   	"user_avatar" => $pplive[0]->admin_head,
 		];
@@ -157,6 +192,7 @@ class Pplive extends Model
 			foreach ($data as $keys => $values) {
 				if ($value->admin_id == $values->admin_id) {
 					$value->admin_name = $values->admin_name;
+					$value->date_time = date('Y-m-d H:i:s');
 				}
 			}
 		}

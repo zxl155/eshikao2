@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use App\Home\Models\User;
+use App\Home\Models\Order;
 
 class PayController extends Controller
 {
@@ -23,13 +23,35 @@ class PayController extends Controller
 	//异步
 	public function asynchronous()
 	{
-		/*$data = Input::all();
-		print_r($data);*/
-		return view('home/pay/return_url');
+		$data = Input::all();
+		return view('home/pay/notify_url',['data'=>$data]);
 	}
 	//支付成功回调页面
 	public function apiSuccess()
 	{
-		echo "成功页面的吗";
+		$data = Input::all();
+		return view('home/pay/return_url',['data'=>$data]);
+	}
+	//自己家的成功页面
+	public function Success()
+	{
+		$order_number = session('order_number');
+		$order = new Order;
+		$data = $order->noaddress($order_number); //通过订单查询的订单数据
+		$data = $order->curriuclumName($data[0]->curriculum_id,$data);
+		if ($data) {
+			$order_id =  $order->orderPay($data[0]->order_id);
+			if ($order_id) {
+				return view('home/pay/paySuccess',[
+					'data'=>$data,
+				]);
+			} else {
+				echo "修改订单状态失败";
+			}
+			
+		} else {
+			echo "没有订单数据";
+		}
+		
 	}
 }
