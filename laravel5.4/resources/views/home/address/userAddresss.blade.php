@@ -74,7 +74,7 @@
             return false;
          }
          $.ajax({
-            url:"{{URL::asset('home/addressUpdates')}}",
+            url:"{{URL::asset('home/addressUpdates.html')}}",
             data:{
                 address_name:address,
                 address_tel:phone,
@@ -91,7 +91,7 @@
                 if (data.is=='正确') {
                     var txt=  "修改地址成功";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                     window.location.replace("address");
+                     window.location.replace("address.html");
                 } else {
                     var txt=  "修改地址失败";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

@@ -100,7 +100,7 @@
     <div  id="html">
     <div class="Qualified-content clearfix">
        @foreach($qualifications as $val)
-        <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$val->curriculum_id}}">
+        <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
             <b>教师资格</b>
             <h5>{{$val->curriculum_name}}</h5>
             <div class="Qualified-period">
@@ -151,7 +151,7 @@
                             var html = ""; 
                             html+='<div class="Qualified-content clearfix">'
                             jQuery.each(data.data,function(key,value){
-                                        html+='<a href="coursedetails?curriculum_id='+value.curriculum_id+'">'
+                                        html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
                                         html+='<h5>"'+value.curriculum_name+'"</h5>'
                                         html+='<div class="Qualified-period">'

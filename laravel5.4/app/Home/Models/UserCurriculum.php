@@ -14,6 +14,9 @@ class UserCurriculum extends Model
     	foreach ($user_curriculum as $key => $value) {
     		$arr[] = $value->curriculum_id;
     	}
+        if(empty($arr)){
+            return false;die;
+        }
     	$curriculum_id = implode(',',$arr);
     	$data = DB::select("select * from curriculum where curriculum_id in($curriculum_id)");
     	return $data;

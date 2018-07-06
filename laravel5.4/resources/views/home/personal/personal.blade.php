@@ -63,6 +63,9 @@
                         </div>
                     </div>
                 </div> -->
+                @if($curriculum == 1)
+                <span style="color: blue">没有课程</span>
+                @else
                 @foreach($curriculum as $val)
                 <div class="personal-detail-content">
                     <div class="personal-detail-img">
@@ -75,11 +78,12 @@
                             <i>请确认时间</i> -->
                         </h3>
                         <p class="personal-detail-date">开课时间：{{$val->recovery_original}}</p>
-                        <a href="{{URL::asset('home/coursedetail')}}?curriculum_id={{$val->curriculum_id}}" style="color: blue">点击查看</a>
+                        <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$val->curriculum_id}}" style="color: blue">点击查看</a>
                     </div>
 
                 </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </div>

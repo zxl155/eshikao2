@@ -95,7 +95,7 @@
     {{$value->present_price}}
     @endif</b></span><br>
             <div class="commodity-button">
-                <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">返回</a>   
+                <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$value->curriculum_id}}">返回</a>   
                 <input type="button" name="" class="active" value="提交订单">
             </div>
             <p id="yyd">
@@ -200,7 +200,7 @@
                 if (data.error=='成功') {
                      var txt=  "提交订单成功！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                    window.location.href = "{{URL::asset('home/CommodityPay')}}";
+                    window.location.href = "{{URL::asset('home/CommodityPay.html')}}";
                 } else if(data.error=='失败') {
                     var txt=  "提交订单失败！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

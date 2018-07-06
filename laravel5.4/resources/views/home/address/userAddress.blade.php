@@ -54,7 +54,7 @@
                         <td>{{$value->address_tel}}</td>
                         <td>{{$value->address_detailed}}</td>
                         <td>
-                            <a href="{{URL::asset('home/addressUpdate')}}?address_id={{$value->address_id}}">编辑</a>|<a href="{{URL::asset('home/addressDelete')}}?address_id={{$value->address_id}}">删除</a>
+                            <a href="{{URL::asset('home/addressUpdate.html')}}?address_id={{$value->address_id}}">编辑</a>|<a href="{{URL::asset('home/addressDelete')}}?address_id={{$value->address_id}}">删除</a>
                         </td>
                     </tr>
                     @endif

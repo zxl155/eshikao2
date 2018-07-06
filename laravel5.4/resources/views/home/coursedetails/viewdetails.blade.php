@@ -26,7 +26,7 @@
                         {{$value->present_price}}
                         @endif
                 </span>
-                <a href="{{URL::asset('home/CommodityGoods')}}?curriculum_id={{$value->curriculum_id}}">立即购买</a>
+                <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}">立即购买</a>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
    
 </b></span></p>
             <div class="price-purchase">
-                <a href="{{URL::asset('home/CommodityGoods')}}?curriculum_id={{$value->curriculum_id}}" class="active">立即购买</a>
+                <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active">立即购买</a>
                 <a href="http://wpa.qq.com/msgrd?v=3&uin=1291245447&site=qq&menu=yes">咨询</a>
                 <span>已购{{$value->bought_number}}人 / 限购 {{$value->purchase_number}}人</span>
             </div>
@@ -123,7 +123,7 @@
                 </ul>
             </div>
             @foreach($regihtcontent as $v)
-            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$v->curriculum_id}}" class="v-right-a">
+            <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$v->curriculum_id}}" class="v-right-a">
                 <b>推荐</b>
                 <h5>{{$v->curriculum_name}}</h5>
                 <div class="Qualified-period">

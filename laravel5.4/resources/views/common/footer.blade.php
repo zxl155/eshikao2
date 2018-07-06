@@ -1,7 +1,7 @@
 <div class="Bottom">
     <div class="service">
-        <div class="about"><p class="service-title">关于我们</p><a href="{{URL::asset('home/about')}}" class="knowesk">了解易师考
-        </a><a href="{{URL::asset('home/about')}}" class="addcy">加入易师考</a><a href="{{URL::asset('home/agreement')}}">用户协议</a></div>
+        <div class="about"><p class="service-title">关于我们</p><a href="{{URL::asset('home/about.html')}}" class="knowesk">了解易师考
+        </a><a href="{{URL::asset('home/about.html')}}" class="addcy">加入易师考</a><a href="{{URL::asset('home/agreement.html')}}">用户协议</a></div>
         <div class="contact"><p class="service-title">联系方式</p><a>客服热线：4001234567（
             周一至周五9:00-18:00）</a><a>客服邮箱：niuxiaoyi@eshikao.com</a><a
                 href="http://wpa.qq.com/msgrd?v=3&uin=1291245447&site=qq&menu=yes" class="consult">在线咨询</a></div>

@@ -16,7 +16,7 @@
     <div id="focus-banner">
         <ul id="focus-banner-list">
             @foreach($broadcast_content as $va)
-            <li> <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$va->curriculum_id}}" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}')no-repeat;background-position: center;background-size: 1920px 377px">
+            <li> <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$va->curriculum_id}}" class="focus-banner-img" style="background: url('{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}')no-repeat;background-position: center;background-size: 1920px 377px">
             </a>
             </li>
             @endforeach
@@ -48,12 +48,12 @@
                 <img src="" alt=""></div>
         </div>
     </div>
-    <div class="Qualified"><h2 class="Qualified-title"><span>教师资格 <a aria-current="false" href="{{URL::asset('home/qualifications')}}"> 更多»</a></span>
+    <div class="Qualified"><h2 class="Qualified-title"><span>教师资格 <a aria-current="false" href="{{URL::asset('home/qualifications.html')}}"> 更多»</a></span>
     </h2>
         <div class="Qualified-content clearfix">
             
            @foreach($qualifications as $val)
-            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$val->curriculum_id}}">
+            <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="m-Qualified-title">
                    <b>教师资格  </b>
                 <h5>{{$val->curriculum_name}}</h5> 
@@ -85,13 +85,13 @@
           @endforeach  
         </div>
         <h2 class="Qualified-title">
-            <span>教师招聘 <a aria-current="false" href="{{URL::asset('home/recruit')}}"> 更多»</a></span>
+            <span>教师招聘 <a aria-current="false" href="{{URL::asset('home/recruit.html')}}"> 更多»</a></span>
         </h2>
        
          <div class="Qualified-content clearfix">
             
            @foreach($recruit as $val)
-            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$val->curriculum_id}}">
+            <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="m-Qualified-title">
                    <b>教师招聘  </b>
                 <h5>{{$val->curriculum_name}}</h5> 

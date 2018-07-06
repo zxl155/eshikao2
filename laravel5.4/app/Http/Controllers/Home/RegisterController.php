@@ -27,9 +27,7 @@ class RegisterController extends Controller
 	 */
 	public function emails(){
 		$phone = Input::get('phone');
-		$user = new User;
-		$onlys = $user->only($phone);
-		if($onlys == 1){
+		
 			$code = rand(111111,999999);
 			session(['phone' => $phone]);
 			session(['code' => $code]);
@@ -39,7 +37,7 @@ class RegisterController extends Controller
 			}else{
 				echo 0;
 			}
-		}
+		
 		
 	}
 	/**
@@ -89,5 +87,17 @@ class RegisterController extends Controller
 	public function retrieve()
 	{
 		return view('home/register/retrieve');
+	}
+	//通过手机号修改密码
+	public function retrieves()
+	{
+		$data = Input::all();
+		$user = new User;
+		$arr = $user->retrieves($data);
+		if ($arr) {
+			echo 2;
+		} else {
+			echo 3;
+		}
 	}
 }
