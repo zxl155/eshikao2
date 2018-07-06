@@ -19,6 +19,11 @@ class MyclassController extends Controller
 		$user_id = session('user_id');
 	 	$usercurriculum = new UserCurriculum;
 	 	$curriculum = $usercurriculum->index($user_id);
+	 	if ($curriculum==false) {
+	 		return view('home/personal/personal',[
+				"curriculum"=>1,
+			]);die;
+	 	}
 		return view('home/personal/personal',[
 			"curriculum"=>$curriculum,
 		]);

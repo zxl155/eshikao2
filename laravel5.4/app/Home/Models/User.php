@@ -112,5 +112,11 @@ class User extends Model
         return false;
       }
    }
+   //通过手机号验证码修改密码
+   public function retrieves($data)
+   {
+     $arr = DB::table('user')->where('user_tel',$data['user_tel'])->update(['password'=>md5($data['user_pwd'])]);
+     return $arr;
+   }
 
 }

@@ -21,7 +21,7 @@
             <p>课程名称：{{$value->curriculum_name}}</p>
             
             <div class="paySuccess-text-button">
-                <a href="{{URL::asset('home/coursedetail')}}?curriculum_id={{$value->curriculum_id}}" class="active">查看课程</a>
+                <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}" class="active">查看课程</a>
                 <a href="{{URL::asset('/')}}">返回首页</a>
             </div>
             @endforeach

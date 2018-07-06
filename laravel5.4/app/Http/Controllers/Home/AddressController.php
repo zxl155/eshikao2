@@ -54,9 +54,9 @@ class AddressController extends Controller
 		$goods = new GoodsAddress;
 		$arr = $goods->deletes($address_id);
 		if ($arr) {
-			return redirect('home/address');
+			return redirect('home/address.html');
 		} else {
-			return redirect('home/address');
+			return redirect('home/address.html');
 		}
 	}
 	/**

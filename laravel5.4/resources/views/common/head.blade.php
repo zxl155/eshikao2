@@ -29,7 +29,7 @@
 <!--移动-->
 <div class="m-header">
     <div class="m-header-content">
-        <div><a href="javascript:history.go(-1);"><img src="./img/88_03.png" alt=""></a></div>
+        <div><a href="javascript:history.go(-1);"><img src="{{URL::asset('/')}}home/img/88_03.png" alt=""></a></div>
         <div>易师考</div>
         <div></div>
     </div>
@@ -41,24 +41,24 @@
             </a>
             <ul class="header-ul">
                 <li><a href="{{URL::asset('/')}}">首页</a></li>
-                <li><a href="{{URL::asset('home/qualifications')}}">教师资格证</a></li>
-                <li><a href="{{URL::asset('home/recruit')}}">教师招聘</a></li>
-                <li><a href="{{URL::asset('home/noticelist')}}">招考公告</a></li>
+                <li><a href="{{URL::asset('home/qualifications.html')}}">教师资格证</a></li>
+                <li><a href="{{URL::asset('home/recruit.html')}}">教师招聘</a></li>
+                <li><a href="{{URL::asset('home/noticelist.html')}}">招考公告</a></li>
                <!--  <li><a href="#">APP下载</a></li> -->
             </ul>
             <div class="header-login">
-                <a href="{{URL::asset('home/login')}}" class="active">登录</a>
-                <a href="{{URL::asset('home/register')}}">注册</a></div>
+                <a href="{{URL::asset('home/login.html')}}" class="active">登录</a>
+                <a href="{{URL::asset('home/register.html')}}">注册</a></div>
                 
                 <div class="header-login1">
-                <a href="{{URL::asset('home/myclass')}}">
+                <a href="{{URL::asset('home/myclass.html')}}">
                     <?php if (empty(session('head'))): ?>
                         <img src="{{URL::asset('/')}}home/img/touxiang.png" alt="">
                     <?php else: ?>
                         <img src="{{URL::asset('/')}}home/img/head/<?php echo session('head') ?>" alt="">
                     <?php endif ?>
                 </a>
-                <a href="{{URL::asset('home/myclass')}}">
+                <a href="{{URL::asset('home/myclass.html')}}">
                     <?php if (!empty(session('user_id'))): ?>
                         <?php if (!empty(session('user_name'))): ?>
                             <?php echo session('user_name') ?>

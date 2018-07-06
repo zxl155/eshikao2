@@ -174,7 +174,7 @@
                 </ul>
             </div>
             @foreach($regihtcontent as $v)
-            <a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$v->curriculum_id}}" class="v-right-a">
+            <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$v->curriculum_id}}" class="v-right-a">
                 <b>推荐</b>
                 <h5>{{$v->curriculum_name}}</h5>
                 <div class="Qualified-period">

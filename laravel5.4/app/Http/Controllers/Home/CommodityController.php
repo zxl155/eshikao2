@@ -20,6 +20,10 @@ class CommodityController extends Controller
      */
 	public function CommodityGoods()
 	{
+		$user_id = session('user_id');
+		if ($user_id == '') {
+			return redirect('home/login.html');die;
+		}
 		$curriculum_id = Input::get('curriculum_id');
 		$curriculum = new Curriculum;
 		$curriculum_content = $curriculum -> coursedetails($curriculum_id);
@@ -74,8 +78,12 @@ class CommodityController extends Controller
 				//0元的课程
 				$order_id = $address[0]->order_id;
 				$arr = $order->orderPay($order_id);
+				$data = $order->noaddress($order_number); //通过订单查询的订单数据
+				$data = $order->curriuclumName($data[0]->curriculum_id,$data);
 				if ($arr == true) {
-					echo "支付成功";
+					return view('home/pay/paySuccess',[
+						'data'=>$data,
+					]);
 				} else {
 					echo "支付失败";
 				}

@@ -16,9 +16,9 @@
     <div class="Login">
         <div class="Login-box">
             <div class="logins"><div class="logins-title clearfix">
-                <span><a class="active" aria-current="true" href="login">登录</a></span>
+                <span><a class="active" aria-current="true" href="{{URL::asset('home/login.html')}}">登录</a></span>
                 <span class="clearfix">
-                    <a aria-current="false" href="register">注册</a>
+                    <a aria-current="false" href="{{URL::asset('home/register.html')}}">注册</a>
                 </span>
             </div>
 
@@ -31,7 +31,7 @@
                         <i class="mmtb">
                         <img src="{{URL::asset('/')}}home/img/mmtb.png" alt=""></i><input type="password" placeholder="请输入密码" id="user_pwd" value="">
                         <span class="forgetmm">
-                            <a href="retrieve">忘记密码?</a>
+                            <a href="{{URL::asset('home/retrieve.html')}}">忘记密码?</a>
                         </span>
                         
                         <a href="javascript:;" id="btn" class="btnlogin">立即登录</a>
