@@ -53,7 +53,23 @@ class Order extends Model
     public function orderPay($order_id)
     {
        $order = DB::table('order')->where('order_id',$order_id)->get();
-        $arr =  DB::table('order')->where('order_id',$order_id)->update(['order_state'=>1,'order_time'=>date('Y-m-d H:i:s')]);
+        $arr =  DB::table('order')->where('order_id',$order_id)->update(['order_state'=>1,'order_time'=>date('Y-m-d H:i:s'),'pay_mode'=>1]);
+       $order_is = DB::table('user_curriculum')->insert( ['user_id' => $order[0]->user_id, 'curriculum_id' => $order[0]->curriculum_id]);
+
+        $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();
+        $bought_number =  intval($curriculum[0]->bought_number+1);
+        $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->update(['bought_number'=>$bought_number]);
+       if($arr&$order_is&$curriculum){
+          return true;
+       } else {
+          return false;
+       }
+    }
+    //微信支付成功修改订单状态
+    public function orderPays($order_id)
+    {
+       $order = DB::table('order')->where('order_id',$order_id)->get();
+        $arr =  DB::table('order')->where('order_id',$order_id)->update(['order_state'=>1,'order_time'=>date('Y-m-d H:i:s'),'pay_mode'=>2]);
        $order_is = DB::table('user_curriculum')->insert( ['user_id' => $order[0]->user_id, 'curriculum_id' => $order[0]->curriculum_id]);
 
         $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();

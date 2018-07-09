@@ -34,10 +34,10 @@
     </div>
     @endforeach
     <div class="commodity-content clearfix">
-        <h3>请选择支付方式</h3>
+       <h3>请选择支付方式</h3>
         <div class="cfmode">
-            <span class="active"><img src="./img/zfb.png" alt=""><img class="confirm" src="./img/confirm.png" alt=""></span>
-           <!--  <span class="active"><img src="./img/wxzf.png" alt=""><img class="confirm" src="./img/confirm.png" alt=""></span> -->
+            <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
+            <span ><img src="{{URL::asset('/')}}home/img/wxzf.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span> 
         </div>
 
         <div class="commodity-text">
@@ -47,7 +47,7 @@
             <div class="commodity-button">
 
                
-        <form action="{{URL::asset('home/alipayapi')}}" class="alipayform" method="post" target="_blank">
+       <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
@@ -71,7 +71,27 @@
                 <div class="mark">注意：商品描述(body)，选填(建议中文，英文，数字，不能含有特殊字符)</div> -->
             
                 <input type="submit" class="active" value ="确认支付">
+        </form>
+        <form action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank">
+                {{csrf_field()}}
+                
+                <!-- <div class="etitle">商户订单号:</div> -->
+                <div class="einput"><input type="hidden" name="WIDout_trade_no" id="out_trade_no" value="{{$address[0]->order_number}}" readonly="readonly"></div>
+                <!-- <br>
+                <div class="mark">注意：商户订单号(out_trade_no).必填(建议是英文字母和数字,不能含有特殊字符)</div> -->
+               
+                <!-- <div class="etitle">商品名称:</div> -->
+                <div class="einput"><input type="hidden" name="WIDsubject" value="{{$data[0]->curriculum_name}}"></div>
+                <!-- <br>
+                <div class="mark">注意：产品名称(subject)，必填(建议中文，英文，数字，不能含有特殊字符)</div> -->
+              
+                <!-- <div class="etitle">付款金额:</div> -->
+                <div class="einput"><input type="hidden" name="WIDtotal_fee" value="{{$address[0]->order_money}}"></div>
+                <!-- <br>
+                <div class="mark">注意：付款金额(total_fee)，必填(格式如：1.00,请精确到分)</div> -->
+                
             
+                <input type="submit" class="active" value ="确认支付">
         </form>
                
             </div>

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
 </head>
 <body>
 @include('common.head')
@@ -57,7 +56,7 @@
            
             <div class="commodity-button">
 
-        <form action="{{URL::asset('home/alipayapi')}}" class="alipayform" method="post" target="_blank">
+        <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
@@ -81,9 +80,28 @@
                 <div class="mark">注意：商品描述(body)，选填(建议中文，英文，数字，不能含有特殊字符)</div> -->
             
                 <input type="submit" class="active" value ="确认支付">
-            
         </form>
+        <form action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank">
+                {{csrf_field()}}
+                
+                <!-- <div class="etitle">商户订单号:</div> -->
+                <div class="einput"><input type="hidden" name="WIDout_trade_no" id="out_trade_no" value="{{$address[0]->order_number}}" readonly="readonly"></div>
+                <!-- <br>
+                <div class="mark">注意：商户订单号(out_trade_no).必填(建议是英文字母和数字,不能含有特殊字符)</div> -->
                
+                <!-- <div class="etitle">商品名称:</div> -->
+                <div class="einput"><input type="hidden" name="WIDsubject" value="{{$data[0]->curriculum_name}}"></div>
+                <!-- <br>
+                <div class="mark">注意：产品名称(subject)，必填(建议中文，英文，数字，不能含有特殊字符)</div> -->
+              
+                <!-- <div class="etitle">付款金额:</div> -->
+                <div class="einput"><input type="hidden" name="WIDtotal_fee" value="{{$address[0]->order_money}}"></div>
+                <!-- <br>
+                <div class="mark">注意：付款金额(total_fee)，必填(格式如：1.00,请精确到分)</div> -->
+                
+            
+                <input type="submit" class="active" value ="确认支付">
+        </form>       
             </div>
             <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a></p>
         </div>
@@ -126,6 +144,5 @@
  -->
 @include('common.footer')
 <script src="js/jquery-1.8.3.js"></script>
-<script src="js/index.js"></script>
 </body>
 </html>
