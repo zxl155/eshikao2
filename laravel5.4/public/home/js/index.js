@@ -294,6 +294,16 @@ var renderZhao=(function () {
         $('.abouts-list li').eq(_index).addClass('active').siblings().removeClass('active');
         $('.abouts-content li').eq(_index).addClass('active').siblings().removeClass('active');
     }
+    /*支付选项*/
+    function zfPay(){
+        var pay=0;
+        $('.cfmode span').click(function(){
+            pay=$(this).index();
+            console.log(pay)
+        $('.commodity-button form').eq(pay).addClass('addform').siblings().removeClass('addform');
+        })
+    }
+    zfPay();
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换

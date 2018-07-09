@@ -198,4 +198,15 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/agreement.html','IndexController@agreement');
    //前台用户协议
   Route::get('home/about.html','IndexController@about');
+  //前台微信支付
+  Route::post('home/wxpay.html','WxpayController@index');
+  //前台微信图片生成
+  Route::get('home/wxpircture','WxpayController@pirctures');
+   //前台微信回调成功
+  Route::get('home/wxnotify.html','WxpayController@notify');
+  //前台微信读秒
+  Route::get('home/orderquery','WxpayController@orderquery');
+  //微信支付成功页面
+  Route::get('home/wxSuccess.html','WxpayController@wxSuccess');
+  //微信
 });
