@@ -18,6 +18,7 @@ class WxpayController extends Controller
 	public function index()
 	{
 		$data = Input::all();
+		session(['order_number'=>$data['WIDout_trade_no']]);
 		return view('home/wxpay/example/native',['data'=>$data]);
 	}
 	//生成图片

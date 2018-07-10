@@ -18,6 +18,7 @@ class PayController extends Controller
 	public function index()
 	{
 		$data = Input::all();
+		session(['order_number'=>$data['WIDout_trade_no']]);
 		return view('home/pay/alipayapi',['data'=>$data]);
 	}
 	//异步

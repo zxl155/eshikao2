@@ -42,10 +42,14 @@
                         <td>
                             @if($value->order_state == 1)
                             @if($value->is_goods == 2)
-                            <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                            <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>
+                               @if($value->qq_group_key != '') |<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                               @endif
                             <a href="">物流信息</a>
                             @else
-                            <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                            <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>
+                                 @if($value->qq_group_key != '')|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                                  @endif
                             @endif
                             @else
                              <div class="td-details"><a href="{{URL::asset('home/CommodityPay.html')}}?order_number={{$value->order_number}}">去支付</a></div>

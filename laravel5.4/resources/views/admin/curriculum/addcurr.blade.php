@@ -127,7 +127,13 @@
                         <div class="am-form-group">
                             <label for="notice" class="am-u-sm-3 am-form-label">QQ群key（PC端） <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="qq_group_key" placeholder="请输入QQkey值" required>
+                                <input type="text" class="tpl-form-input" name="qq_group_key" placeholder="请输入QQkey值">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="notice" class="am-u-sm-3 am-form-label">QQ群号 (PC端） <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <input type="text" class="tpl-form-input" name="qq_number" placeholder="请输入QQ群号码">
                             </div>
                         </div>
                         <div class="am-form-group">
