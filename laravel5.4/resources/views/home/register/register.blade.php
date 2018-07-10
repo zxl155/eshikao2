@@ -104,7 +104,7 @@
                                 if (msg == 2) {
                                     var txt =  "注册成功";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                                    window.location.href = "{{URL::asset('home/login')}}";  
+                                    window.location.href = "{{URL::asset('home/login.html')}}";  
                                 } else {
                                     var txt =  "请确认您的手机号是否注册过";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
