@@ -100,6 +100,7 @@ class CurriculumController extends CommonController
      * 执行删除
      */
 	public function delcurr(){
+
 		$curriculum_id = Input::get('curriculum_id');
 		$curriculum = new Curriculum;
 		$arr = $curriculum->deletes($curriculum_id);

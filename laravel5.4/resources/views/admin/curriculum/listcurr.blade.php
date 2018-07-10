@@ -85,7 +85,6 @@
                                         <a href="{{URL::asset('admin/updcurr')}}?curriculum_id={{$value->curriculum_id}}">编辑</a>
                                         <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/delcurr')}}?curriculum_id={{$value->curriculum_id}}" >删除</a>
                                     </th>
-
                                 </tr>
                                 @endforeach
                             </tbody>

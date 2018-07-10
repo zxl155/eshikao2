@@ -72,6 +72,7 @@ class AdminController extends CommonController
 				}
 			}
 		}
+		
 		return view('admin/admin/listadmin',[
 			'data' => $data
 		]);
@@ -111,6 +112,7 @@ class AdminController extends CommonController
 	{
 		$admin_id = Input::get('admin_id');
 		$admin = new Admin;
+
 		$data = $admin->adminUpdate($admin_id);
 		$adminrole = new AdminRole;
 		$role = $adminrole->select();
