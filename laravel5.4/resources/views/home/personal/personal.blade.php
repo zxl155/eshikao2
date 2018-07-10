@@ -15,7 +15,8 @@
         <div class="personal-content">
             <div class="personal-content-title">
                 <div class="personal-content-type">
-                    <span>考试类型</span>
+                    <span>我的课程</span>
+                <!--     <span>考试类型</span>
                 <p class="personal-content-drop">
                     <span>教师资格证</span>
                     <span>教师招聘</span>
@@ -27,7 +28,7 @@
                         <span>直播中</span>
                         <span>已离线</span>
                     </p>
-                </div>
+                </div> -->
             </div>
             <div class="personal-list">
                 @if($curriculum == 1)

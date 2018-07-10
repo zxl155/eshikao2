@@ -95,7 +95,7 @@
         </form>
                
             </div>
-            <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a></p>
+            <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="{{URL::asset('home/agreement.html')}}">《易师考用户使用服务协议》</a></p>
         </div>
     </div>
 </div>

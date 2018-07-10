@@ -19,7 +19,7 @@
     </div>
     <div class="float-top">
         <a class="rt-top"></a>
-        <a href="http://wpa.qq.com/msgrd?v=3&uin=1291245447&site=qq&menu=yes">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=3049266534&site=qq&menu=yes">
             <img src="{{URL::asset('/')}}home/img/top_04.png" alt="">
         </a>
     </div>

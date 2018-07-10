@@ -40,7 +40,7 @@
                     <br>
                     
                     <input type="hidden" class="user_id" value="{{$data[0] -> user_id}}" >
-                    <span>用户名：</span><input type="text" placeholder="请设置用户名2-5位汉字" class="use"  value="{{$data[0] -> user_name}}" style="width:145px"><a href="#" class="username">确认修改</a><br>
+                    <span>用户名：</span><input type="text" placeholder="请设置用户名" class="use"  value="{{$data[0] -> user_name}}" style="width:145px"><a href="#" class="username">确认修改</a><br>
                     <span>账号信息：</span><span class="active"><?php echo session('user_tel') ?></span><br>
                     <span>密码设置：</span>
                     <div class="active"><a href="{{URL::asset('home/updatepwd')}}">修改密码</a></div>

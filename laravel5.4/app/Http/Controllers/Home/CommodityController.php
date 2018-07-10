@@ -113,9 +113,9 @@ class CommodityController extends Controller
 		$goods = new GoodsAddress;
 		$arr = $goods->deletes($address_id);
 		if ($arr) {
-			return redirect("home/CommodityGoods?curriculum_id=$curriculum_id");
+			return redirect("home/CommodityGoods.html?curriculum_id=$curriculum_id");
 		} else {
-			return redirect('home/CommodityGoods');
+			return redirect('home/CommodityGoods.html');
 		}
 	}
 	/**
