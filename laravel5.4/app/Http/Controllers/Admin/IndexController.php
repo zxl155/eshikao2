@@ -10,9 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Admin\Models\Admin;
 use App\Admin\Models\AdminRole;
 use App\Admin\Models\Role;
-
-
-class IndexController extends Controller
+use Session;
+class IndexController extends CommonController
 {
 	/**
      * @李一明
@@ -29,14 +28,20 @@ class IndexController extends Controller
      * 个人中心
      */
 	public function personal(){
+		$admin_id = session('data')['admin_id'];
 		$admin = new Admin;
+		$admin_content = $admin->oneSelect($admin_id);
 		$adminrole = new AdminRole;
-		$role = new Role;
-		$data = $admin->where(['admin_id'=>session('data')['admin_id']])->first();
-		$role_id = $adminrole->where(['admin_id'=>$data['admin_id']])->value('role_id');
-		$data['role_name'] = $role->where(['role_id'=>$role_id])->value('role_name');
+		$role = $adminrole->select();
+		foreach ($admin_content as $key => $value) {
+			foreach ($role as $k => $val) {
+				if ($value->admin_id==$val->admin_id) {
+					$value->role_name = $val->role_name;
+				}
+			}
+		}
 		return view('admin/index/personal',[
-			'data' => $data
+			'admin_content' => $admin_content,
 		]);
 	}
 
@@ -47,7 +52,7 @@ class IndexController extends Controller
      */
 	public function upd(){
 		$admin = new Admin;
-		$admin_id = Input::get('id');
+		$admin_id = Input::get('admin_id');
 		$data = $admin->where(['admin_id'=>$admin_id])->first();
 		return view('admin/index/upds',[
 			'data' => $data
@@ -60,13 +65,17 @@ class IndexController extends Controller
      * 执行修改资料
      */
 	public function upds(Request $request){
-		$directory = 'public/uploads/'.date("Y-m-d");
-		$res = Storage::makeDirectory($directory);
-		$path = $request->file('admin_head')->store($directory);
-		$path = str_replace('public','storage', $path);
-		$data = Input::get();
-		$arr = DB::table('admin')->where('admin_id','=',$data['admin_id'])->update(['nickname'=>$data['nickname'],'admin_head'=>$path,'admin_phone'=>$data['admin_phone'],'modify_time'=>date('Y-m-d H:i:s')]);
-		if($arr){
+		 $data = Input::all();
+            $head_pirctur=$request->file('admin_head');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  $bool=Storage::disk('articles')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+		$data['admin_head'] = $fileName;
+		$arr = DB::table('admin')->where('admin_id','=',$data['admin_id'])->update(['nickname'=>$data['nickname'],'admin_head'=>$data['admin_head'],'admin_sex'=>$data['admin_sex'],'admin_desc'=>$data['admin_desc'],'admin_phone'=>$data['admin_phone'],'modify_time'=>date('Y-m-d H:i:s')]);
+		if($arr){ 
+			session(['data'=>$data]);
 			return redirect('admin/personal');
 		}
 		
@@ -79,9 +88,9 @@ class IndexController extends Controller
      */
 	public function pwd(){
 		$admin = new Admin;
-		$admin_id = Input::get('id');
+		$admin_id = Input::get('admin_id');
 		return view('admin/index/pwds',[
-			'id' => $admin_id
+			'admin_id' => $admin_id
 		]);
 	}
 
@@ -91,19 +100,22 @@ class IndexController extends Controller
      * 执行修改密码
      */
 	public function pwds(){
-		$admin_pwd = Input::get('admin_pwd');
-		$admin_id = Input::get('id');
-		$pwd = Input::get('pwd');
-		$qpwd = Input::get('qpwd');
+		$data = Input::all();
+		$password = md5($data['original_pwd']);
 		$admin = new Admin;
-		$data = $admin->where(['password' =>md5($admin_pwd)])->first();
-
-		if(!$data){
+		$admin_id = $data['admin_id'];
+		$dat = DB::select("select * from admin where admin_id='$admin_id' and password = '$password'");
+		if(empty($dat)){
 			return 1;
-		} else if($pwd != $qpwd) {
+		} else if($data['new_pwd'] != $data['confirm_pwd']) {
 			return 2;
 		} else{
-			DB::table('admin')->where('admin_id','=',$admin_id)->update(['password'=>md5($pwd),'modify_time'=>date('Y-m-d H:i:s')]);
+			$arr = DB::table('admin')->where('admin_id','=',$data['admin_id'])->update(['password'=>md5($data['new_pwd']),'modify_time'=>date('Y-m-d H:i:s')]);
+			if ($arr) {
+				return 3;
+			} else {
+				return 4;
+			}
 		}
 	}
 }

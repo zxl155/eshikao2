@@ -13,7 +13,7 @@
 
                     <div class="am-g">
                         <div class="tpl-form-body tpl-form-line">
-                            <form class="am-form tpl-form-line-form" action="{{ url('admin/dorecr') }}" method="post">
+                            <form class="am-form tpl-form-line-form" action="{{ url('admin/dorecr') }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="am-form-group">
                                     <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title"></span></label>
@@ -33,16 +33,22 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="am-form-group">
-                                    <label for="user-intro" class="am-u-sm-3 am-form-label">内容</label>
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件<span class="tpl-form-line-small-title"></span></label>
                                     <div class="am-u-sm-9">
-                                        <!-- 加载编辑器的容器 -->
-                                        <script id="container" name="content" type="text/plain">
-                                            
-                                        </script>
+                                        <input type="file" class="tpl-form-input" name="recruitment_file" required>
                                     </div>
                                 </div>
+                               <div class="am-form-group">
+                            <label for="user-intro" class="am-u-sm-3 am-form-label">内容</label>
+                            <div class="am-u-sm-9">
+                                <!-- 加载编辑器的容器 -->
+                                <script id="ue-container" name="content"  type="text/plain">
+                               
+                                </script>
+                                <!-- 上述的 php 代码是根据实际需求进行的编写，该处为初始化内容的位置-->
+                            </div>
+                        </div>
 
                                 
 
@@ -68,11 +74,15 @@
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
 </body>
+<!-- ueditor-mz 配置文件 -->
+<script type="text/javascript" src="{{asset('/')}}ueditor-mz/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="{{asset('/')}}ueditor-mz/ueditor.all.js"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var ue = UE.getEditor('container');
-        ue.ready(function() {
-        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.    
+    var ue = UE.getEditor('ue-container');
+    ue.ready(function(){
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     });
 </script>
 </html>

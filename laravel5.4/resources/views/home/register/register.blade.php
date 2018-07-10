@@ -18,9 +18,9 @@
         <div class="logins">
             <div class="logins-title clearfix">
                 <span>
-            <a href="{{URL::asset('home/login')}}">登录</a></span>
+            <a href="{{URL::asset('home/login.html')}}">登录</a></span>
                 <span class="clearfix">
-            <a href="{{URL::asset('home/register')}}" class="active">注册</a></span>
+            <a href="{{URL::asset('home/register.html')}}" class="active">注册</a></span>
             </div>
             <div>
                 <div class="Register">
@@ -33,9 +33,9 @@
                     <input type="password" placeholder="请设置密码8-16位数字或字母" id="user_pwd" value="">
                     <span class="zh-prompt"></span>
                     <input type="password" placeholder="请确认密码" id="user_pqrwd" value="">
-                    <a href="javascript:;" id="btn">立即注册</a>
+                    <a href="javascript:;" id="btn" class="btnlogin">立即注册</a>
                     <span class="forgetmm">
-                        <a href="login">已有账号，马上登录</a>
+                        <a href="{{URL::asset('home/login.html')}}">已有账号，马上登录</a>
                     </span>
                 </div>
             </div>
@@ -97,13 +97,14 @@
                 }   else {
 
                          $.ajax({
-                             url:'addregister',
+                             url:"{{URL::asset('home/addregister')}}",
                              data:{user_tel:user_tel,user_pwd:user_pwd,_token:"{{ csrf_token() }}"},
                              type:'get',
                              success:function(msg){  
                                 if (msg == 2) {
                                     var txt =  "注册成功";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                                    window.location.href = "{{URL::asset('home/login')}}";  
                                 } else {
                                     var txt =  "请确认您的手机号是否注册过";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
@@ -130,7 +131,7 @@
     //     }
     // }
     // $(".getveri").click(function(){
-        var phone = $('#user_tel').val();
+       /* var phone = $('#user_tel').val();
         function codeyz(){
              if (phone == '') {
             var txt=  "手机号不能为空";
@@ -162,7 +163,7 @@
             
         }
         return true;
-        }
+        }*/
     //     codeyz()?time=setInterval(codeTime,1000):null;
     //     console.log(codeyz());
     // });

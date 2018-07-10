@@ -32,7 +32,7 @@ class LoginController extends Controller
         $builder->build(150,32);
         $phrase = $builder->getPhrase();
         //把内容存入session
-        Session::put('milkcaptcha', $phrase); //存储验证码
+        session::put('milkcaptcha', $phrase); //存储验证码
         ob_clean();
         return response($builder->output())->header('Content-type','image/jpeg');
 	}
@@ -42,22 +42,23 @@ class LoginController extends Controller
      * @DateTime  2018-06-12
      * 表单验证
      */
-	public function proving(){
-		$admin_name = input::get('admin_name');
-		$password = input::get('password');
-		$captcha = input::get('code');
+	public function proving(Request $request){
+		$admin_name = Input::get('admin_name');
+		$password = Input::get('password');
+		$captcha = Input::get('code');
 		$admin = new Admin;
 		$data = $admin->where(['admin_name'=>$admin_name])->first();
 		if(!$data){
 			return 1;
 		} else if($data['password'] != md5($password)){
 			return 2;
-		} else if(Session('milkcaptcha') != $captcha){
+		} else if(session('milkcaptcha') != $captcha){
 			return 3;
 		} else if($data['start'] == 0){
 			return 4;
 		} else{
-			session(['data'=>$data]);
+			$request->session()->put('data', $data);
+			//session(['data'=>$data]);
 		}
 	}
 

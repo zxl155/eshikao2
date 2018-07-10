@@ -15,7 +15,7 @@ use App\Admin\Models\AdminCurriculum;
 use App\Admin\Models\AdminPplive;
 use DB;
 
-class PpliveController extends Controller
+class PpliveController extends CommonController
 {
 	/**
      * @李一明
@@ -23,26 +23,12 @@ class PpliveController extends Controller
      * 直播课程
      */
 	public function listpplive(){
+		$curriculum_id = Input::get('curriculum_id');
 		$pplive = new Pplive;
-		$curr = new Curriculum;
-		$user = new Admin;
-		$ap = new AdminPplive;
-		$arr = $pplive->get();
-		foreach ($arr as $key => $val) {
-			if(strtotime($val->stop_time)<time()){
-				$sid[] = $val->pplive_id;
-			}
-		}
-		$sid = implode($sid,',');
-		DB::update("update pplive set state = 0 where pplive_id in ($sid)");
-		$data = $pplive->select()->paginate(10);
-		$teacher = $ap->teacher($data);
-		$admin = $user->searchTeacher();
-		$admin = $curr->admin($admin,$teacher);
-		$data = $pplive->show($data);
+		$data = $pplive -> select($curriculum_id);
 		return view('admin/pplive/listpplive',[
+			'curriculum_id'=>$curriculum_id,
 			'data'=>$data,
-			'admin'=>$admin
 		]);
 	}
 
@@ -52,14 +38,13 @@ class PpliveController extends Controller
      * 添加直播课程
      */
 	public function addpplive(){
-		$curr = new Curriculum;
-		$data = $curr->get();
-		$teacher = $curr->teacher($data);
-		$user = new Admin;
-		$admin = $user->searchTeacher();
-		$admin = $curr->admin($admin,$teacher);
+		$curriculum_id = Input::get('curriculum_id');
+		//查询教师
+		$admin = new Admin;
+		$admin_teacher = $admin->searchTeacher();
 		return view('admin/pplive/addpplive',[
-			'data'=>$data,
+			'admin_teacher'=>$admin_teacher,
+			'curriculum_id'=>$curriculum_id,
 		]);
 	}
 	/**
@@ -70,15 +55,11 @@ class PpliveController extends Controller
 	public function dopplive(){
 		$data = Input::all();
 		$pplive = new Pplive;
-		$str = $pplive->get_week($data['start_time']);
-		$stop_time = date('H:i',strtotime($data['stop_time']));
-		$data['start_time'] = date('Y年m月d日',strtotime($data['start_time'])).'('.$str.')'.' '.date('H:i',strtotime($data['start_time'])).'-'.$stop_time;
-		$pplive_id = $pplive->insert($data);
-		$admin_id = $data['admin_id'];
-		$sql = "insert into admin_pplive(admin_id,pplive_id) values('$admin_id','$pplive_id')";
-		$res = DB::insert($sql);
+		$res = $pplive->insert($data);
 		if($res){
-			return redirect('admin/listpplive');
+			return redirect('admin/listcurr');
+		} else {
+			echo "添加失败";
 		}
 	}
 
@@ -102,14 +83,38 @@ class PpliveController extends Controller
      * 删除直播
      */
 	public function delpplive(){
-		$id = Input::get('id');
+		$pplive_id = Input::get('pplive_id');
 		$pplive = new Pplive;
-		$ap = new AdminPplive;
-		$aid = $ap->where(['pplive_id'=>6])->value('id');
-		$res = $pplive->where(['pplive_id'=>$id])->delete();
+		$res = $pplive->deletes($pplive_id);
 		if($res){
-			$ap->where(['id'=>$aid])->delete();
-			return redirect('admin/listpplive');
+			return redirect('admin/listcurr');
+		} else {
+			echo "删除直播课程失败";
+		}
+	}
+	//修改直播课程
+	public function updpplive()
+	{
+		$pplive_id = Input::get('pplive_id');
+		$pplive = new Pplive;
+		$data = $pplive->oneSelect($pplive_id);
+		$admin = new Admin;
+		$admin_teacher = $admin->searchTeacher();
+		return view('admin/pplive/updpplive',[
+			'data'=>$data,
+			'admin_teacher'=>$admin_teacher,
+		]);
+	}
+	//执行修改直播课程
+	public function updspplive()
+	{
+		$data = Input::all();
+		$pplive = new Pplive;
+		$res = $pplive->updspplive($data);
+		if ($res) {
+			return redirect('admin/listcurr');
+		} else {
+			echo "修改直播课程失败";
 		}
 	}
 }

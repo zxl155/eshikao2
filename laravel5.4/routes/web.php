@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 //后台
-Route::group(['namespace' => 'Admin'], function(){
+Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
   Route::group(['middleware' => 'check.login'], function() {
     //后台首页
     Route::get('admin/index','IndexController@index');
@@ -39,6 +37,8 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/updcurr','CurriculumController@updcurr');
     //执行修改
     Route::post('admin/doupd','CurriculumController@doupd');
+    //课程上架未上架
+    Route::get('admin/shelf','CurriculumController@shelf');
     //课程删除
     Route::get('admin/delcurr','CurriculumController@delcurr');
     //管理员添加
@@ -49,16 +49,24 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::get('admin/listadmin','AdminController@listadmin');
     //管理员删除
     Route::get('admin/del','AdminController@del');
+    //管理员修改状态
+    Route::get('admin/updates','AdminController@updates');
+    //修改管理员资料
+    Route::get('admin/adminUpdate','AdminController@adminUpdate');
+    //执行修改管理员资料
+    Route::post('admin/adminUpdates','AdminController@adminUpdates');
     //直播课程
     Route::get('admin/listpplive','PpliveController@listpplive');
     //添加直播
     Route::get('admin/addpplive','PpliveController@addpplive');
     //执行添加直播
     Route::post('admin/dopplive','PpliveController@dopplive');
-    //所属教师
-    Route::get('admin/selects','PpliveController@selects');
     //删除直播
     Route::get('admin/delpplive','PpliveController@delpplive');
+    //修改直播课程
+    Route::get('admin/updpplive','PpliveController@updpplive');
+    //执行修改直播课程
+    Route::post('admin/updspplive','PpliveController@updspplive');
     //招聘公告
     Route::get('admin/addrecr','RecruitmentController@addrecr');
     //执行添加
@@ -71,6 +79,24 @@ Route::group(['namespace' => 'Admin'], function(){
     Route::post('admin/updsrecr','RecruitmentController@updsrecr');
     //删除公告
     Route::get('admin/delrecr','RecruitmentController@delrecr');
+    //添加轮播图
+    Route::get('admin/addbro','BroadcastController@addbro');
+    //执行添加
+    Route::post('admin/dobro','BroadcastController@dobro');
+    //轮播图列表
+    Route::get('admin/listbro','BroadcastController@listbro');
+    //轮播图删除
+    Route::get('admin/delbro','BroadcastController@delbro');
+    //执行
+    Route::post('admin/updsbro','BroadcastController@updsbro');
+    //助教入口
+    Route::get('admin/Assistant','TeacherController@Assistant');
+    //教师对应直播课程
+    Route::get('admin/teacherLive','TeacherController@teacherLive');
+    //教师开始直播
+    Route::get('admin/teacherLives','TeacherController@teacherLives');
+    //直播回放
+    Route::get('admin/playback','TeacherController@playback');
   });
   //登录
   Route::get('admin/login','LoginController@login');
@@ -84,14 +110,16 @@ Route::group(['namespace' => 'Admin'], function(){
 //前台
 Route::group(['namespace' => 'Home'], function(){
   //前台首页
-  Route::get('home/index','IndexController@index');
+  Route::get('/','IndexController@index');
   //前台登录
-  Route::get('home/login','LoginController@login');
+  Route::get('home/login.html','LoginController@login');
   Route::post('home/dologin','LoginController@dologin');
   //忘记密码
-  Route::get('home/retrieve','RegisterController@retrieve');
+  Route::get('home/retrieve.html','RegisterController@retrieve');
+  //通过手机号修改密码
+  Route::get('home/retrieves','RegisterController@retrieves');
   //注册
-  Route::get('home/register','RegisterController@index');
+  Route::get('home/register.html','RegisterController@index');
   //短信发送
   Route::get('home/emails','RegisterController@emails');
   //注册验证
@@ -99,9 +127,9 @@ Route::group(['namespace' => 'Home'], function(){
   //注册添加入库
   Route::get('home/addregister','RegisterController@addregister');
   //个人中心我的课程
-  Route::get('home/myclass','MyclassController@index');
+  Route::get('home/myclass.html','MyclassController@index');
   //个人中心修改个人资料
-  Route::get('home/mydata','MydataController@index');
+  Route::get('home/mydata.html','MydataController@index');
   //个人中心头部
   Route::get('home/head','HeadController@index');
   //个人中心进行修改个人资料
@@ -113,37 +141,72 @@ Route::group(['namespace' => 'Home'], function(){
   //个人中心进行头像
   Route::post('home/headupdate','MydataController@insetArticle');
   //教师资格
-  Route::get('home/qualifications','QualificationsController@qualifications');
+  Route::get('home/qualifications.html','QualificationsController@qualifications');
   //教师资格搜索
   Route::get('home/quasearch','QualificationsController@quaSearch');
   //教师招聘
-  Route::get('home/recruit','RecruitController@index');
+  Route::get('home/recruit.html','RecruitController@index');
    //教师招聘
   Route::get('home/recruitsearch','RecruitController@recruitSearch');
-  //课程详情
-  Route::get('home/coursedetails','CoursedetailsController@index');
+  //未购买课程详情
+  Route::get('home/coursedetails.html','CoursedetailsController@index');
+  //购买之后课程详情
+  Route::get('home/coursedetail.html','CoursedetailsController@coursedetail');
+   //购买之后课程查看直播
+  Route::get('home/coursedetailShow','CoursedetailsController@coursedetailShow');
+  //查看回放
+  Route::get('home/playback','CoursedetailsController@playback');
   //招聘公告列表
-  Route::get('home/noticelist','NoticeController@index');
+  Route::get('home/noticelist.html','NoticeController@index');
   //招聘公告详情
   Route::get('home/notice','NoticeController@notice');
   //招聘公告搜索
   Route::get('home/noticeSearch','NoticeController@noticeSearch');
   //优惠券
-  Route::get('home/coupon','CouponController@index');
+  Route::get('home/coupon.html','CouponController@index');
   //展示收货地址
-  Route::get('home/address','AddressController@index');
+  Route::get('home/address.html','AddressController@index');
   //添加收货地址
   Route::get('home/addressAdd','AddressController@addressAdd');
    //删除收货地址
   Route::get('home/addressDelete','AddressController@addressDelete');
   //修改收货地址
-  Route::get('home/addressUpdate','AddressController@addressUpdate');
+  Route::get('home/addressUpdate.html','AddressController@addressUpdate');
   //修改收货地址
-  Route::get('home/addressUpdates','AddressController@addressUpdates');
+  Route::get('home/addressUpdates.html','AddressController@addressUpdates');
    //订单首页
-  Route::get('home/order','OrderController@index');
+  Route::get('home/order.html','OrderController@index');
   //支付首页
-  Route::get('home/CommodityGoods','CommodityController@CommodityGoods');
+  Route::get('home/CommodityGoods.html','CommodityController@CommodityGoods');
+  //支付删除地址
+  Route::get('home/CommodityAddress','CommodityController@addressDelete');
+  //订单入库
+  Route::get('home/orderAdd','CommodityController@orderAdd');
    //支付提交
-  Route::get('home/CommodityPay','CommodityController@CommodityPay');
+  Route::get('home/CommodityPay.html','CommodityController@CommodityPay');
+   //支付 支付宝生成二维码
+  Route::post('home/alipayapi','PayController@index');
+  //支付 异步
+  Route::get('home/asynchronous','PayController@asynchronous');
+   //支付成功回调页面
+  Route::get('home/apiSuccess','PayController@apiSuccess');
+   //自己家的成功页面
+  Route::get('home/Success','PayController@Success');
+   //前台用户退出
+  Route::get('home/out','LoginController@out');
+   //前台用户协议
+  Route::get('home/agreement.html','IndexController@agreement');
+   //前台用户协议
+  Route::get('home/about.html','IndexController@about');
+  //前台微信支付
+  Route::post('home/wxpay.html','WxpayController@index');
+  //前台微信图片生成
+  Route::get('home/wxpircture','WxpayController@pirctures');
+   //前台微信回调成功
+  Route::get('home/wxnotify.html','WxpayController@notify');
+  //前台微信读秒
+  Route::get('home/orderquery','WxpayController@orderquery');
+  //微信支付成功页面
+  Route::get('home/wxSuccess.html','WxpayController@wxSuccess');
+  //微信
 });

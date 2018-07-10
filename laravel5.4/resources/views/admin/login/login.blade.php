@@ -25,10 +25,6 @@
   <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css"/>
   <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{URL::asset('/')}}js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
-  <!-- <script src="{{URL::asset('/')}}sweetalert-master/docs/assets/sweetalert/sweetalert.min.js">
-    
-  </script> 
-  <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}sweetalert-master/src/sweetalert.css"> -->
 </head>
 
 <body data-type="login">
@@ -59,7 +55,7 @@
           <div class="am-form-group"> 
             <input type="text" id="code" placeholder="请输入验证码"><img src="{{ url('admin/captcha') }}" id="captcha">
           </div>
-					<p><button type="submit" id="btn" class="am-btn am-btn-default">登录</button></p>
+					<p><button type="button" id="btn" class="am-btn am-btn-default">登录</button></p>
 				</fieldset>
         
 			</form>
@@ -116,7 +112,7 @@
         }else{
           var txt=  "登录成功";
           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-          location.href = "{{ url('admin/index') }}";
+          window.location.href = "{{ url('admin/index') }}";
         }
       }
     })

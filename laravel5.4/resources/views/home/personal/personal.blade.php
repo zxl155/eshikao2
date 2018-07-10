@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>我的课程</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -30,52 +30,31 @@
                 </div>
             </div>
             <div class="personal-list">
+                @if($curriculum == 1)
+                <span style="color: blue">没有课程</span>
+                @else
+                @foreach($curriculum as $val)
                 <div class="personal-detail-content">
                     <div class="personal-detail-img">
-                        <img src="{{URL::asset('/')}}home/img/kcimg.png" alt="">
+                        <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$val->curriculum_pricture}}" alt="11111" width="200px" height=150px">
                     </div>
                     <div class="personal-detail-text">
                         <h3>
-                            2018上教师资格证一站拿证（单科）
-                            <span class="">回放课</span>
-                            <i></i>
+                            {{$val->curriculum_name}}
+                           <!--  <span class="active">直播预告</span>
+                            <i>请确认时间</i> -->
                         </h3>
-                        <p class="personal-detail-date">上次观看时间：2018-06-07 10:34:45</p>
-                        <div class="personal-detail-qqq">
-                            <img src="{{URL::asset('/')}}home/img/qq0.png" alt="">
-                            <span>加入学员群：123567456</span>
-                            <a href="javascript:pop();">删除课程</a>
-                        </div>
+                        <p class="personal-detail-date">开课时间：{{$val->recovery_original}}</p>
+                        @if($val->qq_number != "")
+                        <span>qq群：</span><span>{{$val->qq_number}}</span>
+                        <br/>
+                        @endif
+                        <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$val->curriculum_id}}" style="color: blue">查看课程</a>
                     </div>
-                    <div class="personal-prompt-bj">
-                        <div class="personal-prompt">
-                            <p class="personal-prompt-title">提示<a href="javascript:pop();">×</a></p>
-                            <div class="personal-prompt-content">
-                                <div class="personal-prompt-img"><img src="{{URL::asset('/')}}home/img/prompt.png" alt=""></div>
-                                <div class="personal-prompt-text">
-                                    <p>该课程将从我的课程中删除，删除后，如课程已下线，您将无法再次添加该课程</p>
-                                    <div class="personal-prompt-an">
-                                        <a href="">确定</a>
-                                        <a href="javascript:pop();" class="active">取消</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-                <div class="personal-detail-content">
-                    <div class="personal-detail-img">
-                        <img src="{{URL::asset('/')}}home/img/kcimg.png" alt="">
-                    </div>
-                    <div class="personal-detail-text">
-                        <h3>
-                            2018上教师资格证一站拿证（单科）
-                            <span class="active">直播预告</span>
-                            <i>6天后14:00</i>
-                        </h3>
-                        <p class="personal-detail-date">上次观看时间：2018-06-07 10:34:45</p>
-                    </div>
-                </div>
+                @endforeach
+                @endif
             </div>
         </div>
     </div>

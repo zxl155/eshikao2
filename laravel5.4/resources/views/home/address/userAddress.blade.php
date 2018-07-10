@@ -17,6 +17,7 @@
             <div class="personal-content-seat">
                 <span class="personal-content-grzl">收货地址</span>
             </div>
+            
             <div class="personal-list">
                 <div class="newaddress">
                     <form>
@@ -53,7 +54,7 @@
                         <td>{{$value->address_tel}}</td>
                         <td>{{$value->address_detailed}}</td>
                         <td>
-                            <a href="addressUpdate?address_id={{$value->address_id}}">编辑</a>|<a href="addressDelete?address_id={{$value->address_id}}">删除</a>
+                            <a href="{{URL::asset('home/addressUpdate.html')}}?address_id={{$value->address_id}}">编辑</a>|<a href="{{URL::asset('home/addressDelete')}}?address_id={{$value->address_id}}">删除</a>
                         </td>
                     </tr>
                     @endif
@@ -114,7 +115,7 @@
             success:function(data){
                 if (data.data=='正确') {
                     var txt=  "添加收货地址成功";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                     var html = ""; 
                             jQuery.each(data.content,function(key,value){
                                         html+='<tr>'
@@ -122,7 +123,7 @@
                                             html+='<td>'+value.address_tel+'</td>'
                                             html+='<td>'+value.address_detailed+'</td>'
                                             html+='<td>'
-                                                html+='<a href="addressUpdate?address_id='+value.address_id+'">编辑</a>|<a href="addressDelete?address_id='+value.address_id+'">删除</a>'
+                                                html+='<a href="{{URL::asset("home/addressUpdate")}}?address_id='+value.address_id+'">编辑</a>|<a href="{{URL::asset("home/addressDelete")}}?address_id='+value.address_id+'">删除</a>'
                                             html+='</td>'
                                         html+='</tr>'
                             }) 

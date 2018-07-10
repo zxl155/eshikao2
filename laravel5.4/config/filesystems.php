@@ -62,14 +62,31 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
-        //定义文章图片路径
-         'article'=>[
+        //定义文章图片路径 前台用户头像
+         'article'=>[ 
            'driver'=>'local',
            'root' =>public_path('home/img/head/')
-
-
        ],
-
+       //定义文章图片路径 后台管理员头像
+         'articles'=>[
+           'driver'=>'local',
+           'root' =>public_path('home/img/admin_head/')
+       ],
+       //定义文章图片路径 后台轮播图管理
+         'sowing_msp'=>[
+           'driver'=>'local',
+           'root' =>public_path('home/img/sowing_msp/')
+       ],
+        //定义文章图片路径 后台轮播图管理
+         'curriculum_pricture'=>[
+           'driver'=>'local',
+           'root' =>public_path('home/img/curriculum_pricture/')
+       ],
+       //定义招聘公告文件路径
+         'recruitment'=>[
+           'driver'=>'local',
+           'root' =>public_path('home/img/recruitment/')
+       ],
     ],
 
 ];

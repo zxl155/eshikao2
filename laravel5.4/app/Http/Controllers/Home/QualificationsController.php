@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use App\Home\Models\Qualifications;
+use App\Home\Models\Curriculum;
 use App\Home\Models\Admin;
 
 class QualificationsController extends Controller
@@ -18,23 +19,17 @@ class QualificationsController extends Controller
      * 前台教师资格
      */
 	public function qualifications(){
-		$qualifications = new qualifications;
+		$qualifications = new Qualifications;
 		$cattype = $qualifications->catType();//笔试面试类型
 		$gradetype = $qualifications->gradeType();//年级
 		$subjecttype = $qualifications->subjectType();//学科
-		$curriculum = $qualifications->curriculum();
-		
-		$user = new Admin;
-		$admin = $user->searchTeachers(); //admin教师的数据
-		$qualification = $qualifications->qualifications();
-		$teacher = $qualifications->teacher(); //获取教师与课程的管理数据
-		$admin = $qualifications->admin($admin,$teacher);
+		$curriculum = new Curriculum;
+		$qualifications = $curriculum ->qualificationss(); //教师资格证
 		return view('home/qualifications/qualifications',[
 			'cattype' => $cattype,
 			'gradetype' => $gradetype,
 			'subjecttype' => $subjecttype,
-			'curriculum' => $curriculum,
-			'admin' => $admin,
+			'qualifications' => $qualifications,
 		]);
 	}
 	/**
@@ -44,12 +39,12 @@ class QualificationsController extends Controller
 	{
 		$data = Input::all();
 		$qualifications = new Qualifications;
-		$quasearch = $qualifications ->quaSearch($data);
-
-		if (empty($quasearch)) {
+		$qualifications = $qualifications ->quaSearch($data);
+		//print_r($qualifications);die;
+		if (empty($qualifications)) {
 			$data['empty'] = 'empty';
 		}else {
-			$data['data'] = $quasearch;
+			$data['data'] = $qualifications;
 		}
 		return json_encode($data);
 	}

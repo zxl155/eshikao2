@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>我的订单</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
     <script type="text/javascript">
@@ -31,32 +31,35 @@
                         <th>订单金额</th>
                         <th>订单详情</th>
                     </tr>
+                    @foreach($order_content as $value)
                     <tr>
                         <td>
-                            <h3 title="2018上教师资格证一站拿证（单科）">2018上教师资格证一站拿证（单科）</h3>
+                            <h3 title="{{$value->curriculum_name}}">{{$value->curriculum_name}}</h3>
                             <div class="td-date">交易时间：2018-06-05 16:43:32</div>
                         </td>
-                        <td>654457765345423432</td>
-                        <td>￥100</td>
+                        <td>{{$value->order_number}}</td>
+                        <td>￥{{$value->order_money}}</td>
                         <td>
-                            <div class="td-details"><a href="">查看课程</a>|<a href="">加QQ群</a></div>
+                            @if($value->order_state == 1)
+                            @if($value->is_goods == 2)
+                            <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>
+                               @if($value->qq_group_key != '') |<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                               @endif
                             <a href="">物流信息</a>
+                            @else
+                            <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>
+                                 @if($value->qq_group_key != '')|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                                  @endif
+                            @endif
+                            @else
+                             <div class="td-details"><a href="{{URL::asset('home/CommodityPay.html')}}?order_number={{$value->order_number}}">去支付</a></div>
+                            
+                            @endif
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <h3 title="2018上教师资格证一站拿证（单科）">2018上教师资格证一站拿证（单科）</h3>
-                            <div class="td-date">交易时间：2018-06-05 16:43:32</div>
-                        </td>
-                        <td>654457765345423432</td>
-                        <td>￥100</td>
-                        <td>
-                            <div class="td-details"><a href="">查看课程</a>|<a href="">加QQ群</a></div>
-                            <a href="">物流信息</a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </table>
-                <table>
+                <!-- <table>
                     <col width="300px">
                     <col width="260px">
                     <col width="120px">
@@ -90,7 +93,7 @@
                             <a href="">物流信息</a>
                         </td>
                     </tr>
-                </table>
+                </table> -->
             </div>
         </div>
     </div>

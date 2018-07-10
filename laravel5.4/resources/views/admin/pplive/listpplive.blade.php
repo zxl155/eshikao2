@@ -23,7 +23,7 @@
                 <div class="am-u-sm-12 am-u-md-3">
                     
                     <div class="am-form-group">
-                        <a href="{{ url('admin/addpplive') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加直播</a>
+                        <a href="{{ url('admin/addpplive') }}?curriculum_id={{$curriculum_id}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加直播</a>
                     </div>
                     
                 </div>
@@ -37,39 +37,39 @@
                                 
                                 <tr>
                                     <th class="table-id">编号</th>
-                                    <th class="table-title">名称</th>
-                                    <th class="table-type">时间</th>
-                                    <th class="table-title">所属课程</th>
-                                    <th class="table-title">所属教师</th>
-                                    <th class="table-title">状态</th>
+                                    <th class="table-title">直播课程名称</th>
+                                    <th class="table-title">学员入口</th>
+                                    <th class="table-type">开始时间-结束时间</th>
+                                    <th class="table-title">任课老师</th>
+                                    <th class="table-title">助教</th>
+                                    <th class="table-title">直播间</th>
                                     <th class="table-set">操作</th>
                                 </tr>
 
                             </thead>
                             <tbody> 
-                                @foreach($data as $key=>$val)
-                                <tr>
-                                    <td>{{ $val->pplive_id }}</td>
-                                    <td>{{ $val->pplive_name }}</td>
-                                    <td>{{ $val->times }}</td>
-                                    <td>{{ $val->curriculum_name }}</td>
-                                    <td>@foreach($admin as $values)
-                                        @if($val->pplive_id == $values->pplive_id)
-                                            {{$values->admin_name}}
+                               @foreach($data as $val)
+                               <tr>
+                                    <th>{{$val->pplive_id}}</th>
+                                    <th>{{$val->pplive_name}}</th>
+                                    <th>{{$val->entrance}}</th>
+                                    <th>{{$val->start_time}}--{{$val->end_time}}</th>
+                                    <th>{{$val->admin_name}}</th>
+                                    <th>{{$val->assistant_admin_name}}</th>
+                                    <th>
+                                        @if($val->date_time < $val->start_time)
+                                        <span>未开始</span>
+                                        @elseif($val->date_time > $val->end_time)
+                                        <a href="{{url('admin/playback')}}?pplive_id={{$val->pplive_id}}">直播回放</a>
+                                        @else
+                                            <a href="{{url('admin/Assistant')}}?pplive_id={{$val->pplive_id}}">进入直播间</a>
                                         @endif
-                                    @endforeach</td>
-                                    <td>{{ $val->state ==1?'已开启':'已结束' }}</td>
-                                    <td>
-                                        <div class="am-btn-toolbar">
-                                            <div class="am-btn-group am-btn-group-xs">
-                                                
-                                                <a href="{{ url('admin/delpplive') }}?id={{ $val->pplive_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    </th>
+                                    <th> 
+                                        <a href="{{URL::asset('admin/updpplive')}}?pplive_id={{$val->pplive_id}}">编辑</a> 
+                                        <a href="{{URL::asset('admin/delpplive')}}?pplive_id={{$val->pplive_id}}" onclick="if(confirm('确实要删除数据吗？')) return true;else return false;">删除</a></th>
                                 </tr>
-                                  @endforeach
-                                
+                               @endforeach
                             </tbody>
                         </table>
                         <div class="am-cf">
@@ -77,7 +77,7 @@
                             <div class="am-fr">
                                 <div id="pull_right">
                                     <div class="pull-right">
-                                       {!! $data->render() !!}
+                                      
                                     </div>
                                 </div>
                             </div>

@@ -12,8 +12,8 @@
         <div class="portlet-title">  
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <a href="{{ url('admin/upd') }}?id={{ $data['admin_id'] }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改资料</a>
-                    <a href="{{ url('admin/pwd') }}?id={{ $data['admin_id'] }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改密码</a>
+                    <a href="{{ url('admin/upd') }}?admin_id={{$admin_content[0]->admin_id}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改资料（个人）</a>
+                    <a href="{{ url('admin/pwd') }}?admin_id={{$admin_content[0]->admin_id}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改密码（个人）</a>
                     <!-- <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 修改密码</button> -->
                 </div>
             </div>
@@ -32,37 +32,33 @@
                         <table class="am-table am-table-striped am-table-hover table-main">
                             <thead>
                                 <tr>
-                                    <th class="table-id">角色</th>
                                     <th class="table-title">用户名</th>
-                                    <th class="table-type">昵称</th>
                                     <th class="table-author am-hide-sm-only">头像</th>
+                                    <th class="table-type">昵称</th>
+                                    <th class="table-type">手机号</th>
                                     <th class="table-title">性别</th>
-                                    <th class="table-date am-hide-sm-only">手机号</th>
-                                    <th class="table-title">是否冻结</th>
+                                    <th class="table-title">用户类型</th>
+                                    <th class="table-title">状态</th>
                                     <th class="table-title">注册时间</th>
                                     <th class="table-title">更新时间</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @foreach($admin_content as $val)
                                 <tr>
-                                    <td width="100px">{{ $data['role_name'] }}</td>
-                                    <td>{{ $data['admin_name'] }}</td>
-                                    <td>{{ $data['nickname'] }}</td>
-                                    <td width="100px">
-                                    @if(Session('data')['admin_head']) 
-                                        <img src="{{URL::asset('/')}}/{{ Session('data')['admin_head'] }}" height="50px"> 
-                                    @else
-                                        <img src="{{URL::asset('/')}}home/img/touxiang.png" height="50px"> 
-                                    @endif
-                                    </td>
-                                    <td>{{ $data['admin_sex'] ==1?'男':'女' }}</td>
-                                    <td>{{ $data['admin_phone'] }}</td>
-                                    <td>{{ $data['start'] ==1?'使用中':'已冻结'}} </td>
-                                    <td>{{ $data['register_time'] }}</td>
-                                    <td>{{ $data['modify_time'] }}</td>
+                                    <th>{{$val->admin_name}}</th>
+                                    <th>
+                                        <img src="{{URL::asset('/')}}home/img/admin_head/{{$val->admin_head}}" alt="" width="100" height="100">
+                                    </th>
+                                    <th>{{$val->nickname}}</th>
+                                    <th>{{$val->admin_phone}}</th>
+                                    <th>{{ $val->admin_sex ==1?'男':'女'}}</th>
+                                    <th>{{$val->role_name}}</th>
+                                    <th>{{ $val->start ==1?'使用中':'冻结'}}</th>
+                                    <th>{{$val->register_time}}</th>
+                                    <th>{{$val->modify_time}}</th>
                                 </tr>
-
+                                @endforeach
                             </tbody>
                         </table>
                         
