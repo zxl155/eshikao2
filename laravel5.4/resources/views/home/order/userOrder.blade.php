@@ -35,7 +35,7 @@
                     <tr>
                         <td>
                             <h3 title="{{$value->curriculum_name}}">{{$value->curriculum_name}}</h3>
-                            <div class="td-date">交易时间：2018-06-05 16:43:32</div>
+                            <div class="td-date">交易时间：{{$value->order_time}}</div>
                         </td>
                         <td>{{$value->order_number}}</td>
                         <td>￥{{$value->order_money}}</td>
