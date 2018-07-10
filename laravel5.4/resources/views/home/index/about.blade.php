@@ -147,7 +147,7 @@
         </li>
         <li>
             <div class="abouts-map">
-                <img src="./img/zuobiao.png" alt="">
+                <img src="{{URL::asset('/')}}home/img/zuobiao.png" alt="">
             </div>
             <div class="abouts-map-text">
                 <p>

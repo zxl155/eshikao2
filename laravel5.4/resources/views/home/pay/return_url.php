@@ -52,7 +52,7 @@ if($verify_result) {//验证成功
       echo "trade_status=".$data['trade_status'];
     }
 	
-	header("Location: http://www.eshikaojiaoyu.com/home/Success");//跳转到自己成功页面
+	header("Location: http://www.eshikao.com/home/Success");//跳转到自己成功页面
 	 
 
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——

@@ -34,7 +34,7 @@
     </div>
     
     <div class="commodity-content clearfix">
-         <h3> <span id="commodity-add"><b>+</b>添加收货地址</span></h3>
+         <h3> <span id="commodity-add"><b>+</b>添加新地址</span></h3>
         <div class="newaddress" style="display: none;">
                     <form>
                         <span>收件人:</span> <input type="text" class="Addressee" />
@@ -58,7 +58,9 @@
       @else
           <div class="address-list">
             <span address_id="{{$val->address_id}}"></span>
-            <img src="./img/confirm.png" alt="">
+            <div class="address-dg">
+                <img src="./img/cdh.png" alt="">
+            </div>
             <div class="address-list-text">
                 <span>收件人：{{$val->address_name}}</span>
                 <span>手机号：{{$val->address_tel}}</span><br>
@@ -72,8 +74,8 @@
       </div>
     </div>
     <div class="commodity-content clearfix">
-         <h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
-        <!-- <ul class="commodity-coupon">
+         <!--<h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
+         <ul class="commodity-coupon">
             <li><input type="radio" name="a"><h4>无优惠券</h4></li>
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥80</b></h4></li>
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥20</b></h4></li>
@@ -84,7 +86,7 @@
     @else
     {{$value->present_price}}
     @endif</span><br>
-            <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br> 
+           <!--  <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br>  -->
             <span class="commodity-text-cope" money="@if($value->recovery_original_is == '1')
     {{$value->original_price}}
     @else
@@ -100,7 +102,7 @@
             </div>
             <p id="yyd">
                 <i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i>
-                <i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a>
+                <i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="{{URL::asset('home/agreement.html')}}">《易师考用户使用服务协议》</a>
             </p>
         </div>
     </div>
@@ -212,7 +214,19 @@
         })
         } else {
            var txt=  "请选择收货地址！";
-           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+           $('.commodity-content h3 span').addClass('dy');
+           //window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+           //$('#commodity-add').css('text-decoration','blink');
+// function blinklink() {
+//     // $('.commodity-content h3 span').css('backgroundColor')=='#fff'?$('.commodity-content h3 span').css('backgroundColor','#fff'):$('.commodity-content h3 span').css('backgroundColor','red');
+//     $('.commodity-content h3 span').css('backgroundColor','#fff')
+//     timer = setTimeout("blinklink()", 100);
+// }
+// function stoptimer() {
+//     clearTimeout(timer);
+//     $('.commodity-content h3 span').css('backgroundColor')=='red'
+// } 
+// blinklink();
            return false;
         }
     })

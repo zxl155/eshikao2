@@ -145,8 +145,8 @@
                     dataType:'json',
                     success:function(data){
                         if (data.empty=='empty') {
-                            var txt =  "没有数据";
-                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                            var txt =  "课程即将上线，小主敬请期待ing";
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                         } else {
                             var html = ""; 
                             html+='<div class="Qualified-content clearfix">'

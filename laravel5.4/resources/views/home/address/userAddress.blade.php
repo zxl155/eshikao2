@@ -123,7 +123,7 @@
                                             html+='<td>'+value.address_tel+'</td>'
                                             html+='<td>'+value.address_detailed+'</td>'
                                             html+='<td>'
-                                                html+='<a href="{{URL::asset("home/addressUpdate")}}?address_id='+value.address_id+'">编辑</a>|<a href="{{URL::asset("home/addressDelete")}}?address_id='+value.address_id+'">删除</a>'
+                                                html+='<a href="{{URL::asset("home/addressUpdate.html")}}?address_id='+value.address_id+'">编辑</a>|<a href="{{URL::asset("home/addressDelete")}}?address_id='+value.address_id+'">删除</a>'
                                             html+='</td>'
                                         html+='</tr>'
                             }) 
