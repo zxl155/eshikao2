@@ -31,7 +31,7 @@
             </div>
             <div class="personal-list">
                 @if($curriculum == 1)
-                <span style="color: blue">没有课程</span>
+                
                 @else
                 @foreach($curriculum as $val)
                 <div class="personal-detail-content">

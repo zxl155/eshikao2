@@ -73,9 +73,9 @@ class MydataController extends Controller
 		$data = $user -> images($fileName);
 		if ($data==true) {
 			session(['head'=>$fileName]);
-		 	return redirect('/home/mydata');
+		 	return redirect('/home/mydata.html');
 		 } else {
-		 	return redirect('/home/mydata');
+		 	return redirect('/home/mydata.html');
 		 }
 	} 
 		
