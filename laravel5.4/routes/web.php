@@ -182,6 +182,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/CommodityAddress','CommodityController@addressDelete');
   //订单入库
   Route::get('home/orderAdd','CommodityController@orderAdd');
+  //查询商品数量
+  Route::get('home/orderNumber','CommodityController@orderNumber');
    //支付提交
   Route::get('home/CommodityPay.html','CommodityController@CommodityPay');
    //支付 支付宝生成二维码
@@ -208,5 +210,4 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/orderquery','WxpayController@orderquery');
   //微信支付成功页面
   Route::get('home/wxSuccess.html','WxpayController@wxSuccess');
-  //微信
 });

@@ -4,7 +4,7 @@
         </a><a href="{{URL::asset('home/about.html')}}" class="addcy">加入易师考</a><a href="{{URL::asset('home/agreement.html')}}">用户协议</a></div>
         <div class="contact"><p class="service-title">联系方式</p><a>客服热线：4001234567（
             周一至周五9:00-18:00）</a><a>客服邮箱：niuxiaoyi@eshikao.com</a><a
-                href="http://wpa.qq.com/msgrd?v=3&uin=1291245447&site=qq&menu=yes" class="consult">在线咨询</a></div>
+                href="http://wpa.qq.com/msgrd?v=3&uin=3049266534&site=qq&menu=yes" class="consult">在线咨询</a></div>
         <div class="follow"><p class="service-title">关注我们</p>
             <div class="follow-gz">
                 <div class="follow-gz-img"><img src="{{URL::asset('/')}}home/img/lina.png" alt=""></div>
@@ -31,11 +31,11 @@
             <i class="iconfont icon-shouye"></i>
             <span>首页</span>
         </a>
-        <a href="{{URL::asset('home/qualifications')}}">
+        <a href="{{URL::asset('home/qualifications.html')}}">
             <i class="iconfont icon-zhengshu-copy"></i>
             <span>教师资格证</span>
         </a>
-        <a href="{{URL::asset('home/recruit')}}">
+        <a href="{{URL::asset('home/recruit.html')}}">
             <i class="iconfont icon-noun__cc"></i>
             <span>教师招聘</span>
         </a>

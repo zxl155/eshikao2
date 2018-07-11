@@ -150,4 +150,12 @@ class CommodityController extends Controller
    		
 		return json_encode($error);
 	}
+	//查询商品数量
+	public function orderNumber()
+	{
+	  $order_number = Input::get('order_number');
+	  $order = new Order;
+	  $data = $order->orderNumber($order_number);
+	  echo json_encode($data);
+	}
 }

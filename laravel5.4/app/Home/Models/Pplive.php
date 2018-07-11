@@ -48,7 +48,7 @@ class Pplive extends Model
             "user_number" => $pplive[0]->admin_id, //admin——id
             "user_name" =>$pplive[0]->user_name,
             "user_role" =>0,
-            "user_avatar" => $pplive[0]->head_images,
+            "user_avatar" => "www.eshikao.com/home/img/head/".$pplive[0]->head_images."",
       ];
       $partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
       ksort($params);//将参数按key进行排序

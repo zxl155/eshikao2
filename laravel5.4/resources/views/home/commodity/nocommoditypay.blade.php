@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>课程支付</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
 </head>
 <body>
@@ -99,7 +99,11 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(".alipayform .active").click(function(){
+        alert(123);return false;
+    })
+</script>
 <!-- <script>
     var even = document.getElementById("licode");   
     var showqrs = document.getElementById("showqrs");
