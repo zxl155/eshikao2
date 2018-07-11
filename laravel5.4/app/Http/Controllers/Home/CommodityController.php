@@ -113,9 +113,9 @@ class CommodityController extends Controller
 		$goods = new GoodsAddress;
 		$arr = $goods->deletes($address_id);
 		if ($arr) {
-			return redirect("home/CommodityGoods?curriculum_id=$curriculum_id");
+			return redirect("home/CommodityGoods.html?curriculum_id=$curriculum_id");
 		} else {
-			return redirect('home/CommodityGoods');
+			return redirect('home/CommodityGoods.html');
 		}
 	}
 	/**
@@ -149,5 +149,13 @@ class CommodityController extends Controller
 		}
    		
 		return json_encode($error);
+	}
+	//查询商品数量
+	public function orderNumber()
+	{
+	  $order_number = Input::get('order_number');
+	  $order = new Order;
+	  $data = $order->orderNumber($order_number);
+	  echo json_encode($data);
 	}
 }

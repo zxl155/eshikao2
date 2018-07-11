@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>课程支付</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
 </head>
 <body>
@@ -95,11 +95,15 @@
         </form>
                
             </div>
-            <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a></p>
+            <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="{{URL::asset('home/agreement.html')}}">《易师考用户使用服务协议》</a></p>
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(".alipayform .active").click(function(){
+        alert(123);return false;
+    })
+</script>
 <!-- <script>
     var even = document.getElementById("licode");   
     var showqrs = document.getElementById("showqrs");

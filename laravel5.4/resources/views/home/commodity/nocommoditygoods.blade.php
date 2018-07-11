@@ -35,8 +35,8 @@
     
    
     <div class="commodity-content clearfix">
-         <h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
-        <!-- <ul class="commodity-coupon">
+         <!--<h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
+         <ul class="commodity-coupon">
             <li><input type="radio" name="a"><h4>无优惠券</h4></li>
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥80</b></h4></li>
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥20</b></h4></li>
@@ -47,7 +47,7 @@
     @else
     {{$value->present_price}}
     @endif</span><br>
-            <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br> 
+            <!-- <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br>  -->
             <span class="commodity-text-cope" money="@if($value->recovery_original_is == '1')
     {{$value->original_price}}
     @else

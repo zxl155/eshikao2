@@ -43,10 +43,10 @@
     </div>
     <div class="sort-content">
         <div class="sort-text" id="quan"><span>全部</span>
-            <ul class="sort-text-ul">
+            <!-- <ul class="sort-text-ul">
                 <li class="active">人气优先 <span class="jt">&uarr;</span></li>
                 <li class="">价格优先 <span class="jt">&darr;</span></li>
-            </ul>
+            </ul> -->
         </div>
     </div>
     <!--移动-->
@@ -145,8 +145,34 @@
                     dataType:'json',
                     success:function(data){
                         if (data.empty=='empty') {
-                            var txt =  "没有数据";
-                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                            var txt =  "课程即将上线，小主敬请期待ing";
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                            var html = ""; 
+                            html+='<div class="Qualified-content clearfix">'
+                           
+                            html+='<b></b>'
+                            html+='<h5></h5>'
+                            html+='<div class="Qualified-period">'
+                                html+='<i></i>'
+                                html+='<span></span>'
+                            html+='</div>'
+                            html+='<ul class="Qualified-teacher">'
+                                html+='<li>'
+                                    html+='<img src="" alt="" height="50px" width="50px" alt="">'
+                                    html+='<span></span>'
+                                html+='</li>'
+                            html+='</ul>'
+                            html+='<div class="Qualified-price">'
+                                html+='<span></span>'
+                                
+                                    html+='<h2><span></span></h2>'
+                              
+                                
+                            html+='</div>'
+                            
+                            html+='</div>'
+                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
+                            $('#html').html(html);
                         } else {
                             var html = ""; 
                             html+='<div class="Qualified-content clearfix">'

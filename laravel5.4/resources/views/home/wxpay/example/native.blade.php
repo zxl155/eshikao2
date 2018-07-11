@@ -68,14 +68,17 @@ $url2 = $result["code_url"];
     </div>
     </div>
     <div class="wxpay">
-       
+       <p  class="wxpay-p">
+                <span>《{{$data['WIDsubject']}}》 订单号：{{$data['WIDout_trade_no']}}</span>
+                <span  class="wxpay-Price">￥{{$data['WIDtotal_fee']}}</span>
+        </p>
+
         <div class="wxpay-content clearfix">
             <div class="wxpay-left">
 
                 <span class="wxpay-title">微信支付</span><br>
-                 <span>订单号:</span>{{$data['WIDout_trade_no']}}
                 <div class="wxpay-ewm">
-                    <span style="color: blue">{{$data['WIDsubject']}}￥{{$data['WIDtotal_fee']}}</span>
+                   
                     <img alt="扫码支付" src="wxpircture?data=<?php echo urlencode($url2);?>" style="width:150px;height:150px;"/>
                    
                 </div>

@@ -126,7 +126,7 @@
     <div class="home-advert">
         <div>
             <div class="home-advert-erwm"><img src="" alt=""></div>
-            <span>扫一扫二维码<br>下载易师考APP</span></div>
+            <!-- <span>扫一扫二维码<br>下载易师考APP</span> --></div>
     </div>
 </div>
 <script>

@@ -209,7 +209,7 @@ textarea {
         z-index: 100;
         width: 80px;
         height: 80px;
-        background-image: url("./img/focus_handle.png");
+        background-image: url("./../img/focus_handle.png");
     }
 
     #focus-banner:hover .focus-handle {
@@ -331,7 +331,7 @@ textarea {
     .Qualified-title {
         font-size: 24px;
         line-height: 44px;
-        margin:30px 0;
+        margin:30px 0 0;
         text-align: center;
         font-weight: normal;
     }
@@ -355,6 +355,7 @@ textarea {
     }
 
     .Qualified-content > a {
+        margin-top: 30px;
         position: relative;
         display: inline-block;
         float: left;
@@ -642,10 +643,10 @@ textarea {
         overflow: hidden;
     }
     .float-top .rt-top{
-        background: url("./img/top_03.png");
+        background: url("./../img/top_03.png");
     }
     .float-top .rt-top:active{
-        background: url("./img/top_05.png");
+        background: url("./../img/top_05.png");
     }
     /*底部and*/
     /*登录*/
@@ -931,7 +932,7 @@ textarea {
     }
 
     .Certificate .Qualified-content a {
-        margin-top: 60px;
+        /*margin-top: 60px;*/
     }
 
     /*课程介绍*/
@@ -1451,8 +1452,24 @@ textarea {
     }
 
     .commodity-content h3 span {
-        font-size: 16px;
-        color: #ffa80d;
+       display: inline-block;
+
+width: 140px;
+
+line-height: 40px;
+
+color: #fff;
+
+margin-left: 20px;
+
+font-weight: bold;
+
+font-size: 16px;
+
+text-align: center;
+border:5px solid;
+border-color: #ffa80d;
+background: #ffa80d;
     }
 
     .commodity-coupon {
@@ -1517,9 +1534,9 @@ textarea {
     .commodity-button form{
         display: none;
     }
-.commodity-button .addform{
-    display: block;
-}
+    .commodity-button .addform{
+        display: block;
+    }
     .commodity-button a,.commodity-button input{
         display: inline-block;
         width: 140px;
@@ -1619,15 +1636,24 @@ textarea {
         border: 1px solid #ccc;
     }
 
-    .address-list img {
-        display: inline-block;
-        opacity: 0;
-        vertical-align: super;
-    }
+    .address-list .address-dg {
 
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        vertical-align: sub;
+        background: #dddddd;
+    }
+.address-list.active .address-dg{
+    background: #ffa80d;
+}
     .address-list-text {
         display: inline-block;
         margin-left: 35px;
+        vertical-align:middle;
     }
 
     .address-list-text span {
@@ -1656,10 +1682,6 @@ textarea {
 
     .commodity-content .active {
         border-color: #ffa80d;
-    }
-
-    .commodity-content .active img {
-        opacity: 1;
     }
 
     /*支付中心*/
@@ -1695,7 +1717,48 @@ textarea {
     .cfmode .active {
         border-color: #ffa80d;
     }
+.dy{
+animation:myfirst .3s;
+-moz-animation:myfirst .3s; /* Firefox */
+-webkit-animation:myfirst .3s; /* Safari and Chrome */
+-o-animation:myfirst .3s; /* Opera */ 
+}
 
+@keyframes myfirst
+{
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
+}
     /*支付成功*/
     .paySuccess {
         width: 100%;
@@ -2177,10 +2240,10 @@ textarea {
         height: 120px;
         vertical-align: top;
     }
-.personal-detail-img  img{
-    width: 100%;
-    height: 100%;
-}
+    .personal-detail-img  img{
+        width: 100%;
+        height: 100%;
+    }
     .personal-detail-text {
         display: inline-block;
         width: 720px;
@@ -2631,7 +2694,7 @@ textarea {
         width: 100%;
         min-width: 1200px;
         height: 360px;
-        background: url("./img/about.png") no-repeat;
+        background: url("./../img/about.png") no-repeat;
         background-position: center;
     }
 
@@ -2760,63 +2823,63 @@ textarea {
         border-radius: 50px;
         background: #ffa80d;
     }
-/*微信支付*/
-.header-logo span{
-    display: inline-block;
-    margin-left: 15px;
-    padding-left: 15px;
-    line-height: 26px;
-    vertical-align: -webkit-baseline-middle;
-    border-left: 1px solid #666;
-}
-.wxpay{
-    padding-top: 130px;
-    padding-bottom: 30px;
-    background: #f7f7f7;
-}
-.wxpay-content{
-    width: 1200px;
-    margin: 0 auto;
-    padding: 70px 0;
-    background: #FFFFFF;
-}
-.wxpay-left{
-    float: left;
-    width: 710px;
-    border-right: 1px dashed #ffa80d;
-    text-align: center;
-}
-.wxpay-left .wxpay-title{
-    display: inline-block;
-    font-size: 24px;
-    line-height: 24px;
-}
-.wxpay-ewm{
-    position:relative;
-    width: 200px;
-    height: 200px;
-    margin: 40px auto;
-    overflow:hidden;
-    border: 7px solid #c3c2c2;
-}
-.wxpay-ewm img{
-    position:absolute;
-    max-width: 180px;
-    max-height: 180px;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-.wxpay-sys span{
-    display: inline-block;
-    vertical-align: middle;
-}
-.wxpay-right{
-    display: inline-block;
-    margin-left: 124px;
-}
+    /*微信支付*/
+    .header-logo span{
+        display: inline-block;
+        margin-left: 15px;
+        padding-left: 15px;
+        line-height: 26px;
+        vertical-align: -webkit-baseline-middle;
+        border-left: 1px solid #666;
+    }
+    .wxpay{
+        padding-top: 110px;
+        padding-bottom: 30px;
+        background: #f7f7f7;
+    }
+    .wxpay-content{
+        width: 1200px;
+        margin: 0 auto;
+        padding: 70px 0;
+        background: #FFFFFF;
+    }
+    .wxpay-left{
+        float: left;
+        width: 710px;
+        border-right: 1px dashed #ffa80d;
+        text-align: center;
+    }
+    .wxpay-left .wxpay-title{
+        display: inline-block;
+        font-size: 24px;
+        line-height: 24px;
+    }
+    .wxpay-ewm{
+        position:relative;
+        width: 200px;
+        height: 200px;
+        margin: 40px auto;
+        overflow:hidden;
+        border: 7px solid #c3c2c2;
+    }
+    .wxpay-ewm img{
+        position:absolute;
+        max-width: 180px;
+        max-height: 180px;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .wxpay-sys span{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .wxpay-right{
+        display: inline-block;
+        margin-left: 124px;
+    }
     /*404*/
     .cuowu {
         position: relative;
@@ -2835,9 +2898,22 @@ textarea {
         margin: auto;
         padding-bottom: 40px;
     }
-
+    .wxpay-p{
+        width:  1200px;
+        margin:  0  auto;
+        font-size:  18px;
+        line-height:  30px;
+        padding-bottom:20px;
+        background:  #f7f7f7;
+    }
+    .wxpay-Price{
+        float:  right;
+        font-size:  30px;
+        color:  #ffa80d;
+        font-weight:  bold;
+    }
     /*移动样式*/
-    .m-header, .m-nav, .swiper-container, .m-sort-content,.m-qt-btn,.m-commodity{
+    .m-header, .m-nav, .swiper-container, .m-sort-content,.m-qt-btn,.m-commodity,.m-price-purchase,.m-Bottom{
         display: none;
     }
 }

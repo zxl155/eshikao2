@@ -34,7 +34,7 @@
     </div>
     
     <div class="commodity-content clearfix">
-         <h3> <span id="commodity-add"><b>+</b>添加收货地址</span></h3>
+         <h3> <span id="commodity-add"><b>+</b>添加新地址</span></h3>
         <div class="newaddress" style="display: none;">
                     <form>
                         <span>收件人:</span> <input type="text" class="Addressee" />
@@ -57,8 +57,10 @@
         </span>
       @else
           <div class="address-list">
-            <span address_id="{{$val->address_id}}"></span>
-            <img src="./img/confirm.png" alt="">
+            <span class= "addresss" address_id="{{$val->address_id}}"></span>
+            <div class="address-dg">
+                <img src="./img/cdh.png" alt="">
+            </div>
             <div class="address-list-text">
                 <span>收件人：{{$val->address_name}}</span>
                 <span>手机号：{{$val->address_tel}}</span><br>
@@ -72,8 +74,8 @@
       </div>
     </div>
     <div class="commodity-content clearfix">
-         <h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
-        <!-- <ul class="commodity-coupon">
+         <!--<h3>请选择优惠券 <span>（您有0张优惠券可用）</span></h3>
+         <ul class="commodity-coupon">
             <li><input type="radio" name="a"><h4>无优惠券</h4></li>
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥80</b></h4></li>
             <li><input type="radio" name="a"><h4>优惠券：金额抵用 <b>￥20</b></h4></li>
@@ -84,7 +86,7 @@
     @else
     {{$value->present_price}}
     @endif</span><br>
-            <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br> 
+           <!--  <span class="commodity-text-yhj">优惠券：<b>-￥0.00</b></span><br>  -->
             <span class="commodity-text-cope" money="@if($value->recovery_original_is == '1')
     {{$value->original_price}}
     @else
@@ -100,7 +102,7 @@
             </div>
             <p id="yyd">
                 <i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i>
-                <i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a>
+                <i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="{{URL::asset('home/agreement.html')}}">《易师考用户使用服务协议》</a>
             </p>
         </div>
     </div>
@@ -160,7 +162,7 @@
                     var html = ""; 
                             jQuery.each(data.content,function(key,value){
                                 html+='<div class="address-list">'
-                                       html+='<span address_id="'+value.address_id+'"></span>'
+                                       html+='<span class="addresss" address_id="'+value.address_id+'"></span>'
                                         html+='<img src="./img/confirm.png" alt="">'
                                        html+='<div class="address-list-text">'
                                             html+='<span>收件人：'+value.address_name+'</span>'
@@ -184,7 +186,8 @@
     $('.active').click(function(){
         var curriculum_id = $('.curriculum_id').val(); //课程id
         var address_id = $('.active span').attr('address_id'); //地址id
-        var money = $('.commodity-text-cope').attr('money');  //金额
+        var money = $('.commodity-text-cope').attr('money'),t;  //金额
+         var iss = $('.addresss').attr('address_id');
         if (address_id) {
             $.ajax({
             url:"{{URL::asset('home/orderAdd')}}",
@@ -211,8 +214,18 @@
             }
         })
         } else {
-           var txt=  "请选择收货地址！";
-           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+           if(iss!=undefined){
+              $('.address-list').addClass('dy');
+              var t=setTimeout("$('.address-list').removeClass('dy')",500);
+             /*  var txt=  "请选择收货地址！";
+           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);*/
+         } else {
+            $('.commodity-content h3 span').addClass('dy');
+              var t=setTimeout("$('.commodity-content h3 span').removeClass('dy')",500);
+           /* var txt=  "请添加收货地址";
+           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);*/
+            
+         }
            return false;
         }
     })
