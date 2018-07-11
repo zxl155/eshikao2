@@ -57,7 +57,7 @@
         </span>
       @else
           <div class="address-list">
-            <span address_id="{{$val->address_id}}"></span>
+            <span class= "addresss" address_id="{{$val->address_id}}"></span>
             <div class="address-dg">
                 <img src="./img/cdh.png" alt="">
             </div>
@@ -162,7 +162,7 @@
                     var html = ""; 
                             jQuery.each(data.content,function(key,value){
                                 html+='<div class="address-list">'
-                                       html+='<span address_id="'+value.address_id+'"></span>'
+                                       html+='<span class="addresss" address_id="'+value.address_id+'"></span>'
                                         html+='<img src="./img/confirm.png" alt="">'
                                        html+='<div class="address-list-text">'
                                             html+='<span>收件人：'+value.address_name+'</span>'
@@ -186,7 +186,8 @@
     $('.active').click(function(){
         var curriculum_id = $('.curriculum_id').val(); //课程id
         var address_id = $('.active span').attr('address_id'); //地址id
-        var money = $('.commodity-text-cope').attr('money');  //金额
+        var money = $('.commodity-text-cope').attr('money'),t;  //金额
+         var iss = $('.addresss').attr('address_id');
         if (address_id) {
             $.ajax({
             url:"{{URL::asset('home/orderAdd')}}",
@@ -213,20 +214,18 @@
             }
         })
         } else {
-           var txt=  "请选择收货地址！";
-           $('.commodity-content h3 span').addClass('dy');
-           //window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-           //$('#commodity-add').css('text-decoration','blink');
-// function blinklink() {
-//     // $('.commodity-content h3 span').css('backgroundColor')=='#fff'?$('.commodity-content h3 span').css('backgroundColor','#fff'):$('.commodity-content h3 span').css('backgroundColor','red');
-//     $('.commodity-content h3 span').css('backgroundColor','#fff')
-//     timer = setTimeout("blinklink()", 100);
-// }
-// function stoptimer() {
-//     clearTimeout(timer);
-//     $('.commodity-content h3 span').css('backgroundColor')=='red'
-// } 
-// blinklink();
+           if(iss!=undefined){
+              $('.address-list').addClass('dy');
+              var t=setTimeout("$('.address-list').removeClass('dy')",500);
+             /*  var txt=  "请选择收货地址！";
+           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);*/
+         } else {
+            $('.commodity-content h3 span').addClass('dy');
+              var t=setTimeout("$('.commodity-content h3 span').removeClass('dy')",500);
+           /* var txt=  "请添加收货地址";
+           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);*/
+            
+         }
            return false;
         }
     })

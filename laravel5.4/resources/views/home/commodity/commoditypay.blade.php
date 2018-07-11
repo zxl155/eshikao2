@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>课程支付</title>
 </head>
 <body>
 @include('common.head')
@@ -46,8 +46,8 @@
     <div class="commodity-content clearfix">
         <h3>请选择支付方式</h3>
         <div class="cfmode">
-            <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
-            <span ><img src="{{URL::asset('/')}}home/img/wxzf.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span> 
+            <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" v='1' alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
+            <span ><img src="{{URL::asset('/')}}home/img/wxzf.png" v='2' alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span> 
         </div>
 
         <div class="commodity-text">
@@ -56,11 +56,11 @@
            
             <div class="commodity-button">
 
-        <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank">
+        <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank" id="form1">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
-                <div class="einput"><input type="hidden" name="WIDout_trade_no" id="out_trade_no" value="{{$address[0]->order_number}}" readonly="readonly"></div>
+                <div class="einput"><input type="hidden" class="order_number" name="WIDout_trade_no" id="out_trade_no" value="{{$address[0]->order_number}}" readonly="readonly"></div>
                 <!-- <br>
                 <div class="mark">注意：商户订单号(out_trade_no).必填(建议是英文字母和数字,不能含有特殊字符)</div> -->
                
@@ -77,15 +77,13 @@
                <!--  <div class="etitle">商品描述:</div> -->
                 <div class="einput"><input type="hidden" name="WIDbody" value="高效备考"></div>
                <!--  <br>
-                <div class="mark">注意：商品描述(body)，选填(建议中文，英文，数字，不能含有特殊字符)</div> -->
-            
-                <input type="submit" class="active" value ="确认支付">
+                <div class="mark">注意：商品描述(body)，选填(建议中文，英文，数字，不能含有特殊字符)</div> -->   
         </form>
-        <form action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank">
+        <form action="{{URL::asset('home/wxpay.html')}}"  class="alipayform" method="post" target="_blank" id='form2'>
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
-                <div class="einput"><input type="hidden" name="WIDout_trade_no" id="out_trade_no" value="{{$address[0]->order_number}}" readonly="readonly"></div>
+                <div class="einput"><input type="hidden" class="order_number" name="WIDout_trade_no" id="out_trade_no" value="{{$address[0]->order_number}}" readonly="readonly"></div>
                 <!-- <br>
                 <div class="mark">注意：商户订单号(out_trade_no).必填(建议是英文字母和数字,不能含有特殊字符)</div> -->
                
@@ -99,17 +97,42 @@
                 <!-- <br>
                 <div class="mark">注意：付款金额(total_fee)，必填(格式如：1.00,请精确到分)</div> -->
                 
-            
-                <input type="submit" class="active" value ="确认支付">
-        </form>       
+        </form>  
+        <input type="submit" id="ac2" class="active" value ="确认支付"> 
             </div>
             <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a></p>
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(" #ac2").click(function(){
+        var order_number = $('.order_number').val();
+        var ok = true;
+        var is = $('.cfmode .active img ').attr('v');
+        $.ajax({
+            url:"{{URL::asset('home/orderNumber')}}",
+            data:{order_number:order_number,_token:"{{ csrf_token() }}"},
+            type:'get',
+            dataType:'json',
+            success:function(data){
+             if (data=="超标") {
+                var txt=  "课程已卖完,敬请期待下期课程ing";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                 ok = false;
+              }else{
+                    if (is == 1) {
+                        $('#form1').submit();
+                    } else {
+                         $('#form2').submit();
+                    }
+              }
+              
+            }
+         })  
+    })
+</script>
 <!-- <script>
-    var even = document.getElementById("licode");   
+    var even = document.g;etElementById("licode");   
     var showqrs = document.getElementById("showqrs");
      even.onmouseover = function(){
         showqrs.style.display = "block"; 

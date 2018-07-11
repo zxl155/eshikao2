@@ -100,8 +100,12 @@
             dataType:'json',
             success:function(data){
                if (data.empty=='empty') {
-                    var txt =  "没有数据";
-                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                   var txt =  "招聘即将发布，小主敬请期待ing";
+                   window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                   var html = ""; 
+                   html+='<div class="notice-datelist">'
+                    html+='</div>'
+                    $('#html').html(html);
                 } else {
 
                     var html = ""; 

@@ -643,10 +643,10 @@ textarea {
         overflow: hidden;
     }
     .float-top .rt-top{
-        background: url("./img/top_03.png");
+        background: url("./../img/top_03.png");
     }
     .float-top .rt-top:active{
-        background: url("./img/top_05.png");
+        background: url("./../img/top_05.png");
     }
     /*底部and*/
     /*登录*/
@@ -1467,7 +1467,8 @@ font-weight: bold;
 font-size: 16px;
 
 text-align: center;
-
+border:5px solid;
+border-color: #ffa80d;
 background: #ffa80d;
     }
 
@@ -1643,7 +1644,7 @@ background: #ffa80d;
         text-align: center;
         line-height: 40px;
         border-radius: 50%;
-        vertical-align: super;
+        vertical-align: sub;
         background: #dddddd;
     }
 .address-list.active .address-dg{
@@ -1652,7 +1653,7 @@ background: #ffa80d;
     .address-list-text {
         display: inline-block;
         margin-left: 35px;
-        vertical-align: sub;
+        vertical-align:middle;
     }
 
     .address-list-text span {
@@ -1717,34 +1718,46 @@ background: #ffa80d;
         border-color: #ffa80d;
     }
 .dy{
-animation:myfirst .5s infinite;
--moz-animation:myfirst .5s infinite; /* Firefox */
--webkit-animation:myfirst .5s infinite; /* Safari and Chrome */
--o-animation:myfirst .5s infinite; /* Opera */ 
+animation:myfirst .3s;
+-moz-animation:myfirst .3s; /* Firefox */
+-webkit-animation:myfirst .3s; /* Safari and Chrome */
+-o-animation:myfirst .3s; /* Opera */ 
 }
 
 @keyframes myfirst
 {
-from {background:red;}
-to {background:yellow;}
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
 }
 
 @-moz-keyframes myfirst /* Firefox */
 {
-from {background:red;}
-to {background:yellow;}
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
 }
 
 @-webkit-keyframes myfirst /* Safari and Chrome */
 {
-from {background:red;}
-to {background:yellow;}
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
 }
 
 @-o-keyframes myfirst /* Opera */
 {
-from {background:red;}
-to {background:yellow;}
+20%{border-color:#ff490d;}
+40%{border-color:#ffa80d;}
+60%{border-color:#ff490d;}
+80%{border-color:#ffa80d;}
+100%{border-color:#ff490d;}
 }
     /*支付成功*/
     .paySuccess {

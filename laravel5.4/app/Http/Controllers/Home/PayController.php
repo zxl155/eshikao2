@@ -18,8 +18,15 @@ class PayController extends Controller
 	public function index()
 	{
 		$data = Input::all();
-		session(['order_number'=>$data['WIDout_trade_no']]);
-		return view('home/pay/alipayapi',['data'=>$data]);
+		$order = new Order;
+		$arr = $order->quantity($data['WIDout_trade_no'],$data['WIDtotal_fee']);
+		if ($arr) {
+			session(['order_number'=>$data['WIDout_trade_no']]);
+			return view('home/pay/alipayapi',['data'=>$data]);
+		} else {
+			echo "应付价格与真实价格不符合请从新下单";die;
+		}
+		
 	}
 	//异步
 	public function asynchronous()

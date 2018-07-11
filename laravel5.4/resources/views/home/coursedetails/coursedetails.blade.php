@@ -169,7 +169,7 @@
                     <li>2.如何下载讲义<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
                     <li>3.如何缓存<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
                     <li>4.如何查快递<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
-                    <li>5.如何同意回放<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
+                    <li>5.如何看回放<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
                     <li>6.如何退课<div class="v-right-title-ts">登录网站后，进入【我的课程】，即可观看视频。PS。直播入口通常会在开课前半小时开放哦~</div></li>
                 </ul>
             </div>

@@ -100,4 +100,35 @@ class Order extends Model
       }
       return $order;
     }
+    //查询商品的金额是否被修改
+    public function quantity($WIDout_trade_no,$WIDtotal_fee)
+    {
+      $order = DB::table('order')->where('order_number',$WIDout_trade_no)->get();
+      $curriculum = DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();
+      if($curriculum[0]->recovery_original < date('Y-m-d H:i:s')){
+        if($curriculum[0]->original_price == $WIDtotal_fee){
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        if($curriculum[0]->present_price == $WIDtotal_fee){
+          return true;
+        } else {
+          return false;
+        }
+      }
+      
+    }
+    //查询商品的数量
+    public function orderNumber($order_number)
+    {
+      $order = DB::table('order')->where('order_number',$order_number)->get();
+      $curriculum = DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();
+      if($curriculum[0]->bought_number>=$curriculum[0]->purchase_number){
+         return "超标";
+      } else {
+        return "正常";
+      }
+    }
 }
