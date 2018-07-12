@@ -16,7 +16,7 @@ class CommonController extends Controller
 
         $this->middleware(function ($request, $next) {
            $data =  $request->session()->get('data');
-           $admin_id = $data->admin_id;
+           $admin_id = $data['admin_id'];
 
             $action=\Route::current()->getActionName();
             list($class,$action)=explode('@',$action);
@@ -59,7 +59,7 @@ class CommonController extends Controller
                 }
                 if(!in_array($controller."/".$action,$arr)){
                      $url = "{{URL::asset('admin/index')}}";  
-                    echo "<script>alert('没有访问权限！！！！');location.href='http://www.eshikaojiaoyu.com/admin/index';</script>";
+                    echo "<script>alert('没有访问权限！！！！');location.href='http://www.eshikao.com/admin/index';</script>";
                  
                 } else {
                     return $next($request);

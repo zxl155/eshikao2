@@ -74,6 +74,7 @@ class Pplive extends Model
 	public function Assistant($pplive_id)
 	{
 		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
+
 		$admin = DB::table('admin')->get();
 		//print_r($admin);die;
 		foreach ($pplive as $key => $value) {
@@ -81,14 +82,13 @@ class Pplive extends Model
 				if($value->assistant_admin_id == $val->admin_id){
 					$value->assistant_admin_name = $val->admin_name;
 					$value->admin_head = $val->admin_head;
-
 				}
 			}
 		}
 		$params =  [
 		    "room_id" => $pplive[0]->entrance, //房间号码
-		   	"user_number" => $pplive[0]->admin_id, //admin——id
-		   	"user_name" =>$pplive[0]->assistant_admin_name,
+		   	"user_number" => session('data')['admin_id'];, //admin——id
+		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>2,
 		   	"user_avatar" =>"www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
 		];
@@ -122,8 +122,8 @@ class Pplive extends Model
 		}
 		$params =  [
 		    "room_id" => $pplive[0]->entrance, //房间号码
-		   	"user_number" => $pplive[0]->admin_id, //admin——id
-		   	"user_name" =>$pplive[0]->admin_name,
+		   	"user_number" => session('data')['admin_id'], //admin——id
+		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>1,
 		   	"user_avatar" => "www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
 		];
