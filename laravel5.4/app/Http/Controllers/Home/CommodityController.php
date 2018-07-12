@@ -130,6 +130,7 @@ class CommodityController extends Controller
 		$user_id = session('user_id');
 		$selects = $order ->selects($user_id,$data['curriculum_id']);
 		if ($selects) {
+			session(['order_number'=>$selects[0]->order_number]);
 			$error['error'] = '已有订单';
 		} else {
 			$order_number = substr(time().$data['curriculum_id'].$user_id.rand(11111111,99999999),0,18);//订单

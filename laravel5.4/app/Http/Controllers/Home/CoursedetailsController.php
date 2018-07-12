@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Curriculum;
+use App\Home\Models\UserCurriculum;
 use App\Home\Models\Pplive;
 
 class CoursedetailsController extends Controller
@@ -21,8 +22,14 @@ class CoursedetailsController extends Controller
 		$curriculum_id = Input::get('curriculum_id');
 		$curriculum = new Curriculum;
 		$curriculum_content = $curriculum->coursedetails($curriculum_id);
+		$usercurriculum = new UserCurriculum;
+		$isPurchase = $usercurriculum->isPurchase($curriculum_content[0]->curriculum_id);//查询是否购买了本课程
+		if ($isPurchase) {
+			$isPurchase = 1;
+		} else {
+			$isPurchase = 0;
+		}
 		$regihtcontent = $curriculum->regihtContent($curriculum_id);
-
 		$pplive = new Pplive;
 		$pplive_content = $pplive ->shows($curriculum_id);
 		//print_r($arr);die;
@@ -30,6 +37,7 @@ class CoursedetailsController extends Controller
 			'curriculum_content' => $curriculum_content,
 			'pplive_content' => $pplive_content,
 			'regihtcontent' => $regihtcontent,
+			'isPurchase' => $isPurchase,
 		]);
 	}
 

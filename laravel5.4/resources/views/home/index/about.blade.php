@@ -152,10 +152,10 @@
             <div class="abouts-map-text">
                 <p>
                     <span>工作地点：北京海淀区中关村创业大厦1015</span>
-                    <span>客服热线：4001234567</span>
+                    <span>客服热线：176-1049-7153</span>
                 </p>
                 <p>
-                    <span>联系方式：12345678932</span>
+                     <span>联系方式：176-1049-7153</span> 
                     <span>客服邮箱：niuxiaoyi@eshikao.com</span>
                 </p>
                 <p>

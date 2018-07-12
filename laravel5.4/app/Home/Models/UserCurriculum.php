@@ -21,5 +21,17 @@ class UserCurriculum extends Model
     	$data = DB::select("select * from curriculum where curriculum_id in($curriculum_id)");
     	return $data;
     }
-    //查询我的课程
+    //查询用户是否购买了课程
+    public function isPurchase($curriculum_id)
+    {
+       $arr = DB::table('user_curriculum')->where(['curriculum_id'=>$curriculum_id,'user_id'=>session('user_id')])->get()->toarray();
+       
+       if(!empty($arr)){
+        return true;
+       }else {
+        return false;
+       }
+
+    }
+
 }
