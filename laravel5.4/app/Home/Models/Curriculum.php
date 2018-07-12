@@ -19,7 +19,7 @@ class Curriculum extends Model
         foreach ($qualifications as $key => $value) {
             foreach ($admin as $key => $val) {
                 if($value->admin_id == $val->admin_id){
-                    $value->admin_name = $val->admin_name;
+                    $value->admin_name = $val->nickname;
                     $value->admin_head = $val->admin_head;
                 }
                 if($value->recovery_original < $times){
@@ -44,7 +44,7 @@ class Curriculum extends Model
         foreach ($recruit as $key => $value) {
             foreach ($admin as $key => $val) {
                 if($value->admin_id == $val->admin_id){
-                    $value->admin_name = $val->admin_name;
+                    $value->admin_name = $val->nickname;
                     $value->admin_head = $val->admin_head;
                 }
                 if($value->recovery_original < $times){
