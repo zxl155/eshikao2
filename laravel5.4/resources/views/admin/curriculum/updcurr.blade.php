@@ -167,7 +167,13 @@
                         <div class="am-form-group">
                             <label for="notice" class="am-u-sm-3 am-form-label">QQ群key（PC端） <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="qq_group_key"  placeholder="请输入QQkey值" value="{{$data[0]->qq_group_key}}" required>
+                                <input type="text" class="tpl-form-input" name="qq_group_key"  placeholder="请输入QQkey值" value="{{$data[0]->qq_group_key}}" >
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="notice" class="am-u-sm-3 am-form-label">QQ群号 (PC端） <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                                <input type="text" class="tpl-form-input" name="qq_number" placeholder="请输入QQ群号码">
                             </div>
                         </div>
                         <div class="am-form-group">
@@ -218,18 +224,6 @@
     </div>
 </div>
 
-
-    <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
-    <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
-    <script src="{{URL::asset('/')}}assets/js/app.js"></script>
-    <script type="text/javascript">
-!function(){
-    laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
-    laydate({elem: '#demo'});//绑定元素
-    laydate({elem: '#purchase_state_time'});//绑定元素
-    laydate({elem: '#purchase_end_time'});//绑定元素
-}();
-</script>
 <!-- ueditor-mz 配置文件 -->
 <script type="text/javascript" src="{{asset('/')}}ueditor-mz/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
