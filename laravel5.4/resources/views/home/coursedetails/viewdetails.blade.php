@@ -38,7 +38,7 @@
             <h2>{{$value->curriculum_name}}</h2>
             <p class="Course-time">课程时间：{{$value->purchase_state_time}} <!-- 有效期天 -->
                 <i><img src="./img/sm.png" alt=""></i>
-                <q style="display: none;">自购买之日起课观看课程旗帜</q>
+                <q style="display: none;">自购买之日起课观看课程起止</q>
             </p>
             <p>授课教师：
                 <span>{{$value->admin_name}}</span>
@@ -56,7 +56,7 @@
 </b></span></p>
             <div class="price-purchase">
                 <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active">立即购买</a>
-                <a href="http://wpa.qq.com/msgrd?v=3&uin=1291245447&site=qq&menu=yes">咨询</a>
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=3049266534&site=qq&menu=yes">咨询</a>
                 <span>已购{{$value->bought_number}}人 / 限购 {{$value->purchase_number}}人</span>
             </div>
         </div>
