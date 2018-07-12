@@ -70,7 +70,7 @@ class IndexController extends CommonController
             $name=$head_pirctur->getClientOriginalName();
             $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
             $fileName=md5(uniqid($name));
-            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+            $fileName=$fileName.'.'."png";//生成新的的文件名
 		  $bool=Storage::disk('articles')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
 		$data['admin_head'] = $fileName;
 		$arr = DB::table('admin')->where('admin_id','=',$data['admin_id'])->update(['nickname'=>$data['nickname'],'admin_head'=>$data['admin_head'],'admin_sex'=>$data['admin_sex'],'admin_desc'=>$data['admin_desc'],'admin_phone'=>$data['admin_phone'],'modify_time'=>date('Y-m-d H:i:s')]);
