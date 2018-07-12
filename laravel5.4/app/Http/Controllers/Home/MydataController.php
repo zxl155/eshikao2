@@ -66,7 +66,7 @@ class MydataController extends Controller
             $name=$head_pirctur->getClientOriginalName();
             $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
             $fileName=md5(uniqid($name));
-            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+            $fileName=$fileName.'.'."png";//生成新的的文件名
 		  $bool=Storage::disk('article')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
 		  var_dump($bool);
 		$user = new User;

@@ -40,7 +40,7 @@ class AdminController extends CommonController
             $name=$head_pirctur->getClientOriginalName();
             $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
             $fileName=md5(uniqid($name));
-            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+            $fileName=$fileName.'.'."png";//生成新的的文件名
 		  $bool=Storage::disk('articles')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
 		$data['admin_head'] = $fileName;
 		$admin = new Admin;
@@ -147,7 +147,7 @@ class AdminController extends CommonController
 		if ($arr) {
 			return redirect('admin/listadmin');
 		} else {
-			echo "修改失败";
+			return redirect('admin/listadmin');
 		}
 	}
 }

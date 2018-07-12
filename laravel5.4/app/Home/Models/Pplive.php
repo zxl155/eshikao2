@@ -36,16 +36,16 @@ class Pplive extends Model
       $pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
       $usercurriculum =  DB::table('user_curriculum')->where('curriculum_id',$pplive[0]->curriculum_id)->get();
       $user = DB::table('user')->where('user_id',$usercurriculum[0]->user_id)->get();
-      //print_r($admin);die;
       foreach ($pplive as $key => $value) {
          foreach ($user as $k => $val) {
+                $value->user_id = $val->user_id;
                $value->user_name = $val->user_name;
                $value->head_images = $val->head_images;
          }
       }
       $params =  [
           "room_id" => $pplive[0]->entrance, //房间号码
-            "user_number" => $pplive[0]->admin_id, //admin——id
+            "user_number" => $pplive[0]->user_id, //admin——id
             "user_name" =>$pplive[0]->user_name,
             "user_role" =>0,
             "user_avatar" => "www.eshikao.com/home/img/head/".$pplive[0]->head_images."",
@@ -59,8 +59,9 @@ class Pplive extends Model
        }
        $ginseng = $str; //赋值
        $str .= "partner_key=" . $partner_key; //结尾再拼上 partner_key=$partner_key
-       $sign = md5($str); //计算md5值
-       $ginseng .="sign=" . $sign; 
+       $sign = md5($str);
+       $params['sign'] = $sign;
+       $ginseng = http_build_query($params);
        $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
        header("Location: ".$url.""); 
    }
