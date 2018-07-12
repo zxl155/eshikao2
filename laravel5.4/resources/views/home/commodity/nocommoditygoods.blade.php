@@ -97,8 +97,9 @@
                     var txt=  "提交订单失败！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                 } else {
-                    var txt=  "已有订单请到个人中心进行查看！";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                   var txt=  "提交订单成功！";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                    window.location.href = "{{URL::asset('home/CommodityPay.html')}}";
                 }
             }
         })
