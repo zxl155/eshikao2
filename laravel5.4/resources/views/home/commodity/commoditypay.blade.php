@@ -78,6 +78,7 @@
                 <div class="einput"><input type="hidden" name="WIDbody" value="高效备考"></div>
                <!--  <br>
                 <div class="mark">注意：商品描述(body)，选填(建议中文，英文，数字，不能含有特殊字符)</div> -->   
+                <input type="submit" class="active" value ="确认支付">
         </form>
         <form action="{{URL::asset('home/wxpay.html')}}"  class="alipayform" method="post" target="_blank" id='form2'>
                 {{csrf_field()}}
@@ -96,16 +97,16 @@
                 <div class="einput"><input type="hidden" name="WIDtotal_fee" value="{{$address[0]->order_money}}"></div>
                 <!-- <br>
                 <div class="mark">注意：付款金额(total_fee)，必填(格式如：1.00,请精确到分)</div> -->
-                
+                 <input type="submit" class="active" value ="确认支付"> 
         </form>  
-        <input type="submit" id="ac2" class="active" value ="确认支付"> 
+       
             </div>
             <p id="yyd"><i class="yyd-i1"><img src="./img/xdg01.png" alt=""></i><i class="yyd-i2"><img src="./img/xdg02.png" alt=""></i> 我已查看并同意<a href="#">《易师考用户使用服务协议》</a></p>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    $(" #ac2").click(function(){
+    /*$(" #ac2").click(function(){
         var order_number = $('.order_number').val();
         var ok = true;
         var is = $('.cfmode .active img ').attr('v');
@@ -129,7 +130,7 @@
               
             }
          })  
-    })
+    })*/
 </script>
 <!-- <script>
     var even = document.g;etElementById("licode");   

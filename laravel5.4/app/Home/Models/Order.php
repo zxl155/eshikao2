@@ -46,6 +46,7 @@ class Order extends Model
     //查询是否有当前订单
     public function selects($user_id,$curriculum_id)
     {
+      
      $order = DB::select('select * from `order` where user_id = '.$user_id.' and curriculum_id = '.$curriculum_id.'');
       return $order;
     }
@@ -86,7 +87,7 @@ class Order extends Model
     public function oneOrder()
     {
       $user_id = session('user_id');
-      $order = DB::table('order')->where('user_id',$user_id)->get();
+      $order = DB::table('order')->where(['user_id'=>$user_id,'order_state'=>1])->get();
       $curriculum = DB::table('curriculum')->get();
       foreach ($order as $key => $value) {
           foreach ($curriculum as $k => $val) {

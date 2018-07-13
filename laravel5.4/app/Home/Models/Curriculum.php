@@ -73,7 +73,7 @@ class Curriculum extends Model
         foreach ($qualificationss as $key => $value) {
             foreach ($admin as $key => $val) {
                 if($value->admin_id == $val->admin_id){
-                    $value->admin_name = $val->admin_name;
+                    $value->admin_name = $val->nickname;
                     $value->admin_head = $val->admin_head;
                 }
                 if($value->recovery_original < $times){
@@ -103,7 +103,7 @@ class Curriculum extends Model
         foreach ($recruits as $key => $value) {
             foreach ($admin as $key => $val) {
                 if($value->admin_id == $val->admin_id){
-                    $value->admin_name = $val->admin_name;
+                    $value->admin_name = $val->nickname;
                     $value->admin_head = $val->admin_head;
                 }
                 if($value->recovery_original < $times){
@@ -152,7 +152,7 @@ class Curriculum extends Model
     		foreach ($admin as $keys => $values) {
     			if($value->admin_id==$values->admin_id){
     				$value->admin_id = $values->admin_id;
-    				$value->admin_name = $values->admin_name;
+    				$value->admin_name = $values->nickname;
     				$value->admin_head = $values->admin_head;
     			}
     		}
@@ -171,7 +171,7 @@ class Curriculum extends Model
         foreach ($arr as $key => $value) {
             foreach ($admin as $keys => $val) {
                 if ($value->admin_id == $val->admin_id) {
-                    $value->admin_name = $val->admin_name;
+                    $value->admin_name = $val->nickname;
                     $value->admin_head = $val->admin_head;
                     $value->admin_desc = $val->admin_desc;
                 }
@@ -201,7 +201,7 @@ class Curriculum extends Model
        foreach ($curriculum_region as $key => $value) {
            foreach ($admin as $k => $val) {
                if($value->admin_id == $val->admin_id){
-                $value->admin_name = $val->admin_name;
+                $value->admin_name = $val->nickname;
                 $value->admin_head = $val->admin_head;
                }
                 if($value->recovery_original < $times){

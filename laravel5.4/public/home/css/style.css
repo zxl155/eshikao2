@@ -1160,7 +1160,9 @@ textarea {
         padding: 30px 0;
         min-height: 1155px;
     }
-
+    .v-content-left-list>p>img {
+        width: 100%;
+    }
     .v-content-left-list h3 {
         padding: 0 30px;
         font-size: 18px;

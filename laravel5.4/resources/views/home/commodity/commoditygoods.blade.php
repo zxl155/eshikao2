@@ -208,8 +208,9 @@
                     var txt=  "提交订单失败！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                 } else {
-                    var txt=  "已有订单请到个人中心查看！";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    var txt=  "提交订单成功！";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                    window.location.href = "{{URL::asset('home/CommodityPay.html')}}";
                 }
             }
         })
@@ -217,13 +218,13 @@
            if(iss!=undefined){
               $('.address-list').addClass('dy');
               var t=setTimeout("$('.address-list').removeClass('dy')",500);
-             /*  var txt=  "请选择收货地址！";
-           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);*/
+               var txt=  "请选择收货地址！";
+           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
          } else {
             $('.commodity-content h3 span').addClass('dy');
               var t=setTimeout("$('.commodity-content h3 span').removeClass('dy')",500);
-           /* var txt=  "请添加收货地址";
-           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);*/
+            var txt=  "请添加收货地址";
+           window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
             
          }
            return false;

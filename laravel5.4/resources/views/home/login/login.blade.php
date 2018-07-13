@@ -64,8 +64,6 @@
                 type:'post',
                 success:function(m){
                     if(m == "登录成功"){
-                        var txt=  "登录成功";
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                         location.href = "{{URL::asset('/')}}";
                     }else{
                         var txt=  "登录失败";
