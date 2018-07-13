@@ -100,9 +100,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(".alipayform .active").click(function(){
-        alert(123);return false;
-    })
+  
 </script>
 <!-- <script>
     var even = document.getElementById("licode");   

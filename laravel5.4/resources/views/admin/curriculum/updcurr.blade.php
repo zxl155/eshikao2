@@ -173,7 +173,7 @@
                         <div class="am-form-group">
                             <label for="notice" class="am-u-sm-3 am-form-label">QQ群号 (PC端） <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="text" class="tpl-form-input" name="qq_number" placeholder="请输入QQ群号码">
+                                <input type="text" class="tpl-form-input" name="qq_number" placeholder="请输入QQ群号码" value="{{$data[0]->qq_number}}">
                             </div>
                         </div>
                         <div class="am-form-group">
