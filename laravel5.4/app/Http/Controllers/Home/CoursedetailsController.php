@@ -32,7 +32,6 @@ class CoursedetailsController extends Controller
 		$regihtcontent = $curriculum->regihtContent($curriculum_id);
 		$pplive = new Pplive;
 		$pplive_content = $pplive ->shows($curriculum_id);
-		//print_r($arr);die;
 		return view('home/coursedetails/viewdetails',[
 			'curriculum_content' => $curriculum_content,
 			'pplive_content' => $pplive_content,

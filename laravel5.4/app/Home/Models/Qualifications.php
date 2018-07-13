@@ -7,6 +7,19 @@ use DB;
 
 class Qualifications extends Model
 {
+  //移动端通过人气查询
+  public function popularity()
+  {
+    $arr =  DB::table('curriculum')->where('state',1)->orderBy('bought_number','desc')->get();
+    return $arr;
+  }
+  /*//移动端通过价格查询
+  public function moneys($moneys)
+  {
+    print_r($moneys);die;
+    $arr =  DB::table('curriculum')->where('state')->orderBy('bought_number','desc')->get();
+    return $arr;
+  }*/
    public function catType()
    {
    		$type = DB::select('select * from cat_type');
