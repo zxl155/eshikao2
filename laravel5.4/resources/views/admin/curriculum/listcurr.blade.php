@@ -80,7 +80,7 @@
                                         <button style="background: red" class="shelf" value="0" curriculum_id = "{{$value->curriculum_id}}">未上架</button>
                                         @endif
                                     </th>
-                                    <th><a href="{{URL::asset('home/coursedetails')}}?curriculum_id={{$value->curriculum_id}}">课程预览</a>
+                                    <th><a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$value->curriculum_id}}">课程预览</a>
                                         <a href="{{URL::asset('admin/listpplive')}}?curriculum_id={{$value->curriculum_id}}">直播课程列表</a>
                                         <a href="{{URL::asset('admin/updcurr')}}?curriculum_id={{$value->curriculum_id}}">编辑</a>
                                         <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/delcurr')}}?curriculum_id={{$value->curriculum_id}}" >删除</a>
