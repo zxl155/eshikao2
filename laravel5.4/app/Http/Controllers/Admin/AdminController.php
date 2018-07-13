@@ -69,10 +69,10 @@ class AdminController extends CommonController
 			foreach ($role as $k => $val) {
 				if ($value->admin_id==$val->admin_id) {
 					$value->role_name = $val->role_name;
+					$value->role_id = $val->role_id;
 				}
 			}
 		}
-		
 		return view('admin/admin/listadmin',[
 			'data' => $data
 		]);

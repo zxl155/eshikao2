@@ -14,7 +14,7 @@ class Pplive extends Model
          foreach ($pplive_content as $key => $value) {
             foreach ($admin_content as $k => $val) {
                   if ($value->admin_id == $val->admin_id) {
-                        $value->admin_name = $val->admin_name;
+                        $value->admin_name = $val->nickname;
                         $value->admin_head = $val->admin_head;
                         $value->admin_desc = $val->admin_desc;
                   }
