@@ -210,4 +210,9 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/orderquery','WxpayController@orderquery');
   //微信支付成功页面
   Route::get('home/wxSuccess.html','WxpayController@wxSuccess');
+
+  //移动页面通过人气查询
+  Route::get('home/popularity','QualificationsController@popularity');
+  //移动页面通过价格排序查询
+  Route::get('home/moneys','QualificationsController@moneys');
 });

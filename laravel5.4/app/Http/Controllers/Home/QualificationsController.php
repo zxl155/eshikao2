@@ -48,4 +48,34 @@ class QualificationsController extends Controller
 		}
 		return json_encode($data);
 	}
+	/**
+	 * 通过人气搜索
+	 */
+	public function popularity()
+	{
+		$qualifications = new Qualifications;
+		$qualifications = $qualifications->popularity();
+		if (empty($qualifications)) {
+			$data['empty'] = 'empty';
+		}else {
+			$data['data'] = $qualifications;
+		}
+		return json_encode($data);
+	}
+	/**
+	 * 通过人气搜索
+	 */
+	/*public function moneys()
+	{
+		$moneys = Input::get('moneys');
+		echo $moneys;die;
+		$qualifications = new Qualifications;
+		$qualifications = $qualifications->moneys($moneys);
+		if (empty($qualifications)) {
+			$data['empty'] = 'empty';
+		}else {
+			$data['data'] = $qualifications;
+		}
+		return json_encode($data);
+	}*/
 }

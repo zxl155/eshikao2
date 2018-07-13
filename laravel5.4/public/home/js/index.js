@@ -230,7 +230,7 @@ var renderZhao=(function () {
     $(function(){
         typeof Uindex==='number'?$('.personal-nav li').eq(Uindex).addClass('active'):null;
     })
-   // 新增收货地址
+    // 新增收货地址
     $('#commodity-add').on('click',function(){
         $('.newaddress').toggle();
     })
@@ -300,10 +300,13 @@ var renderZhao=(function () {
         $('.cfmode span').click(function(){
             pay=$(this).index();
             console.log(pay)
-        $('.commodity-button form').eq(pay).addClass('addform').siblings().removeClass('addform');
+            $('.commodity-button form').eq(pay).addClass('addform').siblings().removeClass('addform');
         })
     }
     zfPay();
+    $('.m-screenbox .move').click(function () {
+        $('.m-screenbox').css('display','none');
+    })
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换
@@ -321,3 +324,4 @@ var renderZhao=(function () {
     }
 })();
 renderZhao.init();
+
