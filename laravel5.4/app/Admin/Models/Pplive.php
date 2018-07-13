@@ -87,7 +87,7 @@ class Pplive extends Model
 		}
 		$params =  [
 		    "room_id" => $pplive[0]->entrance, //房间号码
-		   	"user_number" => session('data')['admin_id']; //admin——id
+		   	"user_number" => session('data')['admin_id'], //admin——id
 		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>2,
 		   	"user_avatar" =>"www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
