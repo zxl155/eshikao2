@@ -187,7 +187,6 @@ class Pplive extends Model
      */
 	public function select($curriculum_id){
 		$arr = DB::table('pplive')->where('curriculum_id',$curriculum_id)->get()->toarray();
-		print_r($arr);die;
 		$data = DB::table('admin')->get()->toarray();
 		foreach ($arr as $key => $value) {
 			foreach ($data as $keys => $values) {
