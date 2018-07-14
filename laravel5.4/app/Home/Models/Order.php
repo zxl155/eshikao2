@@ -132,4 +132,15 @@ class Order extends Model
         return "正常";
       }
     }
+    //查询用户是否购买
+    public function isOrder($order_number)
+    {
+        $order = DB::table('order')->where('order_number',$order_number)->get();
+        $order = DB::table('user_curriculum')->where(['curriculum_id'=>$order[0]->curriculum_id,'user_id'=>session('user_id')])->get()->toarray();
+        if(empty($order)){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

@@ -94,7 +94,7 @@
                     
                     @foreach($pplive_content as $val)
                     <li>
-                        <!-- <img src="./img/zbtb.png" alt=""> -->
+                         <img src="{{URL::asset('/')}}home/img/zbtb.png" alt="">
                         <span class="lint-title">{{$val->pplive_name}}</span>
                         <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
                         <span class="list-name">{{$val->admin_name}}</span>

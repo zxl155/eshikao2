@@ -28,4 +28,18 @@ class MyclassController extends Controller
 			"curriculum"=>$curriculum,
 		]);
 	}
+	/**
+     * @
+     * @DateTime  2018-07-14 移动版个人中心
+     * 前台个人中心
+     */
+	public function userlist(){
+	   	$user_id = session('user_id');
+	   	if ($user_id) {
+	   		return view('home/personal/userlist');
+	   	} else {
+	   		return redirect('home/login.html');
+	   	}
+		
+	}
 }

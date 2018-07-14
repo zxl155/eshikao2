@@ -182,6 +182,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/CommodityAddress','CommodityController@addressDelete');
   //订单入库
   Route::get('home/orderAdd','CommodityController@orderAdd');
+  //查询用户是否购买
+  Route::get('home/isOrder','OrderController@isOrder');
   //查询商品数量
   Route::get('home/orderNumber','CommodityController@orderNumber');
    //支付提交
@@ -211,8 +213,14 @@ Route::group(['namespace' => 'Home'], function(){
   //微信支付成功页面
   Route::get('home/wxSuccess.html','WxpayController@wxSuccess');
 
-  //移动页面通过人气查询
+  //移动页面通过教师资格证人气查询
   Route::get('home/popularity','QualificationsController@popularity');
-  //移动页面通过价格排序查询
+  //移动页面通过教师资格证价格排序查询
   Route::get('home/moneys','QualificationsController@moneys');
+  //移动页面通过教师招聘人气查询
+  Route::get('home/popularitys','QualificationsController@popularitys');
+  //移动页面通过教师招聘价格排序查询
+  Route::get('home/moneyss','QualificationsController@moneyss');
+  //移动个人中心
+  Route::get('home/userlist','MyclassController@userlist');
 });

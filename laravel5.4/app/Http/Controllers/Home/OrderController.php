@@ -26,4 +26,18 @@ class OrderController extends Controller
 			'order_content'=>$order_content,
 		]);
 	}
+
+	//查询用户是否购买了本商品
+	public function isOrder()
+	{
+		$order_number = Input::get('order_number');
+		$order = new Order;
+		$order_content = $order->isOrder($order_number);
+		if($order_content){
+			$data = "有数据";
+		} else {
+			$data = "无数据";
+		}
+		echo json_encode($data);
+	}
 }
