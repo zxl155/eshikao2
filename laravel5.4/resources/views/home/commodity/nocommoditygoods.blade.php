@@ -90,15 +90,11 @@
             dataType:'json',
             success:function(data){
                 if (data.error=='成功') {
-                     var txt=  "提交订单成功！";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                     window.location.href = "{{URL::asset('home/CommodityPay.html')}}";
                 } else if(data.error=='失败') {
                     var txt=  "提交订单失败！";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                 } else {
-                   var txt=  "提交订单成功！";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                     window.location.href = "{{URL::asset('home/CommodityPay.html')}}";
                 }
             }

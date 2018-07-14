@@ -47,7 +47,7 @@
             <div class="commodity-button">
 
                
-       <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank" id="form1">
+       <form target="_self" action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank" id="form1">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
@@ -72,7 +72,7 @@
             
                 <input type="submit" class="active" value ="确认支付">
         </form>
-        <form action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank" id="form2">
+        <form target="_self" action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank" id="form2">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
@@ -121,7 +121,7 @@
                     }     
                     //$("form .active").submit();
                 } else {
-                   var txt=  "亲~您已经购买过了ing";
+                   var txt=  "亲~你已经购买过本课程，请到我的课程中进行查看";
                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                 }
             }
