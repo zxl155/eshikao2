@@ -53,7 +53,7 @@
         <div class="Qualified-content clearfix">
             
            @foreach($qualifications as $val)
-            <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+            <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="m-Qualified-title">
                    <b>教师资格  </b>
                 <h5>{{$val->curriculum_name}}</h5> 
@@ -91,7 +91,7 @@
          <div class="Qualified-content clearfix">
             
            @foreach($recruit as $val)
-            <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+            <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="m-Qualified-title">
                    <b>教师招聘  </b>
                 <h5>{{$val->curriculum_name}}</h5> 
