@@ -49,7 +49,7 @@ class QualificationsController extends Controller
 		return json_encode($data);
 	}
 	/**
-	 * 通过人气搜索
+	 * 通过教师资格证人气搜索
 	 */
 	public function popularity()
 	{
@@ -63,12 +63,11 @@ class QualificationsController extends Controller
 		return json_encode($data);
 	}
 	/**
-	 * 通过人气搜索
+	 * 通过教师资格证价格搜索
 	 */
-	/*public function moneys()
+	public function moneys()
 	{
 		$moneys = Input::get('moneys');
-		echo $moneys;die;
 		$qualifications = new Qualifications;
 		$qualifications = $qualifications->moneys($moneys);
 		if (empty($qualifications)) {
@@ -77,5 +76,34 @@ class QualificationsController extends Controller
 			$data['data'] = $qualifications;
 		}
 		return json_encode($data);
-	}*/
+	}
+	/**
+	 * 通过教师招聘人气搜索
+	 */
+	public function popularitys()
+	{
+		$qualifications = new Qualifications;
+		$qualifications = $qualifications->popularitys();
+		if (empty($qualifications)) {
+			$data['empty'] = 'empty';
+		}else {
+			$data['data'] = $qualifications;
+		}
+		return json_encode($data);
+	}
+	/**
+	 * 通过教师招聘价格搜索
+	 */
+	public function moneyss()
+	{
+		$moneys = Input::get('moneys');
+		$qualifications = new Qualifications;
+		$qualifications = $qualifications->moneyss($moneys);
+		if (empty($qualifications)) {
+			$data['empty'] = 'empty';
+		}else {
+			$data['data'] = $qualifications;
+		}
+		return json_encode($data);
+	}
 }

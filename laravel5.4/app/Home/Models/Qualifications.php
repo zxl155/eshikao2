@@ -7,19 +7,168 @@ use DB;
 
 class Qualifications extends Model
 {
-  //移动端通过人气查询
+  //移动端通过教师资格证人气查询
   public function popularity()
   {
-    $arr =  DB::table('curriculum')->where('state',1)->orderBy('bought_number','desc')->get();
-    return $arr;
+           $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',1);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+           $curriculum->orderBy('bought_number','desc');
+           $qualifications = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($qualifications as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->nickname;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $qualifications;
   }
-  /*//移动端通过价格查询
+  //移动端通过价格查询
   public function moneys($moneys)
   {
-    print_r($moneys);die;
-    $arr =  DB::table('curriculum')->where('state')->orderBy('bought_number','desc')->get();
-    return $arr;
-  }*/
+      if($moneys == 1){
+           $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',1);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+           $curriculum->orderBy('present_price','desc');
+           $qualifications = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($qualifications as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->nickname;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $qualifications;
+      } else {
+         $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',1);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+          $curriculum->orderBy('present_price','asc');
+            
+           $qualifications = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($qualifications as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->nickname;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $qualifications;
+      }
+  }
+  //移动端通过教师招聘人气查询
+  public function popularitys()
+  {
+           $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',2);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+           $curriculum->orderBy('bought_number','desc');
+           $qualifications = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($qualifications as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->nickname;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $qualifications;
+  }
+  //移动端通教师招聘价格查询
+  public function moneyss($moneys)
+  {
+      if($moneys == 1){
+           $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',2);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+           $curriculum->orderBy('present_price','desc');
+           $qualifications = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($qualifications as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->nickname;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $qualifications;
+      } else {
+         $times = date('Y-m-d H:i:s');
+           $curriculum = DB::table('curriculum');
+           $curriculum->where('teacher_type','=',2);
+           $curriculum->where('state','=',1);
+           $curriculum->where('purchase_state_time','<=',$times);
+           $curriculum->where('purchase_end_time','>=',$times);
+          $curriculum->orderBy('present_price','asc');
+            
+           $qualifications = $curriculum->get();
+           $admin = DB::table('admin')->get();
+            foreach ($qualifications as $key => $value) {
+                foreach ($admin as $key => $val) {
+                    if($value->admin_id == $val->admin_id){
+                        $value->admin_name = $val->nickname;
+                        $value->admin_head = $val->admin_head;
+                    }
+                    if($value->recovery_original < $times){
+                        $value->recovery_original_is = 1;
+                    } else {
+                         $value->recovery_original_is = 0;
+                    }
+                }
+            }
+          return $qualifications;
+      }
+  }
    public function catType()
    {
    		$type = DB::select('select * from cat_type');

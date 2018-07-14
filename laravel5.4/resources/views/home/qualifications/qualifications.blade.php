@@ -179,7 +179,7 @@
                             jQuery.each(data.data,function(key,value){
                                         html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
                                         html+='<div class="Qualified-period">'
                                             html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
                                             html+='<span>'+value.notice+'</span>'
@@ -222,30 +222,6 @@
                     success:function(data){
                         if (data.empty=='empty') {
                             var html = ""; 
-                            html+='<div class="Qualified-content clearfix">'
-                           
-                            html+='<b></b>'
-                            html+='<h5></h5>'
-                            html+='<div class="Qualified-period">'
-                                html+='<i></i>'
-                                html+='<span></span>'
-                            html+='</div>'
-                            html+='<ul class="Qualified-teacher">'
-                                html+='<li>'
-                                    html+='<img src="" alt="" height="50px" width="50px" alt="">'
-                                    html+='<span></span>'
-                                html+='</li>'
-                            html+='</ul>'
-                            html+='<div class="Qualified-price">'
-                                html+='<span></span>'
-                                
-                                    html+='<h2><span></span></h2>'
-                              
-                                
-                            html+='</div>'
-                            
-                            html+='</div>'
-                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
                             $('#html').html(html);
                         } else {
                             var html = ""; 
@@ -253,7 +229,7 @@
                             jQuery.each(data.data,function(key,value){
                                         html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
                                         html+='<div class="Qualified-period">'
                                             html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
                                             html+='<span>'+value.notice+'</span>'
@@ -294,32 +270,8 @@
                     type:'get',
                     dataType:'json',
                     success:function(data){
-                                                if (data.empty=='empty') {
-                            var html = ""; 
-                            html+='<div class="Qualified-content clearfix">'
-                           
-                            html+='<b></b>'
-                            html+='<h5></h5>'
-                            html+='<div class="Qualified-period">'
-                                html+='<i></i>'
-                                html+='<span></span>'
-                            html+='</div>'
-                            html+='<ul class="Qualified-teacher">'
-                                html+='<li>'
-                                    html+='<img src="" alt="" height="50px" width="50px" alt="">'
-                                    html+='<span></span>'
-                                html+='</li>'
-                            html+='</ul>'
-                            html+='<div class="Qualified-price">'
-                                html+='<span></span>'
-                                
-                                    html+='<h2><span></span></h2>'
-                              
-                                
-                            html+='</div>'
-                            
-                            html+='</div>'
-                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
+                        if (data.empty=='empty') {
+                           var html = ""; 
                             $('#html').html(html);
                         } else {
                             var html = ""; 
@@ -327,7 +279,7 @@
                             jQuery.each(data.data,function(key,value){
                                         html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
                                         html+='<div class="Qualified-period">'
                                             html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
                                             html+='<span>'+value.notice+'</span>'
@@ -357,7 +309,7 @@
         })
     })
     /*移动通过价格*/
-    /*$('#moneys').click(function(){
+    $('#moneys').click(function(){
         var moneys = $('#moneys  .active').attr('value');
         $.ajax({
                     url:"{{URL::asset('home/moneys')}}",
@@ -366,31 +318,7 @@
                     dataType:'json',
                     success:function(data){
                         if (data.empty=='empty') {
-                            var html = ""; 
-                            html+='<div class="Qualified-content clearfix">'
-                           
-                            html+='<b></b>'
-                            html+='<h5></h5>'
-                            html+='<div class="Qualified-period">'
-                                html+='<i></i>'
-                                html+='<span></span>'
-                            html+='</div>'
-                            html+='<ul class="Qualified-teacher">'
-                                html+='<li>'
-                                    html+='<img src="" alt="" height="50px" width="50px" alt="">'
-                                    html+='<span></span>'
-                                html+='</li>'
-                            html+='</ul>'
-                            html+='<div class="Qualified-price">'
-                                html+='<span></span>'
-                                
-                                    html+='<h2><span></span></h2>'
-                              
-                                
-                            html+='</div>'
-                            
-                            html+='</div>'
-                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
+                           var html = ""; 
                             $('#html').html(html);
                         } else {
                             var html = ""; 
@@ -398,7 +326,7 @@
                             jQuery.each(data.data,function(key,value){
                                         html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
                                         html+='<div class="Qualified-period">'
                                             html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
                                             html+='<span>'+value.notice+'</span>'
@@ -426,7 +354,7 @@
                         }
                     }
                 })
-    })*/
+    })
     function resetScreen() {
         $('.m-screenbox dd').each(function () {
             $(this).children('button').eq(0).addClass('active').siblings().removeClass('active');

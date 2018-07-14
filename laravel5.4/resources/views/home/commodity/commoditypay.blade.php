@@ -106,6 +106,34 @@
     </div>
 </div>
 <script type="text/javascript">
+    $("form .active").click(function(){
+        var order_number = $('form #out_trade_no').val();
+        var is = $('.cfmode .active img ').attr('v');
+        $.ajax({
+            url:"{{URL::asset('home/isOrder')}}",
+            data:{
+                order_number:order_number,
+                _token:"{{ csrf_token() }}"
+            },
+            async:false,
+            type:'get', 
+            dataType:'json',
+            success:function(data){
+                if (data == "无数据") {
+                    if(is == 1){
+                      $('#form1').submit();  
+                    } else {
+                        $('#form2').submit();
+                    }     
+                    //$("form .active").submit();
+                } else {
+                   var txt=  "亲~您已经购买过了ing";
+                   window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                }
+            }
+        })
+        return false;
+    })
     /*$(" #ac2").click(function(){
         var order_number = $('.order_number').val();
         var ok = true;
