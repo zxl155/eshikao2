@@ -39,7 +39,7 @@
             <i class="iconfont icon-noun__cc"></i>
             <span>教师招聘</span>
         </a>
-        <a href="">
+        <a href="{{URL::asset('home/userlist')}}">
             <i class="iconfont icon-wode"></i>
             <span>我的</span>
         </a>

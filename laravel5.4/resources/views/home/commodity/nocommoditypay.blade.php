@@ -36,8 +36,8 @@
     <div class="commodity-content clearfix">
        <h3>请选择支付方式</h3>
         <div class="cfmode">
-            <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
-            <span ><img src="{{URL::asset('/')}}home/img/wxzf.png" alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span> 
+            <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" v='1' alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
+            <span ><img src="{{URL::asset('/')}}home/img/wxzf.png" v='2' alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span> 
         </div>
 
         <div class="commodity-text">
@@ -47,7 +47,7 @@
             <div class="commodity-button">
 
                
-       <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank">
+       <form action="{{URL::asset('home/alipayapi')}}" class="alipayform addform" method="post" target="_blank" id="form1">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
@@ -72,7 +72,7 @@
             
                 <input type="submit" class="active" value ="确认支付">
         </form>
-        <form action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank">
+        <form action="{{URL::asset('home/wxpay.html')}}" class="alipayform" method="post" target="_blank" id="form2">
                 {{csrf_field()}}
                 
                 <!-- <div class="etitle">商户订单号:</div> -->
@@ -100,8 +100,36 @@
     </div>
 </div>
 <script type="text/javascript">
-  
+  $("form .active").click(function(){
+        var order_number = $('form #out_trade_no').val();
+        var is = $('.cfmode .active img ').attr('v');
+        $.ajax({
+            url:"{{URL::asset('home/isOrder')}}",
+            data:{
+                order_number:order_number,
+                _token:"{{ csrf_token() }}"
+            },
+            async:false,
+            type:'get', 
+            dataType:'json',
+            success:function(data){
+                if (data == "无数据") {
+                    if(is == 1){
+                      $('#form1').submit();  
+                    } else {
+                        $('#form2').submit();
+                    }     
+                    //$("form .active").submit();
+                } else {
+                   var txt=  "亲~您已经购买过了ing";
+                   window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                }
+            }
+        })
+        return false;
+    })
 </script>
+
 <!-- <script>
     var even = document.getElementById("licode");   
     var showqrs = document.getElementById("showqrs");

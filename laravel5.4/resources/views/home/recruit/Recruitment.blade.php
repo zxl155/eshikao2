@@ -57,6 +57,64 @@
             </ul> -->
         </div>
     </div>
+
+    <!--移动-->
+    <div class="m-sort-content">
+        <ul class="m-sort-ul">
+            <li class="active" id="comprehensive">综合</li>
+            <li id="popularity">人气</li>
+            <li>
+                价格
+                <span id="moneys">
+                    <i class="iconfont icon-paixujiantoushang active" value='1'></i>
+                <i class="iconfont icon-paixujiantouxia" value='2'></i>
+                </span>
+            </li>
+            <li>筛选
+                <i class="iconfont icon-shaixuan active"></i></li>
+        </ul>
+        <div class="m-screenbox">
+            <dl class="active">
+                <dt>选择类型</dt>
+                <dd class="btn-type">
+                    <button class="active" type="button" value="0">全部</button>
+                    @foreach($cattype as $value)
+                    <button type="button" value="{{$value->type_id}}">{{$value->type_name}}</button>
+                    @endforeach
+                </dd>
+            </dl>
+            <dl>
+                <dt>选择地区</dt>
+                <dd class="btn-region">
+                    <button class="active" type="button" value="0">全部</button>
+                     @foreach($region as $value)
+                    <button type="button" value="{{$value->region_id}}">{{$value->region_name}}</button>
+                    @endforeach
+                </dd>
+            </dl>
+            <dl>
+                <dt>选择学段</dt>
+                <dd class="btn-period">
+                    <button class="active" type="button" value="0">全部</button>
+                    @foreach($gradetype as $value)
+                    <button type="button" value="{{$value->grade_id}}">{{$value->grade_name}}</button>
+                    @endforeach
+                </dd>
+            </dl>
+            <dl>
+                <dt>选择学科</dt>
+                <dd class="btn-subject">
+                    <button class="active" type="button" value="0">全部</button>
+                    @foreach($subjecttype as $value)
+                    <button type="button" value="{{$value->subject_id}}">{{$value->subject_name}}</button>
+                    @endforeach
+                    
+                </dd>
+            </dl>
+            <a href="javascript:void(0);" onclick="resetScreen()">重置</a>
+            <a href="#" id="move">提交</a>
+        </div>
+    </div>
     <div  id="html">
     <div class="Qualified-content clearfix">
        @foreach($recruits as $val)
@@ -161,7 +219,7 @@
                             jQuery.each(data.data,function(key,value){
                                         html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
                                         html+='<b>教师资格</b>'
-                                        html+='<h5>"'+value.curriculum_name+'"</h5>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
                                         html+='<div class="Qualified-period">'
                                             html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
                                             html+='<span>'+value.notice+'</span>'
@@ -190,6 +248,160 @@
                     }
                 })
      })
+</script>
+<script>
+    //移动
+    function resetScreen() {
+        $('.m-screenbox dd').each(function () {
+            $(this).children('button').eq(0).addClass('active').siblings().removeClass('active');
+        })
+    }/*综合*/
+    $('#comprehensive').click(function(){
+        location.reload();
+    })
+    //通过选择类型
+    $('#move').click(function(){
+       var cattype_id = $(".btn-type .active").val(); //类型
+        var grade_id = $(".btn-period .active").val(); //学科
+        var subject_id = $(".btn-subject .active").val(); //学段
+        var region_id = $(".btn-region .active").val(); //地区
+        $.ajax({
+                    url:"{{URL::asset('home/recruitsearch')}}",
+                    data:{cattype_id:cattype_id,grade_id:grade_id,subject_id:subject_id,region_id:region_id,_token:"{{ csrf_token() }}"},
+                    type:'get',
+                    dataType:'json',
+                    success:function(data){
+                        if (data.empty=='empty') {
+                            var html = ""; 
+                            $('#html').html(html);
+                        } else {
+                            var html = ""; 
+                            html+='<div class="Qualified-content clearfix">'
+                            jQuery.each(data.data,function(key,value){
+                                        html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
+                                        html+='<b>教师资格</b>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
+                                        html+='<div class="Qualified-period">'
+                                            html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
+                                            html+='<span>'+value.notice+'</span>'
+                                        html+='</div>'
+                                        html+='<ul class="Qualified-teacher">'
+                                            html+='<li>'
+                                                html+='<img src="{{URL::asset("/")}}home/img/admin_head/'+value.admin_head+'" alt="" height="50px" width="50px" alt="">'
+                                                html+='<span>'+value.admin_name+'</span>'
+                                            html+='</li>'
+                                        html+='</ul>'
+                                        html+='<div class="Qualified-price">'
+                                            html+='<span>'+value.bought_number+'人购买</span>'
+                                            if (value.recovery_original_is == 1) {
+                                                html+='<h2>￥<span>'+value.original_price+'</span></h2>'
+                                            } else {
+                                                html+='<h2>￥<span>'+value.present_price+'</span></h2>'
+                                            }
+                                            
+                                        html+='</div>'
+                                        html+='</a>'
+                            }) 
+                            html+='</div>'
+                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
+                            $('#html').html(html);
+                        }
+                    }
+                })
+    })
+    /*人气*/
+    $('#popularity').click(function(){
+         $.ajax({
+                    url:"{{URL::asset('home/popularitys')}}",
+                    data:{_token:"{{ csrf_token() }}"},
+                    type:'get',
+                    dataType:'json',
+                    success:function(data){
+                        if (data.empty=='empty') {
+                          var html = ""; 
+                            $('#html').html(html);
+                        } else {
+                            var html = ""; 
+                            html+='<div class="Qualified-content clearfix">'
+                            jQuery.each(data.data,function(key,value){
+                                        html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
+                                        html+='<b>教师资格</b>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
+                                        html+='<div class="Qualified-period">'
+                                            html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
+                                            html+='<span>'+value.notice+'</span>'
+                                        html+='</div>'
+                                        html+='<ul class="Qualified-teacher">'
+                                            html+='<li>'
+                                                html+='<img src="{{URL::asset("/")}}home/img/admin_head/'+value.admin_head+'" alt="" height="50px" width="50px" alt="">'
+                                                html+='<span>'+value.admin_name+'</span>'
+                                            html+='</li>'
+                                        html+='</ul>'
+                                        html+='<div class="Qualified-price">'
+                                            html+='<span>'+value.bought_number+'人购买</span>'
+                                            if (value.recovery_original_is == 1) {
+                                                html+='<h2>￥<span>'+value.original_price+'</span></h2>'
+                                            } else {
+                                                html+='<h2>￥<span>'+value.present_price+'</span></h2>'
+                                            }
+                                            
+                                        html+='</div>'
+                                        html+='</a>'
+                            }) 
+                            html+='</div>'
+                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
+                            $('#html').html(html);
+                        }
+                    }
+        })
+    })
+/*移动通过价格*/
+    $('#moneys').click(function(){
+        var moneys = $('#moneys  .active').attr('value');
+        $.ajax({
+                    url:"{{URL::asset('home/moneyss')}}",
+                    data:{moneys:moneys,_token:"{{ csrf_token() }}"},
+                    type:'get',
+                    dataType:'json',
+                    success:function(data){
+                        if (data.empty=='empty') {
+                            var html = ""; 
+                            $('#html').html(html);
+                        } else {
+                            var html = ""; 
+                            html+='<div class="Qualified-content clearfix">'
+                            jQuery.each(data.data,function(key,value){
+                                        html+='<a href="coursedetails.html?curriculum_id='+value.curriculum_id+'">'
+                                        html+='<b>教师资格</b>'
+                                        html+='<h5>'+value.curriculum_name+'</h5>'
+                                        html+='<div class="Qualified-period">'
+                                            html+='<i><img src="{{URL::asset("/")}}home/img/jifen.png" alt=""></i>'
+                                            html+='<span>'+value.notice+'</span>'
+                                        html+='</div>'
+                                        html+='<ul class="Qualified-teacher">'
+                                            html+='<li>'
+                                                html+='<img src="{{URL::asset("/")}}home/img/admin_head/'+value.admin_head+'" alt="" height="50px" width="50px" alt="">'
+                                                html+='<span>'+value.admin_name+'</span>'
+                                            html+='</li>'
+                                        html+='</ul>'
+                                        html+='<div class="Qualified-price">'
+                                            html+='<span>'+value.bought_number+'人购买</span>'
+                                            if (value.recovery_original_is == 1) {
+                                                html+='<h2>￥<span>'+value.original_price+'</span></h2>'
+                                            } else {
+                                                html+='<h2>￥<span>'+value.present_price+'</span></h2>'
+                                            }
+                                            
+                                        html+='</div>'
+                                        html+='</a>'
+                            }) 
+                            html+='</div>'
+                            //html+='<div id="page" class="page_div">'+data.data+'->links("common.pagination")</div>'
+                            $('#html').html(html);
+                        }
+                    }
+                })
+    })
 </script>
 </body>
 </html>
