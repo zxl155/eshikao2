@@ -83,4 +83,49 @@ class AddressController extends Controller
 		}
 		return json_encode($data);
 	}
+	//移动展示收货地址
+	public function moveAddress()
+	{
+		$goods = new GoodsAddress;
+		$content = $goods->select();
+		return view('home/address/moveAddress',['content' => $content]);
+	}
+	//移动删除收货地址
+	public function moveAddressDelete()
+	{
+		$address_id = Input::get('address_id');
+		$goods = new GoodsAddress;
+		$arr = $goods->deletes($address_id);
+		if ($arr) {
+			return redirect('home/moveAddress.html');
+		} else {
+			return redirect('home/moveAddress.html');
+		}
+	}
+	//移动修改地址
+	public function moveAddressUpd()
+	{
+		$address_id = Input::get('address_id');
+		$goods = new GoodsAddress;
+		$arr = $goods->updates($address_id);
+		return view('home/address/moveAddresss',['data'=>$arr]);
+	}
+	//移动执行修改地址
+	public function moveAddressUpds()
+	{
+		$data = Input::all();
+		$goods = new GoodsAddress;
+		$arr = $goods->updatess($data);
+		if ($arr) {
+			$data['is'] = '正确';
+		} else {
+			$data['is'] = '错误';
+		}
+		return json_encode($data);
+	}
+	//添加收货地址
+	public function moveAddressInsert()
+	{
+		return view('home/address/moveAddressInsert');
+	}
 }
