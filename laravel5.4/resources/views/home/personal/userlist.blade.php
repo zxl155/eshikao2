@@ -68,7 +68,7 @@
             </li>
         </ul>
     </div>
-    <a class="Sign-out" href="">退出登录</a>
+    <a class="Sign-out" href="{{URL::asset('home/out')}}">退出登录</a>
 </div>
 <!--移动-->
 @include('common.footer')
