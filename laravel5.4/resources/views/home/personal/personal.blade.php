@@ -37,24 +37,23 @@
                 @foreach($curriculum as $val)
                 <div class="personal-detail-content">
                     <div class="personal-detail-img">
-                        <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$val->curriculum_pricture}}" alt="11111" width="200px" height=150px">
+                        <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$val->curriculum_pricture}}" alt="11111" width="200px" height="150px">
                     </div>
                     <div class="personal-detail-text">
                         <h3>
-                            {{$val->curriculum_name}}
-                           <!--  <span class="active">直播预告</span>
-                            <i>请确认时间</i> -->
+                            <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$val->curriculum_id}}">{{$val->curriculum_name}}</a>
+                            <span class="active"></span>
+                            <i></i>
                         </h3>
                         <p class="personal-detail-date">开课时间：{{$val->recovery_original}}</p>
                         @if($val->qq_number != "")
-                        <span>qq群：</span><span>{{$val->qq_number}}</span>
+                        <img src="{{URL::asset('/')}}home/img/qq0.png" alt="">
+                        <span>加入学员群：</span><span>{{$val->qq_number}}</span>
                         <br/>
                         @endif
-                        <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$val->curriculum_id}}" style="color: blue">查看课程</a>
                     </div>
-
                 </div>
-                @endforeach
+                 @endforeach
                 @endif
             </div>
         </div>
