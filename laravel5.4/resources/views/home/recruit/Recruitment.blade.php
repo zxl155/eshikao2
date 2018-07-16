@@ -112,7 +112,7 @@
                 </dd>
             </dl>
             <a href="javascript:void(0);" onclick="resetScreen()">重置</a>
-            <a href="#" id="move">提交</a>
+            <a href="#" class="move">提交</a>
         </div>
     </div>
     <div  id="html">
@@ -260,7 +260,7 @@
         location.reload();
     })
     //通过选择类型
-    $('#move').click(function(){
+    $('.move').click(function(){
        var cattype_id = $(".btn-type .active").val(); //类型
         var grade_id = $(".btn-period .active").val(); //学科
         var subject_id = $(".btn-subject .active").val(); //学段
