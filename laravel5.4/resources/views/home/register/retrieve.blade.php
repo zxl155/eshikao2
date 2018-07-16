@@ -63,27 +63,6 @@
     </div>
 </div>
 @include('common/footer')
-<!--移动-->
-<div class="m-Bottom">
-    <nav class="m-Nav">
-        <a href="" class="active">
-            <i class="iconfont icon-shouye"></i>
-            <span>首页</span>
-        </a>
-        <a href="">
-            <i class="iconfont icon-zhengshu-copy"></i>
-            <span>教师资格证</span>
-        </a>
-        <a href="">
-            <i class="iconfont icon-zhaopin"></i>
-            <span>教师招聘</span>
-        </a>
-        <a href="">
-            <i class="iconfont icon-wode"></i>
-            <span>我的</span>
-        </a>
-    </nav>
-</div>
 <script src="js/index.js"></script>
 <script>
     $("#btn").click(function(){

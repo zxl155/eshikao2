@@ -23,12 +23,15 @@
             <a href="{{URL::asset('home/register.html')}}" class="active">注册</a></span>
             </div>
             <div>
+                 <span class="zhui" style="color:red"></span>
                 <div class="Register">
                     <input placeholder="请输入手机号码" id="user_tel" value="">
                     <span class="zh-prompt"></span>
-                    <input type="string" placeholder="请短信验证码" id="code" value="">
-                    <span class="getveri2">获取验证码</span>
-                    <span class="getveri">获取验证码</span>
+                    <div class="Register-zym">
+                        <input type="string" placeholder="请短信验证码" id="code" value="">
+                        <span class="getveri2">获取验证码</span>
+                        <span class="getveri">获取验证码</span>
+                    </div>
                     <span class="zh-prompt"></span>
                     <input type="password" placeholder="请设置密码8-16位数字或字母" id="user_pwd" value="">
                     <span class="zh-prompt"></span>
@@ -49,71 +52,131 @@
 <script type="text/javascript">
     //提交信息
     $("#btn").click(function(){
-        var user_tel = $("#user_tel").val();
-        var user_pwd = $("#user_pwd").val();
-        var code = $("#code").val();
-        var patterns = /^1[34578]\d{9}$/;
-        var password = /^[a-zA-Z1-9\d_]{8,16}$/;
-        var number = /^[0-9]{6,6}$/;
-        var user_pqrwd = $("#user_pqrwd").val();
-        if (user_tel == '' || user_pwd == '') {
-            var txt=  "手机号或密码不能为空";
-            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-            return false;
-        } else if(code == ''){
-            var txt=  "验证码不能为空";
-            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-            return false;
-        }
-        if (patterns.test(user_tel) == false) {
-             var txt=  "请输入正确的手机号";
-             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-             return false;
-        } 
-        if(number.test(code) == false) {
-             var txt=  "请输入正确的验证码";
-             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-             return false;
-        }
-        if (password.test(user_pwd) == false) {
-             var txt=  "请输入6-12位数字、字母密码";
-             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-             return false;
-        }
-        if(user_pqrwd != user_pwd) {
-            var txt=  "确认密码错误";
-            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-            return false;
-        }
-        $.ajax({
-            url:"{{URL::asset('home/doregister')}}",
-            data:{code:code,_token:"{{ csrf_token() }}"},
-            type:'get', 
-            success:function(data){
-                if(data == 1){
-                    var txt=  "验证码错误";
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                    return false; 
-                }   else {
-
-                         $.ajax({
-                             url:"{{URL::asset('home/addregister')}}",
-                             data:{user_tel:user_tel,user_pwd:user_pwd,_token:"{{ csrf_token() }}"},
-                             type:'get',
-                             success:function(msg){  
-                                if (msg == 2) {
-                                    window.location.href = "{{URL::asset('home/login.html')}}";  
-                                } else {
-                                    var txt =  "请确认您的手机号是否注册过";
-                                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                                }
-                                
-                                              
-                             }
-                        })  
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机版本
+               var user_tel = $("#user_tel").val();
+                var user_pwd = $("#user_pwd").val();
+                var code = $("#code").val();
+                var patterns = /^1[34578]\d{9}$/;
+                var password = /^[a-zA-Z1-9\d_]{8,16}$/;
+                var number = /^[0-9]{6,6}$/;
+                var user_pqrwd = $("#user_pqrwd").val();
+                if (user_tel == '' || user_pwd == '') {
+                    $('.zhui').html('<span>手机号密码不能为空</span>');
+                    return false;
+                } else if(code == ''){
+                    $('.zhui').html('<span>验证码不能为空</span>');
+                    return false;
                 }
-            }
-        })
+                if (patterns.test(user_tel) == false) {
+                    $('.zhui').html('<span>请输入正确的手机号</span>');
+                    return false;
+                } 
+                if(number.test(code) == false) {
+                    $('.zhui').html('<span>请输入正确的验证码</span>');
+                    return false;
+                }
+                if (password.test(user_pwd) == false) {
+                    $('.zhui').html('<span>请输入6-12位数字、字母密码</span>');
+                    return false;
+                }
+                if(user_pqrwd != user_pwd) {
+                    $('.zhui').html('<span>确认密码错误</span>');
+                    return false;
+                }
+                $.ajax({
+                    url:"{{URL::asset('home/doregister')}}",
+                    data:{code:code,_token:"{{ csrf_token() }}"},
+                    type:'get', 
+                    success:function(data){
+                        if(data == 1){
+                        }   else {
+
+                                 $.ajax({
+                                     url:"{{URL::asset('home/addregister')}}",
+                                     data:{user_tel:user_tel,user_pwd:user_pwd,_token:"{{ csrf_token() }}"},
+                                     type:'get',
+                                     success:function(msg){  
+                                        if (msg == 2) {
+                                            window.location.href = "{{URL::asset('home/login.html')}}";  
+                                        } else {
+                                            $('.zhui').html('<span>请确认您的手机号是否注册过</span>');
+                                            return false;
+                                        }
+                                        
+                                                      
+                                     }
+                                })  
+                        }
+                    }
+                })
+        } else {
+                var user_tel = $("#user_tel").val();
+                var user_pwd = $("#user_pwd").val();
+                var code = $("#code").val();
+                var patterns = /^1[34578]\d{9}$/;
+                var password = /^[a-zA-Z1-9\d_]{8,16}$/;
+                var number = /^[0-9]{6,6}$/;
+                var user_pqrwd = $("#user_pqrwd").val();
+                if (user_tel == '' || user_pwd == '') {
+                    var txt=  "手机号或密码不能为空";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    return false;
+                } else if(code == ''){
+                    var txt=  "验证码不能为空";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    return false;
+                }
+                if (patterns.test(user_tel) == false) {
+                     var txt=  "请输入正确的手机号";
+                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                     return false;
+                } 
+                if(number.test(code) == false) {
+                     var txt=  "请输入正确的验证码";
+                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                     return false;
+                }
+                if (password.test(user_pwd) == false) {
+                     var txt=  "请输入6-12位数字、字母密码";
+                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                     return false;
+                }
+                if(user_pqrwd != user_pwd) {
+                    var txt=  "确认密码错误";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    return false;
+                }
+                $.ajax({
+                    url:"{{URL::asset('home/doregister')}}",
+                    data:{code:code,_token:"{{ csrf_token() }}"},
+                    type:'get', 
+                    success:function(data){
+                        if(data == 1){
+                            var txt=  "验证码错误";
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                            return false; 
+                        }   else {
+
+                                 $.ajax({
+                                     url:"{{URL::asset('home/addregister')}}",
+                                     data:{user_tel:user_tel,user_pwd:user_pwd,_token:"{{ csrf_token() }}"},
+                                     type:'get',
+                                     success:function(msg){  
+                                        if (msg == 2) {
+                                            window.location.href = "{{URL::asset('home/login.html')}}";  
+                                        } else {
+                                            var txt =  "请确认您的手机号是否注册过";
+                                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                                        }
+                                        
+                                                      
+                                     }
+                                })  
+                        }
+                    }
+                })
+        }
+
         
     })
     // //发送验证码
@@ -171,36 +234,66 @@ $(".getveri").click(function(){
 
 var phone = $('#user_tel').val();
         function codeyz(){
-             if (phone == '') {
-            var txt=  "手机号不能为空";
-            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-            return false;
-        } else {
-           var pattern = /^1[34578]\d{9}$/; 
-           if(pattern.test(phone)) {
-                 $.ajax({
-                    url:"{{URL::asset('home/emails')}}",
-                    data:{phone:phone,_token:"{{ csrf_token() }}"},
-                    type:'get',
-                    success:function(data){
-                        if(data == 1){
-                            var txt=  "发送成功";
-                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
-                        }else{
-                            var txt=  "发送失败请确认你是否注册";
-                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                            return false;
-                        }
-                    }
-                });
-           } else {
-                var txt=  "请输入正确的手机号";
-                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
-                return false;
-           }
+           if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机版本
+                 if (phone == '') {
+                    $('.zhui').html('<span>手机号不能为空</span>');
+                    return false;
+                } else {
+                   var pattern = /^1[34578]\d{9}$/; 
+                   if(pattern.test(phone)) {
+                         $.ajax({
+                            url:"{{URL::asset('home/emails')}}",
+                            data:{phone:phone,_token:"{{ csrf_token() }}"},
+                            type:'get',
+                            success:function(data){
+                                if(data == 1){
             
-        }
-        return true;
+                                }else{
+                                    $('.zhui').html('<span>发送失败请确认你是否注册</span>');
+                                    return false;
+                                }
+                            }
+                        });
+                   } else {
+                         $('.zhui').html('<span>请输入正确的手机号</span>');
+                         return false;
+                   }
+                    
+                }
+                return true;
+           } else {
+                 if (phone == '') {
+                    var txt=  "手机号不能为空";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    return false;
+                } else {
+                   var pattern = /^1[34578]\d{9}$/; 
+                   if(pattern.test(phone)) {
+                         $.ajax({
+                            url:"{{URL::asset('home/emails')}}",
+                            data:{phone:phone,_token:"{{ csrf_token() }}"},
+                            type:'get',
+                            success:function(data){
+                                if(data == 1){
+                                    var txt=  "发送成功";
+                                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+                                }else{
+                                    var txt=  "发送失败请确认你是否注册";
+                                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                                    return false;
+                                }
+                            }
+                        });
+                   } else {
+                        var txt=  "请输入正确的手机号";
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                        return false;
+                   }
+                    
+                }
+                return true;
+           }
+           
         }
         if(codeyz()){
 addCookie("secondsremained", 60, 60)
