@@ -95,7 +95,7 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
                 type:'post',
                 success:function(m){
                     if(m == "登录成功"){
-                        location.href = "{{URL::asset('/')}}";
+                        location.href = "{{URL::asset('home/userlist')}}";
                     }else{
                         $('.zhui').html('<span>登录失败</span>');
                         return false;
