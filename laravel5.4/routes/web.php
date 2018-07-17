@@ -223,4 +223,19 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moneyss','QualificationsController@moneyss');
   //移动个人中心
   Route::get('home/userlist','MyclassController@userlist');
+  //移动展示收货地址
+  Route::get('home/moveAddress.html','AddressController@moveAddress');
+  //移动删除收货地址
+  Route::get('home/moveAddressDelete','AddressController@moveAddressDelete');
+  //移动修改收货地址
+  Route::get('home/moveAddressUpd','AddressController@moveAddressUpd');
+  //移动执行修改收货地址
+  Route::get('home/moveAddressUpds','AddressController@moveAddressUpds');
+  //移动添加收货地址
+  Route::get('home/moveAddressInsert','AddressController@moveAddressInsert');
+  //移动修改密码
+  Route::get('home/movepassword','MydataController@movepassword');
+  //移动订单
+  Route::get('home/moveOrder','OrderController@moveOrder');
+
 });

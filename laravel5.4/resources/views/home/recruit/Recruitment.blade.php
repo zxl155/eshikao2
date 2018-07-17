@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>教师招聘</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
-    <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
+    <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript">
      Hindex=2;
 </script>
 </head>
@@ -119,8 +120,10 @@
     <div class="Qualified-content clearfix">
        @foreach($recruits as $val)
         <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
-            <b>教师招聘</b>
+            <div class="m-Qualified-title">
+                <b>教师招聘</b>
             <h5>{{$val->curriculum_name}}</h5>
+            </div>
             <div class="Qualified-period">
                 <i><img src="{{URL::asset('/')}}home/img/jifen.png"></i>
                 <span>{{$val->notice}}</span>

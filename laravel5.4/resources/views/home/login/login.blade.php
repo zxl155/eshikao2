@@ -10,27 +10,11 @@
     <style type="text/css">
       .sgBtn{width: 135px; height: 35px; line-height: 35px; margin-left: 10px; margin-top: 10px; text-align: center; background-color: #0095D9; color: #FFFFFF; float: left; border-radius: 5px;}
     </style>
+    <script type="text/javascript">
+     Hindex=3;
+</script>
 </head>
 <body>
-    <script>
-    (function (doc, win) {
-        var docEl = doc.documentElement,
-            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-            recalc = function () {
-                var clientWidth = docEl.clientWidth;
-                if (!clientWidth) return;
-                if(clientWidth>=750){
-                    docEl.style.fontSize = '100px';
-                }else{
-                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-                }
-            };
-
-        if (!doc.addEventListener) return;
-        win.addEventListener(resizeEvt, recalc, false);
-        doc.addEventListener('DOMContentLoaded', recalc, false);
-    })(document, window);
-</script>
 	@include('common.head')
     <!--移动-->
     <div class="m-header">
@@ -123,7 +107,7 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
                 type:'post',
                 success:function(m){
                     if(m == "登录成功"){
-                        location.href = "{{URL::asset('/')}}";
+                       window.location.href=document.referrer;
                     }else{
                         var txt=  "登录失败";
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);

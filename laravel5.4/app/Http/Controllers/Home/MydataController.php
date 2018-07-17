@@ -78,6 +78,10 @@ class MydataController extends Controller
 		 	return redirect('/home/mydata.html');
 		 }
 	} 
-		
+	//移动修改密码
+	public function movepassword()
+	{
+		return view('home/personal/musercode');
+	}
 	
 }

@@ -40,4 +40,13 @@ class OrderController extends Controller
 		}
 		echo json_encode($data);
 	}
+	//移动订单展示
+	public function moveOrder()
+	{
+		$order = new Order;
+		$order_content = $order->oneOrder();
+		return view('home/order/moveOrder',[
+			'order_content'=>$order_content,
+		]);
+	}
 }

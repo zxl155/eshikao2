@@ -13,7 +13,7 @@ class Curriculum extends Model
     public function qualifications()
     {
         $times = date('Y-m-d H:i:s');
-    	$sql = "select * from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by bought_number desc  LIMIT 4";
+    	$sql = "select * from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
     	$qualifications = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($qualifications as $key => $value) {
@@ -38,7 +38,7 @@ class Curriculum extends Model
     public function recruit()
     {
     	$times = date('Y-m-d H:i:s');
-        $sql = "select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by bought_number desc  LIMIT 4";
+        $sql = "select * from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
         $recruit = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($recruit as $key => $value) {

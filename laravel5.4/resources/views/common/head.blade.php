@@ -1,9 +1,9 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
-<link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css"/>
-    <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{URL::asset('/')}}js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css">
+    <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="{{URL::asset('/')}}js/xcConfirm.js" type="text/javascript"></script>
     <style type="text/css">
       .sgBtn{width: 135px; height: 35px; line-height: 35px; margin-left: 10px; margin-top: 10px; text-align: center; background-color: #0095D9; color: #FFFFFF; float: left; border-radius: 5px;}
     </style>

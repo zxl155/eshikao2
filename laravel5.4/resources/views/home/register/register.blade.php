@@ -10,6 +10,9 @@
     <style type="text/css">
       .sgBtn{width: 135px; height: 35px; line-height: 35px; margin-left: 10px; margin-top: 10px; text-align: center; background-color: #0095D9; color: #FFFFFF; float: left; border-radius: 5px;}
     </style>
+    <script type="text/javascript">
+     Hindex=3;
+</script>
 </head>
 <body>
 	@include('common.head')
