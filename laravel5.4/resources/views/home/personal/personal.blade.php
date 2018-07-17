@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>我的课程</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_706885_oj0ko6hl9i.css">
+    <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -30,6 +34,7 @@
                     </p>
                 </div> -->
             </div>
+        </div>
             <div class="personal-list">
                 @if($curriculum == 1)
                 
@@ -55,6 +60,7 @@
                 </div>
                  @endforeach
                 @endif
+                
             </div>
         </div>
     </div>

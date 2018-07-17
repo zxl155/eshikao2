@@ -233,4 +233,9 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moveAddressUpds','AddressController@moveAddressUpds');
   //移动添加收货地址
   Route::get('home/moveAddressInsert','AddressController@moveAddressInsert');
+  //移动修改密码
+  Route::get('home/movepassword','MydataController@movepassword');
+  //移动订单
+  Route::get('home/moveOrder','OrderController@moveOrder');
+
 });

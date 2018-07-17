@@ -27,7 +27,7 @@
 <!--移动-->
 <div class="m-Bottom">
     <nav class="m-Nav">
-        <a href="{{URL::asset('/')}}" class="active">
+        <a href="{{URL::asset('/')}}">
             <i class="iconfont icon-shouye"></i>
             <span>首页</span>
         </a>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script type="text/javascript">
+     Hindex=3;
+</script>
 @include('common.head')
 <body>
 <!--移动-->
@@ -44,7 +47,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{URL::asset('home/order.html')}}">
+                <a href="{{URL::asset('home/moveOrder')}}">
                     <i class="iconfont icon-dingdan"></i>
                     我的订单
                 </a>
@@ -56,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{URL::asset('home/updatepwd')}}">
+                <a href="{{URL::asset('home/movepassword')}}">
                     <i class="iconfont icon-mima"></i>
                     修改密码
                 </a>

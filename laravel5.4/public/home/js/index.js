@@ -129,7 +129,6 @@ var renderZhao=(function () {
             bannerLength=$bannerList.length,
             _index=0,
             _timer="";
-
         var _height=$bannerImg.height();
         $focusBanner.height(_height);
         $bannerImg.height(_height);
@@ -178,26 +177,26 @@ var renderZhao=(function () {
         _timer=setInterval(function(){$nextBnt.click()},5000);
 
 
-        function isIE() { //ie?
-            if (!!window.ActiveXObject || "ActiveXObject" in window)
-                return true;
-            else
-                return false;
-        }
+        // function isIE() { //ie?
+        //     if (!!window.ActiveXObject || "ActiveXObject" in window)
+        //         return true;
+        //     else
+        //         return false;
+        // }
 
-        if(!isIE()){
-            $(window).resize(function(){
-                window.location.reload();
-            });
-        }else{
-            if(!+'\v1' && !'1'[0]){
-                alert("老铁什么年代啦还在搞ie8以下版本啊！")
-            } else{
-                $(window).resize(function(){
-                    window.location.reload();
-                });
-            };
-        }
+        // if(!isIE()){
+        //     $(window).resize(function(){
+        //         window.location.reload();
+        //     });
+        // }else{
+        //     if(!+'\v1' && !'1'[0]){
+        //         alert("老铁什么年代啦还在搞ie8以下版本啊！")
+        //     } else{
+        //         $(window).resize(function(){
+        //             window.location.reload();
+        //         });
+        //     };
+        // }
     };
     //定时器
     function codeTime(){
@@ -224,7 +223,8 @@ var renderZhao=(function () {
     //导航默认样式
     $(function(){
         if(typeof Hindex==='number'){
-            $('.header-ul a').eq(Hindex).addClass('active')
+            $('.header-ul a').eq(Hindex).addClass('active');
+            $('.m-Nav a').eq(Hindex).addClass('active')
         }
     })
     $(function(){

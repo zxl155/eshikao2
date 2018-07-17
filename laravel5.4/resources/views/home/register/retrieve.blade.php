@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_706885_oj0ko6hl9i.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript">
+     Hindex=3;
+</script>
 </head>
 <body>
 <script>

@@ -87,7 +87,7 @@ class Order extends Model
     public function oneOrder()
     {
       $user_id = session('user_id');
-      $order = DB::table('order')->where(['user_id'=>$user_id,'order_state'=>1])->get();
+      $order = DB::table('order')->where(['user_id'=>$user_id,'order_state'=>1])->orderBy('order_time','desc')->get();
       $curriculum = DB::table('curriculum')->get();
       foreach ($order as $key => $value) {
           foreach ($curriculum as $k => $val) {
@@ -96,6 +96,7 @@ class Order extends Model
                   $value->qq_group_key = $val->qq_group_key;
                   $value->curriculum_id = $val->curriculum_id;
                   $value->is_goods = $val->is_goods;
+                  $value->curriculum_pricture = $val->curriculum_pricture;
               }
           }
       }

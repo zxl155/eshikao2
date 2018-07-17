@@ -400,6 +400,7 @@ textarea {
         -webkit-line-clamp: 2;
         overflow: hidden;
         font-size: 18px;
+        height: 48px;
         line-height: 24px;
     }
 
@@ -1202,7 +1203,7 @@ textarea {
     }
 
     .v-content-left-list-ul .list-name {
-        width: 70px;
+        /*width: 70px;*/
         float: right;
     }
 
@@ -3298,7 +3299,7 @@ animation:myfirst .3s;
         display: block;
     }
 
-    .v-content-left-list > img {
+    .v-content-left-list>p> img {
         width: 100%;
     }
 
@@ -3813,7 +3814,7 @@ animation:myfirst .3s;
         background-size:.26rem .26rem;
     }
     .m-addres-i .active{
-        background: url("./img/xdg02.png")no-repeat center;
+        background: url("./../img/xdg02.png")no-repeat center;
     }
     .m-addres-an{
         float: right;
@@ -4006,7 +4007,6 @@ animation:myfirst .3s;
         display: none;
         z-index: -1;
     }
-
     /*banner*/
     @media only screen and (max-width: 375px) {
         .swiper-slide img {
