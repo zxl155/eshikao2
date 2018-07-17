@@ -265,6 +265,27 @@
            
         </div>
     </div>
+    <!--移动-->
+    <div class="m-price-purchase">
+        <div class="m-price-money">
+            <h4>￥@if($regihtcontent[0]->recovery_original_is == '1')
+                        {{$regihtcontent[0]->original_price}}
+                        @else
+                        {{$regihtcontent[0]->present_price}}
+                        @endif</h4>
+            <span>{{$regihtcontent[0]->bought_number}}人购买</span>
+        </div>
+         
+            @if($curriculum_content[0]->bought_number>=$curriculum_content[0]->purchase_number)
+             <a href="#" class="active" style="background: #cdcdcd;border-color:#cdcdcd;"><button type="button" style="background: #cdcdcd;border-color:#cdcdcd;">已售罄</button></a>
+            @else
+            @if($isPurchase == 1)
+             <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d"><button type="button">观看</button> </a>
+            @else 
+            <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d"><button type="button">购买</button> </a>
+            @endif
+            @endif
+    </div>
 </div>
 @endforeach
 @include('common/footer')

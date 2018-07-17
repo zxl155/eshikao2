@@ -101,8 +101,10 @@
     <div class="Qualified-content clearfix">
        @foreach($qualifications as $val)
         <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
-            <b>教师资格</b>
+            <div class="m-Qualified-title">
+                <b>教师资格</b>
             <h5>{{$val->curriculum_name}}</h5>
+            </div>
             <div class="Qualified-period">
                 <i><img src="{{URL::asset('/')}}home/img/jifen.png"></i>
                 <span>{{$val->notice}}</span>
