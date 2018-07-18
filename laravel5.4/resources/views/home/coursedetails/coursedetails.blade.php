@@ -8,8 +8,8 @@
 </script>
 </head>
 <body>
-@include('common.head');
-@foreach($curriculum_content as $value);
+@include('common.head')
+@foreach($curriculum_content as $value)
 <div class="viewdetails">
     <div class="coursedetails">
         <div class="details-brief">

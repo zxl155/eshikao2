@@ -33,12 +33,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="am-form-group">
-                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件<span class="tpl-form-line-small-title"></span></label>
-                                    <div class="am-u-sm-9">
-                                        <input type="file" class="tpl-form-input" name="recruitment_file" required>
-                                    </div>
-                                </div>
+                                
                                <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">内容</label>
                             <div class="am-u-sm-9">
@@ -49,7 +44,12 @@
                                 <!-- 上述的 php 代码是根据实际需求进行的编写，该处为初始化内容的位置-->
                             </div>
                         </div>
-
+                        <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">选择文件<span class="tpl-form-line-small-title"></span></label>
+                                    <div class="am-u-sm-9">
+                                        <input type="file" class="tpl-form-input" name="recruitment_file">
+                                    </div>
+                                </div>
                                 
 
                                 <div class="am-form-group">

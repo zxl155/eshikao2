@@ -31,34 +31,29 @@ class RecruitmentController extends CommonController
      */
 	public function dorecr(Request $request){
 		$data = Input::all();
-		
-		     if($request->isMethod('POST')){
-//            var_dump($_FILES);
+		if($request->isMethod('POST')){
             $file = $request->file('recruitment_file');
- 	
             //判断文件是否上传成功
-            
+           if ($file) {
                 //获取原文件名
                 $originalName = $file->getClientOriginalName();
-
                 //扩展名
                 $ext = $file->getClientOriginalExtension();
                 //文件类型
                 $type = $file->getClientMimeType();
                 //临时绝对路径
                 $realPath = $file->getRealPath();
- 	
-                $filename = date('Y-m-d-H-i-S').'-'.uniqid().'-'.$ext;
-
-                $bool = Storage::disk('recruitment')->put($filename, file_get_contents($realPath));
- 
-           
+       
+                $bool = Storage::disk('recruitment')->put(iconv("UTF-8", "gbk",$originalName), file_get_contents($realPath));
+            } else {
+            	$originalName = '';
+            }
 			$data['recruitment_name'] = Input::get('recruitment_name');
 			$data['region_id'] = Input::get('region_id');
 			$data['content'] = $_POST['content'];
-			$data['add_time'] = date('Y-m-d');
+			$data['add_time'] = date('Y-m-d H:i:s');
 			$data['recruitment_file'] = "$originalName";
-			$data['recruitment_files'] = "$filename";
+			//$data['recruitment_files'] = "$filename";
 			$recr = new Recruitment;
 			$res = $recr->insert($data);
 			if($res){
@@ -77,7 +72,7 @@ class RecruitmentController extends CommonController
 	public function listrecr(){
 		$recr = new Recruitment;
 		$region = new Region;
-		$data = $recr->select()->paginate(3);
+		$data = $recr->select()->paginate(10);
 		foreach ($data as $key => $val) {
 			$val['content'] = substr_replace($val['content'],'......', 30);
 		}
@@ -114,9 +109,8 @@ class RecruitmentController extends CommonController
 		if($request->isMethod('POST')){
 //            var_dump($_FILES);
             $file = $request->file('recruitment_file');
- 	
+ 			if ($file) {
             //判断文件是否上传成功
-            
                 //获取原文件名
                 $originalName = $file->getClientOriginalName();
                 //扩展名
@@ -125,10 +119,10 @@ class RecruitmentController extends CommonController
                 $type = $file->getClientMimeType();
                 //临时绝对路径
                 $realPath = $file->getRealPath();
- 
-                $filename = date('Y-m-d-H-i-S').'-'.uniqid().'-'.$ext;
- 
-                $bool = Storage::disk('recruitment')->put($originalName, file_get_contents($realPath));
+                $bool = Storage::disk('recruitment')->put(iconv("UTF-8", "gbk",$originalName), file_get_contents($realPath));
+             }else {
+             	$originalName = '';
+             }
 			$data['recruitment_name'] = Input::get('recruitment_name');
 			$data['recruitment_id'] = Input::get('recruitment_id');
 			$data['content'] = $_POST['content'];

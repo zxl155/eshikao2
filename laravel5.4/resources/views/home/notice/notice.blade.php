@@ -36,7 +36,7 @@
                <!--  <a href="">1.各认定机构网站及联系方式.xls</a>
                 <a href="">2.{{$value->region_name}}省教师资格人员健康体检表.doc</a>
                 <a href="">3.申请人思想品德鉴定表.doc</a> -->
-                <a href="{{URL::asset('/')}}home/img/recruitment/{{$value->recruitment_files}}"  >{{$value->recruitment_file}}</a>
+                <a href="{{URL::asset('/')}}home/img/recruitment/{{$value->recruitment_file}}"  >{{$value->recruitment_file}}</a>
             </div>
             <div class="enclosure-addr">
                 <p>{{$value->region_name}}省教育厅</p>
