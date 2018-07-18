@@ -69,5 +69,4 @@ class CoursedetailsController extends Controller
 		$pplive = new Pplive;
 		$pplive ->playback($pplive_id);
 	}
-
 }

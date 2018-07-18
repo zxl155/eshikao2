@@ -237,5 +237,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/movepassword','MydataController@movepassword');
   //移动订单
   Route::get('home/moveOrder','OrderController@moveOrder');
-
+  //移动购买
+  Route::get('home/moveCoursedetails','CommodityController@moveCoursedetails');
 });

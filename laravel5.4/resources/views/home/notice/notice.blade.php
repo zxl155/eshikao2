@@ -38,10 +38,10 @@
                 <a href="">3.申请人思想品德鉴定表.doc</a> -->
                 <a href="{{URL::asset('/')}}home/img/recruitment/{{$value->recruitment_file}}"  >{{$value->recruitment_file}}</a>
             </div>
-            <div class="enclosure-addr">
+            <!-- <div class="enclosure-addr">
                 <p>{{$value->region_name}}省教育厅</p>
                 <p>{{$value->year}}年{{$value->month}}月{{$value->day}}日</p>
-            </div>
+            </div> -->
            <!--  <p class="enclosure-Share">分享至：
                 <a href=""><img src="./img/weixin.png" alt=""></a>
                 <a href=""><img src="./img/sina.png" alt=""></a>

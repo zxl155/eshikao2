@@ -159,4 +159,9 @@ class CommodityController extends Controller
 	  $data = $order->orderNumber($order_number);
 	  echo json_encode($data);
 	}
+	//移动购买
+	public function moveCoursedetails()
+	{
+		return view('home/commodity/movecommoditypay');
+	}
 }
