@@ -8,7 +8,7 @@
 <!--移动-->
 <div class="m-header">
     <div class="m-header-content">
-        <div><a href="javascript:history.go(-1);"><img src="./img/88_03.png" alt=""></a></div>
+        <div><a href="javascript:history.go(-1);"><img src="{{URL::asset('/')}}home/img/88_03.png" alt=""></a></div>
         <div>易师考</div>
         <div></div>
     </div>

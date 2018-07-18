@@ -1,4 +1,3 @@
-
 var renderZhao=(function () {
     var i =3;
     var time;
@@ -303,10 +302,12 @@ var renderZhao=(function () {
             $('.commodity-button form').eq(pay).addClass('addform').siblings().removeClass('addform');
         })
     }
-    zfPay();
     $('.m-screenbox .move').click(function () {
         $('.m-screenbox').css('display','none');
     })
+    //移动收货地址‘文字内容’
+    $('.m-content-addres .m-addres-man').html()?$('.m-add-addres .m-addresm').html('收货地址')&&$('.m-addresxg').html('更改收货地址'):null;
+    //移动支付方式
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换
@@ -314,14 +315,15 @@ var renderZhao=(function () {
             courseTime($('.Course-time i'),$('.Course-time q'));//登录状态显示头像
             goods($('.address-list'));//收货地址
             goods($('.cfmode span'));
+            goods($('.m-commodity-payan a'));//移动支付方式
             goods($('.m-sort-ul li'));//筛选
             screenbtn($('.m-sort-ul li'),$('.m-screenbox'));//筛选
             screens($('.m-screenbox dl'));//筛选
             goods($('.m-screenbox dd button'));//筛选
             goods($('.abouts-list li'),$('.abouts-content li'));
+            zfPay();
             focusBanner();
         }
     }
 })();
 renderZhao.init();
-

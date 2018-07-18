@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="360-site-verification" content="40f658a6fca39e65966161eb0b48cef3" />
     <title>易师考</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/swiper.min.css">
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
