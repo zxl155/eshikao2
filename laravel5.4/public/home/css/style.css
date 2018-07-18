@@ -424,7 +424,7 @@ textarea {
 
     .Qualified-teacher li {
         display: inline-block;
-        
+
         height: 64px;
         float: left;
         margin-left: 17px;
@@ -1455,24 +1455,24 @@ textarea {
     }
 
     .commodity-content h3 span {
-       display: inline-block;
+        display: inline-block;
 
-width: 140px;
+        width: 140px;
 
-line-height: 40px;
+        line-height: 40px;
 
-color: #fff;
+        color: #fff;
 
-margin-left: 20px;
+        margin-left: 20px;
 
-font-weight: bold;
+        font-weight: bold;
 
-font-size: 16px;
+        font-size: 16px;
 
-text-align: center;
-border:5px solid;
-border-color: #ffa80d;
-background: #ffa80d;
+        text-align: center;
+        border:5px solid;
+        border-color: #ffa80d;
+        background: #ffa80d;
     }
 
     .commodity-coupon {
@@ -1650,9 +1650,9 @@ background: #ffa80d;
         vertical-align: sub;
         background: #dddddd;
     }
-.address-list.active .address-dg{
-    background: #ffa80d;
-}
+    .address-list.active .address-dg{
+        background: #ffa80d;
+    }
     .address-list-text {
         display: inline-block;
         margin-left: 35px;
@@ -1720,48 +1720,48 @@ background: #ffa80d;
     .cfmode .active {
         border-color: #ffa80d;
     }
-.dy{
-animation:myfirst .3s;
--moz-animation:myfirst .3s; /* Firefox */
--webkit-animation:myfirst .3s; /* Safari and Chrome */
--o-animation:myfirst .3s; /* Opera */ 
-}
+    .dy{
+        animation:myfirst .3s;
+        -moz-animation:myfirst .3s; /* Firefox */
+        -webkit-animation:myfirst .3s; /* Safari and Chrome */
+        -o-animation:myfirst .3s; /* Opera */
+    }
 
-@keyframes myfirst
-{
-20%{border-color:#ff490d;}
-40%{border-color:#ffa80d;}
-60%{border-color:#ff490d;}
-80%{border-color:#ffa80d;}
-100%{border-color:#ff490d;}
-}
+    @keyframes myfirst
+    {
+        20%{border-color:#ff490d;}
+        40%{border-color:#ffa80d;}
+        60%{border-color:#ff490d;}
+        80%{border-color:#ffa80d;}
+        100%{border-color:#ff490d;}
+    }
 
-@-moz-keyframes myfirst /* Firefox */
-{
-20%{border-color:#ff490d;}
-40%{border-color:#ffa80d;}
-60%{border-color:#ff490d;}
-80%{border-color:#ffa80d;}
-100%{border-color:#ff490d;}
-}
+    @-moz-keyframes myfirst /* Firefox */
+    {
+        20%{border-color:#ff490d;}
+        40%{border-color:#ffa80d;}
+        60%{border-color:#ff490d;}
+        80%{border-color:#ffa80d;}
+        100%{border-color:#ff490d;}
+    }
 
-@-webkit-keyframes myfirst /* Safari and Chrome */
-{
-20%{border-color:#ff490d;}
-40%{border-color:#ffa80d;}
-60%{border-color:#ff490d;}
-80%{border-color:#ffa80d;}
-100%{border-color:#ff490d;}
-}
+    @-webkit-keyframes myfirst /* Safari and Chrome */
+    {
+        20%{border-color:#ff490d;}
+        40%{border-color:#ffa80d;}
+        60%{border-color:#ff490d;}
+        80%{border-color:#ffa80d;}
+        100%{border-color:#ff490d;}
+    }
 
-@-o-keyframes myfirst /* Opera */
-{
-20%{border-color:#ff490d;}
-40%{border-color:#ffa80d;}
-60%{border-color:#ff490d;}
-80%{border-color:#ffa80d;}
-100%{border-color:#ff490d;}
-}
+    @-o-keyframes myfirst /* Opera */
+    {
+        20%{border-color:#ff490d;}
+        40%{border-color:#ffa80d;}
+        60%{border-color:#ff490d;}
+        80%{border-color:#ffa80d;}
+        100%{border-color:#ff490d;}
+    }
     /*支付成功*/
     .paySuccess {
         width: 100%;
@@ -3774,7 +3774,7 @@ animation:myfirst .3s;
         border-top: 1px solid #c3c2c2;
     }
     .logins-list-text .logins-text-an{
-        background: url("./img/88_04.png") no-repeat 97% center;
+        background: url("./../img/88_04.png") no-repeat 97% center;
         background-size: .12rem .2rem;
     }
     .logins-text-box{
@@ -3798,6 +3798,7 @@ animation:myfirst .3s;
         width: 100%;
         line-height: .6rem;
         padding-bottom: .1rem;
+        border-bottom: 1px solid #e6e6e6;
         color: #999999;
     }
     .m-addres-i{
@@ -3810,7 +3811,7 @@ animation:myfirst .3s;
         margin-right: .1rem;
         vertical-align: middle;
         border-radius: 50%;
-        background: url("./img/xdg01.png")no-repeat center;
+        background: url("./../img/xdg01.png")no-repeat center;
         background-size:.26rem .26rem;
     }
     .m-addres-i .active{
@@ -3826,8 +3827,6 @@ animation:myfirst .3s;
     .m-addres-content{
         color: #666666;
         line-height: .6rem;
-        padding-top: .1rem;
-        border-top: 1px solid #cccccc;
     }
     .m-addres-content p{
         font-size: .28rem;
@@ -3892,6 +3891,28 @@ animation:myfirst .3s;
     /*确认订单*/
     .m-commodity{
 
+    }
+    .m-commodity-addres{
+        padding:0 .24rem;
+        margin-bottom: .2rem;
+        background: #FFFFFF;
+    }
+    .m-add-addres{
+        font-size: .2rem;
+        line-height: 1rem;
+        border-bottom: 1px solid #cccccc;
+    }
+    .m-add-addres span{
+        display: inline-block;
+    }
+    .m-add-addres .m-addresm i{
+        vertical-align:middle;
+        margin-right: 5px;
+    }
+    .m-add-addres .m-addresxg{
+        font-size: .2rem;
+        float: right;
+        margin-right: 5px;
     }
     .m-commodity-top{
         padding: 0 .24rem;
@@ -4082,7 +4103,6 @@ animation:myfirst .3s;
 .icon-wode:before { content: "\e602"; }
 
 .icon-noun__cc:before { content: "\e610"; }
-
 
 
 
