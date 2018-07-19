@@ -123,9 +123,23 @@ class AddressController extends Controller
 		}
 		return json_encode($data);
 	}
-	//添加收货地址
+	//移动添加收货地址
 	public function moveAddressInsert()
 	{
 		return view('home/address/moveAddressInsert');
+	}
+	//移动默认收货地址
+	public function movedefault()
+	{
+		$address_id = Input::get('address_id');
+		$user_id = session('user_id');
+		$goods = new GoodsAddress;
+		$arr = $goods->movedefault($address_id,$user_id);
+		if ($arr) {
+			$data = "成功";
+		} else {
+			$data = "失败";
+		}
+		echo json_encode($data);
 	}
 }

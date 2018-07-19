@@ -162,6 +162,18 @@ class CommodityController extends Controller
 	//移动购买
 	public function moveCoursedetails()
 	{
-		return view('home/commodity/movecommoditypay');
+		$user_id = session('user_id');
+		if ($user_id == '') {
+			return redirect('home/userlist');die;
+		}
+		$curriculum_id = Input::get('curriculum_id');
+		$curriculum = new Curriculum;
+		$curriculum_content = $curriculum -> coursedetails($curriculum_id);
+		$goodsaddress = new GoodsAddress;
+		$goodsaddress = $goodsaddress->details($user_id); //查询默认收货地址
+		return view('home/commodity/movecommoditypay',[
+			'curriculum_content'=>$curriculum_content,
+			'goodsaddress' => $goodsaddress,
+		]);
 	}
 }

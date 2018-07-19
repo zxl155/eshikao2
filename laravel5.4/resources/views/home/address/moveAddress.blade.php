@@ -14,10 +14,15 @@
     @if($value->address_name == "")
                     
     @else
+    <span class="bian" style="color: red"></span>
     <div class="m-addres-list">
         <div class="m-addres-title">
             <div class="m-addres-i">
-                <i class="active"></i>默认地址
+                @if($value->is_default == 1)
+                <i class="active" address_id="{{$value->address_id}}"></i>默认地址
+                @else
+                <i address_id="{{$value->address_id}}"></i>默认地址
+                @endif
             </div>
             <div class="m-addres-an">
                 <a href="{{URL::asset('home/moveAddressUpd')}}?address_id={{$value->address_id}}">编辑</a>|<a href="{{URL::asset('home/moveAddressDelete')}}?address_id={{$value->address_id}}">删除</a>
@@ -36,4 +41,23 @@
     <a href="{{URL::asset('home/moveAddressInsert')}}">添加新地址</a>
 </div>
 </body>
+    <script type="text/javascript" src="{{URL::asset('/')}}home/js/index.js"></script>
+    <script type="text/javascript">
+        $('.m-addres-i').click(function(){
+            var bian = $('.bian');
+            var address_id = $('.m-addres-i .active').attr('address_id');
+             $.ajax({
+                url:"{{URL::asset('home/movedefault')}}",
+                data:{address_id:address_id,_token:"{{ csrf_token() }}"},
+                type:'get',
+                dataType:'json',
+                success:function(data){
+                    if (data == "失败") {
+                        bian.html('修改默认失败');
+                    }
+                }
+            });
+            
+        })
+    </script>
 </html>
