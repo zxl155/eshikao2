@@ -39,4 +39,21 @@ class GoodsAddress extends Model
       $arr = DB::update("update goods_address set address_name = ?,address_tel = ?,address_detailed = ? where address_id = ?",[$data['address_name'],$data['address_tel'],$address_detailed,$data['address_id']]);
       return $arr;
    }
+
+   //查询当前用户默认地址
+   public function details($user_id)
+   {
+      $arr = DB::table('goods_address')->where(['user_id'=>$user_id,'is_default'=>1])->get();
+      return $arr;
+   }
+
+   //移动修改当前用户的默认地址
+   public function movedefault($address_id,$user_id)
+   {  
+     $data = DB::table('goods_address')->where('user_id',$user_id)->update(array('is_default'=>0));
+     $arr = DB::table('goods_address')->where('address_id',$address_id)->update(array('is_default'=>1));
+     if ($data & $arr) {
+         return $arr;
+     }
+   }
 }
