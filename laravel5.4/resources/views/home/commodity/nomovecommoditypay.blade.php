@@ -11,23 +11,6 @@
 <!--移动-->
 @include('common.head')
 <div class="m-commodity">
-    <div class="m-commodity-addres">
-        <div class="m-add-addres">
-            <span class="m-addresm"><i class="iconfont icon-dizhi01"></i>收货地址</span>
-            <a href="{{URL::asset('home/movePurchaseAddress')}}?curriculum_id={{$curriculum_content[0]->curriculum_id}}"><span class="m-addresxg" style="color: blue">更改收货地址</span></a>
-        </div>
-        @foreach($goodsaddress as $value)
-        <div class="m-content-addres">
-            <div class="m-addres-content" address_id="{{$value->address_id}}">
-                <p>
-                <span class="m-addres-man">收货人：{{$value->address_name}}</span>
-                <span class="m-addres-phone">{{$value->address_tel}}</span>
-            </p>
-                <p class="m-addres-text">收货地址：{{$value->address_detailed}}</p>
-            </div>
-        </div>
-        @endforeach
-    </div>
     @foreach($curriculum_content as $value)
     <div class="m-commodity-top">
         <div class="m-commodity-img">
