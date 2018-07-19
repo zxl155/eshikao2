@@ -268,10 +268,10 @@
     <!--移动-->
     <div class="m-price-purchase">
         <div class="m-price-money">
-            <h4>￥@if($regihtcontent[0]->recovery_original_is == '1')
-                        {{$regihtcontent[0]->original_price}}
+            <h4>￥@if($curriculum_content[0]->recovery_original_is == '1')
+                        {{$curriculum_content[0]->original_price}}
                         @else
-                        {{$regihtcontent[0]->present_price}}
+                        {{$curriculum_content[0]->present_price}}
                         @endif</h4>
             <span>{{$regihtcontent[0]->bought_number}}人购买</span>
         </div>

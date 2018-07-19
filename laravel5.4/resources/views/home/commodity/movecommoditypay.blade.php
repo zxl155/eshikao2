@@ -14,7 +14,7 @@
     <div class="m-commodity-addres">
         <div class="m-add-addres">
             <span class="m-addresm"><i class="iconfont icon-dizhi01"></i>收货地址</span>
-            <a href="{{URL::asset('home/moveAddress.html')}}"><span class="m-addresxg" style="color: blue">更改收货地址</span></a>
+            <a href="{{URL::asset('home/movePurchaseAddress')}}"><span class="m-addresxg" style="color: blue">更改收货地址</span></a>
         </div>
         @foreach($goodsaddress as $value)
         <div class="m-content-addres">
@@ -68,8 +68,5 @@
 </div>
 @include('common.footer')
 <script src="js/index.js"></script>
-<script type="text/javascript">
-    
-</script>
 </body>
 </html>
