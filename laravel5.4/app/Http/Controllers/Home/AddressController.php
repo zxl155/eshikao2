@@ -142,4 +142,17 @@ class AddressController extends Controller
 		}
 		echo json_encode($data);
 	}
+
+	//移动购买时收货地址
+	public function movePurchaseAddress()
+	{
+		$goods = new GoodsAddress;
+		$content = $goods->select();
+		return view('home/address/movePurchaseAddress',['content'=>$content]);
+	}
+	//移动购买时添加收货地址
+	public function movePurchaseAddressInsert()
+	{
+		echo 1;die;
+	}
 }

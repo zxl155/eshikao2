@@ -241,4 +241,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moveOrder','OrderController@moveOrder');
   //移动购买
   Route::get('home/moveCoursedetails','CommodityController@moveCoursedetails');
+  //移动购买地址
+  Route::get('home/movePurchaseAddress','AddressController@movePurchaseAddress');
+  //移动添加购买地址
+  Route::get('home/movePurchaseAddressInsert','AddressController@movePurchaseAddressInsert');
 });
