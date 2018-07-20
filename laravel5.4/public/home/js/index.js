@@ -100,11 +100,6 @@ var renderZhao=(function () {
         })
 
     }
-    //移动默认收货地址
-    $('.m-addres-i').on('click',function(){
-        $('.m-addres-i i').removeClass('active');
-        $(this).children('i').addClass('active');
-    })
     //筛选
     function screenbtn(err,eve){
         err.eq(3).siblings().click(function () {
