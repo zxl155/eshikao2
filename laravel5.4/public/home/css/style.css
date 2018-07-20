@@ -20,10 +20,10 @@ html, body {
 body {
     font-family: "Microsoft YaHei";
     color: #333;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
 }
 
 /*h1, h2, h3, h4, h5, h6{font-weight:normal;}*/
@@ -3774,7 +3774,7 @@ textarea {
         border-top: 1px solid #c3c2c2;
     }
     .logins-list-text .logins-text-an{
-        background: url("./../img/88_04.png") no-repeat 97% center;
+        background: url("./img/88_04.png") no-repeat 97% center;
         background-size: .12rem .2rem;
     }
     .logins-text-box{
@@ -3811,7 +3811,7 @@ textarea {
         margin-right: .1rem;
         vertical-align: middle;
         border-radius: 50%;
-        background: url("./../img/xdg01.png")no-repeat center;
+        background: url("./img/xdg01.png")no-repeat center;
         background-size:.26rem .26rem;
     }
     .m-addres-i .active{
@@ -3825,6 +3825,7 @@ textarea {
         margin: 0 .2rem;
     }
     .m-addres-content{
+        display: block;
         color: #666666;
         line-height: .6rem;
     }
@@ -3984,6 +3985,9 @@ textarea {
         margin-right:.4rem;
         border: 1px solid #e6e6e6;
     }
+    .m-commodity-payan .active{
+        border-color: #ffa80d;
+    }
     .m-commodity-payan img{
         width: 100%;
     }
@@ -3992,9 +3996,10 @@ textarea {
         width: 100%;
         bottom: 0;
         padding-left: .24rem;
-        line-height: 1rem;
+        line-height:50px;
         font-size: .3rem;
         background: #FFFFFF;
+        z-index: 2;
     }
     .m-commodity-confirm span{
         color:#fc645f;

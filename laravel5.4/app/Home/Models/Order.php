@@ -144,4 +144,28 @@ class Order extends Model
             return true;
         }
     }
+
+    //移动支付宝进行生成订单
+    public function movezfbpay($data)
+    {
+       $arr = DB::table('order')->insertGETID(array('order_number'=>$data['order_number'],'curriculum_id'=>$data['curriculum_id'],'order_time'=>date('Y-m-d H:i:s'),'address_id'=>$data['address_id'],'order_state'=>0,'order_money'=>$data['order_money'],'user_id'=>$data['user_id']));
+       if ($arr) {
+         return $data['order_number'];
+       }
+    }
+    //移动查询课程数据
+    public function movecurriculum($order_number)
+    {
+       $order = DB::table('order')->where('order_number',$order_number)->get();
+       $curriculum = DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();
+       foreach ($order as $key => $value) {
+          foreach ($curriculum as $k => $val) {
+              $value->WIDsubject = $val->curriculum_name;
+              $value->WIDout_trade_no = $value->order_number;
+              $value->WIDtotal_amount = $value->order_money;
+              $value->WIDbody = "易师考课程";
+          }
+       }
+       return $order;
+    }
 }

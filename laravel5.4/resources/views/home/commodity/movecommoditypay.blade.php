@@ -34,14 +34,14 @@
         <div class="m-commodity-img">
             <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" alt="" width="200px" height="70px">
         </div>
-        <div class="m-commodity-title">
+        <div class="m-commodity-title" curriculum_id="{{$value->curriculum_id}}">
             <p class="m-commodity-tp">{{$value->curriculum_name}}</p>
             <p class="m-commodity-tm">{{$value->purchase_state_time}}</p>
             <p class="m-commodity-tg">￥
                 @if($value->recovery_original == 1 )
-                    {{$value->original_price}}
+                    <span class="money1">{{$value->original_price}}</span>
                 @else 
-                    {{$value->present_price}}
+                    <span class="money1">{{$value->present_price}}</span>
                 @endif
             </p>
         </div>
@@ -54,20 +54,41 @@
     <div class="m-commodity-pay">
         <p>支付方式</p>
         <div class="m-commodity-payan">
-            <a href="">
-                <img src="./img/zfb.png" alt="">
+            <a>
+                <img src="./img/zfb.png" alt="" shux='1'>
             </a>
-            <a href="">
-                <img src="./img/wxzf.png" alt="">
+            <a>
+                <img src="./img/wxzf.png" alt=""  shux='2'>
             </a>
         </div>
     </div>
     <div class="m-commodity-confirm">
-        合计：<span>99.00</span>
-        <a href="">确认</a>
+        合计：<span>
+                @if($curriculum_content[0]->recovery_original == 1 )
+                    {{$curriculum_content[0]->original_price}}
+                @else 
+                    {{$curriculum_content[0]->present_price}}
+                @endif
+            </span>
+            
+        <a class="but">确认</a>
     </div>
 </div>
 @include('common.footer')
 <script src="js/index.js"></script>
+<script type="text/javascript">
+    $('.but').click(function(){
+        var zhi = $('.m-commodity-payan .active img').attr('shux');
+        var address_id = $('.m-addres-content').attr('address_id');
+        var curriculum_id = $('.m-commodity-title').attr('curriculum_id');
+        var money = $('.money1').html();
+        if (zhi == 1) {
+           window.location.href="movezfbpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
+            //$('.a').html('支付宝');
+        } else if(zhi == 2) {
+            $('.a').html('微信');
+        }
+    })
+</script>
 </body>
 </html>

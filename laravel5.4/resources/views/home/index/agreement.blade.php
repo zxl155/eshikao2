@@ -8,7 +8,7 @@
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
 </head>
 <body>
-@include('common.head');
+@include('common.head')
 <div class="abouts">
     <div class="abouts-logo"></div>
     <div class="abouts-list">
@@ -37,7 +37,7 @@
         </p>
     </div>
 </div>
-@include('common.footer');
+@include('common.footer')
 <script src="js/index.js"></script>
 </body>
 </html>
