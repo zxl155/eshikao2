@@ -5,6 +5,7 @@
     <title>我的优惠券</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 <script type="text/javascript">
      Uindex=2;
 </script>

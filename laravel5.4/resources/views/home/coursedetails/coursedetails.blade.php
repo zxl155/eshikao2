@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>课程详情</title>
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css"><script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script><script type="text/javascript">
      Hindex=1;
 </script>

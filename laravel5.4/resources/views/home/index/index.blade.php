@@ -5,7 +5,8 @@
     <meta name="360-site-verification" content="40f658a6fca39e65966161eb0b48cef3" />
     <meta name="360-site-verification" content="76906b1ff278008f53902c4b39933277" />
     <meta name="baidu-site-verification" content="do40ZX3bYh" />
-    <title>易师考</title>
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" /> 
+    <title>易师考，教师资格证考试，教师招聘考试一站式备考平台</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/swiper.min.css">
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/swiper.min.js"></script>
