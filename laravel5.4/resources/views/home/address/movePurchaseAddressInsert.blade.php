@@ -10,18 +10,16 @@
 <body>
 <!--移动-->
 @include('common.head')
-@foreach($data as $val)
 <div class="m-address">
     <div class="m-address-list">
         <p>联系人</p>
         <div class="m-address-inp">
-            <input type="hidden" class="address_id" value="{{$val->address_id}}">
             <span>姓名：</span>
-            <input type="text" placeholder="请填写收货人的姓名"  class="Addressee" value= "{{$val->address_name}}" >
+            <input type="text" placeholder="请填写收货人的姓名"  class="Addressee" >
         </div>
         <div class="m-address-inp">
             <span>电话：</span>
-            <input type="text" placeholder="请填写收货人手机号码" class="phone"  value= "{{$val->address_tel}}">
+            <input type="text" placeholder="请填写收货人手机号码" class="phone">
         </div>
     </div>
     <div class="m-address-list">
@@ -42,17 +40,15 @@
     </div>
     <span class="zhui" style="color:red"></span>
     <div class="m-address-an">
-        <a href="#" class="but">修改地址</a>
+        <a href="#" class="but">增加地址</a>
     </div>
 </div>
-@endforeach
 <script class="resources library" src="js/area.js"></script>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/index.js"></script>
 <script>
-    $('.but').click(function(){
+     $('.but').click(function(){
          var address = $('.Addressee').val();
-         var address_id = $('.address_id').val();
          var phone = $('.phone').val();
          var s_province = $('.s_province').val();
          var s_city = $('.s_city').val();
@@ -73,28 +69,27 @@
             return false;
          }
          if (details == '') {
-            $('.zhui').html('<span>请输入你的详情信息!</span>');
+            $('.zhui').html('<span>请输入你的详情信息</span>');
             return false;
          }
          $.ajax({
-            url:"{{URL::asset('home/moveAddressUpds')}}",
+            url:"{{URL::asset('home/addressAdd')}}",
             data:{
                 address_name:address,
                 address_tel:phone,
                 s_province:s_province,
                 s_city:s_city,
                 s_county:s_county,
-                address_id:address_id,
                 details:details,
                 _token:"{{ csrf_token() }}"
             },
             type:'get', 
             dataType:'json',
             success:function(data){
-                if (data.is=='正确') {
-                     window.location.replace("moveAddress.html");
-                } else {
-                    $('.zhui').html('<span>修改失败!</span>');
+                if (data.data=='正确') {
+                         window.location.replace("movePurchaseAddress");
+                } else if (data.data == '错误') {
+                    $('.zhui').html('<span>收货地址添加失败！</span>');
                     return false;
                 }
             }

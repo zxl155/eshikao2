@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>教师招聘</title>
+    <title>教师招聘公开课，教师招聘政策解读，易师考</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
     <script type="text/javascript">
      Hindex=2;

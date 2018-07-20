@@ -146,13 +146,14 @@ class AddressController extends Controller
 	//移动购买时收货地址
 	public function movePurchaseAddress()
 	{
+		$curriculum_id = Input::get('curriculum_id');
 		$goods = new GoodsAddress;
 		$content = $goods->select();
-		return view('home/address/movePurchaseAddress',['content'=>$content]);
+		return view('home/address/movePurchaseAddress',['content'=>$content,'curriculum_id'=>$curriculum_id]);
 	}
 	//移动购买时添加收货地址
 	public function movePurchaseAddressInsert()
 	{
-		echo 1;die;
+		return view('home/address/movePurchaseAddressInsert');
 	}
 }

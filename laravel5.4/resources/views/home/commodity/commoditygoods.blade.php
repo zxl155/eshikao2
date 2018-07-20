@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>购买课程</title>
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
 </head>
 <body>

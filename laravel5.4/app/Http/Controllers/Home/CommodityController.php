@@ -166,14 +166,22 @@ class CommodityController extends Controller
 		if ($user_id == '') {
 			return redirect('home/userlist');die;
 		}
-		$curriculum_id = Input::get('curriculum_id');
+		$curriculum_id = Input::get('curriculum_id'); 
 		$curriculum = new Curriculum;
-		$curriculum_content = $curriculum -> coursedetails($curriculum_id);
+		$curriculum_content = $curriculum->coursedetails($curriculum_id);
 		$goodsaddress = new GoodsAddress;
 		$goodsaddress = $goodsaddress->details($user_id); //查询默认收货地址
-		return view('home/commodity/movecommoditypay',[
-			'curriculum_content'=>$curriculum_content,
-			'goodsaddress' => $goodsaddress,
-		]);
+		if($curriculum_content[0]->is_goods == 1){ 
+			//有收货地址
+			return view('home/commodity/movecommoditypay',[
+				'curriculum_content'=>$curriculum_content,
+				'goodsaddress' => $goodsaddress,
+			]);
+		} else {
+			//无收货地址
+			return view('home/commodity/nomovecommoditypay',[
+				'curriculum_content'=>$curriculum_content,
+			]);
+		}
 	}
 }

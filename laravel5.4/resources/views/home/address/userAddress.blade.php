@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>收货地址</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 <script type="text/javascript">
      Uindex=4;
 </script>

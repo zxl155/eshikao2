@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <title>支付成功</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>
