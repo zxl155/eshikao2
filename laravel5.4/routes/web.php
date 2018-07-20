@@ -245,4 +245,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/movePurchaseAddress','AddressController@movePurchaseAddress');
   //移动添加购买地址
   Route::get('home/movePurchaseAddressInsert','AddressController@movePurchaseAddressInsert');
+  //移动跳转支付宝
+  Route::get('home/movezfbpay','PayController@movezfbpay');
 });
