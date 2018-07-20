@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css"><script type="text/javascript">
      Uindex=4;
 </script>
