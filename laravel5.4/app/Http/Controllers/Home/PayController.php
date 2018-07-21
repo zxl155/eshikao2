@@ -80,7 +80,12 @@ class PayController extends Controller
 			//有订单
 			$datas = $order->movecurriculum($arr[0]->order_number);
 		}
-		return view('home/zfbpay/wappay/pay',['data'=>$datas]);
+		if($datas[0]->order_money == 0){
+			return redirect("home/moveUpdateOrder?order_number=".$datas[0]->order_number);
+		} else {
+			return view('home/zfbpay/wappay/pay',['data'=>$datas]);
+		}
+		
 
 	}
 	//移动支付宝异步回调
@@ -94,5 +99,17 @@ class PayController extends Controller
 	{
 		$data = Input::all();
 		return view('home/zfbpay/return_url',['data'=>$data]);
+	}
+	//移动支付完成修改订单
+	public function moveUpdateOrder()
+	{
+		$order_number = Input::get('order_number');
+		$order = new Order;
+		$arr = $order->moveUpdateOrder($order_number);
+		if ($arr) {
+			return redirect('home/myclass.html');
+		} else {
+			echo "修改状态失败，请截图联系客服";
+		}
 	}
 }
