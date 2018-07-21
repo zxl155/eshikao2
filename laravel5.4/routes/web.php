@@ -247,4 +247,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/movePurchaseAddressInsert','AddressController@movePurchaseAddressInsert');
   //移动跳转支付宝
   Route::get('home/movezfbpay','PayController@movezfbpay');
+  //移动支付宝异步回调函数
+  Route::get('home/moveNotify','PayController@moveNotify');
+  //移动支付宝成功回调
+  Route::get('home/moveSuccess','PayController@moveSuccess');
 });

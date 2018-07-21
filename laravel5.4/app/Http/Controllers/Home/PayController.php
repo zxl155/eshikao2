@@ -83,4 +83,16 @@ class PayController extends Controller
 		return view('home/zfbpay/wappay/pay',['data'=>$datas]);
 
 	}
+	//移动支付宝异步回调
+	public function moveNotify()
+	{
+		$data = Input::all();
+		return view('home/zfbpay/notify_url',['data'=>$data]);
+	}
+	//移动支付宝成功回调
+	public function moveSuccess()
+	{
+		$data = Input::all();
+		return view('home/zfbpay/return_url',['data'=>$data]);
+	}
 }
