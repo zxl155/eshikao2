@@ -171,7 +171,7 @@ class CommodityController extends Controller
 		$curriculum_content = $curriculum->coursedetails($curriculum_id);
 		$goodsaddress = new GoodsAddress;
 		$goodsaddress = $goodsaddress->details($user_id); //查询默认收货地址
-		if($curriculum_content[0]->is_goods == 1){ 
+		if($curriculum_content[0]->is_goods == 2){ 
 			//有收货地址
 			return view('home/commodity/movecommoditypay',[
 				'curriculum_content'=>$curriculum_content,
