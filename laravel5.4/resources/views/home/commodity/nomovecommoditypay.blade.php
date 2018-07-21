@@ -21,7 +21,7 @@
             <p class="m-commodity-tp">{{$value->curriculum_name}}</p>
             <p class="m-commodity-tm">{{$value->purchase_state_time}}</p>
             <p class="m-commodity-tg">￥
-                @if($value->recovery_original == 1 )
+                @if($value->recovery_original_is== '1' )
                     <span class="money1">{{$value->original_price}}</span>
                 @else 
                     <span class="money1">{{$value->present_price}}</span>
@@ -40,14 +40,14 @@
             <a>
                 <img src="./img/zfb.png" alt="" shux='1'>
             </a>
-            <a>
+           <!--  <a>
                 <img src="./img/wxzf.png" alt=""  shux='2'>
-            </a>
+            </a> -->
         </div>
     </div>
     <div class="m-commodity-confirm">
         合计：<span>
-                @if($curriculum_content[0]->recovery_original == 1 )
+                @if($curriculum_content[0]->recovery_original_is== '1' )
                     {{$curriculum_content[0]->original_price}}
                 @else 
                     {{$curriculum_content[0]->present_price}}
