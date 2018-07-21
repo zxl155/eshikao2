@@ -168,4 +168,20 @@ class Order extends Model
        }
        return $order;
     }
+    //移动支付宝通过订单修改状态
+    public function moveUpdateOrder($order_number)
+    {
+        $order = DB::table('order')->where('order_number',$order_number)->get();
+        $arr =  DB::table('order')->where('order_number',$order_number)->update(['order_state'=>1,'order_time'=>date('Y-m-d H:i:s'),'pay_mode'=>1]);
+       $order_is = DB::table('user_curriculum')->insert( ['user_id' => $order[0]->user_id, 'curriculum_id' => $order[0]->curriculum_id]);
+
+        $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->get();
+        $bought_number =  intval($curriculum[0]->bought_number+1);
+        $curriculum =  DB::table('curriculum')->where('curriculum_id',$order[0]->curriculum_id)->update(['bought_number'=>$bought_number]);
+       if($arr&$order_is&$curriculum){
+          return true;
+       } else {
+          return false;
+       }
+    }
 }

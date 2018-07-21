@@ -251,4 +251,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moveNotify','PayController@moveNotify');
   //移动支付宝成功回调
   Route::get('home/moveSuccess','PayController@moveSuccess');
+  //移动支付成功以后修改订单
+  Route::get('home/moveUpdateOrder','PayController@moveUpdateOrder');
 });
