@@ -46,7 +46,7 @@
     <script type="text/javascript">
         $('.m-addres-i').click(function(){
             var bian = $('.bian');
-            var address_id = $('.m-addres-i .active').attr('address_id');
+            var address_id = $('.m-addres-i i').attr('address_id');
              $.ajax({
                 url:"{{URL::asset('home/movedefault')}}",
                 data:{address_id:address_id,_token:"{{ csrf_token() }}"},
@@ -55,6 +55,8 @@
                 success:function(data){
                     if (data == "失败") {
                         bian.html('修改默认失败');
+                    } else {
+                        location.reload();
                     }
                 }
             });
