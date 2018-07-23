@@ -157,7 +157,7 @@ class Pplive extends Model
 	    $str .= "partner_key=" . $partner_key; //结尾再拼上 partner_key=$partner_key
 	    $sign = md5($str); //计算md5值
 	    $ginseng .="sign=" . $sign; 
-	   $ch = curl_init();//初始化curl
+	    $ch = curl_init();//初始化curl
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
        // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);  // 从证书中检查SSL加密算法是否存在
         curl_setopt($ch, CURLOPT_URL,"https://api.baijiayun.com/openapi/playback/getPlayerToken");//抓取指定网页
