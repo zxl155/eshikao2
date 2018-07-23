@@ -17,6 +17,7 @@
             <span class="m-addresm"><i class="iconfont icon-dizhi01"></i>收货地址</span>
             <a href="{{URL::asset('home/movePurchaseAddress')}}?curriculum_id={{$curriculum_content[0]->curriculum_id}}"><span class="m-addresxg" style="color: blue">更改收货地址</span></a>
         </div>
+         <span class="a" style="color: red"></span>
         @foreach($goodsaddress as $value)
         <div class="m-content-addres">
             <div class="m-addres-content" address_id="{{$value->address_id}}">
@@ -81,13 +82,18 @@
         var zhi = $('.m-commodity-payan .active img').attr('shux');
         var address_id = $('.m-addres-content').attr('address_id');
         var curriculum_id = $('.m-commodity-title').attr('curriculum_id');
-        var money = $('.money1').html();
-        if (zhi == 1) {
-           window.location.href="movezfbpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
-            //$('.a').html('支付宝');
-        } else if(zhi == 2) {
-            $('.a').html('微信');
+        if (address_id) {
+            var money = $('.money1').html();
+            if (zhi == 1) {
+               window.location.href="movezfbpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
+                //$('.a').html('支付宝');
+            } else if(zhi == 2) {
+                $('.a').html('微信');
+            }
+        } else {
+            $('.a').html('请选择收货地址');
         }
+        
     })
 </script>
 </body>

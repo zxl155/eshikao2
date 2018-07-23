@@ -50,10 +50,20 @@ class GoodsAddress extends Model
    //移动修改当前用户的默认地址
    public function movedefault($address_id,$user_id)
    {  
-     $data = DB::table('goods_address')->where('user_id',$user_id)->update(array('is_default'=>0));
-     $arr = DB::table('goods_address')->where('address_id',$address_id)->update(array('is_default'=>1));
-     if ($data & $arr) {
-         return $arr;
-     }
+      $address = DB::table('goods_address')->where(['user_id'=>$user_id,'is_default'=>1])->get()->toArray();
+      if (empty($address)) {
+          $arr = DB::table('goods_address')->where('address_id',$address_id)->update(array('is_default'=>1));
+          return $arr;
+      } else {
+         $data = DB::table('goods_address')->where('user_id',$user_id)->update(array('is_default'=>0));
+         $arr = DB::table('goods_address')->where('address_id',$address_id)->update(array('is_default'=>1));
+         if ($data&$arr) {
+            return true;
+         } else {
+            return false;
+         }
+      }
+    
+     
    }
 }
