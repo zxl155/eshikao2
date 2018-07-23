@@ -80,7 +80,14 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
                 type:'post',
                 success:function(m){
                     if(m == "登录成功"){
-                        window.location.href=document.referrer;
+                       var str = document.referrer;
+                       var is =str.indexOf("coursedetails.html") != -1 ;  // true
+                       if (is==true) {
+                             window.location.href=document.referrer;
+                       } else {
+                            window.location.href="userlist";
+                       }
+                       
                     }else{
                         $('.zhui').html('<span>登录失败</span>');
                         return false;
@@ -108,7 +115,15 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
                 type:'post',
                 success:function(m){
                     if(m == "登录成功"){
-                       window.location.href=document.referrer;
+                       var str = document.referrer;
+                       var is =str.indexOf("coursedetails.html") != -1 ;  // true
+                       if (is==true) {
+                             window.location.href=document.referrer;
+                       } else {
+                             window.location.href="/";
+                       }
+                       
+                      
                     }else{
                         var txt=  "登录失败";
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
