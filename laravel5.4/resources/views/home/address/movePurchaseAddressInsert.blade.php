@@ -37,7 +37,8 @@
             <span>详细地址：</span>
             <input type="text" placeholder="请输入详细地址" class="details">
         </div>
-    </div>
+    </div>  
+    <input type="hidden" class="curriculum_id" value="{{$curriculum_id}}">
     <span class="zhui" style="color:red"></span>
     <div class="m-address-an">
         <a href="#" class="but">增加地址</a>
@@ -48,6 +49,7 @@
 <script src="js/index.js"></script>
 <script>
      $('.but').click(function(){
+        var curriculum_id = $('.curriculum_id').val();
          var address = $('.Addressee').val();
          var phone = $('.phone').val();
          var s_province = $('.s_province').val();
@@ -87,7 +89,7 @@
             dataType:'json',
             success:function(data){
                 if (data.data=='正确') {
-                         window.location.replace("movePurchaseAddress");
+                         window.location.replace("movePurchaseAddress?curriculum_id="+curriculum_id);
                 } else if (data.data == '错误') {
                     $('.zhui').html('<span>收货地址添加失败！</span>');
                     return false;

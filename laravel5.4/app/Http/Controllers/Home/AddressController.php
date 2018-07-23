@@ -154,6 +154,7 @@ class AddressController extends Controller
 	//移动购买时添加收货地址
 	public function movePurchaseAddressInsert()
 	{
-		return view('home/address/movePurchaseAddressInsert');
+		$curriculum_id = Input::get('curriculum_id');
+		return view('home/address/movePurchaseAddressInsert',['curriculum_id'=>$curriculum_id]);
 	}
 }

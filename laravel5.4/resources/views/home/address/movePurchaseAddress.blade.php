@@ -24,7 +24,8 @@
         </div>
     </div>
     @endforeach
-    <a href="{{URL::asset('home/movePurchaseAddressInsert')}}">添加新地址</a>
+    <a href="{{URL::asset('home/movePurchaseAddressInsert?curriculum_id=')}}{{$curriculum_id}}">添加新地址</a>
+    
 </div>
 </body>
 <script type="text/javascript">
