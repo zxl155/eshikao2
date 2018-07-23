@@ -75,22 +75,16 @@ class Pplive extends Model
 	{
 		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
 
-		$admin = DB::table('admin')->get();
-		//print_r($admin);die;
-		foreach ($pplive as $key => $value) {
-			foreach ($admin as $k => $val) {
-				if($value->assistant_admin_id == $val->admin_id){
-					$value->assistant_admin_name = $val->admin_name;
-					$value->admin_head = $val->admin_head;
-				}
-			}
+		$admin = DB::table('admin')->where('admin_id',session('data')['admin_id'])->get();
+		foreach ($pplive as $key => $value){		
+					$value->admin_head = $admin[0]->admin_head;
 		}
 		$params =  [
 		    "room_id" => $pplive[0]->entrance, //房间号码
 		   	"user_number" => session('data')['admin_id'], //admin——id
 		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>2,
-		   	"user_avatar" =>"www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
+		   	"user_avatar" =>"http://www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
 		];
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
 		ksort($params);//将参数按key进行排序
@@ -125,7 +119,7 @@ class Pplive extends Model
 		   	"user_number" => session('data')['admin_id'], //admin——id
 		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>1,
-		   	"user_avatar" => "www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
+		   	"user_avatar" => "http://www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
 		];
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
 		ksort($params);//将参数按key进行排序
