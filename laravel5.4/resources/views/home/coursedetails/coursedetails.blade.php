@@ -231,5 +231,6 @@
 @include('common/footer');
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/index.js"></script>
+<script src="//live-cdn.baijiayun.com/js-sdk/{version}/player/extension/html.js"></script>
 </body>
 </html>
