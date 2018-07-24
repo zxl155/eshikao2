@@ -13,7 +13,7 @@
 @include('common.head')
 <div class="notice">
     <p class="notice-title">
-        <span>招考公告</span>|<span>教师招聘</span>
+        <span>招考公告</span>|<span>公告列表</span>
     </p>
     <div class="Certificate-type"  id="region" >
         <div class="Certificate-choice">选择地区:</div>
