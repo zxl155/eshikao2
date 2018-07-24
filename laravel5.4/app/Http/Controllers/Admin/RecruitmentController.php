@@ -72,7 +72,7 @@ class RecruitmentController extends CommonController
 	public function listrecr(){
 		$recr = new Recruitment;
 		$region = new Region;
-		$data = $recr->select()->paginate(10);
+		$data = $recr->select()->orderBy('add_time','desc')->paginate(10);
 		foreach ($data as $key => $val) {
 			$val['content'] = substr_replace($val['content'],'......', 30);
 		}
