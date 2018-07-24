@@ -27,7 +27,7 @@
             <p>支付时间：{{$value->order_time}}</p>
             <p>订单号：{{$value->order_number}}</p>
         </div>
-        @if($value->is_goods == 1)
+        @if($value->is_goods == 2)
         <div class="logins-list-text">
             <p class="logins-text-an">
                 查看物流信息
