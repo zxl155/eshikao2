@@ -45,7 +45,7 @@ class Recruitment extends Model
   }
   public function noticeSearch($region_id)
   {
-      $arr = DB::table('recruitment')->orderBy('add_time','desc')->where('region_id',$region_id)->select(['recruitment_id','recruitment_name','add_time','region_id'])->get();
+      $arr = DB::table('recruitment')->orderBy('add_time','desc')->where('region_id',$region_id)->select(['recruitment_id','recruitment_name','add_time','region_id'])->get()->toArray();
         $region = DB::select('select * from region ');
       foreach ($arr as $key => $value) {
       $value->year = substr($value->add_time, 0,4);
