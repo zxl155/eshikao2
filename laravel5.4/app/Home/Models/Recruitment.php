@@ -9,8 +9,8 @@ class Recruitment extends Model
 {
    public function index()
    {
-      $arr = DB::select('select * from recruitment order by add_time desc ');
-      $region = DB::select('select * from region ');
+      $arr = DB::table('recruitment')->orderBy('add_time','desc')->select(['recruitment_id','recruitment_name','add_time','region_id'])->paginate(6);
+      $region = DB::select('select * from region');
       foreach ($arr as $key => $value) {
 			$value->year = substr($value->add_time, 0,4);
 			$value->month = substr($value->add_time, 5,2);
@@ -45,8 +45,7 @@ class Recruitment extends Model
   }
   public function noticeSearch($region_id)
   {
-  	if ($region_id == '0') {
-  		 $arr = DB::select("select * from recruitment");
+      $arr = DB::table('recruitment')->orderBy('add_time','desc')->where('region_id',$region_id)->select(['recruitment_id','recruitment_name','add_time','region_id'])->get();
         $region = DB::select('select * from region ');
       foreach ($arr as $key => $value) {
       $value->year = substr($value->add_time, 0,4);
@@ -61,23 +60,5 @@ class Recruitment extends Model
       }
     }
   	  	return $arr;
-  	} else {
-  		 $arr = DB::select("select * from recruitment where region_id = $region_id");
-        $region = DB::select('select * from region ');
-      foreach ($arr as $key => $value) {
-      $value->year = substr($value->add_time, 0,4);
-      $value->month = substr($value->add_time, 5,2);
-      $value->day = substr($value->add_time, 8,2);
-    }
-    foreach ($arr as $key => $value) {
-      foreach ($region as $keys => $values) {
-        if ($value->region_id == $values->region_id) {
-          $value->region_name = $values->region_name;
-        }
-      }
-    }
-  	  	return $arr;
-  	}
-  	 
   }
 }
