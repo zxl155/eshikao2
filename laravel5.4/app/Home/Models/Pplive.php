@@ -38,15 +38,20 @@ class Pplive extends Model
       $user = DB::table('user')->where('user_id',session('user_id'))->get();
       foreach ($pplive as $key => $value) {
          foreach ($user as $k => $val) {
-                $value->user_id = $val->user_id;
+               $value->user_id = $val->user_id;
                $value->user_name = $val->user_name;
+               $value->user_tel = $val->user_tel;
                $value->head_images = $val->head_images;
          }
       }
       $params =  [
           "room_id" => $pplive[0]->entrance, //房间号码
             "user_number" => $pplive[0]->user_id, //admin——id
-            "user_name" =>$pplive[0]->user_name,
+            if ($pplive[0]->user_name=='') {
+              "user_name" =>$pplive[0]->user_tel,
+            } else {
+              "user_name" =>$pplive[0]->user_name,
+            }
             "user_role" =>0,
             "user_avatar" => "http://www.eshikao.com/home/img/head/".$pplive[0]->head_images."",
       ];
