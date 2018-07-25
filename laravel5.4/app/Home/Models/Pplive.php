@@ -34,8 +34,8 @@ class Pplive extends Model
    public function coursedetailShow($pplive_id)
    {
       $pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
-      $usercurriculum =  DB::table('user_curriculum')->where('curriculum_id',$pplive[0]->curriculum_id)->get();
-      $user = DB::table('user')->where('user_id',$usercurriculum[0]->user_id)->get();
+      //$usercurriculum =  DB::table('user_curriculum')->where('curriculum_id',$pplive[0]->curriculum_id)->get();
+      $user = DB::table('user')->where('user_id',session('user_id'))->get();
       foreach ($pplive as $key => $value) {
          foreach ($user as $k => $val) {
                 $value->user_id = $val->user_id;
