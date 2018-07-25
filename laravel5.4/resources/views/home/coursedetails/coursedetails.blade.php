@@ -42,7 +42,7 @@
                            <a href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">
                            <li>  
                                  <img src="./img/zbtb.png" alt=""> 
-                                <span class="lint-title">{{$val->pplive_name}}<span style="color: blue">【进入教师】</span></span>
+                                <span class="lint-title">{{$val->pplive_name}}<span style="color: blue">【进入教室】</span></span>
                                 <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
                                 <span class="list-name">{{$val->admin_name}}</span>
                             </li> 
