@@ -34,7 +34,11 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             @foreach($broadcast_content as $va)
-            <div class="swiper-slide"><img src="{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}" alt=""></div>
+            <div class="swiper-slide">
+                <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$va->curriculum_id}}">
+                   <img src="{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}" alt=""> 
+                </a>
+            </div>
             @endforeach
         </div>
         <div class="swiper-pagination"></div>

@@ -43,13 +43,13 @@ class User extends Model
       if(empty($user)){
         return false;
       } else {
+        $lifeTime = 24 * 3600 * 30;  // 保存一个月 
+        session_set_cookie_params($lifeTime); 
+        session_start();
         session(['user_id' => $user[0]->user_id]);
         session(['user_name' => $user[0]->user_name]);
         session(['user_tel' => $user[0]->user_tel]);
         session(['head' => $user[0]->head_images]);
-        $lifeTime = 24 * 3600 * 30;  // 保存一个月 
-        session_set_cookie_params($lifeTime); 
-        session_start();
         return true;
       }
    }
