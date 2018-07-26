@@ -76,12 +76,13 @@ class Pplive extends Model
 		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
 
 		$admin = DB::table('admin')->where('admin_id',session('data')['admin_id'])->get();
-		foreach ($pplive as $key => $value){		
+		foreach ($pplive as $key => $value){	
 					$value->admin_head = $admin[0]->admin_head;
 		}
+		$user_number =  (10000000+strval(session('data')['admin_id']));
 		$params =  [
 		    "room_id" => $pplive[0]->entrance, //房间号码
-		   	"user_number" => session('data')['admin_id'], //admin——id
+		   	"user_number" => $user_number, //admin——id
 		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>2,
 		   	"user_avatar" =>"http://www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
@@ -114,9 +115,10 @@ class Pplive extends Model
 				}
 			}
 		}
+		$user_number = (10000000+strval(session('data')['admin_id']));
 		$params =  [
 		    "room_id" => $pplive[0]->entrance, //房间号码
-		   	"user_number" => session('data')['admin_id'], //admin——id
+		   	"user_number" => $user_number, //admin——id
 		   	"user_name" =>session('data')['nickname'],
 		   	"user_role" =>1,
 		   	"user_avatar" => "http://www.eshikao.com/home/img/admin_head/".$pplive[0]->admin_head."",
@@ -132,7 +134,7 @@ class Pplive extends Model
 	    $str .= "partner_key=" . $partner_key; //结尾再拼上 partner_key=$partner_key
 	    $sign = md5($str); //计算md5值
 	    $ginseng .="sign=" . $sign; 
-	    $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+	    $url = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
 	    header("Location: ".$url.""); 
 	}
 	//直播回放

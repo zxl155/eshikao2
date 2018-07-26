@@ -96,6 +96,17 @@
                                                         <a href="{{URL::asset('admin/updates')}}?admin_id={{ $val->admin_id }}&start={{ $val->start }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="if(confirm('确实要修改状态吗？')) return true;else return false;">修改状态</a>
                                                     </div>
                                                 </div>
+                                                @else
+                                                 <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="{{URL::asset('admin/adminUpdate')}}?admin_id={{ $val->admin_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>编辑</a>
+                                                    </div>
+                                                </div>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="{{URL::asset('admin/updates')}}?admin_id={{ $val->admin_id }}&start={{ $val->start }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="if(confirm('确实要修改状态吗？')) return true;else return false;">修改状态</a>
+                                                    </div>
+                                                </div>
                                                 @endif
                                             </td>
                                         </tr>
