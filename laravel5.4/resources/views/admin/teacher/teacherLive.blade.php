@@ -15,7 +15,7 @@
                 <span class="am-icon-code"></span> 教师直播列表
             </div>
             <div class="tpl-portlet-input tpl-fz-ml">
-                
+                <a href="https://www.baijiayun.com/classroomdown/">下载直播客户端</a>
             </div>
         </div>
         <div class="tpl-block">
@@ -120,5 +120,10 @@
     <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
+    <script type="text/javascript">
+setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+window.location.reload();//页面刷新
+},20000);
+</script>
 </body>
 </html>
