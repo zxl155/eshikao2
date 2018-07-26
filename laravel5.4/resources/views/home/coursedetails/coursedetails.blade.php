@@ -21,10 +21,13 @@
     <div class="viewdetails-content clearfix">
         <div class="v-content-left">
             <ul class="v-content-left-ul clearfix">
-                <li>课程表</li>
                 <li class="active">课程介绍</li>
+                <li>课程表</li>
                 <li>常见问题</li>
             </ul>
+            <div class="v-content-left-list off">
+                <?php echo htmlspecialchars_decode($value->curriculum_content); ?>
+            </div>
             <div class="v-content-left-list">
                 <h3>备考指导</h3>
                 <ul class="v-content-left-list-ul">
@@ -61,9 +64,6 @@
                     @endforeach
                    
                 </ul>
-            </div>
-           <div class="v-content-left-list off">
-                <?php echo htmlspecialchars_decode($value->curriculum_content); ?>
             </div>
             <div class="v-content-left-list">
                 <div class="v-problem">
