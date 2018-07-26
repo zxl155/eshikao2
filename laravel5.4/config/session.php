@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'lifetime' => 120,
+    'lifetime' => 10080,//session存在7天
 
     'expire_on_close' => false,
 
