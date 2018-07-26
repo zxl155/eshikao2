@@ -44,8 +44,12 @@ class Pplive extends Model
                 } else {
                   $value->user_name = $val->user_name;
                 }
+               if ($val->head_images=='') {
+                 $value->head_images = "touxiang.png";
+               } else {
+                 $value->head_images = $val->head_images;
+               }
                
-               $value->head_images = $val->head_images;
          }
       }
       $params =  [
