@@ -153,7 +153,7 @@
                                     @if($data[0]->admin_id == $val->admin_id)
                                     selected
                                     @endif
-                                    >{{$val->admin_name}}</option>
+                                    >{{$val->nickname}}</option>
                                     @endforeach
                                 </select>
                             </div>
