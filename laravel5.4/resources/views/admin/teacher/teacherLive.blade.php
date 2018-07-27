@@ -15,7 +15,7 @@
                 <span class="am-icon-code"></span> 教师直播列表
             </div>
             <div class="tpl-portlet-input tpl-fz-ml">
-                <a href="https://www.baijiayun.com/classroomdown/">下载直播客户端</a>
+                <a target="_blank" href="https://www.baijiayun.com/classroomdown/">下载直播客户端</a>
             </div>
         </div>
         <div class="tpl-block">
