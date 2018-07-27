@@ -10,7 +10,7 @@ $config = array (
 		'notify_url' => "http://www.eshikao.com/home/moveNotify",
 		
 		//同步跳转
-		'return_url' => "http://www.eshikaojiaoyu.com/home/moveSuccess",
+		'return_url' => "http://www.eshikao.com/home/moveSuccess",
 
 		//编码格式
 		'charset' => "UTF-8",
