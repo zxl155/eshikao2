@@ -19,12 +19,18 @@ class Pplive extends Model
 	public function insert($data){
 		$start_time =  strtotime($data['start_time']);
 		$end_time = strtotime($data['end_time']);
+		$c = DB::table('curriculum')->where('curriculum_id',$data['curriculum_id'])->select('purchase_number')->get()->toArray();
+		if ($c[0]->purchase_number == 1) {
+			$purchase_number = 1;
+		} else {
+			$purchase_number = 2;
+		}
 		$params =  [
 		    "partner_id" => 70707480, //百家云 合作方id
 		    "title" =>$data['pplive_name'], //直播间标题
 		    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 		    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-		    "type" => 2, //普通大班课
+		    "type" => $purchase_number, //普通大班课
 		    "timestamp" => time(),
 		    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
 		    "is_long_term" => 0, //普通房间 
