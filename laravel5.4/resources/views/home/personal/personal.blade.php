@@ -41,13 +41,14 @@
                 
                 @else
                 @foreach($curriculum as $val)
+                <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$val->curriculum_id}}">
                 <div class="personal-detail-content">
                     <div class="personal-detail-img">
                         <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$val->curriculum_pricture}}" alt="11111" width="200px" height="150px">
                     </div>
                     <div class="personal-detail-text">
                         <h3>
-                            <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$val->curriculum_id}}">{{$val->curriculum_name}}</a>
+                            {{$val->curriculum_name}}
                             <span class="active"></span>
                             <i></i>
                         </h3>
@@ -59,6 +60,7 @@
                         @endif
                     </div>
                 </div>
+                </a>
                  @endforeach
                 @endif
                 
