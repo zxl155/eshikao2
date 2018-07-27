@@ -38,7 +38,7 @@ if($result) {//验证成功
 
 	$trade_no = htmlspecialchars($_GET['trade_no']);
 		
-	header("Location: http://www.eshikaojiaoyu.com/home/moveUpdateOrder?order_number=$out_trade_no");//跳转到自己成功页面
+	header("Location: http://www.eshikao.com/home/moveUpdateOrder?order_number=$out_trade_no");//跳转到自己成功页面
 
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 	
