@@ -43,7 +43,7 @@
                                         @if($data[0]->admin_id==$value->admin_id)
                                         selected
                                         @endif
-                                        >{{$value->admin_name}}</option>
+                                        >{{$value->nickname}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -58,7 +58,7 @@
                                          @if($data[0]->assistant_admin_id==$value->admin_id)
                                         selected
                                         @endif
-                                        >{{$value->admin_name}}</option>
+                                        >{{$value->nickname}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -99,7 +99,7 @@
             success:function(data){
                 var html = ""; 
                 jQuery.each(data,function(key,value){
-                    html+='<input type="radio" name="admin_id" value="'+value.admin_id+'"><span>'+value.admin_name+'</span>';  
+                    html+='<input type="radio" name="admin_id" value="'+value.admin_id+'"><span>'+value.nickname+'</span>';  
                 }) 
                 $('#div').html(html);
             }

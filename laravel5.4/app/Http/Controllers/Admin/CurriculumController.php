@@ -40,7 +40,6 @@ class CurriculumController extends CommonController
 		//查询教师
 		$admin = new Admin;
 		$admin_teacher = $admin->searchTeacher();
-
 		//查询地区
 		$region = new Region;
 		$region_content = $region->select();

@@ -113,7 +113,7 @@
                                 <select name="admin_id">
                                     <option>--请选择--</option>
                                     @foreach($admin_teacher as $val)
-                                    <option value="{{$val->admin_id}}">{{$val->admin_name}}</option>
+                                    <option value="{{$val->admin_id}}">{{$val->nickname}}</option>
                                     @endforeach
                                 </select>
                             </div>

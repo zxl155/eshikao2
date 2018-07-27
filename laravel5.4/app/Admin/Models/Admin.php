@@ -61,7 +61,7 @@ class Admin extends Model
             $arr[$key] = $value->admin_id;
         }
         $arr = implode($arr, ',');
-        $sql = "select admin_id,admin_name,admin_head from admin where admin_id in($arr)";
+        $sql = "select admin_id,nickname,admin_head from admin where admin_id in($arr)";
         $admin = DB::select($sql);
         return $admin;
     }
