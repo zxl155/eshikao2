@@ -193,7 +193,7 @@ class Pplive extends Model
 		foreach ($arr as $key => $value) {
 			foreach ($data as $keys => $values) {
 				if ($value->admin_id == $values->admin_id) {
-					$value->admin_name = $values->admin_name;
+					$value->admin_name = $values->nickname;
 					$value->date_time = date('Y-m-d H:i:s');
 				}
 			}
@@ -201,7 +201,7 @@ class Pplive extends Model
 		foreach ($arr as $key => $value) {
 			foreach ($data as $keys => $values) {
 				if ($value->assistant_admin_id == $values->admin_id) {
-					$value->assistant_admin_name = $values->admin_name;
+					$value->assistant_admin_name = $values->nickname;
 				}
 			}
 		}

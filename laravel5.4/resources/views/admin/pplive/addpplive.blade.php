@@ -38,7 +38,7 @@
                             <div class="am-u-sm-9" id="div">
                                 <select name="admin_id">
                                     @foreach($admin_teacher as $value)
-                                    <option value="{{$value->admin_id}}">{{$value->admin_name}}</option>
+                                    <option value="{{$value->admin_id}}">{{$value->nickname}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="am-u-sm-9" id="div">
                                 <select name="assistant_admin_id">
                                     @foreach($admin_teacher as $value)
-                                    <option value="{{$value->admin_id}}">{{$value->admin_name}}</option>
+                                    <option value="{{$value->admin_id}}">{{$value->nickname}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -77,23 +77,5 @@
     laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
     laydate({elem: '#demo'});//绑定元素
 }();
-</script>
-<script type="text/javascript">
-    $("#select").change(function(){
-        var id = $("#select").val()
-        $.ajax({
-            url:"{{ url('admin/selects') }}",
-            data:{id:id},
-            type:'get',
-            dataType:'json',
-            success:function(data){
-                var html = ""; 
-                jQuery.each(data,function(key,value){
-                    html+='<input type="radio" name="admin_id" value="'+value.admin_id+'"><span>'+value.admin_name+'</span>';  
-                }) 
-                $('#div').html(html);
-            }
-        })
-    })
 </script>
 </html>
