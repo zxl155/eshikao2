@@ -274,7 +274,7 @@
                         @else
                         {{$curriculum_content[0]->present_price}}
                         @endif</h4>
-            <span>{{$regihtcontent[0]->bought_number}}人购买</span>
+            <span>{{$curriculum_content[0]->bought_number}}人购买</span>
         </div>
          
             @if($curriculum_content[0]->bought_number>=$curriculum_content[0]->purchase_number)
