@@ -311,7 +311,7 @@ class Pplive extends Model
 	public function admin_pplive($admin_id)
 	{
 		//$users = DB::table('pplive')->whereBetween(DA, array(1, 100))->get();
-		$pplive = DB::table('pplive')->orderBy('start_time', 'asc')->where('admin_id',$admin_id)->get()->toarray();
+		$pplive = DB::table('pplive')->orderBy('start_time', 'desc')->where('admin_id',$admin_id)->get()->toarray();
 		$pplives = DB::table('pplive')->where('assistant_admin_id',$admin_id)->get()->toarray();
 		$pplive = array_merge($pplives,$pplive);
 		//print_r($pplive);die;
@@ -320,10 +320,10 @@ class Pplive extends Model
 		foreach ($pplive as $key => $val) {
 			foreach ($admin as $keys => $value) {
 				if($val->admin_id == $value->admin_id){
-					$val->admin_name = $value->admin_name;
+					$val->admin_name = $value->nickname;
 				}
 				if($val->assistant_admin_id == $value->admin_id){
-					$val->assistant_admin_name = $value->admin_name;
+					$val->assistant_admin_name = $value->nickname;
 				} 
 				$val->admins_id = $admin_id;
 				$val->date_time = date('Y-m-d H:i:s');

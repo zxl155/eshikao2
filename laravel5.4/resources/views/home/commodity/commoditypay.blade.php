@@ -45,6 +45,7 @@
     </div>
     @endforeach
     <div class="commodity-content clearfix">
+        <span style="color: red;font-size: 20px" >温馨提示：支付过程中请勿关闭此页面</span>
         <h3>请选择支付方式</h3>
         <div class="cfmode">
             <span class="active"><img src="{{URL::asset('/')}}home/img/zfb.png" v='1' alt=""><img class="confirm" src="{{URL::asset('/')}}home/img/confirm.png" alt=""></span>
