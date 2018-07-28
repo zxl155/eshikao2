@@ -112,4 +112,8 @@ class PayController extends Controller
 			echo "修改状态失败，请截图联系客服";
 		}
 	}
+	public function wxzf()
+	{
+		return view('home/wxpay/wx');
+	}
 }
