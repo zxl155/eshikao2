@@ -55,10 +55,7 @@
                                   <th>{{$val->pplive_name}}</th>
                                   <th>{{$val->start_time}}--{{$val->end_time}}</th>
                                   <th>
-                                    
-                                    
                                         {{$val->admin_name}}
-                                      
                                   </th>
                                   <th>
                                       @if($val->assistant_admin_id == '')
