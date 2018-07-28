@@ -58,9 +58,9 @@
             <a>
                 <img src="./img/zfb.png" alt="" shux='1'>
             </a>
-           <!--  <a>
+             <a>
                 <img src="./img/wxzf.png" alt=""  shux='2'>
-            </a> -->
+            </a> 
         </div>
     </div>
     <div class="m-commodity-confirm">
@@ -88,7 +88,7 @@
                window.location.href="movezfbpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
                 //$('.a').html('支付宝');
             } else if(zhi == 2) {
-                $('.a').html('微信');
+                window.location.href="movewxpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
             }
         } else {
             $('.a').html('请选择收货地址');
