@@ -135,4 +135,8 @@ class PayController extends Controller
 			return view('home/wxpay/wx',['data'=>$datas]);
 		}
 	}
+	public function m()
+	{
+		echo "成功";die;
+	}
 }
