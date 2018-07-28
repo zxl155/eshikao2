@@ -188,7 +188,7 @@ class Pplive extends Model
      * 查询所属课程
      */
 	public function select($curriculum_id){
-		$arr = DB::table('pplive')->where('curriculum_id',$curriculum_id)->get()->toarray();
+		$arr = DB::table('pplive')->orderBy('start_time','desc')->where('curriculum_id',$curriculum_id)->get()->toarray();
 		$data = DB::table('admin')->get()->toarray();
 		foreach ($arr as $key => $value) {
 			foreach ($data as $keys => $values) {
