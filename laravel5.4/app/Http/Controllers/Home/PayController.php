@@ -112,8 +112,27 @@ class PayController extends Controller
 			echo "修改状态失败，请截图联系客服";
 		}
 	}
-	public function wxzf()
+	//移动跳转微信
+	public function movewxpay()
 	{
-		return view('home/wxpay/wx');
+		$data = Input::all();
+		$data['user_id'] = session('user_id');
+		$data['order_number'] = substr(time().$data['curriculum_id'].$data['user_id'].rand(11111111,99999999),0,18);//订单
+		$order = new Order;
+		//判断当前用户是否次商品订单
+		$arr = $order->selects($data['user_id'],$data['curriculum_id']);
+		if (empty($arr)) {  
+			$order_number = $order->movezfbpay($data);//生成订单
+			//通过订单号查询课程
+			$datas = $order->movecurriculum($order_number);
+		}else {
+			//有订单
+			$datas = $order->movecurriculum($arr[0]->order_number);
+		}
+		if($datas[0]->order_money == 0){
+			return redirect("home/moveUpdateOrder?order_number=".$datas[0]->order_number);
+		} else {
+			return view('home/wxpay/wx',['data'=>$datas]);
+		}
 	}
 }

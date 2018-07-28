@@ -253,5 +253,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moveSuccess','PayController@moveSuccess');
   //移动支付成功以后修改订单
   Route::get('home/moveUpdateOrder','PayController@moveUpdateOrder');
-   Route::get('home/wxzf','PayController@wxzf');
+  //移动跳转微信
+  Route::get('home/movewxpay','PayController@movewxpay');
 });
