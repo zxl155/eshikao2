@@ -34,7 +34,7 @@
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
         $dataxml = http_post($url,$post_data); //后台POST微信传参地址  同时取得微信返回的参数    POST 方法我写下面了
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
-        $objectxml['mweb_url'] = $objectxml['mweb_url']."&notify_url=".$notify_url."&out_trade_no=".$out_trade_no;
+        $objectxml['mweb_url'] = $objectxml['mweb_url']."&redirect_url=".$notify_url."?out_trade_no=".$out_trade_no;
            // echo "<pre>";
             //var_dump($objectxml);
            // echo '<hr>';

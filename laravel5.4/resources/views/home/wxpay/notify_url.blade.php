@@ -1,49 +1,38 @@
 <?php 
-	/**
-     * 支付回调接口
-     * @return [type] [description]
-     */
-    public function pay_callback() {
-        $postData = '';
-        if (file_get_contents("php://input")) {
-            $postData = file_get_contents("php://input");
-        } else {
-            return;
-        }
-        $payInfo = array();
-        $notify = $this->wxpay_model->wxPayNotify($postData);
+        $appid = "wxb7c95914eaa62229";//微信给的
+        $mch_id = "1508009641";//微信官方的
+        $key = "371325198602104558jiayanqing088x";//自己设置的微信商家key
+        $out_trade_no="{$out_trade_no}";//订单号
+        $nonce_str=MD5($out_trade_no);//随机字符串
+       	$signA="appid=$appid&mch_id=$mch_id&nonce_str=$nonce_str&out_trade_no=$out_trade_no";
+	    $strSignTmp = $signA."&key=$key"; //拼接字符串  注意顺序微信有个测试网址 顺序按照他的来 直接点下面的校正测试 
+        $sign = strtoupper(MD5($strSignTmp)); // MD5 后转换成大写
+        $post_data = "<xml>
+					   <appid>$appid</appid>
+					   <mch_id>$mch_id</mch_id>
+					   <nonce_str>$nonce_str</nonce_str>
+					   <out_trade_no>$out_trade_no</out_trade_no>
+					   <sign>$sign</sign>
+					</xml>";//拼接成XML 格式
+        $url = "https://api.mch.weixin.qq.com/pay/orderquery";//微信传参地址
+        $dataxml = http_post($url,$post_data); //后台POST微信传参地址  同时取得微信返回的参数    POST 方法我写下面了
+        $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
+       if ($objectxml['return_code']&$objectxml['result_code']) {
+       		header("location:moveWxSuccess?out_trade_no=$out_trade_no");
+       } else {
+       		echo "支付失败";die;
+       }
 
-        if ($notify->checkSign == TRUE) {
-            if ($notify->data['return_code'] == 'FAIL') {
-                $payInfo['status'] = FALSE;
-                $payInfo['msg'] = '通信出错';
-            } elseif ($notify->data['result_code'] == 'FAIL') {
-                $payInfo['status'] = FALSE;
-                $payInfo['msg'] = '业务出错';
-            } else {
-                $payInfo['status'] = TRUE;
-                $payInfo['msg'] = '支付成功';
-                $payInfo['sn']=substr($notify->data['out_trade_no'],8);
-                $payInfo['order_no'] = $notify->data['out_trade_no'];
-                $payInfo['platform_no']=$notify->data['transaction_id'];
-                $payInfo['attach']=$notify->data['attach'];
-                $payInfo['fee']=$notify->data['cash_fee'];
-                $payInfo['currency']=$notify->data['fee_type'];
-                $payInfo['user_sign']=$notify->data['openid'];
-            }
+        function http_post($url, $data) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_HEADER,0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            $res = curl_exec($ch);
+            curl_close($ch);
+            return $res;
         }
-        $returnXml = $notify->returnXml();
-
-        echo $returnXml;
-
-        $this->load->library('RedisCache');
-        if($payInfo['status']){
-           //这里要记录到日志处理（略）
-            $this->model->order->onPaySuccess($payInfo['sn'], $payInfo['order_no'], $payInfo['platform_no'],'', $payInfo['user_sign'], $payInfo);
-            $this->redis->RedisCache->set('order:payNo:'.$payInfo['order_no'],'OK',5000);
-        }else{
-           //这里要记录到日志处理（略）
-            $this->model->order->onPayFailure($payInfo['sn'], $payInfo['order_no'], $payInfo['platform_no'],'', $payInfo['user_sign'], $payInfo, '订单支付失败 ['.$payInfo['msg'].']');
-        }
-    }
  ?>
