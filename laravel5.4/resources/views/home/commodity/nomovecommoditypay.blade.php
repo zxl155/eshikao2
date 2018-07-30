@@ -40,9 +40,9 @@
             <a>
                 <img src="./img/zfb.png" alt="" shux='1'>
             </a>
-           <!--  <a>
+             <a>
                 <img src="./img/wxzf.png" alt=""  shux='2'>
-            </a> -->
+            </a>
         </div>
     </div>
     <div class="m-commodity-confirm">
@@ -62,10 +62,10 @@
 <script type="text/javascript">
     $('.but').click(function(){
         var zhi = $('.m-commodity-payan .active img').attr('shux');
+        alert(zhi);
         var address_id = 0;
         var curriculum_id = $('.m-commodity-title').attr('curriculum_id');
         var money = $('.money1').html();
-        if (address_id) {
             var money = $('.money1').html();
             if (zhi == 1) {
                window.location.href="movezfbpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
@@ -73,9 +73,6 @@
             } else if(zhi == 2) {
                 window.location.href="movewxpay?order_money="+money+"&address_id="+address_id+"&curriculum_id="+curriculum_id;
             }
-        } else {
-            $('.a').html('请选择收货地址');
-        }
     })
 </script>
 </body>
