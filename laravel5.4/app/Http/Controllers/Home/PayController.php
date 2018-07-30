@@ -136,7 +136,8 @@ class PayController extends Controller
 		}
 	}
 	public function moveWx()
-	{
+	{	
+		echo "成功";die;
 		return view('home/wxpay/notify_url');
 	}
 }

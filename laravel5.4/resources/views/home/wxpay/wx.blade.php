@@ -12,7 +12,7 @@
         $body = "易师考支付";//内容
         $total_fee = $money; //金额
         $spbill_create_ip = $userip; //IP
-        $notify_url = "http://www.eshikao.com/home/moveWx"; //回调地址
+        $notify_url = urlencode("http://www.eshikao.com/home/moveWx"); //回调地址
         $trade_type = 'MWEB';//交易类型 具体看API 里面有详细介绍
         $scene_info ='{"h5_info":{"type":"Wap","wap_url":"http://www.eshikao.com","wap_name":"支付"}}';//场景信息 必要参数
         $signA ="appid=$appid&body=$body&mch_id=$mch_id&nonce_str=$nonce_str&notify_url=$notify_url&out_trade_no=$out_trade_no&scene_info=$scene_info&spbill_create_ip=$spbill_create_ip&total_fee=$total_fee&trade_type=$trade_type";
@@ -34,6 +34,7 @@
         $url = "https://api.mch.weixin.qq.com/pay/unifiedorder";//微信传参地址
         $dataxml = http_post($url,$post_data); //后台POST微信传参地址  同时取得微信返回的参数    POST 方法我写下面了
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
+        $objectxml['mweb_url'] = $objectxml['mweb_url']."&notify_url=".$notify_url."&out_trade_no=".$out_trade_no;
            // echo "<pre>";
             //var_dump($objectxml);
            // echo '<hr>';
