@@ -257,4 +257,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/movewxpay','PayController@movewxpay');
   //微信支付成功
   Route::get('home/moveWx','PayController@moveWx');
+  //修改微信支付成功状态
+  Route::get('home/moveWxSuccess','PayController@moveWxSuccess');
 });
