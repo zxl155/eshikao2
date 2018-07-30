@@ -62,7 +62,6 @@
 <script type="text/javascript">
     $('.but').click(function(){
         var zhi = $('.m-commodity-payan .active img').attr('shux');
-        alert(zhi);
         var address_id = 0;
         var curriculum_id = $('.m-commodity-title').attr('curriculum_id');
         var money = $('.money1').html();

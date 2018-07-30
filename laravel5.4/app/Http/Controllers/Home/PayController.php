@@ -65,7 +65,6 @@ class PayController extends Controller
 	//移动跳转支付宝
 	public function movezfbpay()
 	{
-		
 		$data = Input::all();
 		$data['user_id'] = session('user_id');
 		$data['order_number'] = substr(time().$data['curriculum_id'].$data['user_id'].rand(11111111,99999999),0,18);//订单
