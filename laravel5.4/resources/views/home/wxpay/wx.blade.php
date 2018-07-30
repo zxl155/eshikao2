@@ -12,7 +12,7 @@
         $body = "易师考支付";//内容
         $total_fee = $money; //金额
         $spbill_create_ip = $userip; //IP
-        $notify_url = "http://www.eshikao.com"; //回调地址
+        $notify_url = "http://www.eshikao.com/home/moveWx"; //回调地址
         $trade_type = 'MWEB';//交易类型 具体看API 里面有详细介绍
         $scene_info ='{"h5_info":{"type":"Wap","wap_url":"http://www.eshikao.com","wap_name":"支付"}}';//场景信息 必要参数
         $signA ="appid=$appid&body=$body&mch_id=$mch_id&nonce_str=$nonce_str&notify_url=$notify_url&out_trade_no=$out_trade_no&scene_info=$scene_info&spbill_create_ip=$spbill_create_ip&total_fee=$total_fee&trade_type=$trade_type";
