@@ -135,9 +135,22 @@ class PayController extends Controller
 			return view('home/wxpay/wx',['data'=>$datas]);
 		}
 	}
+	//查询订单接口
 	public function moveWx()
 	{	
-		echo "成功";die;
-		return view('home/wxpay/notify_url');
+		$out_trade_no = Input::get('out_trade_no');
+		return view('home/wxpay/notify_url',['out_trade_no'=>$out_trade_no]);
+	}
+	//修改微信支付状态
+	public function moveWxSuccess()
+	{
+		$out_trade_no = Input::get('out_trade_no');
+		$order = new Order;
+		$arr = $order->moveUpdateOrderWx($order_number);
+		if ($arr) {
+			return redirect('home/myclass.html');
+		} else {
+			echo "修改状态失败，请截图联系客服";
+		}
 	}
 }
