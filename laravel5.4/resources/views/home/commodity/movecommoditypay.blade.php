@@ -58,9 +58,9 @@
             <a>
                 <img src="./img/zfb.png" alt="" shux='1'>
             </a>
-            <!--  <a>
+             <a>
                 <img src="./img/wxzf.png" alt=""  shux='2'>
-            </a>  -->
+            </a> 
         </div>
     </div>
     <div class="m-commodity-confirm">
