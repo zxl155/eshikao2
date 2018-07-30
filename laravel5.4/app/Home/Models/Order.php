@@ -168,6 +168,13 @@ class Order extends Model
        }
        return $order;
     }
+    //如果有订单则修改订单号
+    public function moveUpdate($order_id,$order_number)
+    {
+       $arr =  DB::table('order')->where('order_id',$order_id)->update(['order_number'=>$order_number]);
+       $data = DB::table('order')->where('order_id',$order_id)->get();
+       return $data;
+    }
     //移动支付宝通过订单修改状态
     public function moveUpdateOrder($order_number)
     {

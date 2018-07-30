@@ -128,6 +128,8 @@ class PayController extends Controller
 		}else {
 			//有订单
 			$datas = $order->movecurriculum($arr[0]->order_number);
+			$order_id= $datas[0]->order_id;
+			$datas = $order->moveUpdate($order_id,$data['order_number']);
 		}
 		if($datas[0]->order_money == 0){
 			return redirect("home/moveUpdateOrder?order_number=".$datas[0]->order_number);
@@ -144,7 +146,7 @@ class PayController extends Controller
 	//修改微信支付状态
 	public function moveWxSuccess()
 	{
-		$out_trade_no = Input::get('out_trade_no');
+		$order_number = Input::get('out_trade_no');
 		$order = new Order;
 		$arr = $order->moveUpdateOrderWx($order_number);
 		if ($arr) {
