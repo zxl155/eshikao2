@@ -28,7 +28,7 @@
                     
                 </div>
                 
-                <div class="am-u-sm-12 am-u-md-3">
+                <!-- <div class="am-u-sm-12 am-u-md-3">
                     <form action="listcurr" method="get">
                     <div class="am-input-group am-input-group-sm">
                         <input type="text" name="search" value="" class="am-form-field">
@@ -37,7 +37,7 @@
                         </span>
                     </div>
                     </form>
-                </div>
+                </div> -->
 
             </div>
             <div class="am-g">

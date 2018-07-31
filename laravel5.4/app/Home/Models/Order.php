@@ -148,8 +148,14 @@ class Order extends Model
     //移动支付宝进行生成订单
     public function movezfbpay($data)
     {
-       $arr = DB::table('order')->insertGETID(array('order_number'=>$data['order_number'],'curriculum_id'=>$data['curriculum_id'],'order_time'=>date('Y-m-d H:i:s'),'address_id'=>$data['address_id'],'order_state'=>0,'order_money'=>$data['order_money'],'user_id'=>$data['user_id']));
+       $sales_user_id = session('sales_user_id');
+       if ($sales_user_id == "") {
+          $arr = DB::table('order')->insertGETID(array('order_number'=>$data['order_number'],'curriculum_id'=>$data['curriculum_id'],'order_time'=>date('Y-m-d H:i:s'),'address_id'=>$data['address_id'],'order_state'=>0,'order_money'=>$data['order_money'],'user_id'=>$data['user_id']));
+       } else {
+          $arr = DB::table('order')->insertGETID(array('order_number'=>$data['order_number'],'curriculum_id'=>$data['curriculum_id'],'order_time'=>date('Y-m-d H:i:s'),'address_id'=>$data['address_id'],'order_state'=>0,'order_money'=>$data['order_money'],'user_id'=>$data['user_id'],'sales_user_id'=>$sales_user_id));
+       }
        if ($arr) {
+         session()->forget('sales_user_id');
          return $data['order_number'];
        }
     }
