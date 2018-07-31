@@ -97,6 +97,30 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/teacherLives','TeacherController@teacherLives');
     //直播回放
     Route::get('admin/playback','TeacherController@playback');
+    //课程代理 课程包
+    Route::get('admin/package','CourseController@package');
+    //添加课程包
+    Route::get('admin/addPackage','CourseController@addPackage');
+    //执行添加课程包
+    Route::post('admin/addPackages','CourseController@addPackages');
+    //删除课程包
+    Route::get('admin/delPackage','CourseController@delPackage');
+    //修改课程包
+    Route::get('admin/updatePackage','CourseController@updatePackage');
+     //执行修改课程包
+    Route::post('admin/updatePackages','CourseController@updatePackages');
+    //销售代理管理
+    Route::get('admin/sales','SalesController@sales');
+    //添加代理
+    Route::get('admin/addSales','SalesController@addSales');
+     //执行添加代理
+    Route::post('admin/addSaless','SalesController@addSaless');
+    //删除代理
+    Route::get('admin/delSales','SalesController@delSales');
+    //修改代理
+    Route::get('admin/updSales','SalesController@updSales');
+    //执行修改
+    Route::post('admin/updSaless','SalesController@updSaless');
   });
   //登录
   Route::get('admin/login','LoginController@login');
@@ -259,4 +283,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moveWx','PayController@moveWx');
   //修改微信支付成功状态
   Route::get('home/moveWxSuccess','PayController@moveWxSuccess');
+  //课程包
+  Route::get('home/package','CourseController@package');
 });
