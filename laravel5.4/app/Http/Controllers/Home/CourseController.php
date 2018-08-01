@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Course;
-
+use App\Home\Models\Order;
 class CourseController extends Controller
 {
 	//查询课程包
@@ -19,5 +19,17 @@ class CourseController extends Controller
 		$course = new Course;
 		$data = $course->package($user_id);
 		return view('home/course/course',['data'=>$data]);
+	}
+	//代理查询订单
+	public function orderSearch()
+	{
+		$search = Input::get('search');
+		if ($search != "") {
+			$order = new Order;
+			$order = $order->orderSearch($search);
+		} else {
+			$order = '';
+		}
+		return view('home/course/orderSearch',['order'=>$order]);
 	}
 }

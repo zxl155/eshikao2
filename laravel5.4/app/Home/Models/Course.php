@@ -13,7 +13,7 @@ class Course extends Model
       $arr = DB::table('course')->where('course_id',$sales[0]->course_id)->get();
       $curriculum_id = $arr[0]->curriculum_id;
       $times = date('Y-m-d H:i:s');
-      $sql = "select * from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' and curriculum_id in($curriculum_id)";
+      $sql = "select * from curriculum where state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' and curriculum_id in($curriculum_id)";
       $qualifications = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($qualifications as $key => $value) {
