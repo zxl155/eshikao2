@@ -65,7 +65,7 @@
                                       @endif
                                   </th>
                                   <th class="table-title">
-                                    @if($val->date_time < $val->start_time)
+                                    @if($val->start_date_time < $val->start_time)
                                     <span style="color: blue">未开始</span>
                                     @elseif($val->date_time > $val->end_time)
                                     <span style="color: red">已结束</span>
@@ -74,7 +74,7 @@
                                     @endif
                                   </th>
                                   <th>
-                                    @if($val->date_time < $val->start_time)
+                                    @if($val->start_date_time < $val->start_time)
                                     <span>未开始</span>
                                     @elseif($val->date_time > $val->end_time)
                                     <a href="{{url('admin/playback')}}?pplive_id={{$val->pplive_id}}">直播回放</a>
