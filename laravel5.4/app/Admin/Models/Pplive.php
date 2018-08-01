@@ -19,18 +19,12 @@ class Pplive extends Model
 	public function insert($data){
 		$start_time =  strtotime($data['start_time']);
 		$end_time = strtotime($data['end_time']);
-		$c = DB::table('curriculum')->where('curriculum_id',$data['curriculum_id'])->select('purchase_number')->get()->toArray();
-		if ($c[0]->purchase_number == 1) {
-			$purchase_number = 1;
-		} else {
-			$purchase_number = 2;
-		}
 		$params =  [
 		    "partner_id" => 70707480, //百家云 合作方id
 		    "title" =>$data['pplive_name'], //直播间标题
 		    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 		    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-		    "type" => $purchase_number, //普通大班课
+		    "type" => $data['type'], //普通大班课
 		    "timestamp" => time(),
 		    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
 		    "is_long_term" => 0, //普通房间 
@@ -63,7 +57,7 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if($arr->code == 0) {
-        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id ]);
+        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'] ]);
 	        if($res){
 	        	return true;
 	        }else {
@@ -195,6 +189,7 @@ class Pplive extends Model
 				if ($value->admin_id == $values->admin_id) {
 					$value->admin_name = $values->nickname;
 					$value->date_time = date('Y-m-d H:i:s');
+					$value->start_date_time = date('Y-m-d H:i:s',strtotime('+30 minute'));
 				}
 			}
 		}
@@ -267,7 +262,7 @@ class Pplive extends Model
 		    "title" =>$data['pplive_name'], //直播间标题
 		    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 		    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-		    "type" => 2, //普通大班课
+		    "type" => $data['type'], //普通大班课
 		    "timestamp" => time(),
 		    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
 		    "is_long_term" => 0, //普通房间 
@@ -300,7 +295,7 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if ($arr->code == 0) {
-        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id']]);
+        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type']]);
 			return $res;
         } else {
         	echo "修改课程错误";die;
@@ -327,6 +322,7 @@ class Pplive extends Model
 				} 
 				$val->admins_id = $admin_id;
 				$val->date_time = date('Y-m-d H:i:s');
+				$val->start_date_time = date('Y-m-d H:i:s',strtotime('+30 minute'));
 			}
 		}
 		foreach ($pplive as $key => $val) {

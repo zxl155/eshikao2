@@ -233,9 +233,9 @@
 <script src="js/index.js"></script>
 <script src="//live-cdn.baijiayun.com/js-sdk/{version}/player/extension/html.js"></script>
 <script type="text/javascript">
-setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
-window.location.reload();//页面刷新
-},20000);
+    setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
+        window.location.reload();//页面刷新
+    },20000);
 </script>
 </body>
 </html>
