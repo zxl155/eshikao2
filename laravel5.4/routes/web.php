@@ -121,6 +121,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/updSales','SalesController@updSales');
     //执行修改
     Route::post('admin/updSaless','SalesController@updSaless');
+    //销售代理订单
+    Route::get('admin/orderSales','SalesController@orderSales');
   });
   //登录
   Route::get('admin/login','LoginController@login');
@@ -283,6 +285,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/moveWx','PayController@moveWx');
   //修改微信支付成功状态
   Route::get('home/moveWxSuccess','PayController@moveWxSuccess');
-  //课程包
+  //前台课程包
   Route::get('home/package','CourseController@package');
+  //代理商户查询地址
+  Route::get('home/orderSearch','CourseController@orderSearch');
 });
