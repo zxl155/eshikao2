@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Admin\Models\Sales;
 use App\Admin\Models\Course;
+use App\Admin\Models\Order;
+
 class SalesController extends CommonController
 {	
-	//展示
+	//展示销售代理
 	public function sales()
 	{
 		$sales = new Sales;
@@ -69,5 +71,13 @@ class SalesController extends CommonController
 		} else {
 			echo "修改失败";
 		}
+	}
+	//销售代理所有订单
+	public function orderSales()
+	{
+		$search = Input::get('search');
+		$order = new Order;
+		$order = $order->seletes($search);
+		return view('admin/sales/orderSales',['order'=>$order]);
 	}
 }

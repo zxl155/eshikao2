@@ -260,6 +260,11 @@
                                     <span>代理课程包管理</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
+                                 <a href="{{url('admin/orderSales')}}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>代理订单查询</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
                             </li>
                         </ul>
                     </li>
