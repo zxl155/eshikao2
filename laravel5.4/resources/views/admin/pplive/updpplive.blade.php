@@ -33,6 +33,25 @@
                                 <input placeholder="请输入日期" id="purchase_state_time"  name="end_time" class="laydate-icon" onClick="laydate({elem: '#purchase_state_time',istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" value="{{$data[0]->end_time}}" required>
                             </div>
                         </div>
+                         <div class="am-form-group">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">直播类型<span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9" id="div">
+                                <select name="type">
+                                    <option value="2" @if($data[0]->type == 2)
+                                                            selected
+                                                      @endif
+                                        >普通大班课</option>
+                                    <option value="1" @if($data[0]->type == 1)
+                                                            selected
+                                                      @endif
+                                    >一对一课</option>
+                                    <option value="3"@if($data[0]->type == 3)
+                                                        selected
+                                                      @endif
+                                    >小班课普通版</option>
+                                </select>
+                            </div>
+                        </div>  
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">任课教师 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">

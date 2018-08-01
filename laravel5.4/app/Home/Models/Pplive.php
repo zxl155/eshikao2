@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Home\Models;
-
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
@@ -18,7 +16,7 @@ class Pplive extends Model
                         $value->admin_head = $val->admin_head;
                         $value->admin_desc = $val->admin_desc;
                   }
-                  if($value->start_time > date('Y-m-d H:i:s')){
+                  if($value->start_time > date('Y-m-d H:i:s',strtotime('+30 minute'))){
                      $value->is_time = 0;
                   } else if($value->end_time < date('Y-m-d H:i:s')){
                      $value->is_time = 2;
@@ -71,8 +69,17 @@ class Pplive extends Model
        $sign = md5($str);
        $params['sign'] = $sign;
        $ginseng = http_build_query($params);
-       $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
-       header("Location: ".$url.""); 
+       $url1 = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
+       $url2 = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+       echo "<script> if(confirm( '请确认安装客户端？ '))  location.href='".$url1."';else location.href='".$url2."'; </script>"; 
+       //if ($pplive[0]->type == 1) {
+
+         $url1 = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
+      // } else {
+         $url2 = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+       //}
+       
+      // header("Location: ".$url.""); 
    }
 
    //查看回放

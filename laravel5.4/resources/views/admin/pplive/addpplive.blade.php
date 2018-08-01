@@ -34,6 +34,16 @@
                             </div>
                         </div>
                         <div class="am-form-group">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">直播类型<span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9" id="div">
+                                <select name="type">
+                                    <option value="2">普通大班课</option>
+                                    <option value="1">一对一课</option>
+                                    <option value="3">小班课普通版</option>
+                                </select>
+                            </div>
+                        </div>  
+                        <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">任课教师 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">
                                 <select name="admin_id">
