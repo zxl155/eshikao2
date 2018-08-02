@@ -15,7 +15,10 @@
     <div class="coursedetails">
         <div class="details-brief">
             <h2>{{$value->curriculum_name}}</h2>
-            <p class="Course-time">开课时间：{{$value->recovery_original}}
+            <p class="Course-time">售卖时间：{{$value->recovery_original}}
+        </div>
+        <div class="details-brief" style="padding-left: 270px;">
+            <a target="_blank" href="https://www.baijiayun.com/classroomdown/"><span style="font-size: 20px;color: red">点击下载直播客户端</span></a>
         </div>
     </div>
     <div class="viewdetails-content clearfix">
@@ -26,7 +29,7 @@
                 <li>常见问题</li>
             </ul>
             <div class="v-content-left-list  off">
-                <h3>备考指导</h3>
+                <h3 style="color: red">温馨提示: <span style="font-size: 14px">当进入教室中您已安装客户端请点击确认我们将为您开启客户端,否则开启页面端(客户端将比页面端流畅)</span> </h3>
                 <ul class="v-content-left-list-ul">
     
                      @foreach($pplive_content as $val)
@@ -39,7 +42,7 @@
                                 <span class="list-name">{{$val->admin_name}}</span>
                             </li>
                         @elseif($val->is_time == 1)
-                           <a href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">
+                           <a target="_blank" href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">
                            <li>  
                                  <img src="./img/zbtb.png" alt=""> 
                                 <span class="lint-title">{{$val->pplive_name}}<span style="color: blue">【进入教室】</span></span>
@@ -235,7 +238,7 @@
 <script type="text/javascript">
     setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
         window.location.reload();//页面刷新
-    },20000);
+    },60000);
 </script>
 </body>
 </html>

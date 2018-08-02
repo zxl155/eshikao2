@@ -182,7 +182,10 @@ class Pplive extends Model
      * 查询所属课程
      */
 	public function select($curriculum_id){
-		$arr = DB::table('pplive')->orderBy('start_time','desc')->where('curriculum_id',$curriculum_id)->get()->toarray();
+		$sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) order by start_time desc";
+		$arr = DB::select($sql);
+		/*print_r($arr);die;
+		$arr = DB::table('pplive')->orderBy('start_time','desc')->where('curriculum_id',$curriculum_id)->get()->toarray();*/
 		$data = DB::table('admin')->get()->toarray();
 		foreach ($arr as $key => $value) {
 			foreach ($data as $keys => $values) {
@@ -333,5 +336,28 @@ class Pplive extends Model
 			}
 		}
 		return $pplive;
+	}
+	//通过课程id查询直播间
+	public function copySearch($curriculum_id)
+	{
+		$sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) order by start_time desc";
+		$arr = DB::select($sql);
+		return $arr;
+	}
+	//添加复制直播间进行入库
+	public function copyPplives($data)
+	{
+
+		foreach ($data['pplive_id'] as $key => $value) {
+			$pplive = DB::table('pplive')->where('pplive_id',$value)->get();
+			$arr = $pplive[0]->curriculum_id.','.$data['curriculum_ids'];
+			$all[$key] = DB::table('pplive')->where('pplive_id',$value)->update(['curriculum_id'=>$arr]);
+		}
+		if(in_array(0, $all)){
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 }

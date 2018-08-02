@@ -54,10 +54,11 @@ class PpliveController extends CommonController
      */
 	public function dopplive(){
 		$data = Input::all();
+		$curriculum_id = $data['curriculum_id'];
 		$pplive = new Pplive;
 		$res = $pplive->insert($data);
 		if($res){
-			return redirect('admin/listcurr');
+			return redirect("admin/listpplive?curriculum_id=$curriculum_id");
 		} else {
 			echo "添加失败";
 		}
@@ -84,10 +85,11 @@ class PpliveController extends CommonController
      */
 	public function delpplive(){
 		$pplive_id = Input::get('pplive_id');
+		$curriculum_id = Input::get('curriculum_id');
 		$pplive = new Pplive;
 		$res = $pplive->deletes($pplive_id);
 		if($res){
-			return redirect('admin/listcurr');
+			return redirect('admin/listpplive?curriculum_id='.$curriculum_id);
 		} else {
 			echo "删除直播课程失败";
 		}
@@ -96,6 +98,7 @@ class PpliveController extends CommonController
 	public function updpplive()
 	{
 		$pplive_id = Input::get('pplive_id');
+		$curriculum_id = Input::get('curriculum_id');
 		$pplive = new Pplive;
 		$data = $pplive->oneSelect($pplive_id);
 		$admin = new Admin;
@@ -103,18 +106,54 @@ class PpliveController extends CommonController
 		return view('admin/pplive/updpplive',[
 			'data'=>$data,
 			'admin_teacher'=>$admin_teacher,
+			'curriculum_id'=>$curriculum_id,
 		]);
 	}
 	//执行修改直播课程
 	public function updspplive()
 	{
 		$data = Input::all();
+		$curriculum_id = $data['curriculum_id'];
 		$pplive = new Pplive;
 		$res = $pplive->updspplive($data);
 		if ($res) {
-			return redirect('admin/listcurr');
+			return redirect('admin/listpplive?curriculum_id='.$curriculum_id);
 		} else {
 			echo "修改直播课程失败";
+		}
+	}
+	//复制直播间
+	public function copyPplive()
+	{
+		$curriculum_id = Input::get('curriculum_id');
+		$curriculum = new Curriculum;
+		$curriculum = $curriculum->selects();
+		return view('admin/pplive/copyPplive',['curriculum_id'=>$curriculum_id,'curriculum'=>$curriculum]);
+	}
+	//查询课程对应直播间
+	public function copySearch()
+	{
+		$curriculum_id = Input::get('curriculum_id');
+		$curriculum = new Pplive;
+		$data = $curriculum->copySearch($curriculum_id);
+		if (empty($data)) {
+			$arr = "无直播";
+		} else {
+			$arr = $data;
+		}
+		return json_encode($arr);
+	}
+	//复制直播间入库
+	public function copyPplives()
+	{
+		$data = Input::all();
+		$curriculum_id = $data['curriculum_ids'];
+		$pplive = new Pplive;
+		$arr = $pplive->copyPplives($data);
+		if ($arr) {
+			return redirect("admin/listpplive?curriculum_id=$curriculum_id");
+		} else {
+			echo "添加失败";
 		}
 	}
 }

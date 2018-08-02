@@ -21,13 +21,15 @@
         <div class="tpl-block">
             <div class="am-g">
                 <div class="am-u-sm-12 am-u-md-3">
-                    
                     <div class="am-form-group">
                         <a href="{{ url('admin/addpplive') }}?curriculum_id={{$curriculum_id}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加直播</a>
                     </div>
-                    
                 </div>
-
+                <div class="am-u-sm-12 am-u-md-3">
+                    <div class="am-form-group">
+                        <a href="{{url('admin/copyPplive')}}?curriculum_id={{$curriculum_id}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>复制直播间</a>
+                    </div>
+                </div>
             </div>
             <div class="am-g">
                 <div class="am-u-sm-12">
@@ -78,8 +80,8 @@
                                         @endif
                                     </th>
                                     <th> 
-                                        <a href="{{URL::asset('admin/updpplive')}}?pplive_id={{$val->pplive_id}}">编辑</a> 
-                                        <a href="{{URL::asset('admin/delpplive')}}?pplive_id={{$val->pplive_id}}" onclick="if(confirm('确实要删除数据吗？')) return true;else return false;">删除</a></th>
+                                        <a href="{{URL::asset('admin/updpplive')}}?pplive_id={{$val->pplive_id}}&curriculum_id={{$curriculum_id}}">编辑</a> 
+                                        <a href="{{URL::asset('admin/delpplive')}}?pplive_id={{$val->pplive_id}}&curriculum_id={{$curriculum_id}}" onclick="if(confirm('确实要删除数据吗？')) return true;else return false;">删除</a></th>
                                 </tr>
                                @endforeach
                             </tbody>
