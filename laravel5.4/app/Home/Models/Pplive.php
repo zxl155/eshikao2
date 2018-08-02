@@ -7,7 +7,8 @@ class Pplive extends Model
 {
    public function shows($curriculum_id)
    {
-   		$pplive_content = DB::table('pplive')->where('curriculum_id',$curriculum_id)->orderBy('start_time', 'desc')->get();
+    $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) order by start_time asc";
+    $pplive_content = DB::select($sql);
          $admin_content = DB::table('admin')->get();
          foreach ($pplive_content as $key => $value) {
             foreach ($admin_content as $k => $val) {

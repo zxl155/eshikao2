@@ -123,6 +123,12 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::post('admin/updSaless','SalesController@updSaless');
     //销售代理订单
     Route::get('admin/orderSales','SalesController@orderSales');
+    //复制直播间
+    Route::get('admin/copyPplive','PpliveController@copyPplive');
+    //查询课程对应的直播间
+    Route::get('admin/copySearch','PpliveController@copySearch');
+    //复制直播间入库
+    Route::post('admin/copyPplives','PpliveController@copyPplives');
   });
   //登录
   Route::get('admin/login','LoginController@login');
