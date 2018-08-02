@@ -67,7 +67,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        <input type="hidden" name="curriculum_id" value="{{$curriculum_id}}">
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">助教教师 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">
@@ -85,7 +85,7 @@
                       
                         <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
-                                <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">修改</button>
                             </div>
                         </div>
                     </form>
