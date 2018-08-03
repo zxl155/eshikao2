@@ -45,7 +45,7 @@
         </div>
         <div class="details-brief">
             <h2>{{$value->curriculum_name}}</h2>
-            <p class="Course-time">售卖时间：{{$value->purchase_state_time}} <!-- 有效期天 -->
+            <p class="Course-time">开售时间：{{$value->purchase_state_time}} <!-- 有效期天 -->
                 <i><img src="./img/sm.png" alt=""></i>
                 <q style="display: none;">自购买之日起课观看课程起止</q>
             </p>

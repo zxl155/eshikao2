@@ -19,21 +19,41 @@ class Pplive extends Model
 	public function insert($data){
 		$start_time =  strtotime($data['start_time']);
 		$end_time = strtotime($data['end_time']);
-		$params =  [
-		    "partner_id" => 70707480, //百家云 合作方id
-		    "title" =>$data['pplive_name'], //直播间标题
-		    "start_time" => $start_time, //开课时间, unix时间戳（秒）
-		    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-		    "type" => $data['type'], //普通大班课
-		    "timestamp" => time(),
-		    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
-		    "is_long_term" => 0, //普通房间 
-		    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
-		    "template_name" => "oneone", //oneone(单视频模板)
-		    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
-		    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-		    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
-		];
+		if ($data['type']!=5) {
+			$params =  [
+			    "partner_id" => 70707480, //百家云 合作方id
+			    "title" =>$data['pplive_name'], //直播间标题
+			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
+			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
+			    "type" => $data['type'], //直播房间类型
+			    "timestamp" => time(),
+			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
+			    "is_long_term" => 0, //普通房间 
+			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
+			    "template_name" => "oneone", //oneone(单视频模板)
+			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
+			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
+			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			];
+		} else {
+			$params =  [
+			    "partner_id" => 70707480, //百家云 合作方id
+			    "title" =>$data['pplive_name'], //直播间标题
+			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
+			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
+			    "type" => 2, //普通大班课
+			    "timestamp" => time(),
+			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
+			    "is_mock_live" => 1,//是否为伪直播
+			    "mock_room_id" => $data['playback_room_id'],//直播回放room_id
+			    "is_long_term" => 0, //普通房间 
+			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
+			    "template_name" => "oneone", //oneone(单视频模板)
+			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
+			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
+			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			];
+		}
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
 		ksort($params);//将参数按key进行排序
 	    $str = '';
@@ -57,7 +77,7 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if($arr->code == 0) {
-        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'] ]);
+        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'] ]);
 	        if($res){
 	        	return true;
 	        }else {
@@ -65,7 +85,10 @@ class Pplive extends Model
 	        }
 
         } else {
-        	echo "直播间添加错误";die;
+        	if ($data['type'] ==5) {
+        		echo $arr->msg;die;
+        	}
+        	echo "直播间添加错误(第三方直播间)";die;
         }
 
 		
@@ -173,7 +196,7 @@ class Pplive extends Model
         	$url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
         	header("Location: ".$url.""); 
         } else {
-        	echo "查询回放token失败";
+        	echo "查询回放token失败(第三方直播间)";
         }
 	}
 	/**
@@ -206,9 +229,22 @@ class Pplive extends Model
 		return $arr;
 	}
 	//删除直播课程
-	public function deletes($pplive_id)
+	public function deletes($pplive_id,$curriculum_id)
 	{
-		$pplive =  DB::table('pplive')->where('pplive_id',$pplive_id)->get();
+		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
+	        $curriculum = $pplive[0]->curriculum_id;
+			$curriculum = explode(',',$curriculum);
+			$count = count($curriculum);
+			if($count!=1){
+				foreach ($curriculum as $key => $value) {
+					if($value == $curriculum_id){
+						unset($curriculum[$key]);
+					}
+				}
+				$curriculum = implode($curriculum,',');
+				$arr = DB::table('pplive')->where('pplive_id',$pplive_id)->update(['curriculum_id'=>$curriculum]);
+				return $arr;die;
+			}
 		$entrance = $pplive[0]->entrance;
 		$params =  [
 		    "partner_id" => 70707480, //百家云 合作方id
@@ -239,10 +275,9 @@ class Pplive extends Model
         $arr = json_decode($arr);
         if ($arr->code == 0 ) {
         	$arr = DB::table('pplive')->where('pplive_id','=', $pplive_id)->delete();
-        	
 			return $arr;
         } else {
-        	echo "删除课程错误";die;
+        	echo $arr->msg."(第三方直播间)";die;
         }
 		
 	}
@@ -259,22 +294,43 @@ class Pplive extends Model
 		$entrance = $pplive_id[0]->entrance;
 		$start_time =  strtotime($data['start_time']);
 		$end_time = strtotime($data['end_time']);
-		$params =  [
-		    "partner_id" => 70707480, //百家云 合作方id
-		    "room_id" => $entrance,
-		    "title" =>$data['pplive_name'], //直播间标题
-		    "start_time" => $start_time, //开课时间, unix时间戳（秒）
-		    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-		    "type" => $data['type'], //普通大班课
-		    "timestamp" => time(),
-		    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
-		    "is_long_term" => 0, //普通房间 
-		    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
-		    "template_name" => "oneone", //oneone(单视频模板)
-		    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
-		    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-		    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
-		];
+		if ($data['type']!=5) {
+			$params =  [
+			    "partner_id" => 70707480, //百家云 合作方id
+			    "room_id" => $entrance,
+			    "title" =>$data['pplive_name'], //直播间标题
+			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
+			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
+			    "type" => $data['type'], //普通大班课
+			    "timestamp" => time(),
+			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
+			    "is_long_term" => 0, //普通房间 
+			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
+			    "template_name" => "oneone", //oneone(单视频模板)
+			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
+			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
+			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			];
+		} else {
+			$params =  [
+			    "partner_id" => 70707480, //百家云 合作方id
+			    "room_id" => $entrance,
+			    "title" =>$data['pplive_name'], //直播间标题
+			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
+			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
+			    "type" => $data['type'], //普通大班课
+			    "timestamp" => time(),
+			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
+			    "is_long_term" => 0, //普通房间 
+			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
+			    "mock_room_id" => $data['playback_room_id'], //伪直播房间号
+			    "template_name" => "oneone", //oneone(单视频模板)
+			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
+			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
+			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			];
+		}
+		
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
 		ksort($params);//将参数按key进行排序
 	    $str = '';
@@ -298,10 +354,10 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if ($arr->code == 0) {
-        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type']]);
+        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id']]);
 			return $res;
         } else {
-        	echo "修改课程错误";die;
+        	echo "修改课程错误(第三方直播间)";die;
         }
 		
 	}

@@ -87,7 +87,7 @@ class PpliveController extends CommonController
 		$pplive_id = Input::get('pplive_id');
 		$curriculum_id = Input::get('curriculum_id');
 		$pplive = new Pplive;
-		$res = $pplive->deletes($pplive_id);
+		$res = $pplive->deletes($pplive_id,$curriculum_id);
 		if($res){
 			return redirect('admin/listpplive?curriculum_id='.$curriculum_id);
 		} else {
