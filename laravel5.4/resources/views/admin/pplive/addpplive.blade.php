@@ -36,13 +36,20 @@
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">直播类型<span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">
-                                <select name="type">
+                                <select name="type" class="wei">
                                     <option value="2">普通大班课</option>
                                     <option value="1">一对一课</option>
                                     <option value="3">小班课普通版</option>
+                                    <option value="5">伪直播</option>
                                 </select>
                             </div>
-                        </div>  
+                        </div>
+                        <div class="am-form-room" style="display: none">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">直播回放room_id <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                               <input type="text" name="playback_room_id" placeholder="请输入直播回放room_id">
+                            </div>
+                        </div>
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">任课教师 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">
@@ -76,8 +83,6 @@
         </div>
     </div>
 </div>
-
-
     <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
@@ -87,5 +92,13 @@
     laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
     laydate({elem: '#demo'});//绑定元素
 }();
+$('.wei').change(function(){
+    var type = $('.wei option:checked').val();
+    if (type==5) {
+        $('.am-form-room').removeAttr('style');
+    } else {
+        $('.am-form-room').attr('style',"display: none");
+    }
+})
 </script>
 </html>
