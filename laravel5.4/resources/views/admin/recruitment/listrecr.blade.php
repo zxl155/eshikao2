@@ -62,7 +62,7 @@
                                             <div class="am-btn-group am-btn-group-xs">
                                                 <a href="{{ url('admin/updrecr') }}?id={{ $val->recruitment_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 修改</a>
 
-                                                <a href="{{ url('admin/delrecr') }}?id={{ $val->recruitment_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
+                                                <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;"  href="{{ url('admin/delrecr') }}?id={{ $val->recruitment_id }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 删除</a>
                                             </div>
                                         </div>
                                     </td>

@@ -29,7 +29,9 @@
                             </div>
                         </div>
                         <div class="am-u-sm-12 am-u-md-3">
-                            
+                             <div class="am-form-group">
+                                <a href="{{ url('admin/addadmin') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 添加管理员</a>
+                            </div>
                         </div>
                         <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-input-group am-input-group-sm">
