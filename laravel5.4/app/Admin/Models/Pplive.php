@@ -365,7 +365,7 @@ class Pplive extends Model
 	public function admin_pplive($admin_id)
 	{
 		//$users = DB::table('pplive')->whereBetween(DA, array(1, 100))->get();
-		$pplive = DB::table('pplive')->orderBy('start_time', 'desc')->where('admin_id',$admin_id)->get()->toarray();
+		$pplive = DB::table('pplive')->orderBy('start_time','desc')->where('admin_id',$admin_id)->get()->toarray();
 		$pplives = DB::table('pplive')->where('assistant_admin_id',$admin_id)->get()->toarray();
 		$pplive = array_merge($pplives,$pplive);
 		//print_r($pplive);die;
