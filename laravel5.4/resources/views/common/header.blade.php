@@ -175,26 +175,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="{{ url('admin/addadmin') }}">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>添加管理员</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
                                 <a href="{{ url('admin/listadmin') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>管理员列表</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                <a href="{{ url('admin/addbro') }}">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>添加轮播图</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
-                                <a href="{{ url('admin/listbro') }}">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>轮播图列表</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
+                                
                             </li>
                         </ul>
                     </li>
@@ -220,7 +206,22 @@
                             </li>
                         </ul>
                     </li>
-
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-table"></i>
+                            <span>轮播图管理</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="{{ url('admin/listbro') }}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>轮播图列表</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="tpl-left-nav-item">
                         <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-table"></i>
@@ -229,11 +230,6 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="{{ url('admin/addrecr') }}">
-                                    <i class="am-icon-angle-right"></i>
-                                    <span>添加公告</span>
-                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-                                </a>
                                 <a href="{{ url('admin/listrecr') }}">
                                     <i class="am-icon-angle-right"></i>
                                     <span>公告列表</span>
@@ -278,7 +274,7 @@
                             <li>
                                 <a href="{{URL::asset('admin/teacherLive')}}">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>对应直播</span>
+                                    <span>教师对应直播</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
                             </li>

@@ -18,7 +18,7 @@
                         <div class="am-form-group">
                             <label for="curriculum-pricture" class="am-u-sm-3 am-form-label">图片<span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="file" class="tpl-form-input" name="curriculum_pricture" placeholder="请选择图片" value="{{$data[0]->curriculum_pricture}}" required>
+                                <input type="file" class="tpl-form-input" name="curriculum_pricture" placeholder="请选择图片" value="{{$data[0]->curriculum_pricture}}">
                             </div>
                         </div>
                         <div class="am-form-group">

@@ -155,13 +155,18 @@ class CurriculumController extends CommonController
      */
 	public function doupd(Request $request){
 		$data = Input::all();
-            $head_pirctur=$request->file('curriculum_pricture');
+		if(isset($data['curriculum_pricture'])){
+			$head_pirctur=$request->file('curriculum_pricture');
             $name=$head_pirctur->getClientOriginalName();
             $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
             $fileName=md5(uniqid($name));
             $fileName=$fileName.'.'.$ext;//生成新的的文件名
-		  $bool=Storage::disk('curriculum_pricture')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
-		$data['curriculum_pricture'] = $fileName;
+		  	$bool=Storage::disk('curriculum_pricture')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+			$data['curriculum_pricture'] = $fileName;
+		} else {
+			
+		}
+            
 		$curriculum = new Curriculum;
 		$curriculums = $curriculum->upd($data);
 		if ($curriculums == 'true') {
