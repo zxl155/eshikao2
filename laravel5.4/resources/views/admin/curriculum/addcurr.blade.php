@@ -84,26 +84,30 @@
                             </div>
                         </div>
                         <div class="am-form-group">
+
                             <label for="original_price" class="am-u-sm-3 am-form-label">学科 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
+                                <span class="label1_quan">全选</span><br/>
                                 @foreach($subjecttype_content as $val)
-                               <input type="checkbox" class="tpl-form-input" name="subject_id[]" value="{{$val->subject_id}}">{{$val->subject_name}}
+                               <input type="checkbox" class="tpl-form-input1" name="subject_id[]" value="{{$val->subject_id}}">{{$val->subject_name}}
                                @endforeach
                             </div>
                         </div>
                         <div class="am-form-group">
                             <label for="original_price" class="am-u-sm-3 am-form-label">学段 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
+                                <span class="label2_quan">全选</span><br/>
                                 @foreach($gradetype_content as $val)
-                               <input type="checkbox" class="tpl-form-input" name="grade_id[]" value="{{$val->grade_id}}" >{{$val->grade_name}}
+                               <input type="checkbox" class="tpl-form-input2" name="grade_id[]" value="{{$val->grade_id}}" >{{$val->grade_name}}
                                @endforeach
                             </div>
                         </div>
                          <div class="am-form-group">
                             <label for="original_price" class="am-u-sm-3 am-form-label">地区 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
+                                <span class="label3_quan">全选</span><br/>
                                 @foreach($region_content as $val)
-                               <input type="checkbox" class="tpl-form-input" name="region_id[]" value="{{$val->region_id}}">{{$val->region_name}}
+                               <input type="checkbox" class="tpl-form-input3" name="region_id[]" value="{{$val->region_id}}">{{$val->region_name}}
                                @endforeach
                             </div>
                         </div>
@@ -197,6 +201,30 @@
     ue.ready(function(){
         ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');
     });
+ $(".label1_quan").click(function(){
+    $(this).toggle(
+        function(){
+            $('.tpl-form-input1').attr('checked','checked');
+            $(this).removeAttr('style');
+        },
+    );
+ })
+ $(".label2_quan").click(function(){
+    $(this).toggle(
+        function(){
+            $('.tpl-form-input2').attr('checked','checked');
+            $(this).removeAttr('style');
+        },
+    );
+ })
+  $(".label3_quan").click(function(){
+    $(this).toggle(
+        function(){
+            $('.tpl-form-input3').attr('checked','checked');
+            $(this).removeAttr('style');
+        },
+    );
+ })
 </script>
 </body>
 </html>
