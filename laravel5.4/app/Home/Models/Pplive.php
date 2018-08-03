@@ -70,16 +70,13 @@ class Pplive extends Model
        $sign = md5($str);
        $params['sign'] = $sign;
        $ginseng = http_build_query($params);
-       $url1 = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
-       $url2 = "http://www.baijiayun.com/web/room/enter?".$ginseng;
-       echo "<script> if(confirm( '请确认安装客户端？ '))  location.href='".$url1."';else location.href='".$url2."'; </script>"; 
-       //if ($pplive[0]->type == 1) {
-
-         $url1 = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
-      // } else {
-         $url2 = "http://www.baijiayun.com/web/room/enter?".$ginseng;
-       //}
-       
+       if ($pplive[0]->type == 1) {
+        echo "<script> if(confirm('小主，请确认是否安装客户端'))  location.href='baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts';else location.href='http://www.baijiayun.com/web/room/enter?".$ginseng."'; </script>";
+         //$url = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
+       } else {
+         $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+         header("Location: ".$url."");
+       }
       // header("Location: ".$url.""); 
    }
 

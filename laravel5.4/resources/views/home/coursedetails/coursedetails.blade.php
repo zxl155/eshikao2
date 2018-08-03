@@ -15,10 +15,7 @@
     <div class="coursedetails">
         <div class="details-brief">
             <h2>{{$value->curriculum_name}}</h2>
-            <p class="Course-time">售卖时间：{{$value->recovery_original}}
-        </div>
-        <div class="details-brief" style="padding-left: 270px;">
-            <a target="_blank" href="https://www.baijiayun.com/classroomdown/"><span style="font-size: 20px;color: red">点击下载直播客户端</span></a>
+            <p class="Course-time">开售时间：{{$value->recovery_original}}
         </div>
     </div>
     <div class="viewdetails-content clearfix">
@@ -29,7 +26,9 @@
                 <li>常见问题</li>
             </ul>
             <div class="v-content-left-list  off">
-                <h3 style="color: red">温馨提示: <span style="font-size: 14px">当进入教室中您已安装客户端请点击确认我们将为您开启客户端,否则开启页面端(客户端将比页面端流畅)</span> </h3>
+                @if($value->purchase_number== 1)
+                <h3 style="color: red">温馨提示: <span style="font-size: 14px">小主，为了保障1对1的学习效果体验，请使用电脑登录易师考官网观看学习(建议下载使用1对1客户端)</span><br/><a href="https://www.baijiayun.com/classroomdown/" style="color: blue">点击下载客户端</a></h3>
+                @endif
                 <ul class="v-content-left-list-ul">
     
                      @foreach($pplive_content as $val)
