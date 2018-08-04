@@ -46,6 +46,7 @@ class Pplive extends Model
 			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
 			    "is_mock_live" => 1,//是否为伪直播
 			    "mock_room_id" => $data['playback_room_id'],//直播回放room_id
+			    "mock_session_id" => $data['playback_session_id'],//直播回放session_id
 			    "is_long_term" => 0, //普通房间 
 			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
 			    "template_name" => "oneone", //oneone(单视频模板)
@@ -77,7 +78,7 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if($arr->code == 0) {
-        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'] ]);
+        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_session_id'] ]);
 	        if($res){
 	        	return true;
 	        }else {
@@ -324,6 +325,7 @@ class Pplive extends Model
 			    "is_long_term" => 0, //普通房间 
 			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
 			    "mock_room_id" => $data['playback_room_id'], //伪直播房间号
+			    "mock_session_id" => $data['playback_session_id'],//直播回放session_id
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
@@ -354,7 +356,7 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if ($arr->code == 0) {
-        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id']]);
+        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_room_id']]);
 			return $res;
         } else {
         	echo "修改课程错误(第三方直播间)";die;
