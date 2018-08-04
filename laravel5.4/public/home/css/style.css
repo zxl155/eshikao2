@@ -406,6 +406,7 @@ textarea {
 
     .Qualified-period {
         display: inline-block;
+        height: 38px;
         color: #666;
         margin-top: 18px;
     }
