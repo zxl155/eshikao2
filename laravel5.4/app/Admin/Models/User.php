@@ -109,5 +109,18 @@ class User extends Model
         return false;
       }
    }
-
+   //后台添加新用户
+   public function addUsers($data)
+   {
+     if (strlen($data['user_tel'])!=11) {
+       echo "请输入正确的手机号";die;
+     }
+      $user = DB::table('user')->where('user_tel',$data['user_tel'])->get()->toArray();
+      if (empty($user)) {
+        $arr = DB::table('user')->insert(['user_tel'=>$data['user_tel'],'password'=>md5($data['password']),'add_time'=>date('Y-m-d H:i:s')]);
+      } else {
+        echo "此账号以注册";die;
+      }
+      return $arr;
+   }
 }
