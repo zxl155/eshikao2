@@ -129,6 +129,15 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/copySearch','PpliveController@copySearch');
     //复制直播间入库
     Route::post('admin/copyPplives','PpliveController@copyPplives');
+    //教师资格证自定义排序展示
+    Route::get('admin/qualificationsPc','ByController@qualificationsPc');
+    //进行修改资格证
+    Route::post('admin/qualificationsPcSearch','ByController@qualificationsPcSearch');
+    //教师招聘之定义PC
+    Route::get('admin/recruitPC','ByController@recruitPC');
+    //进行修改教师招聘
+    Route::post('admin/recruitPCSearch','ByController@recruitPCSearch');
+
   });
   //登录
   Route::get('admin/login','LoginController@login');

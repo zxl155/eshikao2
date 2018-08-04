@@ -116,7 +116,7 @@ class Pplive extends Model
             $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
             header("Location: ".$url.""); 
           } else {
-            echo "查询回放token失败";die;
+            echo "查询回放token失败(请在直播结束俩小时后进行观看)";die;
           }
    }
 }

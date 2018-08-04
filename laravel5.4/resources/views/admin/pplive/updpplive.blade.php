@@ -59,7 +59,13 @@
                         <div class="am-form-room" style="display: none">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">直播回放room_id <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                               <input type="text" name="playback_room_id" placeholder="请输入直播回放room_id">
+                               <input type="text" name="playback_room_id" value="{{$data[0]->playback_room_id}}" placeholder="请输入直播回放room_id">
+                            </div>
+                        </div>
+                        <div class="am-form-room" style="display: none">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">直播回放session_id <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                               <input type="text" name="playback_session_id" value="{{$data[0]->playback_session_id}}" placeholder="请输入直播回放session_id">
                             </div>
                         </div>
                         <div class="am-form-group">
