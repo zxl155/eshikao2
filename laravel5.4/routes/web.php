@@ -137,6 +137,10 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/recruitPC','ByController@recruitPC');
     //进行修改教师招聘
     Route::post('admin/recruitPCSearch','ByController@recruitPCSearch');
+    //后台进行添加用户
+    Route::get('admin/addUser','UserController@addUser');
+    //后台进行添加用户
+    Route::post('admin/addUsers','UserController@addUsers');
 
   });
   //登录
