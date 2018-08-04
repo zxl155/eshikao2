@@ -249,9 +249,9 @@ class Order extends Model
               if ($value->curriculum_id==$val->curriculum_id) {
                 $value->curriculum_name = $val->curriculum_name;
               }
+              $value->user_tel = substr_replace($value->user_tel,'****',3,4);
           }
         }
-       
         return $arr;
     }
 }
