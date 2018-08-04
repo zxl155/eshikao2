@@ -68,6 +68,7 @@ class Curriculum extends Model
        $curriculum->where('purchase_state_time','<=',$times);
        $curriculum->where('purchase_end_time','>=',$times);
        //$qualificationss = $curriculum->paginate(5);
+       $curriculum->orderBy('order_by','asc');
        $qualificationss = $curriculum->get();
         $admin = DB::table('admin')->get();
         foreach ($qualificationss as $key => $value) {
@@ -97,6 +98,7 @@ class Curriculum extends Model
        $curriculum->where('purchase_state_time','<=',$times);
        $curriculum->where('purchase_end_time','>=',$times);
        //$recruits = $curriculum->paginate(5);
+       $curriculum->orderBy('order_by','asc');
         $recruits = $curriculum->get();
 
         $admin = DB::table('admin')->get();

@@ -130,4 +130,26 @@ class Curriculum extends Model
       $arr = DB::table('curriculum')->get()->toarray(); 
       return $arr;
     }
+    //pc查询教师资格证
+    public function qualificationsPc()
+    {
+      $times = date('Y-m-d H:i:s');
+      $sql = "select curriculum_id,curriculum_name,order_by from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."'";
+      $qualifications = DB::select($sql);
+      return $qualifications;
+    }
+    //修改排序
+    public function qualificationsPcSearch($data)
+    {
+       $arr = DB::table('Curriculum')->where('curriculum_id',$data['curriculum_id'])->update(['order_by'=>$data['order_by']]);
+       return $arr;
+    }
+    //pc查询教师招聘
+    public function recruitPC()
+    {
+      $times = date('Y-m-d H:i:s');
+      $sql = "select curriculum_id,curriculum_name,order_by from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."'";
+      $qualifications = DB::select($sql);
+      return $qualifications;
+    }
 }
