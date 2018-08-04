@@ -237,7 +237,7 @@
                                 </a>
                                  <a href="{{ url('admin/recruitPC') }}">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>PC教师资格证排序</span>
+                                    <span>PC教师招聘排序</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
                             </li>
