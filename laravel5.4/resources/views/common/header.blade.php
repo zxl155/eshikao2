@@ -192,12 +192,21 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="{{ url('admin/addUser') }}">
+                                <a href="{{ url('admin/manualUser') }}">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>添加新用户</span>
+                                    <span>展示管理员添加新用户</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
-                                
+                                <a href="{{ url('admin/registerUser') }}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>展示非管理员添加的所有用户</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                                <a href="{{ url('admin/userCurriculum') }}">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>用户对应的购买课程</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
                             </li>
                         </ul>
                     </li>

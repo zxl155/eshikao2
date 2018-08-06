@@ -141,7 +141,12 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/addUser','UserController@addUser');
     //后台进行添加用户
     Route::post('admin/addUsers','UserController@addUsers');
-
+    //手动注册的用户
+    Route::get('admin/manualUser','UserController@manualUser');
+    //自己注册的用户
+    Route::get('admin/registerUser','UserController@registerUser');
+    //用户手机号对应的购买课程
+    Route::get('admin/userCurriculum','UserController@userCurriculum');
   });
   //登录
   Route::get('admin/login','LoginController@login');
