@@ -21,9 +21,30 @@ class UserController extends CommonController
 		$user = new User;
 		$arr = $user->addUsers($data);
 		if ($arr) {
-			echo "<script>alert('添加成功');location.href='addUser';</script>";
+			echo "<script>alert('添加成功');location.href='manualUser';</script>";
 		} else {
 			echo "添加新用户失败";
 		}
+	}
+	//手动注册的用户
+	public function manualUser()
+	{
+		$user = new User;
+		$data = $user->manualUser();
+		return view('admin/user/manualUser',['data'=>$data]);
+	}
+	//注册用户
+	public function registerUser()
+	{
+		$user = new User;
+		$data = $user->registerUser();
+		return view('admin/user/registerUser',['data'=>$data]);
+	}
+	//用户对应的购买课程
+	public function userCurriculum()
+	{
+		$user = new User;
+		$data = $user->userCurriculum();
+		return view('admin/user/userCurriculum',['data'=>$data]);
 	}
 }
