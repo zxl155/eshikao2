@@ -47,7 +47,6 @@ class WxpayController extends Controller
 	//微信成功
 	public function wxSuccess()
 	{
-
 		$order_number = session('order_number');
 		$order = new Order;
 		$data = $order->noaddress($order_number); //通过订单查询的订单数据
