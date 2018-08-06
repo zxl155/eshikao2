@@ -124,7 +124,7 @@ $url2 = $result["code_url"];
                     //alert(transaction_id);  
                     //延迟3000毫秒执行tz() 方法
                     clearInterval(myIntval);  
-                    setTimeout("location.href='wxSuccess.html'",3000);  
+                    setTimeout("location.href='wxSuccess.html'",1000);  
 
                 }else if(trade_state=='REFUND'){  
                     document.getElementById("myDiv").innerHTML='转入退款'; 
