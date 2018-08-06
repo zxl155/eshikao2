@@ -123,4 +123,36 @@ class User extends Model
       }
       return $arr;
    }
+   //管理员添加的用户
+   public function manualUser()
+   {
+     $data = DB::table('user')->where('is_login','1')->orderBy('add_time','desc')->paginate(15);
+     return $data;
+   }
+   //自己注册的用户
+   public function registerUser()
+   {
+      $data = DB::table('user')->where('is_login','!=1','1')->orderBy('add_time','desc')->paginate(15);
+     return $data;
+   }
+   //用户对应的购买课程
+   public function userCurriculum()
+   {
+      $user_curriculum = DB::table('user_curriculum')->orderBy('id','desc')->paginate(15);
+      $user = DB::table('user')->select('user_tel','user_id')->get();
+      $curriculum = DB::table('curriculum')->select('curriculum_name')->get();
+      foreach ($user_curriculum as $key => $value) {
+          foreach ($user as $k => $val) {
+              if($value->user_id==$val->user_id){
+                  $value->user_tel = $val->user_tel;
+              }
+          }
+      }
+      foreach ($user_curriculum as $key => $value) {
+          foreach ($curriculum as $k => $val) {
+            $value->curriculum_name = $val->curriculum_name;
+          }
+      }
+      return $user_curriculum;
+   }
 }
