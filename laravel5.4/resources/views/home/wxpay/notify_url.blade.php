@@ -17,7 +17,6 @@
         $url = "https://api.mch.weixin.qq.com/pay/orderquery";//微信传参地址
         $dataxml = http_post($url,$post_data); //后台POST微信传参地址  同时取得微信返回的参数    POST 方法我写下面了
         $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
-        print_r($objectxml);die;
        if ($objectxml['return_code']=='SUCCESS'&$objectxml['result_code']=='SUCCESS'&$objectxml['trade_state_desc']=="订单未支付") {
           echo $objectxml['trade_state_desc'];die;
        } else {
