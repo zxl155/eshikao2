@@ -117,7 +117,7 @@ class User extends Model
      }
       $user = DB::table('user')->where('user_tel',$data['user_tel'])->get()->toArray();
       if (empty($user)) {
-        $arr = DB::table('user')->insert(['user_tel'=>$data['user_tel'],'password'=>md5($data['password']),'add_time'=>date('Y-m-d H:i:s')]);
+        $arr = DB::table('user')->insert(['user_tel'=>$data['user_tel'],'password'=>md5($data['password']),'add_time'=>date('Y-m-d H:i:s'),'is_login'=>1]);
       } else {
         echo "此账号以注册";die;
       }
