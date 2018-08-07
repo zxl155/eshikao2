@@ -58,8 +58,14 @@ class AdminController extends CommonController
      * 教师列表
      */
 	public function listadmin(){
+		$admin_name = Input::get('admin_name');
 		$admin = new Admin;
-		$data = $admin->select()->orderBy('admin_id', 'desc')->paginate(5);
+		if ($admin_name!="") {
+			$data = $admin->select()->orwhere('nickname','like','%'.$admin_name.'%')->orderBy('admin_id', 'desc')->get();
+		} else {
+			$data = $admin->select()->orderBy('admin_id', 'desc')->paginate(5);
+		}
+		
 		foreach ($data as $key => $val) {
 			$val['admin_desc'] = substr_replace($val['admin_desc'],'....', 30);
 		}
@@ -74,7 +80,8 @@ class AdminController extends CommonController
 			}
 		}
 		return view('admin/admin/listadmin',[
-			'data' => $data
+			'data' => $data,
+			'admin_name' => $admin_name,
 		]);
 	}
 

@@ -28,6 +28,18 @@ class ByController extends Controller
     		echo "修改教师资格证排序失败";
     	}
     }
+    //资格证修改是否为PC首页
+    public function qualificationsHomePage()
+    {
+       $curriculum_id = Input::get('curriculum_id');
+       $curriculum = new Curriculum;
+      $arr =  $curriculum->homePage($curriculum_id);
+      if ($arr) {
+        return redirect('admin/qualificationsPc'); 
+      } else {
+        echo "修改是否为首页失败";
+      }
+    }
     //展示PC教师招聘
     public function recruitPC()
     {
@@ -44,7 +56,19 @@ class ByController extends Controller
     	if ($arr) {
     		return redirect('admin/recruitPC');
     	} else {
-    		echo "修改教师资格证排序失败";
+    		echo "修改教师招聘排序失败";
     	}
+    }
+     //招聘修改是否为PC首页
+    public function recruitHomePage()
+    {
+       $curriculum_id = Input::get('curriculum_id');
+       $curriculum = new Curriculum;
+      $arr =  $curriculum->homePage($curriculum_id);
+      if ($arr) {
+        return redirect('admin/recruitPC'); 
+      } else {
+        echo "修改是否为首页失败";
+      }
     }
 }
