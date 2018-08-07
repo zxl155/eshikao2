@@ -49,4 +49,12 @@ class OrderController extends Controller
 			'order_content'=>$order_content,
 		]);
 	}
+	//物流信息
+	public function logistics()
+	{
+		$order_id = Input::get('order_id');
+		$order = new Order;
+		$order = $order->logistics($order_id);
+		return view('home/order/logistics',['order'=>$order]);
+	}
 }

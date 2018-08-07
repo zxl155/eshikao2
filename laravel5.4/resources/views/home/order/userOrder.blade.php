@@ -44,9 +44,9 @@
                             @if($value->order_state == 1)
                             @if($value->is_goods == 2)
                             <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>
-                               @if($value->qq_group_key != '') |<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
+                               @if($value->qq_group_key != '') |<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
                                @endif
-                            <a href="#">物流信息</a>
+                            <a href="{{URL::asset('home/logistics.html')}}?order_id={{$value->order_id}}">物流信息</a>
                             @else
                             <div class="td-details"><a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}">查看课程</a>
                                      @if($value->qq_group_key != '')|<a href="http://shang.qq.com/wpa/qunwpa?idkey={{$value->qq_group_key}}">加QQ群</a></div>
