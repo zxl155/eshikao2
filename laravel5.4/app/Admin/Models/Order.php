@@ -50,4 +50,10 @@ class Order extends Model
        
         return $arr;
      }
+     //修改用户对应的单号
+     public function invoice($data)
+     {
+         $arr = DB::table('order')->where('order_id',$data['order_id'])->update(['invoice_number'=>$data['invoice_number']]);
+         return $arr;
+     }
 }

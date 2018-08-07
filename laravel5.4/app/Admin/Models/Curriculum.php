@@ -127,7 +127,7 @@ class Curriculum extends Model
     //查询输有数据
     public function selects()
     {
-      $arr = DB::table('curriculum')->get()->toarray(); 
+      $arr = DB::table('curriculum')->orderBy('curriculum_id','desc')->get()->toarray(); 
       return $arr;
     }
     //pc查询教师资格证

@@ -32,18 +32,29 @@
                                 
                                 <tr>
                                     <th class="table-id">编号</th>
+                                    <th>订单号</th>
+                                    <th>下单时间</th>
                                     <th class="table-title">手机号</th>
                                     <th>课程名称</th>
+                                    <th>课程价格</th>
+                                    <th>收货姓名</th>
+                                    <th>收货地址</th>
+                                    <th>快递单号(以发货请输入订单号)</th>
                                 </tr>
 
                             </thead>
                             <tbody>
                                 @foreach($data as $value)
                                 <tr>
-                                    <th>{{$value->id}}</th>
+                                    <th>{{$value->order_id}}</th>
+                                    <th>{{$value->order_number}}</th>
+                                    <th>{{$value->order_time}}</th>
                                     <th>{{$value->user_tel}}</th>
                                     <th>{{$value->curriculum_name}}</th>
-                                    
+                                    <th>{{$value->order_money}}</th>
+                                    <th>{{$value->address_name}}</th>
+                                    <th>{{$value->address_detailed}}</th>
+                                    <th><input class="invoice" value="{{$value->invoice_number}}" order_id='{{$value->order_id}}' placeholder="请输入物流单号" style="background: pink"></th>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -81,9 +92,19 @@
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
     <script type="text/javascript">
-setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
-window.location.reload();//页面刷新
-},60000);
-</script>
+        $('.invoice').blur(function(){
+           var order_id = $(this).attr('order_id');
+           var invoice_number = $(this).val();
+            $.ajax({
+                url:"{{URL::asset('admin/invoice')}}",
+                data:{invoice_number:invoice_number,order_id:order_id,_token:"{{csrf_token()}}"},
+                type:'get',
+                dataType:"json",
+                success:function(data){
+                     location.reload();
+                }
+            })
+        })
+    </script>
 </body>
 </html>
