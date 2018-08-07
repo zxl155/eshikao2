@@ -138,7 +138,7 @@ class User extends Model
    //用户对应的购买课程
    public function userCurriculum()
    {
-      $user_curriculum = DB::table('user_curriculum')->orderBy('id','desc')->paginate(15);
+     /* $user_curriculum = DB::table('user_curriculum')->orderBy('id','desc')->paginate(15);
       $user = DB::table('user')->select('user_tel','user_id')->get();
       $curriculum = DB::table('curriculum')->select('curriculum_name')->get();
       foreach ($user_curriculum as $key => $value) {
@@ -153,6 +153,39 @@ class User extends Model
             $value->curriculum_name = $val->curriculum_name;
           }
       }
-      return $user_curriculum;
+      return $user_curriculum;*/
+      $order = DB::table('order')->where(['order_state'=>1])->where('order_money','>','0')->orderBy('order_time','desc')->paginate(15);
+      $user = DB::table('user')->select('user_tel','user_id')->get();
+      $curriculum = DB::table('curriculum')->select('curriculum_id','curriculum_name')->get();
+      $goods_address = DB::table('goods_address')->select('address_id','address_name','address_detailed')->get();
+      foreach ($order as $key => $value) {
+         foreach ($user as $k => $val) {
+            if ($value->user_id == $value->user_id) {
+              $value->user_tel = $val->user_tel;
+            }
+         }
+      }
+      foreach ($order as $key => $value) {
+          foreach ($curriculum as $k => $val) {
+              if($value->curriculum_id==$val->curriculum_id){
+                  $value->curriculum_name = $val->curriculum_name;
+              }
+          }
+      }
+      foreach ($order as $key => $value) {
+          foreach ($goods_address as $key => $val) {
+            if ($value->address_id == 0) {
+                  $value->address_name = '无需发货';
+                  $value->address_detailed = '无需发货';
+            } else {
+                if($value->address_id == $val->address_id){
+                  $value->address_name = $val->address_name;
+                  $value->address_detailed = $val->address_detailed;
+                }
+            }
+              
+          }
+      }
+      return $order;
    }
 }
