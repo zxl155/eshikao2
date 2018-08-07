@@ -35,7 +35,15 @@
                         </div>
                         <div class="am-u-sm-12 am-u-md-3">
                             <div class="am-input-group am-input-group-sm">
-                                
+                                <form action="{{ url('admin/listadmin') }}" method="get">
+                                    {{ csrf_field() }}
+                                <div class="am-input-group am-input-group-sm">
+                                    <input type="text" name="admin_name" placeholder="请输入管理员昵称" @if($admin_name!='') value="{{$admin_name}}" @endif class="am-form-field">
+                                    <span class="am-input-group-btn">
+                                        <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
+                                    </span>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -120,7 +128,9 @@
                                     <div class="am-fr">
                                         <div id="pull_right">
                                             <div class="pull-right">
+                                                @if($admin_name == '')
                                                {!! $data->render() !!}
+                                               @endif
                                             </div>
                                         </div>
                                     </div>

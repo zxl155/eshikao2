@@ -134,7 +134,7 @@ class Curriculum extends Model
     public function qualificationsPc()
     {
       $times = date('Y-m-d H:i:s');
-      $sql = "select curriculum_id,curriculum_name,order_by from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by order_by asc";
+      $sql = "select curriculum_id,curriculum_name,order_by,home_page from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by order_by asc";
       $qualifications = DB::select($sql);
       return $qualifications;
     }
@@ -148,8 +148,19 @@ class Curriculum extends Model
     public function recruitPC()
     {
       $times = date('Y-m-d H:i:s');
-      $sql = "select curriculum_id,curriculum_name,order_by from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."'  order by order_by asc";
+      $sql = "select curriculum_id,curriculum_name,order_by,home_page from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."'  order by order_by asc";
       $qualifications = DB::select($sql);
       return $qualifications;
+    }
+    //修改是否为PC首页
+    public function homePage($curriculum_id)
+    {   
+        $curriculum = DB::table('curriculum')->where('curriculum_id',$curriculum_id)->select('home_page')->get();
+        if($curriculum[0]->home_page == ''){
+          $arr = DB::table('curriculum')->where('curriculum_id',$curriculum_id)->update(['home_page'=>1]);
+        } else {
+          $arr = DB::table('curriculum')->where('curriculum_id',$curriculum_id)->update(['home_page'=>0]);
+        }
+        return $arr;
     }
 }

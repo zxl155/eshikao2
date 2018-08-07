@@ -133,10 +133,14 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/qualificationsPc','ByController@qualificationsPc');
     //进行修改资格证
     Route::post('admin/qualificationsPcSearch','ByController@qualificationsPcSearch');
+    //资格证修改是否为PC首页
+     Route::get('admin/qualificationsHomePage','ByController@qualificationsHomePage');
     //教师招聘之定义PC
     Route::get('admin/recruitPC','ByController@recruitPC');
     //进行修改教师招聘
     Route::post('admin/recruitPCSearch','ByController@recruitPCSearch');
+    //招聘修改是否为PC首页
+     Route::get('admin/recruitHomePage','ByController@recruitHomePage');
     //后台进行添加用户
     Route::get('admin/addUser','UserController@addUser');
     //后台进行添加用户
