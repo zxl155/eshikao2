@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Admin\Models\User;
+use App\Admin\Models\Order;
+
 class UserController extends CommonController
 {	
 	//添加用户
@@ -46,5 +48,13 @@ class UserController extends CommonController
 		$user = new User;
 		$data = $user->userCurriculum();
 		return view('admin/user/userCurriculum',['data'=>$data]);
+	}
+	//用户对应的发货单号
+	public function invoice()
+	{
+		$data = Input::all();
+		$order = new Order;
+		$arr = $order->invoice($data);
+		return json_encode($arr);
 	}
 }

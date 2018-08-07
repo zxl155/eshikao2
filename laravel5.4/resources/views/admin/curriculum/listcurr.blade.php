@@ -27,18 +27,16 @@
                     </div>
                     
                 </div>
-                
-                <!-- <div class="am-u-sm-12 am-u-md-3">
-                    <form action="listcurr" method="get">
+                <div class="am-u-sm-12 am-u-md-3">
+                    <form action="{{ url('admin/listcurr') }}" method="get">
                     <div class="am-input-group am-input-group-sm">
-                        <input type="text" name="search" value="" class="am-form-field">
+                        <input type="text" name="curriculum_name" @if($curriculum_name!='') value="{{$curriculum_name}}" @endif class="am-form-field" placeholder="请输入课程名称或关键字">
                         <span class="am-input-group-btn">
                             <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
                         </span>
                     </div>
                     </form>
-                </div> -->
-
+                </div>
             </div>
             <div class="am-g">
                 <div class="am-u-sm-12">
@@ -95,7 +93,10 @@
                                 <div id="pull_right">
                                     <span>当前总课程<span style="color: red">{{$count}}</span>条</span>
                                     <div class="pull-right">
-                                       {!! $curriculum_content->render() !!}
+                                      
+                                       @if($curriculum_name == '')
+                                             {!! $curriculum_content->render() !!}
+                                      @endif
                                     </div>
                                 </div>
                             </div>

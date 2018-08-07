@@ -21,7 +21,7 @@
                                <select name="curriculum_id" class="curriculum_id">
                                     <option value="0">--请选择--</option>
                                     @foreach($curriculum as $value)
-                                   <option value="{{$value->curriculum_id}}">{{$value->curriculum_name}}</option>
+                                   <option value="{{$value->curriculum_id}}">{{$value->curriculum_id}}----{{$value->curriculum_name}}</option>
                                    @endforeach
                                </select>
                             </div>
@@ -80,6 +80,8 @@
                     }
                  }
             })
+        } else {
+            tbody.html("请选择课程");
         }
     })
 </script>

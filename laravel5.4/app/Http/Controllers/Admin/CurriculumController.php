@@ -81,15 +81,21 @@ class CurriculumController extends CommonController
      * 课程列表
      */
 	public function listcurr(){
+		$curriculum_name = Input::get('curriculum_name');
 		$curriculum = new Curriculum;
-		$curriculum_content = $curriculum -> select();
-
-		$object = DB::select('select * from curriculum');
+		if ($curriculum_name != '') {
+			$curriculum_content = DB::table('curriculum')->orwhere('curriculum_name','like','%'.$curriculum_name.'%')->get();
+			$object = DB::select("select * from curriculum where curriculum_name like '%$curriculum_name%'");
+		} else {
+			$curriculum_content = $curriculum -> select();
+			$object = DB::select('select * from curriculum');
+		}
         $curriculum = json_decode(json_encode($object), true);
         $count = count($curriculum);
 		return view('admin/curriculum/listcurr',[
 			'curriculum_content' =>$curriculum_content,
 			'count' => $count,
+			'curriculum_name' => $curriculum_name,
 		]);
 	}
 

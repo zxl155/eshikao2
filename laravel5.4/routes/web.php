@@ -151,6 +151,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/registerUser','UserController@registerUser');
     //用户手机号对应的购买课程
     Route::get('admin/userCurriculum','UserController@userCurriculum');
+    //用户对应的发货单号修改
+    Route::get('admin/invoice','UserController@invoice');
   });
   //登录
   Route::get('admin/login','LoginController@login');
