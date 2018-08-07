@@ -33,7 +33,11 @@
                 查看物流信息
             </p>
             <p class="logins-text-box">
-                暂未开通物流消息，我们将及时为您发货
+                @if($value->invoice_number == '')
+                    暂未发货，亲敬请等待
+                @else
+                    您的物流单号为：{{$value->invoice_number}}
+                @endif
             </p>
         </div>
         @endif

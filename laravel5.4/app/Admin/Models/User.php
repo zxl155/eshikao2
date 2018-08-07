@@ -154,7 +154,7 @@ class User extends Model
           }
       }
       return $user_curriculum;*/
-      $order = DB::table('order')->where(['order_state'=>1])->where('order_money','>','0')->orderBy('order_time','desc')->paginate(15);
+      $order = DB::table('order')->where(['order_state'=>1])->orderBy('order_time','desc')->paginate(15);
       $user = DB::table('user')->select('user_tel','user_id')->get();
       $curriculum = DB::table('curriculum')->select('curriculum_id','curriculum_name')->get();
       $goods_address = DB::table('goods_address')->select('address_id','address_name','address_detailed')->get();

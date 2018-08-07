@@ -232,6 +232,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/addressUpdates.html','AddressController@addressUpdates');
    //订单首页
   Route::get('home/order.html','OrderController@index');
+  //物流信息
+  Route::get('home/logistics.html','OrderController@logistics');
   //支付首页
   Route::get('home/CommodityGoods.html','CommodityController@CommodityGoods');
   //支付删除地址
