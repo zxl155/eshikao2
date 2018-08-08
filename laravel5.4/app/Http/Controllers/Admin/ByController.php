@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Admin\Models\Curriculum;
-class ByController extends Controller
+class ByController extends CommonController
 {
 	//展示PC资格证PC
     public function qualificationsPc()

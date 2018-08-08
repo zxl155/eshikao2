@@ -321,4 +321,6 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/package','CourseController@package');
   //代理商户查询地址
   Route::get('home/orderSearch','CourseController@orderSearch');
+  //微信公众号支付
+  Route::get('home/publiCpayment','PayController@publiCpayment');
 });
