@@ -133,7 +133,13 @@ class PayController extends Controller
 		if($datas[0]->order_money == 0){
 			return redirect("home/moveUpdateOrder?order_number=".$datas[0]->order_number);
 		} else {
-			return view('home/wxpay/wx',['data'=>$datas]);
+			// 我们判断HTTP_USER_AGENT中是否有MicroMessenger即可
+			if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
+				return view('home/wxpay/example/jsapi',['data'=>$datas]);
+			}else{
+				return view('home/wxpay/wx',['data'=>$datas]);
+			}
+			
 		}
 	}
 	//查询订单接口
@@ -163,7 +169,6 @@ class PayController extends Controller
 		}else{
 			echo '别的浏览器';
 		}*/
-		//return view('home/wxpay/example/jsapi');
-		return view('home/wxpay/public');
+		return view('home/wxpay/example/jsapi');
 	}
 }
