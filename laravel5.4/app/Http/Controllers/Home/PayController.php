@@ -154,4 +154,14 @@ class PayController extends Controller
 			echo "修改状态失败，请截图联系客服";
 		}
 	}
+	//微信公众号支付
+	public function publiCpayment()
+	{
+		// 我们判断HTTP_USER_AGENT中是否有MicroMessenger即可
+		if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
+			echo '微信浏览器';
+		}else{
+			echo '别的浏览器';
+		}
+	}
 }
