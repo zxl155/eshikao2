@@ -20,13 +20,14 @@ function printf_info($data)
 //①、获取用户openid
 $tools = new JsApiPay();
 $openId = $tools->GetOpenid();
-
+$money= "{$data[0]->order_money}";//充值金额 
+$money = $money * 100;
 //②、统一下单
 $input = new WxPayUnifiedOrder();
-$input->SetBody("test");
+$input->SetBody("易师考支付");
 $input->SetAttach("test");
-$input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$input->SetTotal_fee("1");
+$input->SetOut_trade_no("{$data[0]->order_number}");
+$input->SetTotal_fee($money);
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
@@ -34,8 +35,6 @@ $input->SetNotify_url("http://www.eshikao.com/home/wxnotify.html");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 $order = WxPayApi::unifiedOrder($input);
-echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
-printf_info($order);
 $jsApiParameters = $tools->GetJsApiParameters($order);
 
 //获取共享收货地址js函数参数
@@ -55,6 +54,7 @@ $editAddress = $tools->GetEditAddressParameters();
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     <title>易师考微信支付</title>
+    <input type="hidden" class="">
     <script type="text/javascript">
 	//调用微信JS api 支付
 	function jsApiCall()
@@ -64,7 +64,14 @@ $editAddress = $tools->GetEditAddressParameters();
 			<?php echo $jsApiParameters; ?>,
 			function(res){
 				WeixinJSBridge.log(res.err_msg);
-				alert(res.err_code+res.err_desc+res.err_msg);
+				 if(res.err_msg == "get_brand_wcpay_request:ok"){
+                       window.location.href="http://www.eshikao.com/home/moveWxSuccess?out_trade_no={{$data[0]->order_money}}";
+                   }else{
+                       //返回跳转到订单详情页面
+                       alert(支付失败);
+                         
+                   }
+				//alert(res.err_code+res.err_desc+res.err_msg);
 			}
 		);
 	}
@@ -96,8 +103,6 @@ $editAddress = $tools->GetEditAddressParameters();
 				var value3 = res.addressCountiesThirdStageName;
 				var value4 = res.addressDetailInfo;
 				var tel = res.telNumber;
-				
-				alert(value1 + value2 + value3 + value4 + ":" + tel);
 			}
 		);
 	}
@@ -119,7 +124,7 @@ $editAddress = $tools->GetEditAddressParameters();
 </head>
 <body>
     <br/>
-    <font color="#9ACD32"><b>该笔订单支付金额为<span style="color:#f00;font-size:50px">1分</span>钱</b></font><br/><br/>
+    <font color="#9ACD32"><b>该笔订单支付金额为<span style="color:#f00;font-size:50px">{{$data[0]->order_money}}分</span>钱</b></font><br/><br/>
 	<div align="center">
 		<button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>
 	</div>
