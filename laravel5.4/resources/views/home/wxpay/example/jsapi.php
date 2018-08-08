@@ -30,7 +30,7 @@ $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
+$input->SetNotify_url("http://www.eshikao.com");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 $order = WxPayApi::unifiedOrder($input);
@@ -54,7 +54,7 @@ $editAddress = $tools->GetEditAddressParameters();
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/> 
-    <title>微信支付样例-支付</title>
+    <title>易师考微信支付</title>
     <script type="text/javascript">
 	//调用微信JS api 支付
 	function jsApiCall()
@@ -79,7 +79,8 @@ $editAddress = $tools->GetEditAddressParameters();
 		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
 		    }
 		}else{
-		    jsApiCall();
+		    //jsApiCall();
+		    header("location:moveWxSuccess?out_trade_no=$out_trade_no");
 		}
 	}
 	</script>
