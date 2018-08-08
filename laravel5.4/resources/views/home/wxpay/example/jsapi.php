@@ -30,7 +30,7 @@ $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://www.eshikao.com");
+$input->SetNotify_url("http://www.eshikao.com/home/wxnotify.html");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 $order = WxPayApi::unifiedOrder($input);
@@ -79,8 +79,7 @@ $editAddress = $tools->GetEditAddressParameters();
 		        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
 		    }
 		}else{
-		    //jsApiCall();
-		    header("location:moveWxSuccess?out_trade_no=$out_trade_no");
+		    jsApiCall();
 		}
 	}
 	</script>
