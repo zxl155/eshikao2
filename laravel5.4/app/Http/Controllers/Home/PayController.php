@@ -158,10 +158,11 @@ class PayController extends Controller
 	public function publiCpayment()
 	{
 		// 我们判断HTTP_USER_AGENT中是否有MicroMessenger即可
-		if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
+		/*if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
 			echo '微信浏览器';
 		}else{
 			echo '别的浏览器';
-		}
+		}*/
+		return view('home/wxpay/example/jsapi');
 	}
 }

@@ -1,12 +1,12 @@
 <?php 
 ini_set('date.timezone','Asia/Shanghai');
 //error_reporting(E_ERROR);
-require_once "../lib/WxPay.Api.php";
-require_once "WxPay.JsApiPay.php";
-require_once 'log.php';
+require_once "../resources/views/home/wxpay/lib/WxPay.Api.php";
+require_once "../resources/views/home/wxpay/example/WxPay.JsApiPay.php";
+require_once '../resources/views/home/wxpay/example/log.php';
 
 //初始化日志
-$logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
+$logHandler= new CLogFileHandler("../resources/views/home/wxpay/logs/".date('Y-m-d').'.log');
 $log = Log::Init($logHandler, 15);
 
 //打印输出数组信息
