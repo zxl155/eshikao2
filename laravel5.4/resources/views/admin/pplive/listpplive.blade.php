@@ -42,6 +42,8 @@
                                     <th class="table-title">直播课程名称</th>
                                     <th class="table-title">学员入口</th>
                                     <th>伪直播room_id</th>
+                                    <th>伪直播session_id</th>
+                                    <th>点播ID</th>
                                     <th class="table-type">开始时间-结束时间</th>
                                     <th class="table-type">直播类型</th>
                                     <th class="table-title">任课老师</th>
@@ -58,6 +60,8 @@
                                     <th>{{$val->pplive_name}}</th>
                                     <th>{{$val->entrance}}</th>
                                     <th>{{$val->playback_room_id}}</th>
+                                    <th>{{$val->playback_session_id}}</th>
+                                    <th>{{$val->demand_id}}</th>
                                     <th>{{$val->start_time}}--{{$val->end_time}}</th>
                                     <th>
                                         @if($val->type==1)
@@ -68,6 +72,8 @@
                                             小班课普通版
                                         @elseif($val->type==5)
                                             伪直播
+                                        @elseif($val->type==6)
+                                            点播
                                         @else
                                             未设定
                                         @endif

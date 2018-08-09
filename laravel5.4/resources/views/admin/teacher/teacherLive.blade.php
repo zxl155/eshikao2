@@ -40,6 +40,7 @@
                                     <th class="table-title">课程名称</th>
                                     <th class="table-title">直播名称</th>
                                     <th class="table-title">开始时间--结束时间</th>
+                                    <th>直播类型</th>
                                     <th class="table-title">任课老师</th>
                                     <th class="table-title">助教</th>
                                     <th class="table-title">状态</th>
@@ -54,6 +55,19 @@
                                   <th>{{$val->curriculum_name}}</th>
                                   <th>{{$val->pplive_name}}</th>
                                   <th>{{$val->start_time}}--{{$val->end_time}}</th>
+                                  <th>
+                                      @if($val->type == 1)
+                                        1v1直播类型
+                                      @elseif($val->type == 2)
+                                        普通大班课
+                                      @elseif($val->type == 3)
+                                        小班课
+                                      @elseif($val->type == 5)
+                                        伪直播
+                                      @elseif($val->type == 6)
+                                        点播
+                                      @endif
+                                  </th>
                                   <th>
                                         {{$val->admin_name}}
                                   </th>

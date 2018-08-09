@@ -41,6 +41,7 @@
                                     <option value="1">一对一课</option>
                                     <option value="3">小班课普通版</option>
                                     <option value="5">伪直播</option>
+                                    <option value="6">点播</option>
                                 </select>
                             </div>
                         </div>
@@ -54,6 +55,12 @@
                             <label for="user-phone" class="am-u-sm-3 am-form-label">直播回放session_id <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
                                <input type="text" name="playback_session_id" placeholder="请输入直播回放session_id">
+                            </div>
+                        </div>
+                        <div class="am-form-rooms" style="display: none">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">点播ID <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                               <input type="text" name="demand_id" placeholder="请输入点播ID">
                             </div>
                         </div>
                         <div class="am-form-group">
@@ -104,6 +111,11 @@ $('.wei').change(function(){
         $('.am-form-room').removeAttr('style');
     } else {
         $('.am-form-room').attr('style',"display: none");
+    }
+    if (type==6) {
+        $('.am-form-rooms').removeAttr('style');
+    } else {
+        $('.am-form-rooms').attr('style',"display: none");
     }
 })
 </script>

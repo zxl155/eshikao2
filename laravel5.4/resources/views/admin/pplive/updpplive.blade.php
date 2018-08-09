@@ -53,6 +53,10 @@
                                                         selected
                                                       @endif
                                     >伪直播</option>
+                                     <option value="6"@if($data[0]->type == 6)
+                                                        selected
+                                                      @endif
+                                    >点播</option>
                                 </select>
                             </div>
                         </div>  
@@ -66,6 +70,12 @@
                             <label for="user-phone" class="am-u-sm-3 am-form-label">直播回放session_id <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
                                <input type="text" name="playback_session_id" value="{{$data[0]->playback_session_id}}" placeholder="请输入直播回放session_id">
+                            </div>
+                        </div>
+                        <div class="am-form-rooms" style="display: none">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">点播ID <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                               <input type="text" name="demand_id" value="{{$data[0]->demand_id}}" placeholder="请输入点播ID">
                             </div>
                         </div>
                         <div class="am-form-group">
@@ -146,12 +156,20 @@
      if (type == 5) {
         $('.am-form-room').removeAttr('style');
      }
+     if (type == 6) {
+        $('.am-form-rooms').removeAttr('style');
+     }
     $('.wei').change(function(){
         var type = $('.wei option:checked').val();
         if (type==5) {
             $('.am-form-room').removeAttr('style');
         } else {
             $('.am-form-room').attr('style',"display: none");
+        }
+        if (type==6) {
+        $('.am-form-rooms').removeAttr('style');
+        } else {
+            $('.am-form-rooms').attr('style',"display: none");
         }
     })
 </script>
