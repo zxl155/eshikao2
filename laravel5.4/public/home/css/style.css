@@ -4018,7 +4018,77 @@ textarea {
     .btnlogin:last-child{
         background: #999999;
     }
-
+    /*微信支付*/
+    .m-pay{
+        width: 100%;
+        overflow: hidden;
+        margin-top: .2rem;
+    }
+    .m-pay p{
+        line-height: 1rem;
+        font-size: .3rem;
+        padding: 0 .2rem;
+        color: #999;
+        border-bottom:1px solid #eee;
+        background: #fff;
+    }
+    .m-pay .m-pay-content{
+        padding: .2rem .2rem;
+        background: #fff;
+    }
+    .m-pay-img{
+        display: inline-block;
+        width: 2rem;
+        vertical-align: top;
+    }
+    .m-pay-img img{
+        /*position: absolute;*/
+        width: 100%;
+        /*height: 100%;*/
+        /*top: 0;*/
+        /*bottom: 0;*/
+        /*left: 0;*/
+        /*right: 0;*/
+        /*margin: auto;*/
+    }
+    .m-pay-title{
+        position: relative;
+        display: inline-block;
+        width: 4.6rem;
+        height: 1.14rem;
+        margin-left: .2rem;
+    }
+    .m-pay-title h2{
+        color: #999;
+        font-size: .24rem;
+        vertical-align:top;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .m-pay-title span{
+        position: absolute;
+        display: inline-block;
+        color: #f5b00b;
+        bottom: 0;
+        font-size: .4rem;
+        vertical-align:bottom;
+    }
+    .m-pay-btn{
+        display:block;
+        width: 90%;
+        font-size: .3rem;
+        color: #FFFFFF;
+        text-align: center;
+        line-height: 1rem;
+        border-radius: 5px;
+        margin: .5rem auto;
+        background: #f5b00b;
+    }
+    .m-pay-btn span{
+        font-size: .4rem;
+    }
 
 
 
