@@ -20,11 +20,11 @@
             <div class="personal-list">
                 <div class="personal-topic">
                     <p>课程名称：<span>{{$value->curriculum_name}}</span></p>
-                    <p>商户订单号：<span>{{$value->order_number}}</span></p>
+                    <p>快递单号：<span>{{$value->invoice_number}}</span></p>
                 </div>
                 <div class="personal-Addr">
                     <p><span>收货人：</span>
-                        <span>{{$value->address_name}}</span></p>
+                        <span>{{$value->address_name}}</span>{{$value->address_tel}}</p>
                     <p>
                         <span>{{$value->address_detailed}}</span>
                     </p>
@@ -33,7 +33,10 @@
                    @if($value->invoice_number=='')
                     暂无物流信息
                    @else
-                     您的物流订单号：{{$value->invoice_number}}
+                     @foreach($data as $val)
+                       {{$val['time']}}<br/>
+                       {{$val['context']}}<br/><br/>
+                     @endforeach
                    @endif
                 </div>
             </div>

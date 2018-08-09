@@ -157,14 +157,7 @@ class User extends Model
       $order = DB::table('order')->where(['order_state'=>1])->orderBy('order_time','desc')->paginate(15);
       $user = DB::table('user')->select('user_tel','user_id')->get();
       $curriculum = DB::table('curriculum')->select('curriculum_id','curriculum_name')->get();
-      $goods_address = DB::table('goods_address')->select('address_id','address_name','address_detailed')->get();
-      foreach ($order as $key => $value) {
-         foreach ($user as $k => $val) {
-            if ($value->user_id == $value->user_id) {
-              $value->user_tel = $val->user_tel;
-            }
-         }
-      }
+      $goods_address = DB::table('goods_address')->select('address_id','address_name','address_detailed','address_tel')->get();
       foreach ($order as $key => $value) {
           foreach ($curriculum as $k => $val) {
               if($value->curriculum_id==$val->curriculum_id){
@@ -177,10 +170,12 @@ class User extends Model
             if ($value->address_id == 0) {
                   $value->address_name = '无需发货';
                   $value->address_detailed = '无需发货';
+                  $value->address_tel = "无需发货";
             } else {
                 if($value->address_id == $val->address_id){
                   $value->address_name = $val->address_name;
                   $value->address_detailed = $val->address_detailed;
+                  $value->address_tel = $val->address_tel;
                 }
             }
               
