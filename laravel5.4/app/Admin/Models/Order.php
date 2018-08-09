@@ -56,4 +56,10 @@ class Order extends Model
          $arr = DB::table('order')->where('order_id',$data['order_id'])->update(['invoice_number'=>$data['invoice_number']]);
          return $arr;
      }
+     //修改用户对应的发货快递公司
+     public function invoices($data)
+     {
+         $arr = DB::table('order')->where('order_id',$data['order_id'])->update(['invoice'=>$data['invoice']]);
+         return $arr;
+     }
 }
