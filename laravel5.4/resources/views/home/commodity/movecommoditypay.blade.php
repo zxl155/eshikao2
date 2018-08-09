@@ -55,7 +55,7 @@
     <div class="m-commodity-pay">
         <p>支付方式</p>
         <div class="m-commodity-payan">
-            <a>
+            <a style="display: none" class="zfb">
                 <img src="./img/zfb.png" alt="" shux='1'>
             </a>
              <a>
@@ -92,9 +92,25 @@
             }
         } else {
             $('.a').html('请选择收货地址');
-        }
-        
+        }  
     })
+</script>
+<script type="text/javascript">
+    //判断是否是微信浏览器
+window.onload = function(){
+    if(isWeiXin()){
+        var p = document.getElementsByTagName('p');
+        p[0].innerHTML = window.navigator.userAgent;
+    }
+}
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        
+    }else{
+        $('.zfb').removeAttr('style');
+    }
+}
 </script>
 </body>
 </html>
