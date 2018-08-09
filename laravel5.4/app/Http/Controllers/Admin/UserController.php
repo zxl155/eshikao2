@@ -57,4 +57,12 @@ class UserController extends CommonController
 		$arr = $order->invoice($data);
 		return json_encode($arr);
 	}
+	//用户对应的发货快递公司
+	public function invoices()
+	{
+		$data = Input::all();
+		$order = new Order;
+		$arr = $order->invoices($data);
+		return json_encode($arr);
+	}
 }

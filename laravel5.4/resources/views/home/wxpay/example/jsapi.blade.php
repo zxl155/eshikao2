@@ -65,7 +65,7 @@ $editAddress = $tools->GetEditAddressParameters();
 			function(res){
 				WeixinJSBridge.log(res.err_msg);
 				 if(res.err_msg == "get_brand_wcpay_request:ok"){
-                       window.location.href="http://www.eshikao.com/home/moveWxSuccess?out_trade_no={{$data[0]->order_money}}";
+                       window.location.href="http://www.eshikao.com/home/moveWxSuccess?out_trade_no={{$data[0]->order_number}}";
                    }else{
                        //返回跳转到订单详情页面
                        alert(支付失败);

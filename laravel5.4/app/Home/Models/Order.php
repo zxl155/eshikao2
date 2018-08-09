@@ -280,11 +280,12 @@ class Order extends Model
     {
         $order = DB::table('order')->where('order_id',$order_id)->get();
         $curriculum_name = DB::table('curriculum')->where(['curriculum_id'=>$order[0]->curriculum_id])->select('curriculum_name')->get();
-        $addres_name = DB::table('goods_address')->where(['user_id'=>$order[0]->user_id])->select('address_name','address_detailed')->get();
+        $addres_name = DB::table('goods_address')->where(['user_id'=>$order[0]->user_id])->select('address_name','address_detailed','address_tel')->get();
         foreach ($order as $key => $value) {
             $value->curriculum_name = $curriculum_name[0]->curriculum_name;
              $value->address_name = $addres_name[0]->address_name;
              $value->address_detailed = $addres_name[0]->address_detailed;
+             $value->address_tel = $addres_name[0]->address_tel;
         }
         return $order;
     }

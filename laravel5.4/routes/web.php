@@ -153,6 +153,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/userCurriculum','UserController@userCurriculum');
     //用户对应的发货单号修改
     Route::get('admin/invoice','UserController@invoice');
+    //用户对的发货快递名称修改
+    Route::get('admin/invoices','UserController@invoices');
   });
   //登录
   Route::get('admin/login','LoginController@login');

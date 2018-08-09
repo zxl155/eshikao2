@@ -25,7 +25,7 @@
         </div>
         <div class="logins-list-order">
             <p>支付时间：{{$value->order_time}}</p>
-            <p>订单号：{{$value->order_number}}</p>
+            <p>物流单号：{{$value->invoice_number}}</p>
         </div>
         @if($value->is_goods == 2)
         <div class="logins-list-text">
@@ -36,7 +36,10 @@
                 @if($value->invoice_number == '')
                     暂未发货，亲敬请等待
                 @else
-                    您的物流单号为：{{$value->invoice_number}}
+                    @foreach($value->data['data'] as $val)
+                        {{$val['time']}}
+                       {{$val['context']}}<br/><br/>
+                    @endforeach
                 @endif
             </p>
         </div>
