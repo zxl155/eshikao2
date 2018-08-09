@@ -289,4 +289,16 @@ class Order extends Model
         }
         return $order;
     }
+     //查询订单对应的课程详情
+     public function curriculum($datas)
+     {
+        $data = DB::table('curriculum')->where(['curriculum_id'=>$datas[0]->curriculum_id])->select('curriculum_name','curriculum_pricture')->get();
+        foreach ($datas as $key => $value) {
+           foreach ($data as $k => $val) {
+              $value->curriculum_name = $val->curriculum_name;
+              $value->curriculum_pricture = $val->curriculum_pricture;
+           }
+        }
+        return $datas;
+     }
 }
