@@ -130,6 +130,7 @@ class PayController extends Controller
 			$order_id= $datas[0]->order_id;
 			$datas = $order->moveUpdate($order_id,$data['order_number']);
 		}
+		$datas = $order->curriculum($datas);
 		if($datas[0]->order_money == 0){
 			return redirect("home/moveUpdateOrder?order_number=".$datas[0]->order_number);
 		} else {

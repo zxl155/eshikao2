@@ -54,6 +54,7 @@ $editAddress = $tools->GetEditAddressParameters();
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     <title>易师考微信支付</title>
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <input type="hidden" class="">
     <script type="text/javascript">
 	//调用微信JS api 支付
@@ -123,10 +124,19 @@ $editAddress = $tools->GetEditAddressParameters();
 	</script>
 </head>
 <body>
-    <br/>
-    <font color="#9ACD32"><b>该笔订单支付金额为<span style="color:#f00;font-size:50px">{{$data[0]->order_money}}分</span>钱</b></font><br/><br/>
-	<div align="center">
-		<button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>
+	@include('common.head')
+	<div class="m-pay">
+	    <p>订单号：{{$data[0]->order_number}}</p>
+	    <div class="m-pay-content">
+	        <div class="m-pay-img">
+	            <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" alt="">
+	        </div>
+	        <div class="m-pay-title">
+	            <h2>{{$data[0]->curriculum_name}}</h2>
+	            <span>￥{{$data[0]->order_money}}</span>
+	        </div>
+	    </div>
+	    <button class="m-pay-btn" type="button" onclick="callpay()">确认支付<span>{{$data[0]->order_money}}</span></button>
 	</div>
 </body>
 </html>
