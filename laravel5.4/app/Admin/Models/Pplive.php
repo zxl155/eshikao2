@@ -25,7 +25,6 @@ class Pplive extends Model
 			    "title" =>$data['pplive_name'], //直播间标题
 			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-			    "type" => 2, //普通大班课
 			    "timestamp" => time(),
 			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
 			    "is_mock_live" => 1,//是否为伪直播
@@ -44,7 +43,6 @@ class Pplive extends Model
 			    "title" =>$data['pplive_name'], //直播间标题
 			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-			    "type" => 2, //普通大班课
 			    "timestamp" => time(),
 			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
 			    "is_mock_live" => 1,//是否为伪直播
@@ -183,13 +181,24 @@ class Pplive extends Model
 	public function playback($pplive_id)
 	{
 		$pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
-		$params =  [
-			"partner_id" => 70707480, //百家云 合作方id
-		    "room_id" => $pplive[0]->entrance, //房间号码
-		    "timestamp" => time(),
-		    "expires_in" => 0,    //回放过期时间
+		if ($pplive[0]->type == 5) {
+			$params =  [
+				"partner_id" => 70707480, //百家云 合作方id
+			    "room_id" => $pplive[0]->playback_room_id, //房间号码
+			    "session_id" => $pplive[0]->playback_session_id, //session_id
+			    "timestamp" => time(),
+			    "expires_in" => 0,    //回放过期时间
 
-		];
+			];
+		} else {
+			$params =  [
+				"partner_id" => 70707480, //百家云 合作方id
+			    "room_id" => $pplive[0]->entrance, //房间号码
+			    "timestamp" => time(),
+			    "expires_in" => 0,    //回放过期时间
+
+			];
+		}
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
 		ksort($params);//将参数按key进行排序
 	    $str = '';
@@ -212,7 +221,12 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if ($arr->code == 0) {
-        	$url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+        	if ($pplive[0]->type == 5) {
+        		$url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+        	} else {
+        		$url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+        	}
+        	
         	header("Location: ".$url.""); 
         } else {
         	echo "查询回放token失败(第三方直播间)";
@@ -320,7 +334,6 @@ class Pplive extends Model
 			    "title" =>$data['pplive_name'], //直播间标题
 			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-			    "type" => 2, //普通大班课
 			    "timestamp" => time(),
 			    'is_mock_live'=>1,
 			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
@@ -341,7 +354,6 @@ class Pplive extends Model
 			    "title" =>$data['pplive_name'], //直播间标题
 			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-			    "type" => 2, //普通大班课
 			    'is_mock_live'=>1,
 			    "timestamp" => time(),
 			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
@@ -353,8 +365,7 @@ class Pplive extends Model
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
 			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
 			];
-		}
-		 else {
+		} else {
 			$params =  [
 			    "partner_id" => 70707480, //百家云 合作方id
 			    "room_id" => $entrance,

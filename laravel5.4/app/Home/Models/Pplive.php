@@ -84,12 +84,24 @@ class Pplive extends Model
    public function playback($pplive_id)
    {
      $pplive = DB::table('pplive')->where('pplive_id',$pplive_id)->get();
+     if ($pplive[0]->type == 5) {
       $params =  [
-          "partner_id" => 70707480, //百家云 合作方id
-          "room_id" => $pplive[0]->entrance,
+        "partner_id" => 70707480, //百家云 合作方id
+          "room_id" => $pplive[0]->playback_room_id, //房间号码
+          "session_id" => $pplive[0]->playback_session_id, //session_id
           "timestamp" => time(),
-          "expires_in" => 0,
+          "expires_in" => 0,    //回放过期时间
+
       ];
+    } else {
+      $params =  [
+        "partner_id" => 70707480, //百家云 合作方id
+          "room_id" => $pplive[0]->entrance, //房间号码
+          "timestamp" => time(),
+          "expires_in" => 0,    //回放过期时间
+
+      ];
+    }
       $partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
       ksort($params);//将参数按key进行排序
         $str = '';
@@ -113,7 +125,11 @@ class Pplive extends Model
           $arr = curl_exec($ch);//运行curl
           $arr = json_decode($arr);
           if($arr->code == 0){
-            $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+            if ($pplive[0]->type == 5) {
+             $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+            } else {
+              $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+            }
             header("Location: ".$url.""); 
           } else {
             echo "查询回放token失败(请在直播结束俩小时后进行观看)";die;
