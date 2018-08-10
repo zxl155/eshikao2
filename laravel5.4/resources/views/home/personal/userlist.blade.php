@@ -40,12 +40,12 @@
                     我的课程
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="{{URL::asset('home/coupon.html')}}">
                     <i class="iconfont icon-youhuiquan01"></i>
                     我的优惠券
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a href="{{URL::asset('home/moveOrder')}}">
                     <i class="iconfont icon-dingdan"></i>

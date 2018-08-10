@@ -132,6 +132,10 @@ class Pplive extends Model
             }
             header("Location: ".$url.""); 
           } else {
+            if($pplive[0]->type == 6) {
+              $url = "http://www.baijiayun.com/web/video/player?vid=12302494&token=Wk99xc3yonOAkPJQtRx6gm6s1QjhcCgRgtP47wXeUMbm3NHoa5iGhQ";
+              header("Location: ".$url.""); die;
+            } 
             echo "查询回放token失败(请在直播结束俩小时后进行观看)";die;
           }
    }
