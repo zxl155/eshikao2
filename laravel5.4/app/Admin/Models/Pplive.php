@@ -198,7 +198,7 @@ class Pplive extends Model
 			    "expires_in" => 0,    //回放过期时间
 
 			];
-		}
+		} 
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
 		ksort($params);//将参数按key进行排序
 	    $str = '';
@@ -229,6 +229,10 @@ class Pplive extends Model
         	
         	header("Location: ".$url.""); 
         } else {
+        	if($pplive[0]->type == 6) {
+        		$url = "http://www.baijiayun.com/web/video/player?vid=12302494&token=Wk99xc3yonOAkPJQtRx6gm6s1QjhcCgRgtP47wXeUMbm3NHoa5iGhQ";
+        		header("Location: ".$url.""); die;
+        	} 
         	echo "查询回放token失败(第三方直播间)";
         }
 	}
@@ -335,13 +339,9 @@ class Pplive extends Model
 			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
 			    "timestamp" => time(),
-			    'is_mock_live'=>1,
-			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
-			    "is_long_term" => 0, //普通房间 
-			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
-			     "mock_room_id" => $data['playback_room_id'], //伪直播房间号
+			    "is_mock_live"=>1, //是否为伪直播
+			    "mock_room_id" => $data['playback_room_id'], //伪直播房间号
 			    "mock_session_id" => $data['playback_session_id'],//直播回放session_id
-			   
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
@@ -354,11 +354,8 @@ class Pplive extends Model
 			    "title" =>$data['pplive_name'], //直播间标题
 			    "start_time" => $start_time, //开课时间, unix时间戳（秒）
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
-			    'is_mock_live'=>1,
 			    "timestamp" => time(),
-			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
-			    "is_long_term" => 0, //普通房间 
-			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
+			    "is_mock_live"=>1,
 			   	"mock_video_id" => $data['demand_id'], //点播id
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
@@ -374,13 +371,6 @@ class Pplive extends Model
 			    "end_time" => $end_time, //下课时间, unix时间戳（秒） |k
 			    "type" => $data['type'], //普通大班课
 			    "timestamp" => time(),
-			    //"pre_enter_time" => 1800, //学生可提前进入的时间，单位为秒，默认为30分钟
-			    "is_long_term" => 0, //普通房间 
-			    //"is_group_live" => 0, //是否是分组直播，0:常规直播 
-			    "template_name" => "oneone", //oneone(单视频模板)
-			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
-			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
 			];
 		}
 		
@@ -407,7 +397,14 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if ($arr->code == 0) {
-        	$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_room_id'],'demand_id'=>$data['demand_id']]);
+        	if ($data['type'] == 6) {
+        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>'','playback_session_id'=>'','demand_id'=>$data['demand_id']]);
+        	} else if ($data['type'] == 5) {
+        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_session_id'],'demand_id'=>'']);
+        	} else {
+        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>'','playback_session_id'=>'','demand_id'=>'']);
+        	}
+        	
 			return $res;
         } else {
         	if ($data['type'] ==5 || $data['type'] ==6 ) {
