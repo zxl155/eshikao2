@@ -29,7 +29,7 @@
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">请选择直播间 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                               
+                                    <input type="submit" onClick="return false;" value="全选" class="fu" style="display: none;"><br/>
                                    <span class="tbody">请选择课程</span>
                               
                             </div>
@@ -62,6 +62,7 @@
     $('.curriculum_id').change(function(){
        var curriculum_id = $('.curriculum_id option:selected').val();
        var tbody = $('.tbody');
+       var fu = $('.fu');
        var html = '';
        if (curriculum_id != 0) {
             $.ajax({
@@ -71,8 +72,10 @@
                 dataType:'json',
                  success:function(data){
                     if (data == "无直播") {
+                         fu.attr('style','display:none');
                         tbody.html("无直播");
                     } else {
+                        fu.attr('style','display:show');
                         jQuery.each(data,function(key,value){
                             html+='<input type="checkbox" name="pplive_id[]" value='+value.pplive_id+'>'+value.pplive_name+'<br/>'
                         })
@@ -83,6 +86,9 @@
         } else {
             tbody.html("请选择课程");
         }
+    })
+    $('.fu').click(function(){
+        $('.tbody').find('input').attr('checked','checked');
     })
 </script>
 </html>

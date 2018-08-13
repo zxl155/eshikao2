@@ -19,8 +19,6 @@
             <div class="am-g">
                 <div class="am-u-sm-12 am-u-md-3">
                     
-                    
-                    
                 </div>
 
             </div>

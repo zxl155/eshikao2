@@ -170,6 +170,6 @@ class PayController extends Controller
 		}else{
 			echo '别的浏览器';
 		}*/
-		return view('home/wxpay/example/jsapi');
+		return view('home/wxpay/example/a');
 	}
 }
