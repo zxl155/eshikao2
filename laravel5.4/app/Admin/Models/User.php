@@ -162,6 +162,8 @@ class User extends Model
           foreach ($curriculum as $k => $val) {
               if($value->curriculum_id==$val->curriculum_id){
                   $value->curriculum_name = $val->curriculum_name;
+              } else {
+                $value->curriculum_name = "无对应课程";
               }
           }
       }

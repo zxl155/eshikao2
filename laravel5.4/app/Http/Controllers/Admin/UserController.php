@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Admin\Models\User;
 use App\Admin\Models\Order;
+use App\Admin\Models\Curriculum;
 
 class UserController extends CommonController
 {	
@@ -64,5 +65,25 @@ class UserController extends CommonController
 		$order = new Order;
 		$arr = $order->invoices($data);
 		return json_encode($arr);
+	}
+	//给用户添加对应的课程
+	public function userCurriculumAdd()
+	{
+		$curriculum_id = Input::get('curriculum_id');
+		$curriculum = new Curriculum;
+		$data = $curriculum->curriculum_name();
+		return view('admin/user/userCurriculumAdd',['data'=>$data,'curriculum_id'=>$curriculum_id]);
+	}
+	//给用户添加对应的课程执行添加
+	public function userCurriculumAdds()
+	{
+		$data = Input::all();
+		$order = new Order;
+		$arr = $order->userCurriculumAdds($data);
+		if ($arr) {
+			return redirect('admin/userCurriculum');
+		} else {
+			echo "添加用户对应课程失败";
+		}
 	}
 }
