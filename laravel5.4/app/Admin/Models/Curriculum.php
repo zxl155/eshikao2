@@ -163,4 +163,10 @@ class Curriculum extends Model
         }
         return $arr;
     }
+    //查询所有课程名称
+    public function curriculum_name()
+    {
+       $data = DB::table('curriculum')->orderBy('curriculum_id','desc')->select('curriculum_name','curriculum_id')->get();
+       return $data;
+    }
 }

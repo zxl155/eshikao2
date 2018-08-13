@@ -79,9 +79,10 @@
                                         @endif
                                     </th>
                                     <th><a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$value->curriculum_id}}">课程预览</a>
-                                        <a href="{{URL::asset('admin/listpplive')}}?curriculum_id={{$value->curriculum_id}}">直播课程列表</a>
+                                        <a href="{{URL::asset('admin/listpplive')}}?curriculum_id={{$value->curriculum_id}}">直播课程列表</a><br/>
                                         <a href="{{URL::asset('admin/updcurr')}}?curriculum_id={{$value->curriculum_id}}">编辑</a>
                                         <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/delcurr')}}?curriculum_id={{$value->curriculum_id}}" >删除</a>
+                                        <a onclick="if(confirm('确实要赠送吗？')) return true;else return false;" href="{{URL::asset('admin/userCurriculumAdd')}}?curriculum_id={{$value->curriculum_id}}" >赠送课程</a>
                                     </th>
                                 </tr>
                                 @endforeach

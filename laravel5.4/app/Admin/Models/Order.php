@@ -62,4 +62,37 @@ class Order extends Model
          $arr = DB::table('order')->where('order_id',$data['order_id'])->update(['invoice'=>$data['invoice']]);
          return $arr;
      }
+     //给用户添加对应的课程执行添加
+     public function userCurriculumAdds($data)
+     {
+          $user =  DB::table('user')->where(['user_tel'=>$data['user_tel']])->select('user_id')->get()->toArray();
+          if (empty($user)) {
+              echo "当前用户不存在";die;
+          }
+          $curriculum = DB::table('curriculum')->where(['curriculum_id'=>$data['curriculum_id']])->select('bought_number','present_price')->get(); //当前课程对应的购买数量
+          if ($data['is_statistics'] == 1) {
+            $bought_number = intval($curriculum[0]->bought_number)+1;
+            $bought_number = DB::table('curriculum')->where(['curriculum_id'=>$data['curriculum_id']])->update(['bought_number'=>$bought_number]);
+          }
+          $order_number = substr(time().$data['curriculum_id'].$user[0]->user_id.rand(11111111,99999999),0,18);//订单
+          if ($data['is_consignor'] == 1) {
+             $address_id = DB::table('goods_address')->insertgetid(['address_name'=>$data['address_name'],'address_tel'=>$data['address_tel'],'address_detailed'=>$data['address_detailed'],'user_id'=>$user[0]->user_id]);
+             $arr = DB::table('order')->insert(['order_number'=>$order_number,'curriculum_id'=>$data['curriculum_id'],'order_time'=>date('Y-m-d H:i:s'),'address_id'=>$address_id,'order_state'=>1,'order_money'=>$curriculum[0]->present_price,'user_id'=>$user[0]->user_id,'pay_mode'=>3]);
+             if ($arr) {
+                $arr = DB::table('user_curriculum')->insert(['curriculum_id'=>$data['curriculum_id'],'user_id'=>$user[0]->user_id]);
+                return $arr;
+             } else {
+                echo "添加订单失败";
+             }
+          } else {
+             $arr = DB::table('order')->insert(['order_number'=>$order_number,'curriculum_id'=>$data['curriculum_id'],'order_time'=>date('Y-m-d H:i:s'),'address_id'=>0,'order_state'=>1,'order_money'=>$curriculum[0]->present_price,'user_id'=>$user[0]->user_id,'pay_mode'=>3]);
+            if ($arr) {
+                $arr = DB::table('user_curriculum')->insert(['curriculum_id'=>$data['curriculum_id'],'user_id'=>$user[0]->user_id]);
+                return $arr;
+             } else {
+                echo "添加订单失败";
+             }
+          }
+      
+     }
 }

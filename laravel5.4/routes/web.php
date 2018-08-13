@@ -155,6 +155,10 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/invoice','UserController@invoice');
     //用户对的发货快递名称修改
     Route::get('admin/invoices','UserController@invoices');
+    //给用户添加对应课程
+    Route::get('admin/userCurriculumAdd','UserController@userCurriculumAdd');
+    //给用户添加对应课程执行添加
+    Route::post('admin/userCurriculumAdds','UserController@userCurriculumAdds');
   });
   //登录
   Route::get('admin/login','LoginController@login');
