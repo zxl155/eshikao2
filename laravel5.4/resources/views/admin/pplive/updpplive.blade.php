@@ -78,6 +78,12 @@
                                <input type="text" name="demand_id" value="{{$data[0]->demand_id}}" placeholder="请输入点播ID">
                             </div>
                         </div>
+                         <div class="am-form-rooms" style="display: none">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">点播回放地址 <span class="tpl-form-line-small-title"></span></label>
+                            <div class="am-u-sm-9">
+                               <input type="text" name="demand_address" value="{{$data[0]->demand_address}}" placeholder="请输入点播回放地址">
+                            </div>
+                        </div>
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">任课教师 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9" id="div">
