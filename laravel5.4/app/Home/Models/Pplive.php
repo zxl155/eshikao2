@@ -126,15 +126,17 @@ class Pplive extends Model
           $arr = json_decode($arr);
           if($arr->code == 0){
             if ($pplive[0]->type == 5) {
-             $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+              $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+            } else if($pplive[0]->type == 6) {
+              $url = $pplive[0]->demand_address;
             } else {
               $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
             }
             header("Location: ".$url.""); 
           } else {
             if($pplive[0]->type == 6) {
-              $url = "http://www.baijiayun.com/web/video/player?vid=12302494&token=Wk99xc3yonOAkPJQtRx6gm6s1QjhcCgRgtP47wXeUMbm3NHoa5iGhQ";
-              header("Location: ".$url.""); die;
+              $url = $pplive[0]->demand_address;
+              header("Location: ".$url."");die;
             } 
             echo "查询回放token失败(请在直播结束俩小时后进行观看)";die;
           }

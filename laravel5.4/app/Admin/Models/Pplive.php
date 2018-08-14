@@ -94,7 +94,7 @@ class Pplive extends Model
         $arr = curl_exec($ch);//运行curl
         $arr = json_decode($arr);
         if($arr->code == 0) {
-        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_session_id'],'demand_id'=>$data['demand_id'] ]);
+        	$res = DB::table('pplive')->insert(['curriculum_id'=>$data['curriculum_id'],'pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'entrance'=>$arr->data->room_id,'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_session_id'],'demand_id'=>$data['demand_id'],'demand_address'=>$data['demand_address'] ]);
 	        if($res){
 	        	return true;
 	        }else {
@@ -230,8 +230,8 @@ class Pplive extends Model
         	header("Location: ".$url.""); 
         } else {
         	if($pplive[0]->type == 6) {
-        		$url = "http://www.baijiayun.com/web/video/player?vid=12302494&token=Wk99xc3yonOAkPJQtRx6gm6s1QjhcCgRgtP47wXeUMbm3NHoa5iGhQ";
-        		header("Location: ".$url.""); die;
+        		$url = $pplive[0]->demand_address;
+        		header("Location: ".$url."");die;
         	} 
         	echo "查询回放token失败(第三方直播间)";
         }
@@ -398,11 +398,11 @@ class Pplive extends Model
         $arr = json_decode($arr);
         if ($arr->code == 0) {
         	if ($data['type'] == 6) {
-        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>'','playback_session_id'=>'','demand_id'=>$data['demand_id']]);
+        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>'','playback_session_id'=>'','demand_id'=>$data['demand_id'],'demand_address'=>$data['demand_address']]);
         	} else if ($data['type'] == 5) {
-        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_session_id'],'demand_id'=>'']);
+        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>$data['playback_room_id'],'playback_session_id'=>$data['playback_session_id'],'demand_id'=>'','demand_address'=>'']);
         	} else {
-        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>'','playback_session_id'=>'','demand_id'=>'']);
+        		$res = DB::table('pplive')->where('pplive_id','=',$data['pplive_id'])->update(['pplive_name'=>$data['pplive_name'],'start_time'=>$data['start_time'],'end_time'=>$data['end_time'],'admin_id'=>$data['admin_id'],'assistant_admin_id'=>$data['assistant_admin_id'],'type'=>$data['type'],'playback_room_id'=>'','playback_session_id'=>'','demand_id'=>'','demand_address'=>'']);
         	}
         	
 			return $res;

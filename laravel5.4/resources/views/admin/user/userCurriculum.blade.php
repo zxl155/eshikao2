@@ -19,6 +19,20 @@
             <div class="am-g">
                 <div class="am-u-sm-12 am-u-md-3">
                     
+                    <div class="am-form-group">
+                        <a href="{{ url('admin/userCurriculum?need=1') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 点击查看需发货人员</a>
+                    </div>
+                    
+                </div>
+                <div class="am-u-sm-12 am-u-md-3">
+                    <form action="{{ url('admin/userCurriculum') }}" method="get">
+                    <div class="am-input-group am-input-group-sm">
+                        <input type="text" name="user_tel"  placeholder="请输入用户手机号查询">
+                        <span class="am-input-group-btn">
+                            <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
+                        </span>
+                    </div>
+                    </form>
                 </div>
 
             </div>
@@ -89,10 +103,12 @@
         </div>
         <div class="tpl-alert">
             <div id="pull_right">
-                                    <div class="pull-right">
-                                       {!! $data->render() !!}
-                                    </div>
-                                </div>
+                @if($user_tel == '' & $need =='')
+                    <div class="pull-right">
+                        {!! $data->render() !!}
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 

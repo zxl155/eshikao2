@@ -44,6 +44,7 @@
                                     <th>伪直播room_id</th>
                                     <th>伪直播session_id</th>
                                     <th>点播ID</th>
+                                    <th>点播回放地址</th>
                                     <th class="table-type">开始时间-结束时间</th>
                                     <th class="table-type">直播类型</th>
                                     <th class="table-title">任课老师</th>
@@ -62,6 +63,12 @@
                                     <th>{{$val->playback_room_id}}</th>
                                     <th>{{$val->playback_session_id}}</th>
                                     <th>{{$val->demand_id}}</th>
+                                    <th>
+                                        @if($val->demand_address == '')
+                                        @else
+                                        回放地址存在
+                                        @endif
+                                    </th>
                                     <th>{{$val->start_time}}--{{$val->end_time}}</th>
                                     <th>
                                         @if($val->type==1)

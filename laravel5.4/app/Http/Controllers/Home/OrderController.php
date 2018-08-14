@@ -60,7 +60,11 @@ class OrderController extends Controller
 		$order = new Order;
 		$order = $order->logistics($order_id);
 		$data = $this->query($order[0]->invoice,$order[0]->invoice_number);
-		$data = $data['data'];
+		if ($data['message'] == "不支持此快递公司") {
+			$data = "暂无发货";
+		} else {
+			$data = $data['data'];
+		}
 		return view('home/order/logistics',['order'=>$order,'data'=>$data]);
 	}
 	//查询物流信息
