@@ -45,10 +45,12 @@ class UserController extends CommonController
 	}
 	//用户对应的购买课程
 	public function userCurriculum()
-	{
+	{	
+		$user_tel = Input::get('user_tel');
+		$need = Input::get('need');
 		$user = new User;
-		$data = $user->userCurriculum();
-		return view('admin/user/userCurriculum',['data'=>$data]);
+		$data = $user->userCurriculum($user_tel,$need);
+		return view('admin/user/userCurriculum',['data'=>$data,'user_tel'=>$user_tel,'need'=>$need]);
 	}
 	//用户对应的发货单号
 	public function invoice()

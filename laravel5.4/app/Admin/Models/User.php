@@ -101,7 +101,7 @@ class User extends Model
     */
    public function images($path)
    {
-    $user_id = session('user_id');
+      $user_id = session('user_id');
       $affected = DB::update("update user set head_images=? where user_id = ?", [$path,$user_id]);
       if ($affected) {
         return true;
@@ -136,25 +136,22 @@ class User extends Model
      return $data;
    }
    //用户对应的购买课程
-   public function userCurriculum()
+   public function userCurriculum($user_tel,$need)
    {
-     /* $user_curriculum = DB::table('user_curriculum')->orderBy('id','desc')->paginate(15);
-      $user = DB::table('user')->select('user_tel','user_id')->get();
-      $curriculum = DB::table('curriculum')->select('curriculum_name')->get();
-      foreach ($user_curriculum as $key => $value) {
-          foreach ($user as $k => $val) {
-              if($value->user_id==$val->user_id){
-                  $value->user_tel = $val->user_tel;
+      if ($user_tel == ''&$need == '') {
+          $order = DB::table('order')->where(['order_state'=>1])->orderBy('order_time','desc')->paginate(15);
+      } else {
+          if ($user_tel != '' & $need == '') {
+              $user = DB::table('user')->where('user_tel',$user_tel)->get()->toArray();
+              if (empty($user)) {
+                  echo "暂无本用户";die;
               }
-          }
+              $order = DB::table('order')->where(['order_state'=>1,'user_id'=>$user[0]->user_id])->orderBy('order_time','desc')->get();
+          } else if($user_tel == '' & $need != '') {
+              $order = DB::table('order')->where(['order_state'=>1])->where('address_id','!=',0)->orderBy('order_time','desc')->get();
+          }  
       }
-      foreach ($user_curriculum as $key => $value) {
-          foreach ($curriculum as $k => $val) {
-            $value->curriculum_name = $val->curriculum_name;
-          }
-      }
-      return $user_curriculum;*/
-      $order = DB::table('order')->where(['order_state'=>1])->orderBy('order_time','desc')->paginate(15);
+      
       $user = DB::table('user')->select('user_tel','user_id')->get();
       $curriculum = DB::table('curriculum')->select('curriculum_id','curriculum_name')->get();
       $goods_address = DB::table('goods_address')->select('address_id','address_name','address_detailed','address_tel')->get();
@@ -162,8 +159,6 @@ class User extends Model
           foreach ($curriculum as $k => $val) {
               if($value->curriculum_id==$val->curriculum_id){
                   $value->curriculum_name = $val->curriculum_name;
-              } else {
-                $value->curriculum_name = "无对应课程";
               }
           }
       }
