@@ -133,9 +133,10 @@ class PpliveController extends CommonController
 	//查询课程对应直播间
 	public function copySearch()
 	{
-		$curriculum_id = Input::get('curriculum_id');
+		$curriculum_id = Input::get('curriculum_id'); //查询课程id
+		$curriculum_ids = Input::get('curriculum_ids'); //当前复制课程id
 		$curriculum = new Pplive;
-		$data = $curriculum->copySearch($curriculum_id);
+		$data = $curriculum->copySearch($curriculum_id,$curriculum_ids);
 		if (empty($data)) {
 			$arr = "无直播";
 		} else {
