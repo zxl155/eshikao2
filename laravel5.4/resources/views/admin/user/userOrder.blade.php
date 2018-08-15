@@ -16,8 +16,8 @@
             </div>
         </div>
         <div class="tpl-block">
-            <!-- <div class="am-g">
-                <div class="am-u-sm-12 am-u-md-3">
+             <div class="am-g">
+               <!--  <div class="am-u-sm-12 am-u-md-3">
                     
                     <div class="am-form-group">
                         <a href="{{ url('admin/userCurriculum?need=1') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span> 点击查看需发货人员</a>
@@ -33,9 +33,9 @@
                         </span>
                     </div>
                     </form>
-                </div>
+                </div> -->
 
-            </div> -->
+            </div>
             <div class="am-g">
                 <div class="am-u-sm-12">
                     <form class="am-form">
@@ -90,5 +90,8 @@
     </div>
 
     </div>
+    <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
+    <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
+    <script src="{{URL::asset('/')}}assets/js/app.js"></script>
 </body>
 </html>
