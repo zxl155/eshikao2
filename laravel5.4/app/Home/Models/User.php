@@ -121,5 +121,10 @@ class User extends Model
      $arr = DB::table('user')->where('user_tel',$data['user_tel'])->update(['password'=>md5($data['user_pwd'])]);
      return $arr;
    }
-
+   //通过手机号查询数据
+   public function app($user_tel)
+   {
+      $arr = DB::table('user')->where(['user_tel'=>$user_tel])->get()->toArray();
+      return $arr;
+   }
 }

@@ -180,4 +180,34 @@ class User extends Model
       }
       return $order;
    }
+   //用户对应的所有购买课程
+   public function userOrder()
+   {
+        $curriculum = DB::table('curriculum')->select('curriculum_id','curriculum_name')->get();
+        $sql = "select curriculum_id,user_id from user_curriculum GROUP BY curriculum_id,user_id";
+        $user_curriculum = DB::table('user_curriculum')->get();
+        foreach ($curriculum as $key => $value) {
+           foreach ($user_curriculum as $k => $val) {
+              if ($value->curriculum_id == $val->curriculum_id) {
+                 $val->curriculum_name = $value->curriculum_name;
+              }
+           }
+        }
+       $user = DB::table('user')->orderBy('add_time','desc')->select('user_id','user_tel','add_time')->paginate(15);
+       foreach ($user as $key => $value) {
+          foreach ($user_curriculum as $k => $val) {
+             if($value->user_id == $val->user_id){
+                $value->curriculum_name[] = $val->curriculum_name;
+             }
+          }
+       }
+       foreach ($user as $key => $value) {
+         if(empty($value->curriculum_name)){
+            $value->curriculum_name = "无购买记录";
+         } else {
+            $value->curriculum_name = implode($value->curriculum_name,'→');
+         }
+       }
+      return $user;
+   }
 }
