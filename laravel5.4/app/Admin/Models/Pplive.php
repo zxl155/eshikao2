@@ -447,10 +447,22 @@ class Pplive extends Model
 		return $pplive;
 	}
 	//通过课程id查询直播间
-	public function copySearch($curriculum_id)
+	public function copySearch($curriculum_id,$curriculum_ids)
 	{
 		$sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) order by start_time desc";
 		$arr = DB::select($sql);
+		$sqls = "select * from pplive where find_in_set(".$curriculum_ids.",curriculum_id) order by start_time desc";
+		$arrs = DB::select($sqls);
+		foreach ($arr as $key => $value) {
+			foreach ($arrs as $k => $val) {
+				if ($value->pplive_id == $val->pplive_id) {
+					$value->is = "已有该课程";
+				}
+			}
+			if (empty($value->is)) {
+					$value->is = "";
+			}
+		}
 		return $arr;
 	}
 	//添加复制直播间进行入库

@@ -14,7 +14,7 @@
                 <div class="tpl-form-body tpl-form-line">
                     <form class="am-form tpl-form-line-form" action="{{url('admin/copyPplives') }}" method="post">
                         {{ csrf_field() }}
-                        <input type="hidden" name="curriculum_ids" value="{{$curriculum_id}}">
+                        <input type="hidden" name="curriculum_ids" value="{{$curriculum_id}}" class="curriculum_ids">
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">请选择课程 <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
@@ -61,13 +61,14 @@
 <script type="text/javascript">
     $('.curriculum_id').change(function(){
        var curriculum_id = $('.curriculum_id option:selected').val();
+       var curriculum_ids = $('.curriculum_ids').val();
        var tbody = $('.tbody');
        var fu = $('.fu');
        var html = '';
        if (curriculum_id != 0) {
             $.ajax({
                 url:"{{URL::asset('admin/copySearch')}}",
-                data:{curriculum_id:curriculum_id,_token:"{{ csrf_token() }}"},
+                data:{curriculum_id:curriculum_id,curriculum_ids:curriculum_ids,_token:"{{ csrf_token() }}"},
                 type:'get',
                 dataType:'json',
                  success:function(data){
@@ -77,7 +78,7 @@
                     } else {
                         fu.attr('style','display:show');
                         jQuery.each(data,function(key,value){
-                            html+='<input type="checkbox" name="pplive_id[]" value='+value.pplive_id+'>'+value.pplive_name+'<br/>'
+                            html+='<input type="checkbox" name="pplive_id[]" value='+value.pplive_id+'>'+value.pplive_name+'----><span style="color:red">'+value.is+'</span><br/>'
                         })
                         tbody.html(html);
                     }
