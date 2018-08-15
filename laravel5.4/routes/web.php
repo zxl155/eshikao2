@@ -159,6 +159,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/userCurriculumAdd','UserController@userCurriculumAdd');
     //给用户添加对应课程执行添加
     Route::post('admin/userCurriculumAdds','UserController@userCurriculumAdds');
+    //用户对应的所有购买课程
+    Route::get('admin/userOrder','UserController@userOrder');
   });
   //登录
   Route::get('admin/login','LoginController@login');

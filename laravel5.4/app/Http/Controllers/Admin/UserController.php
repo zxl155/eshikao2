@@ -88,4 +88,11 @@ class UserController extends CommonController
 			echo "添加用户对应课程失败";
 		}
 	}
+	//用户对应的所有购买课程
+	public function userOrder()
+	{
+		$user = new User;
+		$data = $user->userOrder();
+		return view('admin/user/userOrder',['data'=>$data]);
+	}
 }
