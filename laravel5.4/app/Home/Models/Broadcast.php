@@ -10,7 +10,7 @@ class Broadcast extends Model
 	//查询轮播图开启的数据
    	public function index()
    	{
-   		$arr = DB::select("select * from broadcast where state = '1'");
+   		$arr = DB::table('broadcast')->orderBy('order_by','asc')->where(['state'=>1])->get();
    		return $arr;
    	}
 }

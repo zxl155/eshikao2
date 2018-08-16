@@ -73,4 +73,16 @@ class BroadcastController extends CommonController
 			echo "删除轮播图失败";
 		}
 	}
+	//排序
+	public function orderbro()
+	{
+		$data = Input::all();
+		$broadcast = new Broadcast;
+		$arr = $broadcast->orderbro($data);
+		if ($arr) {
+			return redirect('admin/listbro');
+		} else {
+			echo "修改轮播图排序失败";
+		}
+	}
 }

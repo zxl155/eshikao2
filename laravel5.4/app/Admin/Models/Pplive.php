@@ -19,6 +19,30 @@ class Pplive extends Model
 	public function insert($data){
 		$start_time =  strtotime($data['start_time']);
 		$end_time = strtotime($data['end_time']);
+		$pplive_admin = DB::table('pplive')->where(['admin_id'=>$data['admin_id']])->select('pplive_id','start_time','end_time')->get()->toarray();
+		foreach ($pplive_admin as $key => $value) {
+			$value->start_time = strtotime($value->start_time);
+			$value->end_time = strtotime($value->end_time);
+		}
+		if (!empty($pplive_admin)) {
+			foreach ($pplive_admin as $key => $value) {
+				if ($value->start_time > $start_time & $value->start_time < $end_time ) {
+					$value->is = 1;
+				} else if ($value->end_time > $start_time & $value->end_time < $end_time ) {
+					$value->is = 1;
+				} else if($start_time > $value->start_time & $start_time < $value->end_time) {
+					$value->is = 1;
+				} else if($end_time > $value->start_time & $end_time < $value->end_time)
+					$value->is = 1;
+				else {
+					$value->is = 0;
+				}
+				$arr[] = $value->is;
+			}
+			if(in_array(1,$arr)){
+				echo "老师该时间点已有课程";die;
+			}
+		}
 		if ($data['type']==5) {
 			$params =  [
 			    "partner_id" => 70707480, //百家云 合作方id
@@ -331,6 +355,33 @@ class Pplive extends Model
 		$entrance = $pplive_id[0]->entrance;
 		$start_time =  strtotime($data['start_time']);
 		$end_time = strtotime($data['end_time']);
+		$pplive_admin = DB::table('pplive')->where(['admin_id'=>$data['admin_id']])->select('pplive_id','start_time','end_time')->get()->toarray();
+		foreach ($pplive_admin as $key => $value) {
+			if ($value->pplive_id == $data['pplive_id']) {
+				unset($pplive_admin[$key]);
+			}
+			$value->start_time = strtotime($value->start_time);
+			$value->end_time = strtotime($value->end_time);
+		}
+		if (!empty($pplive_admin)) {
+			foreach ($pplive_admin as $key => $value) {
+				if ($value->start_time > $start_time & $value->start_time < $end_time ) {
+					$value->is = 1;
+				} else if ($value->end_time > $start_time & $value->end_time < $end_time ) {
+					$value->is = 1;
+				} else if($start_time > $value->start_time & $start_time < $value->end_time) {
+					$value->is = 1;
+				} else if($end_time > $value->start_time & $end_time < $value->end_time)
+					$value->is = 1;
+				else {
+					$value->is = 0;
+				}
+				$arr[] = $value->is;
+			}
+			if(in_array(1,$arr)){
+				echo "老师该时间点已有课程";die;
+			}
+		}
 		if ($data['type'] == 5) {
 			$params =  [
 			    "partner_id" => 70707480, //百家云 合作方id
