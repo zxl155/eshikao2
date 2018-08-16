@@ -11,7 +11,7 @@ class Broadcast extends Model
     public $timestamps = false;  //过滤默认的字段
     public function select()
     {
-    	$arr = DB::table('broadcast')->get()->toarray();
+    	$arr = DB::table('broadcast')->orderBy('order_by','asc')->get()->toarray();
     	$curriculum = DB::table('curriculum')->get()->toarray();
     	foreach ($arr as $key => $value) {
     		foreach ($curriculum as $keys => $val) {
@@ -27,5 +27,9 @@ class Broadcast extends Model
        $arr = DB::table('broadcast')->where('broadcast_id', '=', $broadcast_id)->delete();
        return $arr;
     }
-
+    public function orderbro($data)
+    {
+        $arr = DB::table('broadcast')->where(['broadcast_id'=>$data['broadcast_id']])->update(['order_by'=>$data['order_by']]);
+        return $arr;
+    }
 }
