@@ -87,6 +87,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/listbro','BroadcastController@listbro');
     //轮播图删除
     Route::get('admin/delbro','BroadcastController@delbro');
+     //轮播图排序
+    Route::post('admin/orderbro','BroadcastController@orderbro');
     //执行
     Route::post('admin/updsbro','BroadcastController@updsbro');
     //助教入口

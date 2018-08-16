@@ -44,17 +44,25 @@
                                     <th class="table-title">轮播图</th>
                                     <th class="table-title">对应课程</th>
                                     <th class="table-title">状态</th>
+                                    <th>排序</th>
                                     <th class="table-set">操作</th>
                                 </tr>
 
                             </thead>
                             <tbody> 
+                                <form></form>
                                 @foreach($data as $key=>$val)
+                                <form action="{{url('admin/orderbro')}}" method="post">
+                                {{ csrf_field() }}
                                 <tr>
-                                    <td>{{ $val->broadcast_id }}</td>
+                                    <td>{{ $val->broadcast_id }}<input type="hidden" name="broadcast_id" value="{{$val->broadcast_id}}"></td>
                                     <td><img src="{{URL::asset('/')}}home/img/sowing_msp/{{ $val->broadcast_url }}" width="100px" height="100px"></td>
                                     <th>{{$val->curriculum_name}}</th>
                                     <td>{{ $val->state ==1?'已使用':'未使用' }}</td>
+                                    <th>
+                                        <input type="text" name="order_by" value="{{$val->order_by}}" style="width: 50px; height:20px"> 
+                                        <input type="submit" value="修改排序" style="background: pink">
+                                    </th>
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
@@ -63,8 +71,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                  @endforeach
-                                
+                              </form>
+                              @endforeach
                             </tbody>
                         </table>
                         <div class="am-cf">
