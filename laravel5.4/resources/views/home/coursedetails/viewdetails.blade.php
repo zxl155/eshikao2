@@ -41,7 +41,11 @@
     </div>
     <div class="viewdetails-header">
         <div class="details-img">
-            <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" alt="">
+          @if($value->video == '')  
+          <img src="{{URL::asset('/')}}home/img/curriculum_pricture/{{$value->curriculum_pricture}}" alt="">
+          @else 
+           <iframe frameborder="0" width="400" height="250" src="{{$value->video}}&autoplay=false"></iframe>
+          @endif
         </div>
         <div class="details-brief">
             <h2>{{$value->curriculum_name}}</h2>
@@ -92,7 +96,37 @@
             </div>
             <div class="v-content-left-list">
                 <ul class="v-content-left-list-ul">
+                    <!-- 免费直播 -->
+                    @if(!empty($free[0]->pplive_name))
+                     @if($free[0]->is_time == 0)
+                            <li>  
+                                 <img src="./img/zbtb.png" alt=""> 
+                                <span class="lint-title">{{$free[0]->pplive_name}}【未开始】</span>
+                                <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
+                                <span class="list-name">{{$free[0]->admin_name}}</span>
+                            </li>
+                        @elseif($free[0]->is_time == 1)
+                           <a target="_blank" href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$free[0]->pplive_id}}">
+                           <li>  
+                                 <img src="./img/zbtb.png" alt=""> 
+                                <span class="lint-title"><span style="color: blue">【进入教室】</span>{{$free[0]->pplive_name}}</span>
+                                <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
+                                <span class="list-name">{{$free[0]->admin_name}}</span>
+                            </li> 
+                            </a>
+                        @else 
+                            <a href="{{URL::asset('home/playback')}}?pplive_id={{$free[0]->pplive_id}}">
+                                 <li>  
+                                     <img src="./img/zbtb.png" alt=""> 
+                                    <span class="lint-title"><span style="color: red">【查看回放】</span>{{$free[0]->pplive_name}}</span>
+                                    <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
+                                    <span class="list-name">{{$free[0]->admin_name}}</span>
+                                </li> 
+                            </a>
+                        @endif
+                    @endif
                     
+                   <!-- 免费直播 -->
                     @foreach($pplive_content as $val)
                     <li>
                          <img src="{{URL::asset('/')}}home/img/zbtb.png" alt="">
