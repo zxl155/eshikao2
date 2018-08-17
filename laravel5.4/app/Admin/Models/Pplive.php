@@ -59,7 +59,7 @@ class Pplive extends Model
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			    "is_video_main"=>2, //指定PC端是否以视频为主 1:以视频为主
 			];
 		} else if($data['type']==6) {
 			$params =  [
@@ -76,7 +76,7 @@ class Pplive extends Model
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			    "is_video_main"=>2, //指定PC端是否以视频为主 1:以视频为主
 			];
 		} else {
 			$params =  [
@@ -92,7 +92,7 @@ class Pplive extends Model
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			    "is_video_main"=>2, //指定PC端是否以视频为主 1:以视频为主
 			];
 		}
 		$partner_key = "C0fV8gWo7lbFTyqDZM8AwYwbqbc0QqAM/uCwlJp/Ohip0Iz8bWp4VeLKvj4hM5hx3czelHEN5TEl2LeIxIFFaA==";
@@ -396,7 +396,7 @@ class Pplive extends Model
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			    "is_video_main"=>2, //指定PC端是否以视频为主 1:以视频为主
 			];
 		} else if($data['type'] == 6){
 			$params =  [
@@ -411,7 +411,7 @@ class Pplive extends Model
 			    "template_name" => "oneone", //oneone(单视频模板)
 			    "teacher_need_detect_device" =>1, //老师是否启用设备检测 1:启用
 			    "student_need_detect_device" =>1, //学生是否启用设备检测 1:启用
-			    "is_video_main"=>1, //指定PC端是否以视频为主 1:以视频为主
+			    "is_video_main"=>2, //指定PC端是否以视频为主 1:以视频为主
 			];
 		} else {
 			$params =  [
