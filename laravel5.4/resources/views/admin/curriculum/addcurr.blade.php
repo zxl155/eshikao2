@@ -17,7 +17,8 @@
                         <div class="am-form-group">
                             <label for="curriculum-pricture" class="am-u-sm-3 am-form-label">图片<span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="file" class="tpl-form-input" name="curriculum_pricture" placeholder="请选择图片" required>
+                                <input type="file" class="tpl-form-input" name="curriculum_pricture" placeholder="请选择图片" required><br/>
+                                <input type="text" class="tpl-form-input" name="video" placeholder="如需免费试听请输入百家云链接">
                             </div>
                         </div>
                         <div class="am-form-group">

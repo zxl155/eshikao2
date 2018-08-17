@@ -7,7 +7,7 @@ class Pplive extends Model
 {
    public function shows($curriculum_id)
    {
-    $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) order by start_time asc";
+    $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) and is_free=0 order by start_time asc";
     $pplive_content = DB::select($sql);
          $admin_content = DB::table('admin')->get();
          foreach ($pplive_content as $key => $value) {
@@ -140,5 +140,27 @@ class Pplive extends Model
             } 
             echo "查询回放token失败(请在直播结束俩小时后进行观看)";die;
           }
+   }
+   //查询免费课程
+   public function is_free($curriculum_id)
+   {
+    $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) and is_free = 1 order by start_time asc";
+    $data = DB::select($sql);
+      $admin = DB::table('admin')->select('admin_id','admin_name')->get();
+      foreach ($data as $key => $value) {
+         foreach ($admin as $key => $val) {
+            if ($value->admin_id == $val->admin_id) {
+              $value->admin_name = $val->admin_name;
+            }
+            if($value->start_time > date('Y-m-d H:i:s',strtotime('+30 minute'))){
+                     $value->is_time = 0;
+                  } else if($value->end_time < date('Y-m-d H:i:s')){
+                     $value->is_time = 2;
+                  } else {
+                      $value->is_time = 1;
+                  }
+         }
+      }
+      return $data;
    }
 }

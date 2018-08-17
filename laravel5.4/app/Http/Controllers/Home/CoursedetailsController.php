@@ -32,11 +32,14 @@ class CoursedetailsController extends Controller
 		$regihtcontent = $curriculum->regihtContent($curriculum_id);
 		$pplive = new Pplive;
 		$pplive_content = $pplive ->shows($curriculum_id);
+		//免费课程
+		$free = $pplive->is_free($curriculum_id);
 		return view('home/coursedetails/viewdetails',[
 			'curriculum_content' => $curriculum_content,
 			'pplive_content' => $pplive_content,
 			'regihtcontent' => $regihtcontent,
 			'isPurchase' => $isPurchase,
+			'free' => $free,
 		]);
 	}
 
