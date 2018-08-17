@@ -60,6 +60,19 @@
                                 </select>
                             </div>
                         </div>  
+                        <div class="am-form-group">
+                            <label for="purchase_state_time" class="am-u-sm-3 am-form-label">是否免费<span class="tpl-form-line-small-title"></span></label>
+                             <div class="am-u-sm-9">
+                               <select name="is_free">
+                                    <option value="0"@if($data[0]->is_free == 0)
+                                                        selected
+                                                      @endif>付费</option>
+                                    <option value="1" @if($data[0]->is_free == 1)
+                                                        selected
+                                                      @endif>免费</option>
+                               </select>
+                            </div>
+                        </div>
                         <div class="am-form-room" style="display: none">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">直播回放room_id <span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">

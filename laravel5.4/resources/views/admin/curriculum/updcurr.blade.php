@@ -18,7 +18,8 @@
                         <div class="am-form-group">
                             <label for="curriculum-pricture" class="am-u-sm-3 am-form-label">图片<span class="tpl-form-line-small-title"></span></label>
                             <div class="am-u-sm-9">
-                                <input type="file" class="tpl-form-input" name="curriculum_pricture" placeholder="请选择图片" value="{{$data[0]->curriculum_pricture}}">
+                                <input type="file" class="tpl-form-input" name="curriculum_pricture" placeholder="请选择图片" value="{{$data[0]->curriculum_pricture}}"><br/>
+                                <input type="text" class="tpl-form-input" name="video" value="{{$data[0]->video}}" placeholder="请输入百家云链接">
                             </div>
                         </div>
                         <div class="am-form-group">
