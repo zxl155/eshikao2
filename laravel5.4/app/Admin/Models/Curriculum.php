@@ -86,7 +86,7 @@ class Curriculum extends Model
     //查询所有课程进修展示
     public function select()
     {
-       $arr = DB::table('curriculum')->orderBy('curriculum_id', 'desc')->paginate(5);
+       $arr = DB::table('curriculum')->where('course_id','==','0')->orderBy('curriculum_id', 'desc')->paginate(5);
         return $arr;
     }
     //删除课程
@@ -134,7 +134,7 @@ class Curriculum extends Model
     public function qualificationsPc()
     {
       $times = date('Y-m-d H:i:s');
-      $sql = "select curriculum_id,curriculum_name,order_by,home_page from curriculum where teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by order_by asc";
+      $sql = "select curriculum_id,curriculum_name,order_by,home_page from curriculum where course_id=0 and teacher_type = 1 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' order by order_by asc";
       $qualifications = DB::select($sql);
       return $qualifications;
     }
@@ -148,7 +148,7 @@ class Curriculum extends Model
     public function recruitPC()
     {
       $times = date('Y-m-d H:i:s');
-      $sql = "select curriculum_id,curriculum_name,order_by,home_page from curriculum where teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."'  order by order_by asc";
+      $sql = "select curriculum_id,curriculum_name,order_by,home_page from curriculum where course_id=0 and teacher_type = 2 and state = 1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."'  order by order_by asc";
       $qualifications = DB::select($sql);
       return $qualifications;
     }
@@ -169,4 +169,37 @@ class Curriculum extends Model
        $data = DB::table('curriculum')->orderBy('curriculum_id','desc')->select('curriculum_name','curriculum_id')->get();
        return $data;
     }
+    //执行添加课程包
+    public function curriculumCourses($data)
+    {
+      $data['subject_id'] = implode($data['subject_id'],',');
+        $data['grade_id'] = implode($data['grade_id'],',');
+        $data['region_id'] = implode($data['region_id'], ',');
+       $arr = DB::table('curriculum')->insert(['video'=>$data['video'],'curriculum_name'=>$data['curriculum_name'],'purchase_number'=>$data['purchase_number'],'present_price'=>$data['present_price'],'original_price'=>$data['present_price'],'purchase_state_time'=>$data['purchase_state_time'],'purchase_end_time'=>$data['purchase_end_time'],'notice'=>$data['notice'],'teacher_type'=>$data['teacher_type'],'type_id'=>$data['type_id'],'is_course'=>$data['is_course'],'curriculum_pricture'=>$data['curriculum_pricture'],'admin_id'=>$data['admin_id'],'subject_id'=>$data['subject_id'],'grade_id'=>$data['grade_id'],'region_id'=>$data['region_id']]);
+       return $arr;
+    }
+    //展示课程包
+    public function courselist($curriculum_id)
+    {
+
+       $curriculum = DB::table('curriculum')->where(['course_id'=>$curriculum_id])->get()->toarray();
+       return $curriculum;
+    }
+    /**
+     * @张小龙
+     * @DateTime  2018-06-14
+     * 课程包对应添加课程
+     */
+     public function courseadds($data){
+        $data['subject_id'] = implode($data['subject_id'],',');
+        $data['grade_id'] = implode($data['grade_id'],',');
+        $data['region_id'] = implode($data['region_id'], ',');
+        $arr = DB::insert('insert into curriculum (curriculum_pricture,curriculum_name,purchase_number,original_price,recovery_original,present_price,purchase_state_time,purchase_end_time,teacher_type,type_id,subject_id,grade_id,admin_id,notice,qq_group_key,publish,region_id,curriculum_content,is_goods,qq_number,video,course_id) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$data['curriculum_pricture'],$data['curriculum_name'],$data['purchase_number'],$data['original_price'],$data['recovery_original'],$data['present_price'],$data['purchase_state_time'],$data['purchase_end_time'],$data['teacher_type'],$data['type_id'],$data['subject_id'],$data['grade_id'],$data['admin_id'],$data['notice'],$data['qq_group_key'],$data['publish'],$data['region_id'],$data['curriculum_content'],$data['is_goods'],$data['qq_number'],$data['video'],$data['curriculum_id']]);
+       if ($arr) {
+           return true;
+       } else {
+          return false;
+       }
+
+     }
 }

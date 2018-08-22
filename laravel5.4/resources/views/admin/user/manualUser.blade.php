@@ -81,10 +81,6 @@
     <script src="{{URL::asset('/')}}assets/js/jquery.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/amazeui.min.js"></script>
     <script src="{{URL::asset('/')}}assets/js/app.js"></script>
-    <script type="text/javascript">
-setTimeout(function(){  //使用  setTimeout（）方法设定定时2000毫秒
-window.location.reload();//页面刷新
-},60000);
-</script>
+    <script type="text/javascript"></script>
 </body>
 </html>

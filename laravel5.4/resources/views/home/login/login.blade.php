@@ -63,7 +63,7 @@
 <script type="text/javascript">
     $("#btn").click(function(){
     var html = "<a href='#' style='color:red'>手机号不能为空</a>";
-
+     localStorage.setItem('id','10');
 if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机版本
     var user_tel = $("#user_tel").val();
         var user_pwd = $("#user_pwd").val();

@@ -61,9 +61,12 @@
     <div class="Qualified"><h2 class="Qualified-title"><span>教师资格 <a aria-current="false" href="{{URL::asset('home/qualifications.html')}}"> 更多»</a></span>
     </h2>
         <div class="Qualified-content clearfix">
-            
            @foreach($qualifications as $val)
+           @if($val->is_course == 1)
+                   <a target="_blank" href="{{URL::asset('home/courselist.html')}}?curriculum_id={{$val->curriculum_id}}">
+           @else 
             <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+            @endif
                 <div class="m-Qualified-title">
                    <b>教师资格  </b>
                 <h5>{{$val->curriculum_name}}</h5> 
@@ -90,6 +93,9 @@
                         @endif
                     </span></h2>
                 </div>
+                @if($val->is_course == 1)
+                    <img class="img" src="{{URL::asset('/')}}home/img/home_bom.jpg" alt="">
+                @endif
             </a>
              
           @endforeach  
@@ -101,7 +107,11 @@
          <div class="Qualified-content clearfix">
             
            @foreach($recruit as $val)
-            <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+                @if($val->is_course == 1)
+                   <a target="_blank" href="{{URL::asset('home/courselist.html')}}?curriculum_id={{$val->curriculum_id}}">
+                @else 
+                    <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+                @endif
                 <div class="m-Qualified-title">
                    <b>教师招聘  </b>
                 <h5>{{$val->curriculum_name}}</h5> 
@@ -128,6 +138,9 @@
                         @endif
                     </span></h2>
                 </div>
+                @if($val->is_course == 1)
+                    <img class="img" src="{{URL::asset('/')}}home/img/home_bom.jpg" alt="">
+                @endif
             </a>
              
           @endforeach  

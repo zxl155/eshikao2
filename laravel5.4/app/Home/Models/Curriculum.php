@@ -13,11 +13,11 @@ class Curriculum extends Model
     public function qualifications()
     {
         $times = date('Y-m-d H:i:s');
-    	$sql = "select * from curriculum where teacher_type = 1 and state = 1 and home_page =1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
+    	$sql = "select * from curriculum where course_id = 0 and teacher_type = 1 and state = 1 and home_page =1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
     	$qualifications = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($qualifications as $key => $value) {
-            foreach ($admin as $key => $val) {
+            foreach ($admin as $ke => $val) {
                 if($value->admin_id == $val->admin_id){
                     $value->admin_name = $val->nickname;
                     $value->admin_head = $val->admin_head;
@@ -28,8 +28,16 @@ class Curriculum extends Model
                      $value->recovery_original_is = 0;
                 }
             }
+           $arr = DB::table('curriculum')->where(['course_id'=>$value->curriculum_id])->select('bought_number','course_id')->get()->toarray();
+           foreach ($arr as $k => $v) {
+               if($v->course_id == $value->curriculum_id) {
+                  $value->bought_numbers[] = $v->bought_number;
+               }
+           }
+          if(isset($value->bought_numbers)){
+            $value->bought_number= array_sum($value->bought_numbers);
+          }
         }
-        //print_r($qualifications);die;
     	return $qualifications;
     }
     /**
@@ -38,7 +46,7 @@ class Curriculum extends Model
     public function recruit()
     {
     	$times = date('Y-m-d H:i:s');
-        $sql = "select * from curriculum where teacher_type = 2 and state = 1 and home_page =1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
+        $sql = "select * from curriculum where  course_id = 0 and  teacher_type = 2 and state = 1 and home_page =1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
         $recruit = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($recruit as $key => $value) {
@@ -53,6 +61,15 @@ class Curriculum extends Model
                      $value->recovery_original_is = 0;
                 }
             }
+             $arr = DB::table('curriculum')->where(['course_id'=>$value->curriculum_id])->select('bought_number','course_id')->get()->toarray();
+           foreach ($arr as $k => $v) {
+               if($v->course_id == $value->curriculum_id) {
+                  $value->bought_numbers[] = $v->bought_number;
+               }
+           }
+          if(isset($value->bought_numbers)){
+            $value->bought_number= array_sum($value->bought_numbers);
+          }
         }
     	return $recruit;
     }
@@ -63,6 +80,7 @@ class Curriculum extends Model
     {
         $times = date('Y-m-d H:i:s');
        $curriculum = DB::table('curriculum');
+       $curriculum->where('course_id','=',0);
        $curriculum->where('teacher_type','=',1);
        $curriculum->where('state','=',1);
        $curriculum->where('purchase_state_time','<=',$times);
@@ -83,6 +101,15 @@ class Curriculum extends Model
                      $value->recovery_original_is = 0;
                 }
             }
+            $arr = DB::table('curriculum')->where(['course_id'=>$value->curriculum_id])->select('bought_number','course_id')->get()->toarray();
+           foreach ($arr as $k => $v) {
+               if($v->course_id == $value->curriculum_id) {
+                  $value->bought_numbers[] = $v->bought_number;
+               }
+           }
+          if(isset($value->bought_numbers)){
+            $value->bought_number= array_sum($value->bought_numbers);
+          }
         }
         return $qualificationss;
     }
@@ -93,6 +120,7 @@ class Curriculum extends Model
     {
         $times = date('Y-m-d H:i:s');
        $curriculum = DB::table('curriculum');
+       $curriculum->where('course_id','=',0);
        $curriculum->where('teacher_type','=',2);
        $curriculum->where('state','=',1);
        $curriculum->where('purchase_state_time','<=',$times);
@@ -114,6 +142,15 @@ class Curriculum extends Model
                      $value->recovery_original_is = 0;
                 }
             }
+            $arr = DB::table('curriculum')->where(['course_id'=>$value->curriculum_id])->select('bought_number','course_id')->get()->toarray();
+           foreach ($arr as $k => $v) {
+               if($v->course_id == $value->curriculum_id) {
+                  $value->bought_numbers[] = $v->bought_number;
+               }
+           }
+          if(isset($value->bought_numbers)){
+            $value->bought_number= array_sum($value->bought_numbers);
+          }
         }
         return $recruits;
     }
@@ -214,5 +251,38 @@ class Curriculum extends Model
            }
        }
        return $curriculum_region;
+    }
+    //查询课程包对应课程
+    public function courselist($curriculum_id)
+    {
+        $times = date('Y-m-d H:i:s');
+       $curriculum = DB::table('curriculum');
+        $curriculum->where('course_id','=',$curriculum_id);
+       $curriculum->where('state','=',1);
+       $curriculum->where('purchase_state_time','<=',$times);
+       $curriculum->where('purchase_end_time','>=',$times);
+       $curriculum->orderBy('order_by','asc');
+       $data = $curriculum->get();
+        $admin = DB::table('admin')->get();
+        foreach ($data as $key => $value) {
+            foreach ($admin as $key => $val) {
+                if($value->admin_id == $val->admin_id){
+                    $value->admin_name = $val->nickname;
+                    $value->admin_head = $val->admin_head;
+                }
+                if($value->recovery_original < $times){
+                    $value->recovery_original_is = 1;
+                } else {
+                     $value->recovery_original_is = 0;
+                }
+            }
+        }
+        return $data;
+    }
+    //查询单条课程
+    public function oneCurriculum($curriculum_id)
+    {
+        $data = DB::table('curriculum')->where(['curriculum_id'=>$curriculum_id])->select('curriculum_name')->get();
+        return $data;
     }
 }
