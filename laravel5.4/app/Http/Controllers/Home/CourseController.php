@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Course;
 use App\Home\Models\Order;
+use App\Home\Models\Curriculum;
 class CourseController extends Controller
 {
 	//查询课程包
@@ -31,5 +32,14 @@ class CourseController extends Controller
 			$order = '';
 		}
 		return view('home/course/orderSearch',['order'=>$order]);
+	}
+	//课程包详情
+	public function courselist()
+	{
+		$curriculum_id = Input::get('curriculum_id');
+		$curriculum = new Curriculum;
+		$data = $curriculum->courselist($curriculum_id);
+		$curriculum = $curriculum->oneCurriculum($curriculum_id);
+		return view('home/course/courselist',['data'=>$data,'curriculum'=>$curriculum]);
 	}
 }

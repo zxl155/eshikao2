@@ -7,12 +7,12 @@
     <ol class="am-breadcrumb">
         <li><a href="{{ url('admin/index') }}" class="am-icon-home">首页</a></li>
         <li><a href="#">课程管理</a></li>
-        <li class="am-active">课程列表</li>
+        <li class="am-active">课程包列表</li>
     </ol>
     <div class="tpl-portlet-components">
         <div class="portlet-title">
             <div class="caption font-green bold">
-                <span class="am-icon-code"></span> 列表
+                <span class="am-icon-code"></span> {{$curriculum_name[0]->curriculum_name}}
             </div>
             <div class="tpl-portlet-input tpl-fz-ml">
                 
@@ -22,22 +22,19 @@
             <div class="am-g">
                 <div class="am-u-sm-12 am-u-md-3">
                     <div class="am-form-group">
-                         <a style="color: red" href="{{URL('admin/curriculumCourse')}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>添加课程包</a>
-                    </div>
-                    <div class="am-form-group">
-                         <a href="{{ url('admin/addcurr') }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>添加课程</a>
+                         <a href="{{url('admin/courseadd')}}?curriculum_id={{$curriculum_name[0]->curriculum_id}}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-pencil-square-o"></span>添加课程</a>
                     </div>
                 </div>
-                <div class="am-u-sm-12 am-u-md-3">
+               <!--  <div class="am-u-sm-12 am-u-md-3">
                     <form action="{{ url('admin/listcurr') }}" method="get">
                     <div class="am-input-group am-input-group-sm">
-                        <input type="text" name="curriculum_name" @if($curriculum_name!='') value="{{$curriculum_name}}" @endif class="am-form-field" placeholder="请输入课程名称或关键字">
+                        <input type="text" name="curriculum_name" class="am-form-field" placeholder="请输入课程名称或关键字">
                         <span class="am-input-group-btn">
                             <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
                         </span>
                     </div>
                     </form>
-                </div>
+                </div> -->
             </div>
             <div class="am-g">
                 <div class="am-u-sm-12">
@@ -86,17 +83,11 @@
                                         @endif
                                     </th>
                                     <th>
-                                   @if($value->is_course != 1)
-                                    <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$value->curriculum_id}}">课程预览</a>
-                                    <a href="{{URL::asset('admin/listpplive')}}?curriculum_id={{$value->curriculum_id}}">直播课程列表</a><br/>
-                                    <a href="{{URL::asset('admin/updcurr')}}?curriculum_id={{$value->curriculum_id}}">编辑</a>
-                                   <!--  <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/delcurr')}}?curriculum_id={{$value->curriculum_id}}" >删除</a> -->
-                                    <a onclick="if(confirm('确实要赠送吗？')) return true;else return false;" href="{{URL::asset('admin/userCurriculumAdd')}}?curriculum_id={{$value->curriculum_id}}" >赠送课程</a>
-                                    @else
-                                    <a href="{{URL::asset('admin/courselist')}}?curriculum_id={{$value->curriculum_id}}">课程包列表</a><br/>
-                                    <a href="{{URL::asset('admin/updcurr')}}?curriculum_id={{$value->curriculum_id}}">编辑</a>
-                                   <!--  <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/delcurr')}}?curriculum_id={{$value->curriculum_id}}" >删除</a> -->
-                                    @endif
+                                        <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$value->curriculum_id}}">课程预览</a>
+                                        <a href="{{URL::asset('admin/listpplive')}}?curriculum_id={{$value->curriculum_id}}">直播课程列表</a><br/>
+                                        <a href="{{URL::asset('admin/courseupd')}}?curriculum_id={{$value->curriculum_id}}&curriculum_ids={{$curriculum_name[0]->curriculum_id}}">编辑</a>
+                                        <!-- <a onclick="if(confirm('确实要删除数据吗？')) return true;else return false;" href="{{URL::asset('admin/coursedel')}}?curriculum_id={{$value->curriculum_id}}&curriculum_ids={{$curriculum_name[0]->curriculum_id}}" >删除</a> -->
+                                        <a onclick="if(confirm('确实要赠送吗？')) return true;else return false;" href="{{URL::asset('admin/userCurriculumAdd')}}?curriculum_id={{$value->curriculum_id}}" >赠送课程</a>
                                     </th>
                                 </tr>
                                 @endforeach
@@ -106,13 +97,7 @@
                             
                             <div class="am-fr">
                                 <div id="pull_right">
-                                    <span>当前总课程<span style="color: red">{{$count}}</span>条</span>
-                                    <div class="pull-right">
-                                      
-                                       @if($curriculum_name == '')
-                                             {!! $curriculum_content->render() !!}
-                                      @endif
-                                    </div>
+                                    <span>当前课程包总课程<span style="color: red">{{$count}}</span>条</span>
                                 </div>
                             </div>
                         </div>

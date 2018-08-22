@@ -194,4 +194,188 @@ class CurriculumController extends CommonController
         }
         return json_encode($all);
     }
+    //添加课程包
+    public function curriculumCourse()
+    {
+    	//查询 面试或者笔试
+		$cattype = new CatType;
+		$cattype_content = $cattype->select();
+
+		//查询学科
+		$subjecttype = new SubjectType;
+		$subjecttype_content = $subjecttype->select();
+
+		//查询学段
+		$gradetype =  new GradeType;
+		$gradetype_content = $gradetype->select();
+		
+		//查询教师
+		$admin = new Admin;
+		$admin_teacher = $admin->searchTeacher();
+		//查询地区
+		$region = new Region;
+		$region_content = $region->select();
+		return view('admin/curriculum/curriculumCourse',[
+			'cattype_content'=>$cattype_content,
+			'subjecttype_content'=>$subjecttype_content,
+			'gradetype_content'=>$gradetype_content,
+			'admin_teacher'=>$admin_teacher,
+			'region_content'=>$region_content,
+		]);
+    }
+    //执行添加课程包
+    public function curriculumCourses(Request $request)
+    {
+    	$data = Input::all();
+    	$head_pirctur=$request->file('curriculum_pricture');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  $bool=Storage::disk('curriculum_pricture')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+		$data['curriculum_pricture'] = $fileName;
+    	$curriculum = new Curriculum;
+    	$arr = $curriculum->curriculumCourses($data);
+    	if ($arr) {
+    		return redirect('admin/listcurr');
+    	} else {
+    		echo "添加课程包失败";
+    	}
+    }
+    //课程包列表
+    public function courselist()
+    {
+    	$curriculum_id = Input::get('curriculum_id');
+    	$curriculum = new Curriculum;
+    	$data = $curriculum->courselist($curriculum_id);
+        $count = count($data);
+        $curriculum_name = DB::table('curriculum')->where(['curriculum_id'=>$curriculum_id])->select('curriculum_name','curriculum_id')->get();
+    	return view('admin/curriculum/courselist',[
+    		'curriculum_content'=>$data,
+    		'count'=>$count,
+    		'curriculum_name'=>$curriculum_name,
+    	]);
+    }
+    //课程包对应添加课程
+    public function courseadd()
+    {
+    	$curriculum_id = Input::get('curriculum_id');
+  		//查询 面试或者笔试
+		$cattype = new CatType;
+		$cattype_content = $cattype->select();
+
+		//查询学科
+		$subjecttype = new SubjectType;
+		$subjecttype_content = $subjecttype->select();
+
+		//查询学段
+		$gradetype =  new GradeType;
+		$gradetype_content = $gradetype->select();
+
+		//查询教师
+		$admin = new Admin;
+		$admin_teacher = $admin->searchTeacher();
+		//查询地区
+		$region = new Region;
+		$region_content = $region->select();
+		return view('admin/curriculum/courseadd',[
+			'cattype_content'=>$cattype_content,
+			'subjecttype_content'=>$subjecttype_content,
+			'gradetype_content'=>$gradetype_content,
+			'admin_teacher'=>$admin_teacher,
+			'region_content'=>$region_content,
+			'curriculum_id'=>$curriculum_id,
+		]);
+    }
+    //执行课程包对应添加课程
+    public function courseadds(Request $request)
+    {
+    	$data = Input::all();
+    	$head_pirctur=$request->file('curriculum_pricture');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  $bool=Storage::disk('curriculum_pricture')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+		$data['curriculum_pricture'] = $fileName;
+		$curriculum = new Curriculum;
+		$curriculums = $curriculum->courseadds($data);
+		if ($curriculums == 'true') {
+			return redirect("admin/courselist?curriculum_id=".$data['curriculum_id']);
+		} else {
+			echo "添加失败";
+		}
+    }
+    //执行课程包对应添加课程
+    public function coursedel()
+    {
+    	$curriculum_id = Input::get('curriculum_id');
+    	$curriculum_ids = Input::get('curriculum_ids');
+    	$curriculum = new Curriculum;
+		$arr = $curriculum->deletes($curriculum_id);
+		if ($arr) {
+			return redirect("admin/courselist?curriculum_id=".$curriculum_ids);
+		} else {
+			echo "删除失败";
+		}
+    }
+    //修改课程包对应的课程
+    public function courseupd()
+    {
+    	$curriculum_id = Input::get('curriculum_id');
+    	$curriculum_ids = Input::get('curriculum_ids');
+		$curriculum = new Curriculum;
+		$data = $curriculum->oneSelect($curriculum_id);
+		//查询 面试或者笔试
+		$cattype = new CatType;
+		$cattype_content = $cattype->select();
+
+		//查询学科
+		$subjecttype = new SubjectType;
+		$subjecttype_content = $subjecttype->select();
+
+		//查询学段
+		$gradetype =  new GradeType;
+		$gradetype_content = $gradetype->select();
+
+		//查询教师
+		$admin = new Admin;
+		$admin_teacher = $admin->searchTeacher();
+
+		//查询地区
+		$region = new Region;
+		$region_content = $region->select();
+		return view('admin/curriculum/courseupd',[
+			'cattype_content'=>$cattype_content,
+			'subjecttype_content'=>$subjecttype_content,
+			'gradetype_content'=>$gradetype_content,
+			'admin_teacher'=>$admin_teacher,
+			'region_content'=>$region_content,
+			'data'=>$data,
+			'curriculum_ids'=>$curriculum_ids,
+		]);
+    }
+    //执行修改课程包对应课程
+    public function courseupds(Request $request)
+    {
+    	$data = Input::all();
+		if(isset($data['curriculum_pricture'])){
+			$head_pirctur=$request->file('curriculum_pricture');
+            $name=$head_pirctur->getClientOriginalName();
+            $ext=$head_pirctur->getClientOriginalExtension();//得到图片后缀；
+            $fileName=md5(uniqid($name));
+            $fileName=$fileName.'.'.$ext;//生成新的的文件名
+		  	$bool=Storage::disk('curriculum_pricture')->put($fileName,file_get_contents($head_pirctur->getRealPath()));//
+			$data['curriculum_pricture'] = $fileName;
+		} else {
+			
+		}
+		$curriculum = new Curriculum;
+		$curriculums = $curriculum->upd($data);
+		if ($curriculums == 'true') {
+			return redirect("admin/courselist?curriculum_id=".$data['curriculum_ids']);
+		} else {
+			echo "修改失败";
+		}
+    }
 }

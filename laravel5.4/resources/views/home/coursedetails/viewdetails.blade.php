@@ -115,7 +115,7 @@
                             </li> 
                             </a>
                         @else 
-                            <a href="{{URL::asset('home/playback')}}?pplive_id={{$free[0]->pplive_id}}">
+                            <a target="_blank" href="{{URL::asset('home/playback')}}?pplive_id={{$free[0]->pplive_id}}">
                                  <li>  
                                      <img src="./img/zbtb.png" alt=""> 
                                     <span class="lint-title"><span style="color: red">【查看回放】</span>{{$free[0]->pplive_name}}</span>

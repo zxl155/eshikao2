@@ -122,7 +122,11 @@
     <div  id="html">
     <div class="Qualified-content clearfix">
        @foreach($recruits as $val)
-        <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+       @if($val->is_course == 1)
+                   <a target="_blank" href="{{URL::asset('home/courselist.html')}}?curriculum_id={{$val->curriculum_id}}">
+           @else 
+            <a target="_blank" href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$val->curriculum_id}}">
+            @endif
             <div class="m-Qualified-title">
                 <b>教师招聘</b>
             <h5>{{$val->curriculum_name}}</h5>
@@ -132,12 +136,10 @@
                 <span>{{$val->notice}}</span>
             </div>
             <ul class="Qualified-teacher">
-                 
                 <li>
                     <img src="{{URL::asset('/')}}home/img/admin_head/{{$val->admin_head}}" alt="" height="50px" width="50px" alt="">
                     <span>{{$val->admin_name}}</span>
                 </li>
-             
             </ul>
             <div class="Qualified-price">
                 <span>{{$val->bought_number}}人购买</span>
@@ -149,6 +151,9 @@
                         @endif
                 </span></h2>
             </div>
+            @if($val->is_course == 1)
+                    <img class="img" src="{{URL::asset('/')}}home/img/home_bom.jpg" alt="">
+                @endif
         </a>
         @endforeach
     </div>

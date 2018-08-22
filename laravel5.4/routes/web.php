@@ -41,6 +41,22 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::get('admin/shelf','CurriculumController@shelf');
     //课程删除
     Route::get('admin/delcurr','CurriculumController@delcurr');
+    //添加课程包
+    Route::get('admin/curriculumCourse','CurriculumController@curriculumCourse');
+     //执行添加课程包
+    Route::post('admin/curriculumCourses','CurriculumController@curriculumCourses');
+    //课程包列表
+    Route::get('admin/courselist','CurriculumController@courselist');
+    //课程包对应添加课程
+    Route::get('admin/courseadd','CurriculumController@courseadd');
+     //执行课程包对应添加课程
+    Route::post('admin/courseadds','CurriculumController@courseadds');
+    //删除课程包对应添加课程
+    Route::get('admin/coursedel','CurriculumController@coursedel');
+    //修改课程包对应添加课程
+    Route::get('admin/courseupd','CurriculumController@courseupd');
+    //执行修改课程包对应添加课程
+    Route::post('admin/courseupds','CurriculumController@courseupds');
     //管理员添加
     Route::get('admin/addadmin','AdminController@addadmin');
     //执行添加
@@ -202,7 +218,7 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/updatemydata','MydataController@updatemydata');
   //个人中心进行修改密码
   Route::get('home/updatepwd','MydataController@updatepwd');
-  //个人中心进行修改密码s
+  //个人中心进行修改密码
   Route::get('home/updatepwds','MydataController@updatepwds');
   //个人中心进行头像
   Route::post('home/headupdate','MydataController@insetArticle');
@@ -214,6 +230,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/recruit.html','RecruitController@index');
    //教师招聘
   Route::get('home/recruitsearch','RecruitController@recruitSearch');
+  //课程包详情
+  Route::get('home/courselist.html','CourseController@courselist');
   //未购买课程详情
   Route::get('home/coursedetails.html','CoursedetailsController@index');
   //购买之后课程详情
