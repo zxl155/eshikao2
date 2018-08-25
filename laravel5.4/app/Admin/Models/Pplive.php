@@ -532,4 +532,11 @@ class Pplive extends Model
 		}
 
 	}
+
+	//添加讲义
+	public function handoutadds($data)
+	{
+		$arr = DB::table('pplive')->where(['pplive_id'=>$data['pplive_id']])->update(['jianyi'=>$data['jianyi']]);
+		return $arr;
+	}
 }

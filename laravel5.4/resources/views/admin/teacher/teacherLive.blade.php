@@ -45,6 +45,7 @@
                                     <th class="table-title">助教</th>
                                     <th class="table-title">状态</th>
                                     <th class="table-set">操作</th>
+                                    <th class="table-set">讲义</th>
                                 </tr>
 
                             </thead>
@@ -101,6 +102,7 @@
                                       @endif
                                     @endif
                                   </th>
+                                  <th><a href="{{url('admin/handout')}}?pplive_id={{$val->pplive_id}}">讲义</a></th>
                                 </tr>
                                 @endforeach
                             </tbody>
