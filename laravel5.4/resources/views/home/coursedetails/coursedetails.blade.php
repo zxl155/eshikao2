@@ -34,30 +34,40 @@
                      @foreach($pplive_content as $val)
                     
                         @if($val->is_time == 0)
-                            <li>  
-                                 <img src="./img/zbtb.png" alt=""> 
-                                <span class="lint-title">{{$val->pplive_name}}【未开始】</span>
-                                <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
-                                <span class="list-name">{{$val->admin_name}}</span>
-                            </li>
-                        @elseif($val->is_time == 1)
-                           <a target="_blank" href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">
-                           <li>  
-                                 <img src="./img/zbtb.png" alt=""> 
-                                <span class="lint-title">{{$val->pplive_name}}<span style="color: blue">【进入教室】</span></span>
-                                <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
-                                <span class="list-name">{{$val->admin_name}}</span>
-                            </li> 
-                            </a>
-                        @else 
-                            <a target="_blank" href="{{URL::asset('home/playback')}}?pplive_id={{$val->pplive_id}}">
-                                 <li>  
-                                     <img src="./img/zbtb.png" alt=""> 
-                                    <span class="lint-title">{{$val->pplive_name}}<span style="color: red">【查看回放】</span></span>
+                            <li>
+                                <a>
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title">【未开始】{{$val->pplive_name}}</span>
                                     <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
                                     <span class="list-name">{{$val->admin_name}}</span>
-                                </li> 
-                            </a>
+                                </a>
+                            </li>
+                        @elseif($val->is_time == 1)
+                            <li>
+                                <a target="_blank" href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$val->pplive_id}}">
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title"><span style="color: blue">【直播】</span>{{$val->pplive_name}}</span>
+                                    <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
+                                    @if($val->jianyi != '')
+                                <!-- <div> <a href="{{URL::asset('/')}}home/img/jianyi/{{$val->jianyi}}" style="color: blue">下载讲义</a></div> -->
+                                    <button class="btn" onclick="event.preventDefault(),event.stopPropagation(),location='{{URL::asset('/')}}home/img/jianyi/{{$val->jianyi}}'"><i class="iconfont icon-xiazai"></i>&nbsp;下载讲义</button>
+                                    @endif
+                                    <span class="list-name">{{$val->admin_name}}</span>
+                                </a>
+                            </li>
+                        @else 
+                            <li>
+                                <a target="_blank" href="{{URL::asset('home/playback')}}?pplive_id={{$val->pplive_id}}">
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title"><span style="color: red">【回放】</span>{{$val->pplive_name}}</span>
+                                    <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
+                                    @if($val->jianyi != '')
+                                   <!--  <div><a href="{{URL::asset('/')}}home/img/jianyi/{{$val->jianyi}}" style="color: blue">下载讲义</a></div> -->
+                                    <button class="btn" onclick="event.preventDefault(),event.stopPropagation(),location='{{URL::asset('/')}}home/img/jianyi/{{$val->jianyi}}'"><i class="iconfont icon-xiazai"></i>&nbsp;下载讲义</button>
+                                    @endif
+                                    <span class="list-name">{{$val->admin_name}}</span>
+                                </a>
+                            </li>
                         @endif
                    
                     @endforeach

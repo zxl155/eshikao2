@@ -307,7 +307,18 @@ var renderZhao=(function () {
     })
     //移动收货地址‘文字内容’
     $('.m-content-addres .m-addres-man').html()?$('.m-add-addres .m-addresm').html('收货地址')&&$('.m-addresxg').html('更改收货地址'):null;
-    //移动支付方式
+    //移动招考公告
+    $('.notice-listbox .notice-listbox-title').click(function () {
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            $('.notice .Certificate-type').slideToggle()
+        }
+    })
+    $('.notice .Certificate-ul').click(function () {
+        console.log(123);
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            $('.notice .Certificate-type').slideUp()
+        }
+    })
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换

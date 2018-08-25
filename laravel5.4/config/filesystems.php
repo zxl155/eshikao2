@@ -87,6 +87,11 @@ return [
            'driver'=>'local',
            'root' =>public_path('home/img/recruitment/')
        ],
+       //直播讲义文件路径
+         'jianyi'=>[
+           'driver'=>'local',
+           'root' =>public_path('home/img/jianyi/')
+       ],
     ],
 
 ];

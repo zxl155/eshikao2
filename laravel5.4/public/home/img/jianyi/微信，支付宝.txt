@@ -1,0 +1,17 @@
+微信PC：
+	Api key商户支付秘钥：371325198602104558jiayanqing088x
+	appid : wxb7c95914eaa62229
+	App Sercret: 097703e137eba3b2f6e2737ed1089af7
+	mchID商户号：1508009641
+微信H5：
+	$appid = "wxb7c95914eaa62229";//微信给的
+        $mch_id = "1508009641";//微信官方的
+        $key = "371325198602104558jiayanqing088x";//自己设置的微信商家key
+
+支付宝PC：
+	合作身份者ID：  2088131038987783
+	MD5密钥，安全检验码： 60288u9y9e3tfhvos1anutzrqnqx6qqu
+
+支付宝move:
+	APPID :  2018062360348971
+

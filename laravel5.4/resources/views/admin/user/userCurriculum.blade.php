@@ -78,6 +78,7 @@
                                             <option value="zhongtong" @if($value->invoice=='zhongtong') selected @endif>中通</option>
                                             <option value="yunda" @if($value->invoice=='yunda') selected @endif>韵达</option>
                                             <option value="tiantian" @if($value->invoice=='tiantian') selected @endif>天天</option>
+                                            <option value="debangwuliu" @if($value->invoice=='debangwuliu') selected @endif>德邦</option>
                                         </select>
                                     </th>
                                 </tr>

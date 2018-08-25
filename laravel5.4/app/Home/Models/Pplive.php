@@ -146,11 +146,11 @@ class Pplive extends Model
    {
     $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) and is_free = 1 order by start_time asc";
     $data = DB::select($sql);
-      $admin = DB::table('admin')->select('admin_id','admin_name')->get();
+      $admin = DB::table('admin')->select('admin_id','nickname')->get();
       foreach ($data as $key => $value) {
          foreach ($admin as $key => $val) {
             if ($value->admin_id == $val->admin_id) {
-              $value->admin_name = $val->admin_name;
+              $value->admin_name = $val->nickname;
             }
             if($value->start_time > date('Y-m-d H:i:s',strtotime('+30 minute'))){
                      $value->is_time = 0;

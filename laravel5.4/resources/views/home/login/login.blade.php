@@ -72,7 +72,7 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
             return false;
         }
         var phone = /^1[34578]\d{9}$/;
-        var password = /^[a-zA-Z1-9\d_]{8,16}$/;
+        var password = /^[a-zA-Z1-9\d_]{6,12}$/;
         if( phone.test(user_tel) ) {
               $.ajax({
                 url:"{{URL::asset('home/dologin')}}",
@@ -107,7 +107,7 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
             return false;
         }
         var phone = /^1[34578]\d{9}$/;
-        var password = /^[a-zA-Z1-9\d_]{8,16}$/;
+        var password = /^[a-zA-Z1-9\d_]{6,12}$/;
         if( phone.test(user_tel) ) {
               $.ajax({
                 url:"{{URL::asset('home/dologin')}}",
