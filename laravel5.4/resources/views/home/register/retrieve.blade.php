@@ -57,7 +57,7 @@
                     <span class="getveri">获取验证码</span>
                 </div>
                 <span class="zh-prompt2"></span>
-                <input type="password" placeholder="请设置密码8-16位数字或字母" id="user_pwd" value="">
+                <input type="password" placeholder="请设置密码6-12位数字或字母" id="user_pwd" value="">
                 <span class="zh-prompt2"></span>
                 <input type="password" placeholder="请确认密码" id="user_pqrwd" value="">
                 <a href="javascript:;" class="btnlogin" id="btn">确定</a>
@@ -74,7 +74,7 @@
         var user_pwd = $("#user_pwd").val();
         var code = $("#code").val();
         var patterns = /^1[34578]\d{9}$/;
-        var password = /^[a-zA-Z1-9\d_]{8,16}$/;
+        var password = /^[a-zA-Z1-9\d_]{6,12}$/;
         var number = /^[0-9]{6,6}$/;
         var user_pqrwd = $("#user_pqrwd").val();
         if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机版本

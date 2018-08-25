@@ -52,7 +52,7 @@ class PpliveController extends CommonController
      * @DateTime  2018-06-15
      * 执行添加直播课程
      */
-	public function dopplive(){
+	public function dopplive(Request $request){
 		$data = Input::all();
 		$curriculum_id = $data['curriculum_id'];
 		$pplive = new Pplive;

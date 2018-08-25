@@ -99,40 +99,44 @@
                     <!-- 免费直播 -->
                     @if(!empty($free[0]->pplive_name))
                      @if($free[0]->is_time == 0)
-                            <li>  
-                                 <img src="./img/zbtb.png" alt=""> 
-                                <span class="lint-title">{{$free[0]->pplive_name}}【未开始】</span>
-                                <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
-                                <span class="list-name">{{$free[0]->admin_name}}</span>
-                            </li>
-                        @elseif($free[0]->is_time == 1)
-                           <a target="_blank" href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$free[0]->pplive_id}}">
-                           <li>  
-                                 <img src="./img/zbtb.png" alt=""> 
-                                <span class="lint-title"><span style="color: blue">【进入教室】</span>{{$free[0]->pplive_name}}</span>
-                                <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
-                                <span class="list-name">{{$free[0]->admin_name}}</span>
-                            </li> 
-                            </a>
-                        @else 
-                            <a target="_blank" href="{{URL::asset('home/playback')}}?pplive_id={{$free[0]->pplive_id}}">
-                                 <li>  
-                                     <img src="./img/zbtb.png" alt=""> 
-                                    <span class="lint-title"><span style="color: red">【查看回放】</span>{{$free[0]->pplive_name}}</span>
+                           <li>
+                                <a>
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title">【未开始】{{$free[0]->pplive_name}}</span>
                                     <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
                                     <span class="list-name">{{$free[0]->admin_name}}</span>
-                                </li> 
-                            </a>
+                                </a>
+                            </li>
+                        @elseif($free[0]->is_time == 1)
+                           <li>
+                                <a target="_blank" href="{{URL::asset('home/coursedetailShow')}}?pplive_id={{$free[0]->pplive_id}}">
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title"><span style="color: blue">【直播】</span>{{$free[0]->pplive_name}}</span>
+                                    <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
+                                    <span class="list-name">{{$free[0]->admin_name}}</span>
+                                </a>
+                            </li>
+                        @else 
+                            <li>
+                                <a target="_blank" href="{{URL::asset('home/playback')}}?pplive_id={{$free[0]->pplive_id}}">
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title"><span style="color: red">【回放】</span>{{$free[0]->pplive_name}}</span>
+                                    <span class="list-time">{{$free[0]->start_time}}--{{$free[0]->end_time}}</span>
+                                    <span class="list-name">{{$free[0]->admin_name}}</span>
+                                </a>
+                            </li>
                         @endif
                     @endif
                     
                    <!-- 免费直播 -->
                     @foreach($pplive_content as $val)
                     <li>
-                         <img src="{{URL::asset('/')}}home/img/zbtb.png" alt="">
-                        <span class="lint-title">{{$val->pplive_name}}</span>
-                        <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
-                        <span class="list-name">{{$val->admin_name}}</span>
+                        <a>
+                            <img src="./img/zbtb.png" alt="">
+                            <span class="lint-title">{{$val->pplive_name}}</span>
+                            <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
+                            <span class="list-name">{{$val->admin_name}}</span>
+                        </a>
                     </li>
                     @endforeach
                     

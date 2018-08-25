@@ -179,6 +179,14 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
     Route::post('admin/userCurriculumAdds','UserController@userCurriculumAdds');
     //用户对应的所有购买课程
     Route::get('admin/userOrder','UserController@userOrder');
+    //讲义展示
+    Route::get('admin/handout','TeacherController@handout');
+    //添加讲义展示
+    Route::get('admin/handoutadd','TeacherController@handoutadd');
+    //执行添加讲义展示
+    Route::post('admin/handoutadds','TeacherController@handoutadds');
+    //修改讲义
+    Route::get('admin/handoutupd','TeacherController@handoutupd');
   });
   //登录
   Route::get('admin/login','LoginController@login');

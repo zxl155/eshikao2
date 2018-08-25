@@ -12,7 +12,7 @@
 
             <div class="am-g">
                 <div class="tpl-form-body tpl-form-line">
-                    <form class="am-form tpl-form-line-form" action="{{ url('admin/dopplive') }}" method="post">
+                    <form class="am-form tpl-form-line-form" action="{{ url('admin/dopplive') }}" method="post"  enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="curriculum_id" value="{{$curriculum_id}}">
                         <div class="am-form-group">
@@ -98,7 +98,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>      
+                        </div>    
                         <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
                                 <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
