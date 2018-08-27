@@ -220,6 +220,13 @@ class Curriculum extends Model
                      $value->recovery_original_is = 0;
                 }
             }
+            if (strtotime($value->purchase_state_time) >= strtotime(date('Y-m-d H:i:s'))) {
+                //未开始售卖
+                $value->is_p_s = 1;
+            } else {
+                //开始售卖
+                $value->is_p_s = 0;
+            }
         }
         if ($arr) {
             return $arr;
