@@ -329,7 +329,12 @@
             @if($isPurchase == 1)
              <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d"><button type="button">观看</button> </a>
             @else 
-            <a href="{{URL::asset('home/moveCoursedetails')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d"><button type="button">购买</button> </a>
+                @if($value->is_p_s == 1)
+                     <a href="#" class="active" style="background: #cdcdcd;border-color:#cdcdcd;"><button type="button" style="background: #cdcdcd;border-color:#cdcdcd;">即将开售</button></a>
+                 @else
+                    <a href="{{URL::asset('home/moveCoursedetails')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d"><button type="button">购买</button> </a>
+                 @endif
+            
             @endif
             @endif
     </div>
