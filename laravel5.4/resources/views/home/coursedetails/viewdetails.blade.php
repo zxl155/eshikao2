@@ -30,11 +30,15 @@
                @if($value->bought_number>=$value->purchase_number)
                  <a href="#" class="active" style="background: #cdcdcd;border-color:#cdcdcd;">已售罄</a>
                 @else
-                @if($isPurchase == 1)
-                 <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">观看</a>
-                @else 
-                <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">立即购买</a>
-                @endif
+                    @if($isPurchase == 1)
+                     <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">观看</a>
+                    @else 
+                        @if($value->is_p_s == 1)
+                             <a href="#" class="active" style="background: #cdcdcd;border-color:#cdcdcd;">即将开售</a>
+                        @else
+                            <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">立即购买</a>
+                        @endif
+                    @endif
                 @endif
             </div>
         </div>
@@ -74,7 +78,11 @@
                 @if($isPurchase == 1)
                  <a href="{{URL::asset('home/coursedetail.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">观看</a>
                 @else 
-                <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">立即购买</a>
+                 @if($value->is_p_s == 1)
+                    <a href="#" class="active" style="background: #cdcdcd;border-color:#cdcdcd;">即将开售</a>
+                 @else
+                    <a href="{{URL::asset('home/CommodityGoods.html')}}?curriculum_id={{$value->curriculum_id}}" class="active" style="background: #fea70d;border-color:#fea70d">立即购买</a>
+                 @endif
                 @endif
                 @endif
                
