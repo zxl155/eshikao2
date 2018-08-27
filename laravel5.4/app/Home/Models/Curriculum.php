@@ -13,7 +13,7 @@ class Curriculum extends Model
     public function qualifications()
     {
         $times = date('Y-m-d H:i:s');
-    	$sql = "select * from curriculum where course_id = 0 and teacher_type = 1 and state = 1 and home_page =1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
+    	$sql = "select * from curriculum where course_id = 0 and teacher_type = 1 and state = 1 and home_page =1 and  purchase_end_time >= '".$times."' LIMIT 4";
     	$qualifications = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($qualifications as $key => $value) {
@@ -46,7 +46,7 @@ class Curriculum extends Model
     public function recruit()
     {
     	$times = date('Y-m-d H:i:s');
-        $sql = "select * from curriculum where  course_id = 0 and  teacher_type = 2 and state = 1 and home_page =1 and purchase_state_time <= '".$times."' and purchase_end_time >= '".$times."' LIMIT 4";
+        $sql = "select * from curriculum where  course_id = 0 and  teacher_type = 2 and state = 1 and home_page =1 and  purchase_end_time >= '".$times."' LIMIT 4";
         $recruit = DB::select($sql);
         $admin = DB::table('admin')->get();
         foreach ($recruit as $key => $value) {
@@ -83,7 +83,7 @@ class Curriculum extends Model
        $curriculum->where('course_id','=',0);
        $curriculum->where('teacher_type','=',1);
        $curriculum->where('state','=',1);
-       $curriculum->where('purchase_state_time','<=',$times);
+       //$curriculum->where('purchase_state_time','<=',$times);
        $curriculum->where('purchase_end_time','>=',$times);
        //$qualificationss = $curriculum->paginate(5);
        $curriculum->orderBy('order_by','asc');
@@ -123,7 +123,7 @@ class Curriculum extends Model
        $curriculum->where('course_id','=',0);
        $curriculum->where('teacher_type','=',2);
        $curriculum->where('state','=',1);
-       $curriculum->where('purchase_state_time','<=',$times);
+       //$curriculum->where('purchase_state_time','<=',$times);
        $curriculum->where('purchase_end_time','>=',$times);
        //$recruits = $curriculum->paginate(5);
        $curriculum->orderBy('order_by','asc');
@@ -266,7 +266,7 @@ class Curriculum extends Model
        $curriculum = DB::table('curriculum');
         $curriculum->where('course_id','=',$curriculum_id);
        $curriculum->where('state','=',1);
-       $curriculum->where('purchase_state_time','<=',$times);
+       //$curriculum->where('purchase_state_time','<=',$times);
        $curriculum->where('purchase_end_time','>=',$times);
        $curriculum->orderBy('order_by','asc');
        $data = $curriculum->get();
