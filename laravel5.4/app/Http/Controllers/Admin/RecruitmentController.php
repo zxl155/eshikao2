@@ -51,7 +51,7 @@ class RecruitmentController extends CommonController
 			$data['recruitment_name'] = Input::get('recruitment_name');
 			$data['region_id'] = Input::get('region_id');
 			$data['content'] = $_POST['content'];
-			$data['add_time'] = date('Y-m-d H:i:s');
+			$data['add_time'] = Input::get('add_time');
 			$data['recruitment_file'] = "$originalName";
 			//$data['recruitment_files'] = "$filename";
 			$recr = new Recruitment;
@@ -127,6 +127,7 @@ class RecruitmentController extends CommonController
 			$data['recruitment_id'] = Input::get('recruitment_id');
 			$data['content'] = $_POST['content'];
 			$data['region_id'] = Input::get('region_id');
+			$data['add_time'] = Input::get('add_time');
 			$data['recruitment_file'] = $originalName;
 			$recr = new Recruitment;
 			$data = $recr->upd($data);
