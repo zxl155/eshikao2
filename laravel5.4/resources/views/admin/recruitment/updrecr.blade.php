@@ -38,7 +38,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+                                <div class="am-form-group">
+                                    <label for="recovery_original" class="am-u-sm-3 am-form-label">修改时间 <span class="tpl-form-line-small-title"></span></label>
+                                    <div class="am-u-sm-9">
+                                        <input placeholder="请输入日期" id='demo'  value="{{$recruitment_content[0]->add_time}}"  name="add_time" class="laydate-icon" onClick="laydate({elem: '#demo',istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                                    </div>
+                                </div>
                                <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">内容</label>
                             <div class="am-u-sm-9">

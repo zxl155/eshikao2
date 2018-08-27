@@ -137,7 +137,7 @@ class PayController extends Controller
 			// 我们判断HTTP_USER_AGENT中是否有MicroMessenger即可
 			if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){//微信内部打开
 				if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false){
-		               echo "小程序暂未开通";//小程序
+		               echo "小程序支付暂未开通,请到易师考官网进行购买:www.eshikao.com";//小程序
 		           }else{
 		               return view('home/wxpay/example/jsapi',['data'=>$datas]);//微信公众号
 		           }
