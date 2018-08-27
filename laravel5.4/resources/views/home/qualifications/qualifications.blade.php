@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>教师资格证国考课程，教师面试结构化真题，易师考</title>
-     <meta name="keywords" content="教师资格证,教师资格证考试,中国教师资格网,中小学教师资格考试网,教师招聘网,教师,教师招聘,教师资格考试,特岗教师,教师招聘考试,中国教师网,教师资格,教师网,教师考试网,易师考,教师考试试题,教师培训报名,教师考试培训">
-    <meta name="description" content="教师网提供发布国家教师资格证考试、教师招聘考试（含特岗）报名时间、报名入口、真题资料、教材用书、辅导培训、考试成绩等,更多教师考试信息,请关注易师考">
+    <title>教师资格证-教师资格证考试,教师招聘考试,考教师更容易</title>
+     <meta name="keywords" content="易师考,教师资格证,教师资格证考试">
+    <meta name="description" content="易师考专注于教师资格考试的教育培训企业;致力服务准教师群体,提供线上直播,线下面授,在线题库,配套图书等;易师考荣获海淀留学人员创业园授予'金种子'称号,为教师群体提供优选教师岗位...">
     <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/jquery-1.8.3.js"></script>

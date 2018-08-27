@@ -135,12 +135,16 @@ class PayController extends Controller
 			return redirect("home/moveUpdateOrder?order_number=".$datas[0]->order_number);
 		} else {
 			// 我们判断HTTP_USER_AGENT中是否有MicroMessenger即可
-			if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
-				return view('home/wxpay/example/jsapi',['data'=>$datas]);
+			if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){//微信内部打开
+				if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false){
+		               echo "小程序暂未开通";//小程序
+		           }else{
+		               return view('home/wxpay/example/jsapi',['data'=>$datas]);//微信公众号
+		           }
 			}else{
 				return view('home/wxpay/wx',['data'=>$datas]);
 			}
-			
+
 		}
 	}
 	//查询订单接口
