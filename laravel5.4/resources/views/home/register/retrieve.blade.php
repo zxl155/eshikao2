@@ -219,7 +219,7 @@ var phone = $('#user_tel').val();
                    var pattern = /^1[34578]\d{9}$/; 
                    if(pattern.test(phone)) {
                          $.ajax({
-                            url:"{{URL::asset('home/retrievesEmail')}}",
+                            url:"{{URL::asset('home/emails')}}",
                             data:{phone:phone,_token:"{{ csrf_token() }}"},
                             type:'get',
                             success:function(data){
@@ -247,7 +247,7 @@ var phone = $('#user_tel').val();
                    var pattern = /^1[34578]\d{9}$/; 
                    if(pattern.test(phone)) {
                          $.ajax({
-                            url:"{{URL::asset('home/retrievesEmail')}}",
+                            url:"{{URL::asset('home/emails')}}",
                             data:{phone:phone,_token:"{{ csrf_token() }}"},
                             type:'get',
                             success:function(data){
