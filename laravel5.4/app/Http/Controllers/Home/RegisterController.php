@@ -32,7 +32,7 @@ class RegisterController extends Controller
 			session(['phone' => $phone]);
 			session(['code' => $code]);
 			$ins = new SmsDemo();
-			if($ins->sendSms("SMS_136980009",$phone,$code,'')){
+			if($ins->sendSms($phone,$code)){
 				echo 1;
 			}else{
 				echo 0;
@@ -98,7 +98,7 @@ class RegisterController extends Controller
 		session(['phone' => $phone]);
 		session(['code' => $code]);
 		$ins = new SmsDemo();
-		if($ins->sendSms("SMS_136980008",$phone,$code,'')){
+		if($ins->sendSms($phone,$code)){
 			echo 1;
 		}else{
 			echo 0;

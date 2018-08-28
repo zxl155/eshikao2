@@ -52,13 +52,13 @@ class PayController extends Controller
 			$order_id =  $order->orderPay($data[0]->order_id);
 			if ($order_id) {
 				/*支付成功发送短信*/
-					if ($data[0]->is_goods == 1) {
+					/*if ($data[0]->is_goods == 1) {
 						$ins = new SmsDemo;
 						$ins->sendSms("SMS_142949618",$data[0]->address_tel,'',$data[0]->curriculum_name);
 					} else {
 						$ins = new SmsDemo;
 						$ins->sendSms("SMS_142954379",$data[0]->address_tel,'',$data[0]->curriculum_name);
-					}
+					}*/
 				/*支付成功发送短信*/
 				return view('home/pay/paySuccess',[
 					'data'=>$data,
@@ -118,13 +118,13 @@ class PayController extends Controller
 		$arr = $order->moveUpdateOrder($order_number);
 		if ($arr) {
 			/*支付成功发送短信*/
-				if ($data[0]->is_goods == 1) {
+				/*if ($data[0]->is_goods == 1) {
 					$ins = new SmsDemo;
 					$ins->sendSms("SMS_142949618",$data[0]->address_tel,'',$data[0]->curriculum_name);
 				} else {
 					$ins = new SmsDemo;
 					$ins->sendSms("SMS_142954379",$data[0]->address_tel,'',$data[0]->curriculum_name);
-				}
+				}*/
 			/*支付成功发送短信*/
 			return redirect('home/myclass.html');
 		} else {
@@ -182,13 +182,13 @@ class PayController extends Controller
 		$arr = $order->moveUpdateOrderWx($order_number);
 		if ($arr) {
 			/*支付成功发送短信*/
-				if ($data[0]->is_goods == 1) {
+				/*if ($data[0]->is_goods == 1) {
 					$ins = new SmsDemo;
 					$ins->sendSms("SMS_142949618",$data[0]->address_tel,'',$data[0]->curriculum_name);
 				} else {
 					$ins = new SmsDemo;
 					$ins->sendSms("SMS_142954379",$data[0]->address_tel,'',$data[0]->curriculum_name);
-				}
+				}*/
 			/*支付成功发送短信*/
 			return redirect('home/myclass.html');
 		} else {

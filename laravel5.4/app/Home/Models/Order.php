@@ -41,7 +41,7 @@ class Order extends Model
             $value->curriculum_name = $val->curriculum_name;
           }
           $value->is_goods = $val->is_goods;
-          $value->address_tel = $user[0]->address_tel;
+          $value->address_tel = $user[0]->user_tel;
         }
       }
       return $data;
