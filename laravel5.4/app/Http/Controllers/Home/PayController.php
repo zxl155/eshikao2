@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 use App\Home\Models\Order;
+use Gregwar\Captcha\SmsDemo;
 
 class PayController extends Controller
 {
@@ -50,6 +51,15 @@ class PayController extends Controller
 		if ($data) {
 			$order_id =  $order->orderPay($data[0]->order_id);
 			if ($order_id) {
+				/*支付成功发送短信*/
+					if ($data[0]->is_goods == 1) {
+						$ins = new SmsDemo;
+						$ins->sendSms("SMS_142949618",$data[0]->address_tel,'',$data[0]->curriculum_name);
+					} else {
+						$ins = new SmsDemo;
+						$ins->sendSms("SMS_142954379",$data[0]->address_tel,'',$data[0]->curriculum_name);
+					}
+				/*支付成功发送短信*/
 				return view('home/pay/paySuccess',[
 					'data'=>$data,
 				]);
@@ -104,8 +114,18 @@ class PayController extends Controller
 	{
 		$order_number = Input::get('order_number');
 		$order = new Order;
+		$data = $order->dunxin($order_number);
 		$arr = $order->moveUpdateOrder($order_number);
 		if ($arr) {
+			/*支付成功发送短信*/
+				if ($data[0]->is_goods == 1) {
+					$ins = new SmsDemo;
+					$ins->sendSms("SMS_142949618",$data[0]->address_tel,'',$data[0]->curriculum_name);
+				} else {
+					$ins = new SmsDemo;
+					$ins->sendSms("SMS_142954379",$data[0]->address_tel,'',$data[0]->curriculum_name);
+				}
+			/*支付成功发送短信*/
 			return redirect('home/myclass.html');
 		} else {
 			echo "修改状态失败，请截图联系客服";
@@ -158,8 +178,18 @@ class PayController extends Controller
 	{
 		$order_number = Input::get('out_trade_no');
 		$order = new Order;
+		$data = $order->dunxin($order_number);
 		$arr = $order->moveUpdateOrderWx($order_number);
 		if ($arr) {
+			/*支付成功发送短信*/
+				if ($data[0]->is_goods == 1) {
+					$ins = new SmsDemo;
+					$ins->sendSms("SMS_142949618",$data[0]->address_tel,'',$data[0]->curriculum_name);
+				} else {
+					$ins = new SmsDemo;
+					$ins->sendSms("SMS_142954379",$data[0]->address_tel,'',$data[0]->curriculum_name);
+				}
+			/*支付成功发送短信*/
 			return redirect('home/myclass.html');
 		} else {
 			echo "修改状态失败，请截图联系客服";
