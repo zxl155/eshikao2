@@ -71,13 +71,21 @@ class Pplive extends Model
        $params['sign'] = $sign;
        $ginseng = http_build_query($params);
        if ($pplive[0]->type == 1) {
-        echo "<script> if(confirm('小主，请确认是否安装客户端'))  location.href='baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts';else location.href='http://www.baijiayun.com/web/room/enter?".$ginseng."'; </script>";
-         //$url = "baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts";
+          if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false){
+              //小程序
+               echo "<script> if(confirm('小主，请确认是否安装客户端'))  location.href='baijiacloud://urlpath=https://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts';else location.href='https://www.baijiayun.com/web/room/enter?".$ginseng."'; </script>";
+          } else {
+               echo "<script> if(confirm('小主，请确认是否安装客户端'))  location.href='baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts';else location.href='http://www.baijiayun.com/web/room/enter?".$ginseng."'; </script>";
+          }
        } else {
-         $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+          if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+              //小程序
+              $url = "https://www.baijiayun.com/web/room/enter?".$ginseng;
+          } else {
+              $url = "http://www.baijiayun.com/web/room/enter?".$ginseng;
+          }
          header("Location: ".$url."");
        }
-      // header("Location: ".$url.""); 
    }
 
    //查看回放
@@ -126,16 +134,35 @@ class Pplive extends Model
           $arr = json_decode($arr);
           if($arr->code == 0){
             if ($pplive[0]->type == 5) {
-              $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+              if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+                  $url = "https://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+              } else {
+                  $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
+              }
             } else if($pplive[0]->type == 6) {
-              $url = $pplive[0]->demand_address;
+              if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+                $url = $pplive[0]->demand_address;
+                $url = substr_replace($url,"https",0,4);
+                //截取
+              } else {
+                $url = $pplive[0]->demand_address;
+              }
             } else {
-              $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+               if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+                   $url = "https://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+               } else {
+                   $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
+               }
             }
             header("Location: ".$url.""); 
           } else {
             if($pplive[0]->type == 6) {
-              $url = $pplive[0]->demand_address;
+               if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+                 $url = $pplive[0]->demand_address;
+                 $url = substr_replace($url,"https",0,4);
+               } else {
+                 $url = $pplive[0]->demand_address;
+               }
               header("Location: ".$url."");die;
             } 
             echo "查询回放token失败(请在直播结束俩小时后进行观看)";die;

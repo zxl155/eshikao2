@@ -34,11 +34,14 @@ class Order extends Model
     public function curriuclumName($curriculum_id,$data)
     {
       $curriculum = DB::select("select * from `curriculum` where curriculum_id = $curriculum_id ");
+      $address = DB::table('goods_address')->where(['address_id'=>$data[0]->address_id])->select('address_tel')->get();
       foreach ($data as $key => $value) {
         foreach ($curriculum as $k => $val) {
           if($data[0]->curriculum_id == $val->curriculum_id){
             $value->curriculum_name = $val->curriculum_name;
           }
+          $value->is_goods = $val->is_goods;
+          $value->address_tel = $address[0]->address_tel;
         }
       }
       return $data;
@@ -300,5 +303,18 @@ class Order extends Model
            }
         }
         return $datas;
+     }
+     //通过订单号查询课程名称以及手机号
+     public function dunxin($order_number)
+     {
+        $order = DB::table('order')->where(['order_number'=>$order_number])->get();
+        $curriculum = DB::table('curriculum')->where(['curriculum_id'=>$order[0]->curriculum_id])->select('curriculum_name','is_goods')->get();
+        $address = DB::table('goods_address')->where(['address_id'=>$order[0]->address_id])->select('address_tel')->get();
+        foreach ($order as $key => $value) {
+            $value->address_tel = $address[0]->address_tel;
+            $value->curriculum_name = $curriculum[0]->curriculum_name; 
+            $value->is_goods = $curriculum[0]->is_goods; 
+        }
+        return $order;
      }
 }
