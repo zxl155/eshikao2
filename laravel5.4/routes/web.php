@@ -208,6 +208,8 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/retrieve.html','RegisterController@retrieve');
   //通过手机号修改密码
   Route::get('home/retrieves','RegisterController@retrieves');
+  //通过手机号修改密码接收短信
+  Route::get('home/retrievesEmail','RegisterController@retrievesEmail');
   //注册
   Route::get('home/register.html','RegisterController@index');
   //短信发送

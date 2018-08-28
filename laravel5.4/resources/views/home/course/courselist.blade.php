@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>Title</title>
+    <title>课程包详情</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_706885_3j8v67fgec7.css">
     <script src="js/jquery-1.8.3.js"></script>

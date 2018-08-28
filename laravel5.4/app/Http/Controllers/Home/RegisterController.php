@@ -32,13 +32,11 @@ class RegisterController extends Controller
 			session(['phone' => $phone]);
 			session(['code' => $code]);
 			$ins = new SmsDemo();
-			if($ins->sendSms($phone,$code)){
+			if($ins->sendSms("SMS_136980009",$phone,$code,'')){
 				echo 1;
 			}else{
 				echo 0;
 			}
-		
-		
 	}
 	/**
      * @张小龙
@@ -87,6 +85,24 @@ class RegisterController extends Controller
 	public function retrieve()
 	{
 		return view('home/register/retrieve');
+	}
+	/**
+     * @张小龙
+     * @DateTime  2018-06-19
+     * 接收修改密码短信
+     */
+	public function retrievesEmail()
+	{
+		$phone = Input::get('phone');
+		$code = rand(111111,999999);
+		session(['phone' => $phone]);
+		session(['code' => $code]);
+		$ins = new SmsDemo();
+		if($ins->sendSms("SMS_136980008",$phone,$code,'')){
+			echo 1;
+		}else{
+			echo 0;
+		}
 	}
 	//通过手机号修改密码
 	public function retrieves()
