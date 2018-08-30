@@ -27,7 +27,7 @@
                 <div class="am-u-sm-12 am-u-md-3">
                     <form action="{{ url('admin/userCurriculum') }}" method="get">
                     <div class="am-input-group am-input-group-sm">
-                        <input type="text" name="user_tel"  placeholder="请输入用户手机号查询">
+                        <input type="text" name="user_tel"  placeholder="请输入用户注册手机号查询">
                         <span class="am-input-group-btn">
                             <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
                         </span>
@@ -45,7 +45,7 @@
                                     <th class="table-id">编号</th>
                                     <th>订单号</th>
                                     <th>下单时间</th>
-                                    <th>用户手机号</th>
+                                    <th>注册手机号</th>
                                     <th>课程名称</th>
                                     <th>价格</th>
                                     <th class="table-title">手机号(收货)</th>
