@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-    <title>Title</title>
+    <title>修改密码</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_706885_oj0ko6hl9i.css">
     <script src="js/jquery-1.8.3.js"></script>

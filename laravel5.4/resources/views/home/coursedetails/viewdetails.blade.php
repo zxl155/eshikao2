@@ -138,14 +138,16 @@
                     
                    <!-- 免费直播 -->
                     @foreach($pplive_content as $val)
-                    <li>
-                        <a>
-                            <img src="./img/zbtb.png" alt="">
-                            <span class="lint-title">{{$val->pplive_name}}</span>
-                            <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
-                            <span class="list-name">{{$val->admin_name}}</span>
-                        </a>
-                    </li>
+                        @if($val->is_free == 0)
+                            <li>
+                                <a>
+                                    <img src="./img/zbtb.png" alt="">
+                                    <span class="lint-title">{{$val->pplive_name}}</span>
+                                    <span class="list-time">{{$val->start_time}}--{{$val->end_time}}</span>
+                                    <span class="list-name">{{$val->admin_name}}</span>
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                     
                 </ul>
@@ -161,7 +163,7 @@
                         <div class="v-problem-text">
                             <p>
                                 1、适用人群：<br>
-                                主要针对参加教师资格证统考地区(不包括西藏、新疆、内蒙古等地区)<br>
+                                主要针对参加教资/教招教育理论基础知识的地区（如：您所在的省份考公共基础知识，可选择再购买《公共基础知识全程上岸班》即可）。<br>
                                 2、支付问题：<br>
                                  微信、支付宝支付进行顺畅支付<br>
                             </p>
@@ -199,7 +201,8 @@
                                 1,在【我的课程】中获得学员群号<br>
                                 登录www.eshikao.com—【我的课程】—【相对应课程】一-【学员群】(加群备注:姓名+注册手机号)学员群内有内部资料、上课提醒、助教答疑等专属服务（如无QQ群，显示即为暂无此项服务）<br>
                                 2、讲义发的货:<br>
-                                暂无讲义：按照讲义具体发货时间发货，详情参考详情页。<br>
+                                如课程有纸质讲义：则购买之日起三日内发货，默认发货为中通、圆通快递<br>
+                                如课程无纸质讲义：暂不支持发货<br>
                             </p>
                         </div>
                     </div>
@@ -229,18 +232,18 @@
                         <div class="v-problem-text">
                             <p>
                                 <i>①通购课时未开的课:</i><br>
-                                购课24小时内退费不收取手续费,若教材已寄出:扣除教材费用60元
-购课超过24小时退费:若无教材,扣除手续费10元;若教材已寄出
-除教材费用+手续费共计70元
-邮件名称:XX课程退费
-邮件内容:姓名、注册手机号、退费原因、支付交易订单截图(个人中心—我的订单—对应课程支付交易订单号)
-发送至niuxiaoyi@eshikao.com (2~3个工作日内处理)
+                                购课24小时内退费不收取手续费,若教材已寄出:扣除教材费用120元
+                                购课超过24小时退费:若无教材,扣除手续费10元;若教材已寄出
+                                除教材费用+手续费共计130元
+                                邮件名称:XX课程退费
+                                邮件内容:姓名、注册手机号、退费原因、支付交易订单截图(个人中心—我的订单—对应课程支付交易订单号)
+                                发送至niuxiaoyi@eshikao.com (2~3个工作日内处理)
                                 注:暂不接受电话退费。
                             </p>
                             <p>
                                 <i>②购课时已开课:</i><br>
                                不接受任何理由退费<br/>
-注:暂不接受电话退费
+                                注:暂不接受电话退费
                             </p>
                         </div>
                     </div>

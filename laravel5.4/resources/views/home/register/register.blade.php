@@ -251,7 +251,7 @@ var phone = $('#user_tel').val();
                             type:'get',
                             success:function(data){
                                 if(data == 1){
-            
+                    
                                 }else{
                                     $('.zhui').html('<span>发送失败请确认你是否注册</span>');
                                     return false;
