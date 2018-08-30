@@ -21,6 +21,10 @@ class CoursedetailsController extends Controller
 	{
 		$curriculum_id = Input::get('curriculum_id');
 		$curriculum = new Curriculum;
+		$is_buy = $curriculum -> is_curriculum($curriculum_id);
+		if (!empty($is_buy)) {
+			header("location:coursedetail.html?curriculum_id=$curriculum_id");die;
+		}
 		$curriculum_content = $curriculum->coursedetails($curriculum_id);
 		$usercurriculum = new UserCurriculum;
 		$isPurchase = $usercurriculum->isPurchase($curriculum_content[0]->curriculum_id);//查询是否购买了本课程
