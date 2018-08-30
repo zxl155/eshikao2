@@ -40,31 +40,31 @@
                 <div class="am-u-sm-12">
                     <form class="am-form">
                         <table class="am-table am-table-striped am-table-hover table-main">
-                            <thead>
-                                
+                            <thead  style="font-size: 13px">
                                 <tr>
                                     <th class="table-id">编号</th>
                                     <th>订单号</th>
                                     <th>下单时间</th>
-                                    <th class="table-title">手机号</th>
+                                    <th>用户手机号</th>
                                     <th>课程名称</th>
-                                    <th>课程价格</th>
-                                    <th>收货姓名</th>
+                                    <th>价格</th>
+                                    <th class="table-title">手机号(收货)</th>
+                                    <th>姓名</th>
                                     <th>收货地址</th>
-                                    <th>快递单号(以发货请输入订单号)</th>
-                                    <th>请选择快递</th>
+                                    <th>快递单号(请输入订单号)</th>
+                                    <th>快递</th>
                                 </tr>
-
                             </thead>
-                            <tbody>
+                            <tbody style="font-size: 13px">
                                 @foreach($data as $value)
                                 <tr>
                                     <th>{{$value->order_id}}</th>
                                     <th>{{$value->order_number}}</th>
                                     <th>{{$value->order_time}}</th>
-                                    <th>{{$value->address_tel}}</th>
+                                    <th>{{$value->user_tel}}</th>
                                     <th>{{$value->curriculum_name}}</th>
                                     <th>{{$value->order_money}}</th>
+                                    <th>{{$value->address_tel}}</th>
                                     <th>{{$value->address_name}}</th>
                                     <th>{{$value->address_detailed}}</th>
                                     <th><input class="invoice" value="{{$value->invoice_number}}" order_id='{{$value->order_id}}' placeholder="请输入物流单号" style="background: pink"></th>
@@ -80,6 +80,13 @@
                                             <option value="tiantian" @if($value->invoice=='tiantian') selected @endif>天天</option>
                                             <option value="debangwuliu" @if($value->invoice=='debangwuliu') selected @endif>德邦</option>
                                         </select>
+                                    </th>
+                                    <th>
+                                        @if($value->pay_mode==3)
+                                            赠送
+                                        @else
+                                            支付
+                                        @endif
                                     </th>
                                 </tr>
                                 @endforeach
