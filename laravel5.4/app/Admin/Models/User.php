@@ -161,6 +161,11 @@ class User extends Model
                   $value->curriculum_name = $val->curriculum_name;
               }
           }
+          foreach ($user as $ke => $v) {
+              if($value->user_id==$v->user_id){
+                  $value->user_tel = $v->user_tel;
+              }
+          }
       }
       foreach ($order as $key => $value) {
           foreach ($goods_address as $key => $val) {
