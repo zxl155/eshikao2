@@ -47,7 +47,12 @@ class CoursedetailsController extends Controller
 	public function coursedetail()
 	{
 		$curriculum_id = Input::get('curriculum_id');
+		//判断是否购买该课程
 		$curriculum = new Curriculum;
+		$is_buy = $curriculum -> is_curriculum($curriculum_id);
+		if (empty($is_buy)) {
+			echo "无购买本课程";die;
+		}
 		$curriculum_content = $curriculum->coursedetails($curriculum_id);
 		$regihtcontent = $curriculum->regihtContent($curriculum_id);
 		$pplive = new Pplive;

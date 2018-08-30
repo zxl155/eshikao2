@@ -7,7 +7,7 @@ class Pplive extends Model
 {
    public function shows($curriculum_id)
    {
-    $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) and is_free=0 order by start_time asc";
+    $sql = "select * from pplive where find_in_set(".$curriculum_id.",curriculum_id) order by start_time asc";
     $pplive_content = DB::select($sql);
          $admin_content = DB::table('admin')->get();
          foreach ($pplive_content as $key => $value) {
@@ -71,14 +71,15 @@ class Pplive extends Model
        $params['sign'] = $sign;
        $ginseng = http_build_query($params);
        if ($pplive[0]->type == 1) {
-          if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false){
+        
+          if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false){
               //小程序
                echo "<script> if(confirm('小主，请确认是否安装客户端'))  location.href='baijiacloud://urlpath=https://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts';else location.href='https://www.baijiayun.com/web/room/enter?".$ginseng."'; </script>";
           } else {
                echo "<script> if(confirm('小主，请确认是否安装客户端'))  location.href='baijiacloud://urlpath=http://www.baijiayun.com/web/room/enter?".$ginseng."&token=token&ts=ts';else location.href='http://www.baijiayun.com/web/room/enter?".$ginseng."'; </script>";
           }
        } else {
-          if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+          if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
               //小程序
               $url = "https://www.baijiayun.com/web/room/enter?".$ginseng;
           } else {
@@ -134,13 +135,13 @@ class Pplive extends Model
           $arr = json_decode($arr);
           if($arr->code == 0){
             if ($pplive[0]->type == 5) {
-              if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+              if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
                   $url = "https://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
               } else {
                   $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->playback_room_id."&session_id=".$pplive[0]->playback_session_id."&token=".$arr->data->token;
               }
             } else if($pplive[0]->type == 6) {
-              if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+              if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
                 $url = $pplive[0]->demand_address;
                 $url = substr_replace($url,"https",0,4);
                 //截取
@@ -148,7 +149,7 @@ class Pplive extends Model
                 $url = $pplive[0]->demand_address;
               }
             } else {
-               if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+               if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
                    $url = "https://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
                } else {
                    $url = "http://www.baijiayun.com/web/playback/index?classid=".$pplive[0]->entrance."&token=".$arr->data->token;
@@ -157,7 +158,7 @@ class Pplive extends Model
             header("Location: ".$url.""); 
           } else {
             if($pplive[0]->type == 6) {
-               if(strpos($_SERVER['HTTP_USER_AGENT'], 'miniprogram') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
+               if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'miniProgram') !== false) {
                  $url = $pplive[0]->demand_address;
                  $url = substr_replace($url,"https",0,4);
                } else {

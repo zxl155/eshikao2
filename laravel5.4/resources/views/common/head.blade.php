@@ -75,7 +75,6 @@
     </div>
     <script>
         if({{ session('user_id')}}){
-
             $('.header-login').css('display','none');
             $('.header-login1').css('display','inline-block');
         }
