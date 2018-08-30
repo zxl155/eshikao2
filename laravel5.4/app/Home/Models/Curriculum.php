@@ -292,4 +292,11 @@ class Curriculum extends Model
         $data = DB::table('curriculum')->where(['curriculum_id'=>$curriculum_id])->select('curriculum_name')->get();
         return $data;
     }
+    //判断是否购买该课程
+    public function is_curriculum($curriculum_id)
+    {
+      $user_id = session('user_id');
+      $data = DB::table('user_curriculum')->where(['user_id'=>$user_id,'curriculum_id'=>$curriculum_id])->get()->toArray();
+      return $data;
+    }
 }

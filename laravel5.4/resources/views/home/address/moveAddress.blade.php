@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link href="{{URL::asset('/')}}/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-    <title>Title</title>
+    <title>收货地址</title>
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
 </head>
 <body>

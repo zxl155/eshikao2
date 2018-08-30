@@ -15,9 +15,9 @@ class Order extends Model
          if (empty($user_id)) {
             echo "请输入正确的代理手机号";die;
          }
-          $arr = DB::table('order')->where('sales_user_id','!=','')->where(['pay_mode'=>1,'sales_user_id'=>$user_id[0]->user_id])->orderBy('order_time','desc')->get();
+          $arr = DB::table('order')->where('sales_user_id','!=','')->where(['order_state'=>1,'sales_user_id'=>$user_id[0]->user_id])->orderBy('order_time','desc')->get();
       } else {
-          $arr = DB::table('order')->where('sales_user_id','!=','')->where(['pay_mode'=>1])->orderBy('order_time','desc')->get();
+          $arr = DB::table('order')->where('sales_user_id','!=','')->where(['order_state'=>1])->orderBy('order_time','desc')->get();
       }
       
         $sales = DB::table('sales')->select(['sales_name','sales_tel'])->get();
