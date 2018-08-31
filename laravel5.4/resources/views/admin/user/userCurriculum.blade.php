@@ -52,7 +52,7 @@
                                     <th>姓名</th>
                                     <th>收货地址</th>
                                     <th>快递单号(请输入订单号)</th>
-                                    <th>快递</th>
+                                    <th>快递111111</th>
                                 </tr>
                             </thead>
                             <tbody style="font-size: 13px">
