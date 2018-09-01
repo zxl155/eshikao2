@@ -73,11 +73,13 @@
             </div>
             
     </div>
-    <script>
-        if({{ session('user_id')}}){
-            $('.header-login').css('display','none');
-            $('.header-login1').css('display','inline-block');
-        }
-    </script>
+  <?php $user_id = session('user_id'); if ($user_id!='') { ?>
+         <script>
+         $('.header-login').css('display','none');
+        $('.header-login1').css('display','inline-block');
+        </script>
+  <?php  }?>    
+        
+    
 
     
