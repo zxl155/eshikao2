@@ -281,7 +281,7 @@ textarea {
         min-width: 1200px;
         height: 130px;
         margin-top: 110px;
-        background: url("./img/advert.png") no-repeat;
+        background: url("./../img/advert.png") no-repeat;
         background-size: 1940px 100%;
         background-position: center center;
     }
