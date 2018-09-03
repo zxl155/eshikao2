@@ -35,13 +35,13 @@
     <!--移动-->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            @foreach($broadcast_content as $va)
+            <!-- @foreach($broadcast_content as $va) -->
             <div class="swiper-slide">
-                <a href="{{URL::asset('home/coursedetails.html')}}?curriculum_id={{$va->curriculum_id}}">
-                   <img src="{{URL::asset('/')}}home/img/sowing_msp/{{$va->broadcast_url}}" alt=""> 
+                <a href="https://www.eshikao.com/build/index.html">
+                   <img src="{{URL::asset('/')}}home/img/sowing_msp/405186939294839009.png" alt=""> 
                 </a>
             </div>
-            @endforeach
+           <!--  @endforeach -->
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -146,11 +146,11 @@
           @endforeach  
         </div>
     </div>
-    <div class="home-advert">
+    <!-- <div class="home-advert">
         <div>
             <div class="home-advert-erwm"><img src="" alt=""></div>
-            <!-- <span>扫一扫二维码<br>下载易师考APP</span> --></div>
-    </div>
+            <span>扫一扫二维码<br>下载易师考APP</span></div>
+    </div> -->
 </div>
 <script>
     //sweiper
