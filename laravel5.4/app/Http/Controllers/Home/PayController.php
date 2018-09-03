@@ -171,12 +171,39 @@ class PayController extends Controller
 	public function moveWx()
 	{	
 		$out_trade_no = Input::get('out_trade_no');
-		return view('home/wxpay/notify_url',['out_trade_no'=>$out_trade_no]);
+		$appid = "wxb7c95914eaa62229";//微信给的
+        $mch_id = "1508009641";//微信官方的
+        $key = "371325198602104558jiayanqing088x";//自己设置的微信商家key
+        $out_trade_no=$out_trade_no;//订单号
+        $nonce_str=MD5($out_trade_no);//随机字符串
+       	$signA="appid=$appid&mch_id=$mch_id&nonce_str=$nonce_str&out_trade_no=$out_trade_no";
+	    $strSignTmp = $signA."&key=$key"; //拼接字符串  注意顺序微信有个测试网址 顺序按照他的来 直接点下面的校正测试 
+        $sign = strtoupper(MD5($strSignTmp)); // MD5 后转换成大写
+        $post_data = "<xml>
+					   <appid>$appid</appid>
+					   <mch_id>$mch_id</mch_id>
+					   <nonce_str>$nonce_str</nonce_str>
+					   <out_trade_no>$out_trade_no</out_trade_no>
+					   <sign>$sign</sign>
+					</xml>";//拼接成XML 格式
+        $url = "https://api.mch.weixin.qq.com/pay/orderquery";//微信传参地址
+        $dataxml = $this->http_post($url,$post_data); //后台POST微信传参地址  同时取得微信返回的参数    POST 方法我写下面了
+        $objectxml = (array)simplexml_load_string($dataxml, 'SimpleXMLElement', LIBXML_NOCDATA); //将微信返回的XML 转换成数组
+        file_put_contents("../resources/views/home/wxpay/testfile.txt",$dataxml,FILE_APPEND);
+         if ($objectxml['return_code']=='SUCCESS'&$objectxml['result_code']=='SUCCESS'&$objectxml['trade_state']=="SUCCESS") {
+         	$this->moveWxSuccess($out_trade_no);
+         // header("location:moveWxSuccess?out_trade_no=$out_trade_no");
+        } else {
+                 echo $objectxml['trade_state_desc'];die;
+        }
+
 	}
 	//修改微信支付状态
-	public function moveWxSuccess()
+	public function moveWxSuccess($order_number='')
 	{
-		$order_number = Input::get('out_trade_no');
+		if ($order_number == '') {
+			$order_number = Input::get('out_trade_no');
+		}
 		$order = new Order;
 		$data = $order->dunxin($order_number);
 		$arr = $order->moveUpdateOrderWx($order_number);
@@ -195,15 +222,17 @@ class PayController extends Controller
 			echo "修改状态失败，请截图联系客服";
 		}
 	}
-	//微信公众号支付
-	public function publiCpayment()
-	{
-		// 我们判断HTTP_USER_AGENT中是否有MicroMessenger即可
-		/*if(strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
-			echo '微信浏览器';
-		}else{
-			echo '别的浏览器';
-		}*/
-		return view('home/wxpay/example/a');
-	}
+	//支付
+	public function http_post($url, $data) {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_HEADER,0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            $res = curl_exec($ch);
+            curl_close($ch);
+            return $res;
+    }
 }

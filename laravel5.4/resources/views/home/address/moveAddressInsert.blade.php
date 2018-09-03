@@ -43,7 +43,7 @@
         <a href="#" class="but">增加地址</a>
     </div>
 </div>
-<script class="resources library" src="js/area.js"></script>
+<script class="resources library" src="js/area.js?v1=1.0.0"></script>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/index.js"></script>
 <script>
