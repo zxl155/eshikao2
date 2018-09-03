@@ -319,6 +319,31 @@ var renderZhao=(function () {
             $('.notice .Certificate-type').slideUp()
         }
     })
+    //客服
+    var smallPro=false;
+    $('#service').on('click',function () {
+        wx.miniProgram.getEnv(function(res) {
+            console.log(res.miniprogram) // true
+            if(res.miniprogram){
+                smallPro=true;
+            }else{
+                smallPro=false;
+            }
+        });
+        if(smallPro){
+            wx.miniProgram.navigateTo({
+                url:'/pages/call/call',//跳转回小程序的页面
+                success: function(){
+                    console.log('success')
+                },
+                fail: function(){
+                    console.log('fail');
+                },
+            });
+        }else {
+            window.open('http://wpa.qq.com/msgrd?v=3&uin=3049266534&site=qq&menu=yes','_blank')
+        }
+    })
     return {
         init:function () {
             flSwitch($('.Certificate-ul li'));//分类切换

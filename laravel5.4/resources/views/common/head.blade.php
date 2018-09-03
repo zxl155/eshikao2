@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css">
     <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="{{URL::asset('/')}}js/jweixin.js" type="text/javascript"></script>
     <script src="{{URL::asset('/')}}js/xcConfirm.js" type="text/javascript"></script>
     <style type="text/css">
       .sgBtn{width: 135px; height: 35px; line-height: 35px; margin-left: 10px; margin-top: 10px; text-align: center; background-color: #0095D9; color: #FFFFFF; float: left; border-radius: 5px;}
@@ -31,7 +32,7 @@
     <div class="m-header-content">
         <div><a href="javascript:history.go(-1);"><img src="{{URL::asset('/')}}home/img/88_03.png" alt=""></a></div>
         <div>易师考</div>
-        <div></div>
+        <div><i class="iconfont icon-kefu" id="service"></i></div>
     </div>
 </div>
 <div class="header">
