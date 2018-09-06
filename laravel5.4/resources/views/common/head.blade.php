@@ -1,6 +1,6 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css?v=1.0.0.1">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/')}}css/xcConfirm.css">
     <script src="{{URL::asset('/')}}js/jquery-1.9.1.js" type="text/javascript"></script>
     <script src="{{URL::asset('/')}}js/jweixin.js" type="text/javascript"></script>
@@ -32,7 +32,7 @@
     <div class="m-header-content">
         <div><a href="javascript:history.go(-1);"><img src="{{URL::asset('/')}}home/img/88_03.png" alt=""></a></div>
         <div>易师考</div>
-        <div><i class="iconfont icon-kefu" id="service"></i></div>
+        <div><div class="m-consultation"><i class="iconfont icon-zixun" id="service"></i><br/><span>客服</span></div></div>
     </div>
 </div>
 <div class="header">

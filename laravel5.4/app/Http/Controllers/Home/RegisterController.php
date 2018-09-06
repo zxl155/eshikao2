@@ -27,16 +27,16 @@ class RegisterController extends Controller
 	 */
 	public function emails(){
 		$phone = Input::get('phone');
-		
-			$code = rand(111111,999999);
-			session(['phone' => $phone]);
-			session(['code' => $code]);
-			$ins = new SmsDemo();
-			if($ins->sendSms($phone,$code)){
-				echo 1;
-			}else{
-				echo 0;
-			}
+		$template = "SMS_136980009";
+		$code = rand(111111,999999);
+		session(['phone' => $phone]);
+		session(['code' => $code]);
+		$ins = new SmsDemo();
+		if($ins->sendSms($template,$phone,$code)){
+			echo 1;
+		}else{
+			echo 0;
+		}
 	}
 	/**
      * @张小龙
@@ -94,11 +94,12 @@ class RegisterController extends Controller
 	public function retrievesEmail()
 	{
 		$phone = Input::get('phone');
+		$template = "SMS_136980008";
 		$code = rand(111111,999999);
 		session(['phone' => $phone]);
 		session(['code' => $code]);
 		$ins = new SmsDemo();
-		if($ins->sendSms($phone,$code)){
+		if($ins->sendSms($template,$phone,$code)){
 			echo 1;
 		}else{
 			echo 0;

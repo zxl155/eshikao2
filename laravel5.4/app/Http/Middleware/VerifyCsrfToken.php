@@ -12,6 +12,9 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
-    ];
+   		'home/publiCpayments',
+   		'home/wxNotify',
+   		'home/moveWx',
+   		'home/hWxnotify',
+     ];
 }

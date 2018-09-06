@@ -103,7 +103,7 @@
                                         if (msg == 2) {
                                             window.location.href = "{{URL::asset('home/login.html')}}";  
                                         } else {
-                                            $('.zhui').html('<span>请确认您的手机号是否注册过</span>');
+                                            $('.zhui').html('<span>您以注册过</span>');
                                             return false;
                                         }
                                         
@@ -169,7 +169,7 @@
                                         if (msg == 2) {
                                             window.location.href = "{{URL::asset('home/login.html')}}";  
                                         } else {
-                                            var txt =  "请确认您的手机号是否注册过";
+                                            var txt =  "您以注册过";
                                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                                         }
                                         

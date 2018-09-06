@@ -197,6 +197,8 @@ Route::group(['namespace' => 'Admin','middleware' => ['web']], function(){
   //管理员退出
   Route::get('admin/out','LoginController@out');
 });
+
+
 //前台
 Route::group(['namespace' => 'Home'], function(){
   //前台首页
@@ -290,6 +292,10 @@ Route::group(['namespace' => 'Home'], function(){
   Route::get('home/asynchronous','PayController@asynchronous');
    //支付成功回调页面
   Route::get('home/apiSuccess','PayController@apiSuccess');
+
+   //支付成功回调页面
+  Route::get('home/minProgress','WxpayController@miniProgramCreateOrder');
+
    //自己家的成功页面
   Route::get('home/Success','PayController@Success');
    //前台用户退出
@@ -352,7 +358,9 @@ Route::group(['namespace' => 'Home'], function(){
   //移动跳转微信
   Route::get('home/movewxpay','PayController@movewxpay');
   //微信支付成功
-  Route::get('home/moveWx','PayController@moveWx');
+  Route::any('home/moveWx','PayController@moveWx');
+   //微信支付成功
+  Route::any('home/hWxnotify','PayController@hWxnotify');
   //修改微信支付成功状态
   Route::get('home/moveWxSuccess','PayController@moveWxSuccess');
   //前台课程包
@@ -360,5 +368,5 @@ Route::group(['namespace' => 'Home'], function(){
   //代理商户查询地址
   Route::get('home/orderSearch','CourseController@orderSearch');
   //微信公众号支付
-  Route::get('home/publiCpayment','PayController@publiCpayment');
+  Route::any('home/wxNotify','PayController@wxNotify');
 });
