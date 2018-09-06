@@ -9,7 +9,7 @@
     <title>易师考-教师资格证考试,教师招聘考试,考教师更容易</title>
     <meta name="keywords" content="易师考,教师资格证,教师资格证考试">
     <meta name="description" content="易师考专注于教师资格考试的教育培训企业;致力服务准教师群体,提供线上直播,线下面授,在线题库,配套图书等;易师考荣获海淀留学人员创业园授予'金种子'称号,为教师群体提供优选教师岗位...">
-    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/swiper.min.css">
+    <link rel="stylesheet" href="{{URL::asset('/')}}home/css/swiper.min.css?v=1.0.0.1">
     <link rel="stylesheet" href="{{URL::asset('/')}}home/css/style.css">
     <script src="{{URL::asset('/')}}home/js/swiper.min.js"></script>
     <script type="text/javascript">

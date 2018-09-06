@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Home\Models\Admin;
 use App\Home\Models\Curriculum;
 use App\Home\Models\Broadcast;
-
+use App\Libraries\Test;
 class IndexController extends Controller
 {
 	/**
@@ -19,6 +19,7 @@ class IndexController extends Controller
      */
 	public function index()
 	{
+		Test::index();die;
 		//首页轮播图
 		$broadcast = new Broadcast;
 		$broadcast_content = $broadcast ->index(); 
