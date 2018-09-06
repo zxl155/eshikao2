@@ -87,9 +87,11 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
                        } else {
                             window.location.href="userlist";
                        }
-                       
-                    }else{
-                        $('.zhui').html('<span>登录失败</span>');
+                    }else if(m == "用户不存在") {
+                        $('.zhui').html('<span>用户未注册</span>');
+                        return false;
+                    } else if (m == "请输入正确密码") {
+                        $('.zhui').html('<span>请输入正确密码</span>');
                         return false;
                     }
                 }
@@ -122,10 +124,11 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { //手机
                        } else {
                              window.location.href="/";
                        }
-                       
-                      
-                    }else{
-                        var txt=  "登录失败";
+                    }else if(m == "用户不存在"){
+                        var txt=  "用户未注册";
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
+                    } else if (m == "请输入正确密码") {
+                        var txt=  "请输入正确密码";
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                     }
                 }

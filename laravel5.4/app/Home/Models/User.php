@@ -39,17 +39,23 @@ class User extends Model
    */
    public function dologin($data)
    {
-      $user = DB::select('select * from user where user_tel = :phone and password = :password', [':phone'=>$data['user_tel'],':password'=>$data['password']]);
-      if(empty($user)){
-        return false;
+      $tel = DB::table('user')->where(['user_tel'=>$data['user_tel']])->get()->toArray();
+      if (!empty($tel)) {
+         $user = DB::select('select * from user where user_tel = :phone and password = :password', [':phone'=>$data['user_tel'],':password'=>$data['password']]);
+           if(empty($user)){
+            return "请输入正确密码";die;
+          } else {
+            $lifeTime = 24 * 3600 * 30;  // 保存一个月 
+            session_set_cookie_params($lifeTime); 
+            session(['user_id' => $user[0]->user_id]);
+            session(['user_name' => $user[0]->user_name]);
+            session(['user_tel' => $user[0]->user_tel]);
+            session(['head' => $user[0]->head_images]);
+            return "登录成功";
+          }
+        
       } else {
-        $lifeTime = 24 * 3600 * 30;  // 保存一个月 
-        session_set_cookie_params($lifeTime); 
-        session(['user_id' => $user[0]->user_id]);
-        session(['user_name' => $user[0]->user_name]);
-        session(['user_tel' => $user[0]->user_tel]);
-        session(['head' => $user[0]->head_images]);
-        return true;
+        return "用户不存在";
       }
    }
    /**

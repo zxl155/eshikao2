@@ -32,13 +32,7 @@ class LoginController extends Controller
 		$data['password'] = md5(Input::get('user_pwd'));
 		$user = new User;
 		$arr = $user->dologin($data);
-		if ($arr == true) {
-			echo "登录成功";
-		} else {
-			echo "登录失败";
-		}
-		
-		
+		echo $arr;
 	}
 	//前台用户退出
 	public function out(Request $request)

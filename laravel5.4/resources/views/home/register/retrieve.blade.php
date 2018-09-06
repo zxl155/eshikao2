@@ -219,14 +219,14 @@ var phone = $('#user_tel').val();
                    var pattern = /^1[34578]\d{9}$/; 
                    if(pattern.test(phone)) {
                          $.ajax({
-                            url:"{{URL::asset('home/emails')}}",
+                            url:"{{URL::asset('home/retrievesEmail')}}",
                             data:{phone:phone,_token:"{{ csrf_token() }}"},
                             type:'get',
                             success:function(data){
                                 if(data == 1){
                                     
                                 }else{
-                                    $('.zhui').html('<span>验证码发送失败·请确认是否注册过</span>');
+                                    $('.zhui').html('<span>验证码发送失败</span>');
                                     return false;
                                 }
                             }
@@ -247,7 +247,7 @@ var phone = $('#user_tel').val();
                    var pattern = /^1[34578]\d{9}$/; 
                    if(pattern.test(phone)) {
                          $.ajax({
-                            url:"{{URL::asset('home/emails')}}",
+                            url:"{{URL::asset('home/retrievesEmail')}}",
                             data:{phone:phone,_token:"{{ csrf_token() }}"},
                             type:'get',
                             success:function(data){
@@ -255,7 +255,7 @@ var phone = $('#user_tel').val();
                                     var txt=  "发送成功";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
                                 }else{
-                                    var txt=  "发送失败请确认你是否注册";
+                                    var txt=  "发送失败";
                                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.warning);
                                     return false;
                                 }

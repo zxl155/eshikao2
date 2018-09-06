@@ -31,7 +31,7 @@ $input->SetTotal_fee($money);
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://www.eshikao.com/home/wxnotify.html");
+$input->SetNotify_url("https://www.eshikao.com/home/wxNotify");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 $order = WxPayApi::unifiedOrder($input);
@@ -67,7 +67,7 @@ $editAddress = $tools->GetEditAddressParameters();
             function(res){
                 WeixinJSBridge.log(res.err_msg);
                  if(res.err_msg == "get_brand_wcpay_request:ok"){
-                       window.location.href="http://www.eshikao.com/home/moveWxSuccess?out_trade_no={{$data[0]->order_number}}";
+                       window.location.href="http://www.eshikao.com/home/myclass.html";
                    }else{
                        //返回跳转到订单详情页面
                        alert(支付失败);
